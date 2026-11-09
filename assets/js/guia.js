@@ -248,7 +248,7 @@
   const relat = { 1: 3, 2: 3, 3: 5, 5: 3, 6: 4, 7: 2, 8: 2, 9: 3, 10: 3, 11: 24 };
   const slides = { 4: 12, 6: 13, 9: 11, 10: 12 };
   // apresentações que já viraram página animada
-  const APRESENTACOES = [4, 6, 9, 10];
+  const APRESENTACOES = P.apresentacoes;
   const fases = [['Definir o problema', 1, 4], ['Traduzir', 5, 8], ['Julgar', 9, 11], ['Mostrar', 12, 13]];
   const negrito = tx => tx.replace(/\d+(?:[.,]\d+)*%?/g, m => `<b>${m}</b>`);
   const doc = '<svg class="doc" viewBox="0 0 64 64" aria-hidden="true"><use href="#s-doc"/></svg>';
@@ -267,6 +267,48 @@
     }).join('');
     return `<section class="fase"><h3>${nome} <small>Atividades ${de} a ${ate}</small></h3><ol class="paginas">${itens}</ol></section>`;
   }).join('');
+
+  // portas da capa e a estante: relatórios, vídeos e apresentações, tudo à vista
+  (function () {
+    const tem = (lista, n) => lista.includes(n);
+    const conta = { relatorios: P.paginas.length, videos: P.videos.length, apresentacoes: P.apresentacoes.length };
+    document.querySelectorAll('[data-conta]').forEach(el => { el.textContent = conta[el.dataset.conta]; });
+    const nums = D.atividades.map(a => a.n).filter(n => tem(P.paginas, n) || tem(P.videos, n) || tem(P.apresentacoes, n));
+    $('#estante').innerHTML = nums.map(n => {
+      const a = D.atividades.find(x => x.n === n);
+      const capa = tem(P.videos, n)
+        ? `<button class="capa-video" type="button" data-video="${n}" aria-label="Ver o vídeo da Atividade ${n}"><img src="assets/video/atividade${n}-pt.jpg" alt="" loading="lazy"><span class="play" aria-hidden="true"></span><span class="dur">vídeo, 3 min</span></button>`
+        : tem(P.apresentacoes, n)
+          ? `<a class="capa-video" href="apresentacoes/atividade${n}.html" aria-label="Abrir a apresentação da Atividade ${n}"><img src="assets/img/apresentacao${n}.jpg" alt="" loading="lazy"><span class="dur">apresentação animada</span></a>`
+          : `<a class="capa-video sem" href="relatorios/atividade${n}.html"><span>vídeo em produção</span></a>`;
+      const acoes = [];
+      if (tem(P.paginas, n)) acoes.push(`<a class="btn-l forte" href="relatorios/atividade${n}.html">Ler o relatório</a>`);
+      if (tem(P.videos, n)) acoes.push(`<button class="btn-l" type="button" data-video="${n}">Ver o vídeo</button>`);
+      if (tem(P.apresentacoes, n)) acoes.push(`<a class="btn-l" href="apresentacoes/atividade${n}.html">Apresentação</a>`);
+      return `<li class="livro"><div class="capa-l">${capa}</div><p class="ativ">Atividade ${n} &middot; ${a.data}</p><h3>${a.titulo}</h3>` +
+        `<p class="res">${a.resultado || a.feito}</p><p class="acoes">${acoes.join('')}</p></li>`;
+    }).join('');
+
+    // o vídeo abre por cima da página, sem sair dela; a legenda vem desligada
+    const dlg = $('#tocador');
+    if (!dlg || !dlg.showModal) return;
+    const vid = dlg.querySelector('video'), trilha = dlg.querySelector('track');
+    document.addEventListener('click', e => {
+      const b = e.target.closest('[data-video]');
+      if (!b) return;
+      const n = +b.dataset.video, a = D.atividades.find(x => x.n === n);
+      dlg.querySelector('.t').textContent = `Atividade ${n}: ${a.titulo}`;
+      dlg.querySelector('.ler-r').href = `relatorios/atividade${n}.html`;
+      vid.poster = `assets/video/atividade${n}-pt.jpg`;
+      vid.src = `assets/video/atividade${n}-pt.mp4`;
+      trilha.src = `assets/video/atividade${n}-pt.vtt`;
+      dlg.showModal();
+      vid.play().catch(() => {});
+    });
+    dlg.addEventListener('close', () => { vid.pause(); vid.removeAttribute('src'); vid.load(); });
+    dlg.querySelector('.fechar').addEventListener('click', () => dlg.close());
+    dlg.addEventListener('click', e => { if (e.target === dlg) dlg.close(); });
+  })();
 
   const icones = ['s-lupa', 's-escudo', 's-linguas'];
   $('#proximas').innerHTML = D.proximos.map((p, i) =>

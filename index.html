@@ -11,7 +11,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Old+Standard+TT:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
 <script>document.documentElement.classList.add('js');</script>
-<link rel="stylesheet" href="assets/css/guia.css?v=9">
+<link rel="stylesheet" href="assets/css/guia.css?v=13">
 </head>
 <body>
 <a class="pular" href="#conteudo">Pular para o conteúdo</a>
@@ -46,6 +46,7 @@
     <nav aria-label="Índice do guia">
       <ul>
         <li><a href="#inicio" data-s="inicio">Capa</a></li>
+        <li><a href="#biblioteca" data-s="biblioteca">Relatórios e vídeos</a></li>
         <li><a href="#problema" data-s="problema">O juiz</a></li>
         <li><a href="#resultados" data-s="especies">Espécies</a></li>
         <li><a href="#vimos" data-s="vimos">O que vimos</a></li>
@@ -74,9 +75,34 @@
       <h1>Juízes de segurança em português</h1>
       <p class="frase">O mesmo processo, em inglês e em português. O juiz decide igual?</p>
       <p class="autor">Cristhian Kapelinski e Beatriz Roland Machado. Laboratório de Inteligência Artificial Aplicada, 2026/2, UNIPAMPA, prof. Diego Kreutz.</p>
+      <nav class="portas" aria-label="Para onde ir">
+        <a href="#biblioteca"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M8 4h11l6 6v18H8z M19 4v6h6 M12 16h9 M12 20h9 M12 24h6"/></svg><b>Relatórios</b><span><span data-conta="relatorios">10</span> relatórios, das Atividades 1 a 11</span></a>
+        <a href="#biblioteca"><svg viewBox="0 0 32 32" aria-hidden="true"><rect x="4" y="7" width="24" height="18" rx="2"/><path d="M13 12v8l7-4z"/></svg><b>Vídeos</b><span><span data-conta="videos">8</span> vídeos narrados de 3 minutos</span></a>
+        <a href="#biblioteca"><svg viewBox="0 0 32 32" aria-hidden="true"><rect x="4" y="5" width="24" height="16" rx="1"/><path d="M16 21v6 M11 27h10 M9 16l5-5 4 3 5-5"/></svg><b>Apresentações</b><span><span data-conta="apresentacoes">4</span> apresentações animadas</span></a>
+        <a href="#linha"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M3 16h26 M8 12v8 M16 12v8 M24 12v8"/><circle cx="8" cy="16" r="2"/><circle cx="16" cy="16" r="2"/></svg><b>Linha do tempo</b><span>o combinado, o feito, o que falta e o que fizemos a mais</span></a>
+      </nav>
     </div>
   </div>
 </section>
+
+<hr class="fio">
+
+<!-- 1b. Relatórios, vídeos e apresentações -->
+<section id="biblioteca" data-nav="biblioteca">
+  <div class="caixa">
+    <div class="tela rev">
+      <h2>Relatórios, vídeos e apresentações</h2>
+      <p class="intro-linha">Cada entrega do semestre: o relatório inteiro para ler, um vídeo de uns 3 minutos que conta o relatório e, quando houve, a apresentação animada.</p>
+      <ol class="estante" id="estante"></ol>
+    </div>
+  </div>
+</section>
+
+<dialog id="tocador" class="tocador" aria-label="Vídeo do relatório">
+  <div class="topo-t"><p class="t"></p><button class="btn-l fechar" type="button">Fechar</button></div>
+  <video controls playsinline preload="none"><track kind="captions" srclang="pt-BR" label="Português"></video>
+  <p class="pe-t"><a class="btn-l forte ler-r" href="#">Ler o relatório</a></p>
+</dialog>
 
 <hr class="fio">
 
@@ -360,8 +386,8 @@
   </div>
 </footer>
 
-<script src="assets/js/dados.js?v=9"></script>
+<script src="assets/js/dados.js?v=12"></script>
 <script src="assets/js/site.js?v=5"></script>
-<script src="assets/js/guia.js?v=11"></script>
+<script src="assets/js/guia.js?v=13"></script>
 </body>
 </html>

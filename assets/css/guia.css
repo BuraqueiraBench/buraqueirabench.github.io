@@ -302,6 +302,41 @@ tbody th { font-weight: 600; }
 /* 5. linha do tempo: plano, execução e hoje */
 .intro-linha { max-width: 48rem; font-size: 1.12rem; line-height: 1.5; margin: -1rem 0 1.8rem; }
 .plano-rolar { overflow-x: auto; padding-bottom: .4rem; }
+/* portas na capa: as outras partes do site à vista */
+.portas { display: grid; grid-template-columns: 1fr 1fr; gap: .7rem; margin-top: 1.6rem; max-width: 36rem; }
+.portas a { display: grid; grid-template-columns: 2.4rem 1fr; gap: 0 .7rem; align-items: center; text-decoration: none; color: var(--nanquim); background: var(--papel2); border: 1px solid var(--nanquim); border-radius: 4px; padding: .6rem .8rem; transition: transform .2s, box-shadow .2s; }
+.portas a:hover, .portas a:focus-visible { transform: translateY(-2px); box-shadow: 0 6px 16px rgba(46, 38, 29, .15); color: var(--nanquim); }
+.portas svg { grid-row: span 2; width: 2.2rem; height: 2.2rem; fill: none; stroke: var(--nanquim); stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+.portas b { font: 700 1.15rem var(--titulo); font-variant: small-caps; }
+.portas a > span { font-size: .95rem; line-height: 1.25; color: var(--sepia); }
+@media (max-width: 560px) { .portas { grid-template-columns: 1fr; } }
+
+/* estante: um cartão por entrega */
+.estante { list-style: none; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 2.2rem 1.8rem; }
+.livro { display: flex; flex-direction: column; }
+.capa-video { all: unset; box-sizing: border-box; position: relative; display: block; width: 100%; aspect-ratio: 16 / 9; cursor: pointer; border: 1px solid var(--nanquim); background: var(--nanquim); overflow: hidden; }
+.capa-video img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .4s; }
+.capa-video:hover img, .capa-video:focus-visible img { transform: scale(1.03); }
+.capa-video:focus-visible { outline: 2px solid var(--en); outline-offset: 3px; }
+.capa-video .play { position: absolute; left: 50%; top: 50%; width: 60px; height: 60px; margin: -30px 0 0 -30px; border-radius: 50%; background: rgba(46, 38, 29, .85); box-shadow: 0 4px 14px rgba(0, 0, 0, .25); transition: transform .2s; }
+.capa-video:hover .play { transform: scale(1.08); }
+.capa-video .play::after { content: ''; position: absolute; left: 24px; top: 18px; border-left: 19px solid var(--papel); border-top: 12px solid transparent; border-bottom: 12px solid transparent; }
+.capa-video .dur { position: absolute; right: .5rem; bottom: .5rem; font: 600 .85rem var(--titulo); color: var(--papel); background: rgba(46, 38, 29, .82); padding: .05rem .45rem .15rem; border-radius: 3px; }
+.capa-video.sem { display: grid; place-items: center; background: var(--papel2); color: var(--sepia); font: italic 400 1.15rem var(--texto); text-decoration: none; border-style: dashed; }
+.livro .ativ { font: 400 .95rem var(--titulo); font-variant: small-caps; color: var(--sepia); margin-top: .8rem; }
+.livro h3 { font: 700 1.3rem/1.2 var(--titulo); margin: .2rem 0 .45rem; }
+.livro .res { font-size: 1.02rem; line-height: 1.42; flex: 1; }
+.livro .acoes { display: flex; flex-wrap: wrap; gap: .45rem; margin-top: .9rem; }
+.btn-l { font: 400 .98rem var(--titulo); font-variant: small-caps; color: var(--nanquim); background: var(--papel2); border: 1px solid var(--nanquim); border-radius: 3px; padding: .15rem .7rem .3rem; text-decoration: none; cursor: pointer; line-height: 1.3; }
+.btn-l.forte { background: var(--nanquim); color: var(--papel); }
+.btn-l:hover { background: var(--nanquim); color: var(--papel); }
+.tocador { margin: auto; width: min(1100px, 94vw); max-height: 94vh; border: 1px solid var(--nanquim); background: var(--papel); color: var(--nanquim); padding: 1rem; }
+.tocador::backdrop { background: rgba(46, 38, 29, .72); }
+.tocador .topo-t { display: flex; justify-content: space-between; align-items: center; gap: 1rem; margin-bottom: .7rem; }
+.tocador .t { font: 700 1.2rem/1.2 var(--titulo); }
+.tocador video { display: block; width: 100%; aspect-ratio: 16 / 9; background: #000; }
+.tocador .pe-t { margin-top: .7rem; }
+
 /* combinado contra hoje, e o que é a mais */
 .combinado { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr); gap: 2rem 3rem; align-items: start; margin-bottom: clamp(2.5rem, 6vw, 4rem); }
 .comb-corpus { margin: 0; }

@@ -40,7 +40,8 @@ a:hover { color: var(--nanquim); }
 .topo .marca { font: 700 1.15rem var(--titulo); font-variant: small-caps; color: var(--nanquim); text-decoration: none; }
 .topo .onde { font: 400 1.02rem var(--titulo); font-variant: small-caps; color: var(--nanquim); }
 .topo .onde i { color: var(--sepia); font-style: normal; }
-.topo .volta { justify-self: end; font: 400 1rem var(--titulo); font-variant: small-caps; color: var(--sepia); text-decoration: none; }
+.topo .voltas { justify-self: end; display: flex; gap: 1.4rem; }
+.topo .volta { font: 400 1rem var(--titulo); font-variant: small-caps; color: var(--sepia); text-decoration: none; }
 .topo .volta::before { content: '\2190\00a0'; }
 .topo .volta:hover { color: var(--nanquim); }
 .progresso { height: 3px; background: transparent; }
@@ -217,6 +218,7 @@ table.t th button:focus-visible { outline: 2px solid var(--en); outline-offset: 
   .topo .marca { display: none; }
   .topo .onde i { display: none; }
   .topo .volta { white-space: nowrap; font-size: .95rem; }
+  .topo .voltas .volta:last-child { display: none; }
   .sumario ol { columns: 1; }
   .vizinhos { grid-template-columns: 1fr; }
   .vizinhos .meio { text-align: center; order: 3; }
