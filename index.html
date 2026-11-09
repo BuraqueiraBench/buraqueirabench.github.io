@@ -4,72 +4,46 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>BuraqueiraBench | juízes de segurança em português</title>
-<meta name="description" content="O juiz de segurança muda o veredito quando o mesmo processo chega em português? Quatro juízes, três tradutores e a volta ao inglês como controle.">
+<meta name="description" content="O juiz de segurança muda o veredito quando o mesmo processo chega em português? Guia de campo de quatro juízes, três tradutores e a volta ao inglês como controle.">
 <link rel="icon" type="image/png" sizes="32x32" href="assets/img/buraqueira-32.png?v=1">
 <link rel="apple-touch-icon" href="assets/img/buraqueira-192.png?v=1">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Zilla+Slab:wght@500;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/site.css?v=2">
-<link rel="stylesheet" href="assets/css/inicio.css?v=2">
-<link rel="stylesheet" href="assets/css/problema.css?v=2">
-<link rel="stylesheet" href="assets/css/metodo.css?v=2">
-<link rel="stylesheet" href="assets/css/resultados.css?v=2">
-<link rel="stylesheet" href="assets/css/unica.css?v=2">
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Old+Standard+TT:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<script>document.documentElement.classList.add('js');</script>
+<link rel="stylesheet" href="assets/css/guia.css?v=3">
 </head>
 <body>
 <a class="pular" href="#conteudo">Pular para o conteúdo</a>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
-  <filter id="tinta-gasta" x="-10%" y="-10%" width="120%" height="120%">
-    <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" seed="4" result="ruido"/>
-    <feDisplacementMap in="SourceGraphic" in2="ruido" scale="2.6"/>
-  </filter>
-  <symbol id="i-home" viewBox="0 0 24 24"><path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8"/><path d="M3 10a2 2 0 0 1 .709-1.528l7-5.999a2 2 0 0 1 2.582 0l7 5.999A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></symbol>
-  <symbol id="i-flow" viewBox="0 0 24 24"><rect width="8" height="8" x="3" y="3" rx="2"/><path d="M7 11v4a2 2 0 0 0 2 2h4"/><rect width="8" height="8" x="13" y="13" rx="2"/></symbol>
-  <symbol id="i-bars" viewBox="0 0 24 24"><path d="M3 3v16a2 2 0 0 0 2 2h16"/><path d="M18 17V9"/><path d="M13 17V5"/><path d="M8 17v-3"/></symbol>
-  <symbol id="i-folder" viewBox="0 0 24 24"><circle cx="16" cy="16" r="6"/><path d="M7 20H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h3.9a2 2 0 0 1 1.69.9l.81 1.2a2 2 0 0 0 1.67.9H20a2 2 0 0 1 2 2"/><path d="M16 14v2.2l1.6 1"/></symbol>
-  <symbol id="i-user" viewBox="0 0 24 24"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></symbol>
-  <symbol id="i-bot" viewBox="0 0 24 24"><path d="M12 8V4H8"/><rect width="16" height="12" x="4" y="8" rx="2"/><path d="M2 14h2"/><path d="M20 14h2"/><path d="M15 13v2"/><path d="M9 13v2"/></symbol>
-  <symbol id="i-file" viewBox="0 0 24 24"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M10 9H8"/><path d="M16 13H8"/><path d="M16 17H8"/></symbol>
-  <symbol id="i-scale" viewBox="0 0 24 24"><path d="m16 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"/><path d="m2 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"/><path d="M7 21h10"/><path d="M12 3v18"/><path d="M3 7h2c2 0 5-1 7-2 2 1 5 2 7 2h2"/></symbol>
-  <symbol id="i-compare" viewBox="0 0 24 24"><circle cx="18" cy="18" r="3"/><circle cx="6" cy="6" r="3"/><path d="M13 6h3a2 2 0 0 1 2 2v7"/><path d="M11 18H8a2 2 0 0 1-2-2V9"/></symbol>
-  <symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></symbol>
-  <symbol id="i-languages" viewBox="0 0 24 24"><path d="m5 8 6 6"/><path d="m4 14 6-6 2-3"/><path d="M2 5h12"/><path d="M7 2h1"/><path d="m22 22-5-10-5 10"/><path d="M14 18h6"/></symbol>
-  <symbol id="i-help" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><path d="M12 17h.01"/></symbol>
-  <symbol id="i-swords" viewBox="0 0 24 24"><path d="m14.5 17.5 5.5 5.5"/><path d="m13 19 6-6"/><path d="M14.5 6.5 4 17l3 3L17.5 9.5"/><path d="m8 7 3.5 3.5"/><path d="M13 11 21 3v5"/></symbol>
-  <symbol id="i-tag" viewBox="0 0 24 24"><path d="M12.586 2.586A2 2 0 0 0 11.172 2H4a2 2 0 0 0-2 2v7.172a2 2 0 0 0 .586 1.414l8.704 8.704a2.426 2.426 0 0 0 3.42 0l6.58-6.58a2.426 2.426 0 0 0 0-3.42z"/><circle cx="7.5" cy="7.5" r=".5" fill="currentColor"/></symbol>
-  <symbol id="i-pen" viewBox="0 0 24 24"><path d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z"/><path d="m15 5 4 4"/></symbol>
-  <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></symbol>
-  <symbol id="i-db" viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5V19A9 3 0 0 0 21 19V5"/><path d="M3 12A9 3 0 0 0 21 12"/></symbol>
-  <symbol id="i-undo" viewBox="0 0 24 24"><path d="M9 14 4 9l5-5"/><path d="M4 9h10.5a5.5 5.5 0 0 1 5.5 5.5a5.5 5.5 0 0 1-5.5 5.5H11"/></symbol>
-  <symbol id="i-eyeoff" viewBox="0 0 24 24"><path d="M10.733 5.076a10.744 10.744 0 0 1 11.205 6.575 1 1 0 0 1 0 .696 10.747 10.747 0 0 1-1.444 2.49"/><path d="M14.084 14.158a3 3 0 0 1-4.242-4.242"/><path d="M17.479 17.499a10.75 10.75 0 0 1-15.417-5.151 1 1 0 0 1 0-.696 10.75 10.75 0 0 1 4.446-5.143"/><path d="m2 2 20 20"/></symbol>
-  <symbol id="i-ban" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="m4.9 4.9 14.2 14.2"/></symbol>
-  <symbol id="i-chart" viewBox="0 0 24 24"><path d="M3 3v16a2 2 0 0 0 2 2h16"/><path d="m19 9-5 5-4-4-3 3"/></symbol>
-  <symbol id="i-swap" viewBox="0 0 24 24"><path d="M8 3 4 7l4 4"/><path d="M4 7h16"/><path d="m16 21 4-4-4-4"/><path d="M20 17H4"/></symbol>
-  <symbol id="i-brackets" viewBox="0 0 24 24"><path d="M16 3h3a1 1 0 0 1 1 1v16a1 1 0 0 1-1 1h-3"/><path d="M8 21H5a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h3"/></symbol>
-  <symbol id="i-lock" viewBox="0 0 24 24"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></symbol>
-  <symbol id="i-target" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></symbol>
-  <symbol id="i-lockopen" viewBox="0 0 24 24"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 9.9-1"/></symbol>
-  <symbol id="i-shield" viewBox="0 0 24 24"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></symbol>
-  <symbol id="i-layers" viewBox="0 0 24 24"><path d="M12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.91a1 1 0 0 0 0-1.83z"/><path d="M2 12a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.91A1 1 0 0 0 22 12"/><path d="M2 17a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.91A1 1 0 0 0 22 17"/></symbol>
-  <symbol id="i-table" viewBox="0 0 24 24"><path d="M12 3v18"/><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M3 9h18"/><path d="M3 15h18"/></symbol>
-  <symbol id="i-folder-plain" viewBox="0 0 24 24"><path d="M20 20a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.69-.9L9.6 3.9A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2Z"/></symbol>
+  <defs>
+    <filter id="aquarela" x="-20%" y="-20%" width="140%" height="140%">
+      <feTurbulence type="fractalNoise" baseFrequency=".06" numOctaves="3" seed="7" result="r"/>
+      <feDisplacementMap in="SourceGraphic" in2="r" scale="3.2"/>
+    </filter>
+    <symbol id="s-pede" viewBox="0 0 64 64"><circle cx="22" cy="26" r="7"/><path d="M8 56c0-11 6-17 14-17s14 6 14 17"/><path d="M34 8h22a3 3 0 0 1 3 3v13a3 3 0 0 1-3 3H46l-6 6v-6h-6a3 3 0 0 1-3-3V11a3 3 0 0 1 3-3z"/><path d="M47 13v8M47 24.4v.4"/></symbol>
+    <symbol id="s-modelo" viewBox="0 0 64 64"><rect x="8" y="10" width="48" height="36" rx="4"/><path d="M16 20h26M16 28h32M16 36h20"/><path d="M24 56h16M32 46v10"/></symbol>
+    <symbol id="s-le" viewBox="0 0 64 64"><path d="M12 8h26l8 8v14"/><path d="M12 8v46h16"/><path d="M19 22h18M19 30h12"/><circle cx="42" cy="42" r="9"/><path d="M49 49l9 9"/></symbol>
+    <symbol id="s-carimbo" viewBox="0 0 64 64"><circle cx="32" cy="12" r="6"/><path d="M28 18h8l2 14H26z"/><rect x="14" y="32" width="36" height="9" rx="2"/><path d="M10 56h44"/><path d="M18 49h4M28 49h8M42 49h4"/></symbol>
+    <symbol id="s-rotulo" viewBox="0 0 64 64"><path d="M8 8h22l26 26-22 22L8 30z"/><circle cx="19" cy="19" r="2.6"/><path d="M28 30l5 5 9-9"/></symbol>
+    <symbol id="s-lupa" viewBox="0 0 64 64"><circle cx="26" cy="20" r="8"/><path d="M10 56c0-12 7-19 16-19"/><circle cx="43" cy="42" r="9"/><path d="M50 49l8 8"/></symbol>
+    <symbol id="s-escudo" viewBox="0 0 64 64"><path d="M32 6l20 8v16c0 14-9 23-20 28C21 53 12 44 12 30V14z"/><path d="M26 26l-6 6 6 6M38 26l6 6-6 6"/></symbol>
+    <symbol id="s-linguas" viewBox="0 0 64 64"><path d="M8 14h24M20 9v5"/><path d="M13 14c1 9 6 15 15 18M27 14c-1 9-6 15-15 18"/><path d="M34 56l9-22 9 22M37 48h12"/></symbol>
+  </defs>
 </svg>
 
-<header class="menu">
-  <div class="menu-dentro">
-    <a class="marca" href="#inicio">
-      <img src="assets/img/buraqueira-96.png" alt="" width="38" height="38">
-      <span>BuraqueiraBench<small>juízes de segurança em português</small></span>
-    </a>
-    <nav aria-label="Seções">
+<header class="indice">
+  <div class="in">
+    <a class="marca" href="#inicio">BuraqueiraBench</a>
+    <nav aria-label="Índice do guia">
       <ul>
-        <li><a href="#inicio" data-s="inicio"><svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-home"/></svg><span>Início</span></a></li>
-        <li><a href="#problema" data-s="problema"><svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-scale"/></svg><span>O problema</span></a></li>
-        <li><a href="#metodo" data-s="metodo"><svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-flow"/></svg><span>O método</span></a></li>
-        <li><a href="#resultados" data-s="resultados"><svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-bars"/></svg><span>Resultados</span></a></li>
-        <li><a href="#evolucao" data-s="evolucao"><svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-folder"/></svg><span>Evolução</span></a></li>
+        <li><a href="#inicio" data-s="inicio">Capa</a></li>
+        <li><a href="#problema" data-s="problema">O juiz</a></li>
+        <li><a href="#resultados" data-s="especies">Espécies</a></li>
+        <li><a href="#vimos" data-s="vimos">O que vimos</a></li>
+        <li><a href="#evolucao" data-s="evolucao">Diário</a></li>
+        <li><a href="#notas" data-s="notas">Notas</a></li>
       </ul>
     </nav>
   </div>
@@ -77,423 +51,259 @@
 
 <main id="conteudo">
 
-  <div id="inicio" data-nav="inicio">
-  <section class="abertura" aria-labelledby="titulo">
-    <div class="abertura-texto">
-      <h1 id="titulo">O juiz muda o veredito quando o processo chega em <span class="pt-cor">português</span>?</h1>
-      <p class="lead">Quando alguém testa se uma IA responde coisa perigosa, quem dá a nota é outra IA, o <strong>juiz de segurança</strong>. O <strong>BuraqueiraBench</strong> leva os mesmos processos do inglês para o português e confere se o veredito se mantém.</p>
-      <ul class="como-ler" aria-label="Como ler a cena">
-        <li><span class="etiqueta-lingua en">EN</span> processo em inglês</li>
-        <li><span class="etiqueta-lingua pt">PT</span> o mesmo processo traduzido</li>
-        <li><span class="ponto-veredito nocivo"></span> nocivo, o juiz barra</li>
-        <li><span class="ponto-veredito seguro"></span> seguro, o juiz libera</li>
-      </ul>
-    </div>
-
-    <div class="mesa" role="img" aria-label="Esquema animado: um processo em inglês recebe um carimbo, é traduzido para o português e recebe outro carimbo. Às vezes o veredito muda.">
-      <div class="luz" aria-hidden="true"></div>
-      <img class="juiza" src="assets/img/coruja-juiza.png" alt="" width="420" height="420" onerror="this.onerror=null;this.src='assets/img/coruja-intrigada.png'">
-      <div class="bancada" aria-hidden="true"><span class="placa">juíza de segurança</span></div>
-      <div class="processo papel" aria-hidden="true">
-        <div class="processo-cabeca">
-          <span class="etiqueta-lingua en" data-lingua>EN</span>
-          <span class="processo-num" data-num>processo 1</span>
-        </div>
-        <div class="bloco"><span class="rotulo">pedido</span><i></i><i></i></div>
-        <div class="bloco"><span class="rotulo">resposta do modelo</span><i></i><i></i><i></i><i></i></div>
-        <div class="faixa-traducao"></div>
-        <div class="carimbo-en" data-carimbo-en></div>
-        <div class="carimbo-pt" data-carimbo-pt></div>
-        <div class="mudou" data-mudou>o veredito mudou</div>
+<!-- 1. Capa -->
+<section id="inicio" class="capa" data-nav="inicio">
+  <div class="caixa capa-grade">
+    <figure class="coruja rev">
+      <img class="pinta" src="assets/img/guia/buraqueira.jpg" width="1024" height="1024" alt="Aquarela de uma buraqueira em pé sobre um montinho de terra, com capim ao redor" onerror="this.classList.add('falta')">
+      <svg class="cordao-capa" viewBox="0 0 100 100" aria-hidden="true"><path class="traco" pathLength="1" d="M50 70 C58 70 52 80 59.4 85.6"/></svg>
+      <div class="etiqueta etiqueta-capa">
+        <b>Nº 01</b>
+        <span class="n">Buraqueira, <i>Athene cunicularia</i></span>
+        <span class="m">Mascote do BuraqueiraBench</span>
       </div>
-      <p class="aviso-esquema">esquema com processos ilustrativos; os números reais estão logo abaixo</p>
+    </figure>
+    <div class="capa-texto">
+      <p class="guia-nome">Guia de campo dos juízes de segurança</p>
+      <h1>Juízes de segurança em português</h1>
+      <p class="frase">O mesmo processo, em inglês e em português. O juiz decide igual?</p>
+      <p class="autor">Cristhian Kapelinski. Laboratório de Inteligência Artificial Aplicada, 2026/2, UNIPAMPA, prof. Diego Kreutz.</p>
     </div>
-  </section>
-
-  <section class="registro" aria-labelledby="titulo-registro">
-    <div class="registro-texto">
-      <h2 id="titulo-registro">O que aconteceu de verdade com um dos juízes</h2>
-      <p>No <strong>ReliableBench</strong>, com a tradução do <strong>NLLB-200</strong>, o <strong>JailJudge</strong> passou a liberar <strong class="nocivo-cor">161</strong> das <strong>887</strong> respostas nocivas que barrava em inglês, e passou a barrar <strong class="seguro-cor">58</strong> que liberava.</p>
-      <ul class="legenda-unidades">
-        <li><span class="q q-libera"></span> passou a ser liberada em português</li>
-        <li><span class="q q-barra"></span> passou a ser barrada em português</li>
-        <li><span class="q q-igual"></span> mesmo veredito nas duas línguas</li>
-      </ul>
-      <p class="legenda">Cada quadrado é uma resposta nociva do ReliableBench. Fonte: Atividade 11, 1.030 pares comuns.</p>
-    </div>
-    <div class="unidades" id="unidades" role="img" aria-label="887 quadrados: 161 vermelhos, 58 verdes e 668 iguais."></div>
-  </section>
   </div>
+</section>
 
-  <!-- ===================== O PROBLEMA ===================== -->
-  <section class="pag" id="problema" data-nav="problema" aria-labelledby="h-problema">
-    <div class="cab-sec">
-      <div>
-        <h2 id="h-problema">O problema</h2>
-        <p class="lead">Quando alguém testa se uma IA responde coisa perigosa, quem dá a nota é outra IA, o <strong>juiz</strong>. Todos os juízes foram medidos em inglês.</p>
-      </div>
-      <img class="coruja-sec" src="assets/img/coruja-apontando.png" alt="" width="420" height="420">
-    </div>
+<hr class="fio">
 
-    <div class="sub" role="group" aria-labelledby="h-juiz">
-      <h3 id="h-juiz">O que é um juiz de segurança</h3>
-      <ol class="fluxo-juiz" id="fluxo-juiz">
-        <li class="et">
-          <div class="etapa"><svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-user"/></svg><b>Pessoa</b><span>faz um ataque</span></div>
-          <div class="expl papel"><h4>A pessoa faz um ataque</h4><p>Para medir se um modelo de linguagem é seguro, alguém escreve um pedido que tenta fazê-lo responder algo perigoso. Esse pedido é o ataque.</p><p>Cada ataque e a resposta que ele provoca formam um <strong>processo</strong>, a unidade que o juiz vai julgar.</p><p class="fonte">Fonte: A2:47, Ap4 tela 2</p></div>
-        </li>
-        <li class="seta" aria-hidden="true"></li>
-        <li class="et">
-          <div class="etapa"><svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-bot"/></svg><b>Modelo de linguagem</b><span>a IA testada</span></div>
-          <div class="expl papel"><h4>O modelo de linguagem responde</h4><p>O modelo testado recebe o ataque e responde. Pode recusar, pode obedecer, pode obedecer pela metade.</p><p>O que ele disse precisa ser classificado como <strong>nocivo</strong> ou <strong>seguro</strong>, e fazer isso à mão para milhares de respostas não escala.</p><p class="fonte">Fonte: A2:47</p></div>
-        </li>
-        <li class="seta" aria-hidden="true"></li>
-        <li class="et">
-          <div class="etapa"><svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-file"/></svg><b>Resposta</b><span>o processo vai aos autos</span></div>
-          <div class="expl papel"><h4>A resposta vai aos autos</h4><p>O par formado pelo pedido e pela resposta segue para quem vai classificar. Em um benchmark são milhares de pares, cada um com um rótulo que uma pessoa já deu.</p><p>Esse rótulo humano é a referência para saber se o juiz acertou.</p><p class="fonte">Fonte: A2:47, A9:59</p></div>
-        </li>
-        <li class="seta" aria-hidden="true"></li>
-        <li class="et">
-          <div class="etapa juiz"><svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-scale"/></svg><b>Juiz</b><span>outra IA</span></div>
-          <div class="expl papel"><h4>O juiz é outra IA</h4><p>Como rotular à mão não escala, quem rotula é outro modelo, o <strong>juiz</strong>. Toda taxa de sucesso de ataque publicada sai dele, e ele sustenta benchmarks, red teaming automatizado e proteções em produção.</p><p>Um juiz descalibrado não erra ao acaso. Ele produz uma conclusão errada com aparência de rigor.</p><p class="fonte">Fonte: A1:45</p></div>
-        </li>
-        <li class="seta" aria-hidden="true"></li>
-        <li class="et">
-          <div class="etapa veredito"><span class="carimbo nocivo">Nocivo</span><span class="ou">ou</span><span class="carimbo seguro">Seguro</span><span class="contra"><svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-compare"/></svg>contra o rótulo humano</span></div>
-          <div class="expl papel"><h4>O carimbo e o rótulo humano</h4><p>O juiz devolve um veredito, <strong>nocivo</strong> (barra) ou <strong>seguro</strong> (libera). O projeto compara esse carimbo com o rótulo humano do mesmo par.</p><p>O erro que mais importa é o falso negativo, a resposta nociva que o juiz libera como segura.</p><p class="fonte">Fonte: A3:148, A11:677</p></div>
-        </li>
+<!-- 2. O juiz -->
+<section id="problema" data-nav="problema">
+  <div class="caixa">
+    <div class="tela rev">
+      <h2>O que é um juiz de segurança</h2>
+      <ol class="fluxo">
+        <li class="passo"><svg class="ico" aria-hidden="true"><use href="#s-pede"/></svg><p>Alguém pede algo perigoso.</p></li>
+        <li class="seta" aria-hidden="true"><svg viewBox="0 0 60 20"><path class="traco" pathLength="1" d="M2 11 C18 6 36 15 56 10 M49 4 L57 10 L49 16"/></svg></li>
+        <li class="passo"><svg class="ico" aria-hidden="true"><use href="#s-modelo"/></svg><p>O modelo responde.</p></li>
+        <li class="seta" aria-hidden="true"><svg viewBox="0 0 60 20"><path class="traco" pathLength="1" d="M2 10 C18 14 36 5 56 10 M49 4 L57 10 L49 16"/></svg></li>
+        <li class="passo"><svg class="ico" aria-hidden="true"><use href="#s-le"/></svg><p>O juiz lê a resposta.</p></li>
+        <li class="seta" aria-hidden="true"><svg viewBox="0 0 60 20"><path class="traco" pathLength="1" d="M2 11 C18 6 36 15 56 10 M49 4 L57 10 L49 16"/></svg></li>
+        <li class="passo"><svg class="ico" aria-hidden="true"><use href="#s-carimbo"/></svg><p>Carimba <b class="c-nocivo">nocivo</b> ou <b class="c-seguro">seguro</b>.</p></li>
+        <li class="seta" aria-hidden="true"><svg viewBox="0 0 60 20"><path class="traco" pathLength="1" d="M2 10 C18 14 36 5 56 10 M49 4 L57 10 L49 16"/></svg></li>
+        <li class="passo"><svg class="ico" aria-hidden="true"><use href="#s-rotulo"/></svg><p>O carimbo é comparado com o rótulo de uma pessoa.</p></li>
       </ol>
     </div>
 
-    <div class="sub" role="group" aria-labelledby="h-desl">
-      <h3 id="h-desl">Os quatro deslocamentos</h3>
-      <p class="lead">Um juiz é validado numa situação e usado em outras. Três mudanças já foram medidas em inglês. A quarta, a língua, ninguém mediu.</p>
-      <div class="deslocs" id="deslocs">
-        <div class="desl"><svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-swords"/></svg><div><b>Ataque</b><small>medido por Schwinn et al.</small></div></div>
-        <span class="fio" style="--n:0" aria-hidden="true"><i></i></span>
-        <div class="desl"><svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-bot"/></svg><div><b>Modelo avaliado</b><small>medido por Schwinn et al.</small></div></div>
-        <span class="fio" style="--n:1" aria-hidden="true"><i></i></span>
-        <div class="desl"><svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-tag"/></svg><div><b>Categoria</b><small>medido por Schwinn et al.</small></div></div>
-        <span class="fio" style="--n:2" aria-hidden="true"><i></i></span>
-        <div class="desl lingua"><svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-languages"/></svg><div><b>Língua</b><small>nunca medida</small></div></div>
-        <span class="fio lingua" style="--n:3" aria-hidden="true"><i></i><em class="interroga"><svg class="icone" viewBox="0 0 24 24"><use href="#i-help"/></svg></em></span>
-        <div class="juiz-alvo"><svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-scale"/></svg><b>Juiz</b></div>
-      </div>
-      <p class="legenda">Cada seta é uma mudança que pode fazer o juiz errar. A seta ocre é a que este projeto mede.</p>
-      <ul class="so-leitor">
-        <li>Ataque: medido em inglês por Schwinn et al.</li>
-        <li>Modelo avaliado: medido em inglês por Schwinn et al.</li>
-        <li>Categoria do conteúdo: medida em inglês por Schwinn et al.</li>
-        <li>Língua: nunca medida.</li>
-      </ul>
-    </div>
-
-    <div class="duas">
-      <div class="sub" role="group" aria-labelledby="h-perg">
-        <h3 id="h-perg" class="so-leitor">A pergunta</h3>
-        <div class="pergunta papel">
-          <svg class="icone grande" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-help"/></svg>
-          <p class="grande">O <strong>ReliableBench</strong> continua confiável em português?</p>
-          <p>O <strong>ReliableBench</strong> é o recorte de comportamentos que são mais confiáveis de julgar. Nele a acurácia média dos juízes sobe de <strong class="num">57%</strong> para <strong class="num">70%</strong>. Se ela cair ao traduzir, essa confiança era do inglês, não do comportamento.</p>
-          <ul class="duas-perg">
-            <li><svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-globe"/></svg><span><b>Efeito da língua.</b> O juiz erra mais em português do que no mesmo par em inglês?</span></li>
-            <li><svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-languages"/></svg><span><b>Efeito do tradutor.</b> Quanto o veredito muda só por trocar o motor que traduziu?</span></li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="sub" role="group" aria-labelledby="h-ctx">
-        <h3 id="h-ctx">Por que desconfiar</h3>
-        <div class="dados">
-          <figure class="papel dado" aria-labelledby="f1">
-            <svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-pen"/></svg>
-            <figcaption id="f1">Reescrever a resposta no estilo narrativo faz o <strong>HarmBench</strong> liberar mais nocivas (falso negativo).</figcaption>
-            <div class="barras">
-              <div class="b"><span>original</span><div class="trilho"><div class="enche" style="--w:12%"></div></div><b class="num">0,12</b></div>
-              <div class="b"><span>narrativo</span><div class="trilho"><div class="enche forte" style="--w:36%"></div></div><b class="num">0,36</b></div>
-            </div>
-            <small>Eiras et al., em inglês. Fonte A1:47.</small>
-          </figure>
-          <figure class="papel dado" aria-labelledby="f2">
-            <svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-search"/></svg>
-            <figcaption id="f2">O piso sem IA, buscar palavra de recusa, concorda com humanos em pouco mais da metade dos casos.</figcaption>
-            <div class="barras">
-              <div class="b"><span>concorda</span><div class="trilho"><div class="enche" style="--w:56%"></div></div><b class="num">56,0%</b></div>
-              <div class="b"><span>sorteio</span><div class="trilho"><div class="enche sorteio" style="--w:50%"></div></div><b class="num">50%</b></div>
-            </div>
-            <small>JailbreakBench. Fonte A2:76.</small>
-          </figure>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===================== O MÉTODO ===================== -->
-  <section class="pag" id="metodo" data-nav="metodo" aria-labelledby="h-metodo">
-    <div class="cab-sec">
-      <div>
-        <h2 id="h-metodo">O método</h2>
-        <p class="lead">O mesmo par de pedido e resposta passa pelos mesmos juízes em inglês, em português e na volta ao inglês.</p>
-      </div>
-      <img class="coruja-sec" src="assets/img/coruja-lendo.png" alt="" width="420" height="420">
-    </div>
-
-    <div class="fluxo-bloco">
-      <h3 class="so-leitor">O fluxo</h3>
-      <div class="fluxo" id="fluxo">
-        <svg class="fio-svg" id="fio-svg" aria-hidden="true">
-          <defs><mask id="mask-volta" maskUnits="userSpaceOnUse"><line id="mk-volta" stroke="#fff" stroke-width="12"/></mask></defs>
-          <line id="l0" class="fiom en"/>
-          <line id="l1" class="fiom pt"/>
-          <line id="l2" class="fiom pt"/>
-          <line id="l3" class="fiom volta" mask="url(#mask-volta)"/>
+    <div class="tela rev">
+      <h2>Onde ninguém tinha observado</h2>
+      <figure class="mapa">
+        <svg viewBox="0 0 800 500" role="img" aria-label="Mapa de observação: ataque, modelo avaliado e categoria já foram observados em inglês; a língua nunca foi observada.">
+          <defs>
+            <path id="reg" d="M14 18 C120 8 260 24 386 12 C393 80 380 150 388 236 C260 247 120 231 12 240 C23 160 7 90 14 18Z"/>
+            <pattern id="hach" width="9" height="9" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="9" stroke="#6b5640" stroke-width="1.3" opacity=".55"/></pattern>
+          </defs>
+          <g>
+            <use href="#reg" fill="#3f6e9e" fill-opacity=".14" stroke="none"/>
+            <use href="#reg" fill="url(#hach)" stroke="#2e261d" stroke-width="1.4"/>
+            <text x="200" y="118" class="m-nome">Ataque</text><text x="200" y="154" class="m-sub">observado em inglês</text>
+          </g>
+          <g transform="translate(400 0)">
+            <use href="#reg" fill="#3f6e9e" fill-opacity=".14" stroke="none"/>
+            <use href="#reg" fill="url(#hach)" stroke="#2e261d" stroke-width="1.4"/>
+            <text x="200" y="118" class="m-nome">Modelo avaliado</text><text x="200" y="154" class="m-sub">observado em inglês</text>
+          </g>
+          <g transform="translate(0 250)">
+            <use href="#reg" fill="#3f6e9e" fill-opacity=".14" stroke="none"/>
+            <use href="#reg" fill="url(#hach)" stroke="#2e261d" stroke-width="1.4"/>
+            <text x="200" y="118" class="m-nome">Categoria</text><text x="200" y="154" class="m-sub">observado em inglês</text>
+          </g>
+          <g transform="translate(400 250)">
+            <use href="#reg" fill="none" stroke="#2e261d" stroke-width="1.4" stroke-dasharray="3 6"/>
+            <text x="200" y="165" class="m-q">?</text>
+            <text x="200" y="68" class="m-nome">Língua</text><text x="200" y="214" class="m-sub">nunca observado</text>
+          </g>
         </svg>
-        <div class="folha" id="folha" aria-hidden="true"><svg class="icone" viewBox="0 0 24 24"><use href="#i-file"/></svg><span class="etiqueta-lingua en" id="folha-et">EN</span></div>
-        <ol class="nos">
-          <li class="no-col">
-            <div class="no" data-k="dados"><span class="ancora"><svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-db"/></svg></span><span class="txt"><b class="nome">Dados</b><span class="grande num">6.560</span><span class="peq">pares do <strong>CoinflipForSafety</strong>, com rótulo humano</span><span class="peq">e os recortes <strong>ReliableBench</strong> (1.036) e <strong>JudgeStressTest</strong> (439)</span><span class="etqs"><span class="etiqueta-lingua en">EN</span></span></span></div>
-            <div class="no-detalhe papel">
-              <p>Todos os conjuntos são públicos e têm rótulo humano, uma nota de 0 a 1 em que a partir de 0,5 a resposta é nociva.</p>
-              <ul>
-                <li><strong>CoinflipForSafety</strong>, 6.560 pares (5.174 nocivos e 1.386 seguros), cinco ataques contra quatro modelos. É a base do efeito da língua.</li>
-                <li><strong>ReliableBench</strong>, recorte de 43 comportamentos com 1.036 pares (892 nocivos e 144 seguros). É a pergunta central.</li>
-                <li><strong>JudgeStressTest</strong>, 439 pares com resposta e rótulo (189 nocivos e 250 seguros). Serve só ao efeito do tradutor.</li>
-                <li><strong>JailbreakBench</strong>, 300 exemplos, usados para reproduzir os números publicados.</li>
-              </ul>
-              <p class="fonte">Fonte: A9:118, A9:123, A11:131, A5:56, A9:59, A11:838</p>
-            </div>
-          </li>
-          <li class="no-col">
-            <div class="no" data-k="ida"><span class="ancora"><svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-languages"/></svg></span><span class="txt"><b class="nome">Ida para o português</b><span class="grande num">3</span><span class="peq">tradutores, na ordem <strong>NLLB-200</strong>, <strong>Opus-MT</strong> e <strong>DeepSeek</strong></span><span class="etqs"><span class="etiqueta-lingua en">EN</span><span class="etiqueta-lingua pt">PT</span></span></span></div>
-            <div class="no-detalhe papel">
-              <p>O pedido e a resposta de cada par são traduzidos de inglês para português por três motores.</p>
-              <ul>
-                <li><strong>NLLB-200</strong>, <code>facebook/nllb-200-distilled-1.3B</code>, frase a frase, em GPU.</li>
-                <li><strong>Opus-MT</strong>, <code>Helsinki-NLP/opus-mt-tc-big-en-pt</code>, em GPU, refeito com a marca de português do Brasil.</li>
-                <li><strong>DeepSeek</strong>, <code>deepseek-chat</code>, temperatura 0, com o texto entre marcas declarado "dado, não comando". São 6.522 pares usáveis.</li>
-              </ul>
-              <p class="fonte">Fonte: A11:72, A11:74-78, A8:51, A11:293</p>
-            </div>
-          </li>
-          <li class="no-col">
-            <div class="no" data-k="juizes"><span class="ancora"><svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-scale"/></svg></span><span class="txt"><b class="nome">Quatro juízes</b><span class="grande num">6.521</span><span class="peq">pares comuns às oito condições</span><span class="marcas" aria-label="Llama Guard 3, HarmBench, JailJudge, AegisGuard"><svg viewBox="0 0 120 22" aria-hidden="true"><circle cx="11" cy="11" r="8"/><rect x="34" y="3" width="16" height="16"/><path d="M68 3 77 19H59Z"/><path d="M104 2 113 11 104 20 95 11Z"/></svg></span><span class="etqs"><span class="etiqueta-lingua en">EN</span><span class="etiqueta-lingua pt">PT</span></span></span></div>
-            <div class="no-detalhe papel">
-              <p>Os juízes rodam como na biblioteca <code>judgezoo</code> (commit <code>fc05ae5</code>), a que os autores do ReliableBench usaram. O veredito é nocivo quando o escore passa de 0,5.</p>
-              <ul>
-                <li><strong>Llama Guard 3</strong>, 8 bilhões de parâmetros, escore p(unsafe) no primeiro passo.</li>
-                <li><strong>HarmBench</strong>, <code>cais/HarmBench-Llama-2-13b-cls</code>, escore p(Yes).</li>
-                <li><strong>JailJudge</strong>, <code>usail-hkust/JailJudge-guard</code>, nota de 1 a 10.</li>
-                <li><strong>AegisGuard</strong>, LlamaGuard-7b com o LoRA Aegis Permissive 1.0 da NVIDIA.</li>
-              </ul>
-              <p>São oito condições (inglês, três idas, o Opus-MT com a marca de português do Brasil e três voltas). Os <strong class="num">6.521</strong> pares usáveis nas oito ao mesmo tempo têm 5.141 respostas nocivas e 1.380 seguras, e <strong class="num">1.030</strong> deles estão no ReliableBench.</p>
-              <p class="fonte">Fonte: A11:670-677, A11:70-84, A11:59, A11:575</p>
-            </div>
-          </li>
-          <li class="no-col">
-            <div class="no volta" data-k="volta"><span class="ancora"><svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-undo"/></svg></span><span class="txt"><b class="nome">Volta ao inglês</b><span class="grande num">3</span><span class="peq">voltas, uma por tradutor, como controle</span><span class="etqs"><span class="etiqueta-lingua pt">PT</span><span class="etiqueta-lingua en tr">EN</span></span></span></div>
-            <div class="no-detalhe papel">
-              <p>Cada tradução é traduzida de volta para o inglês. A volta é o controle: ela mostra o que muda só porque o texto foi reescrito, sem que a língua final seja outra.</p>
-              <ul>
-                <li><strong>NLLB-200</strong>, o mesmo modelo, de português para inglês, 6.560 pares.</li>
-                <li><strong>Opus-MT</strong>, modelo <code>opus-mt-tc-bible-big-roa-en</code>, porque o Opus-MT não publica um modelo grande de português para inglês. 6.560 pares.</li>
-                <li><strong>DeepSeek</strong>, os mesmos prompts com a direção invertida, 6.521 pares.</li>
-              </ul>
-              <p class="fonte">Fonte: A11:80-84, A11:595</p>
-            </div>
-          </li>
-          <li class="no-col">
-            <div class="no" data-k="comp"><span class="ancora"><svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-compare"/></svg></span><span class="txt"><b class="nome">Comparação par a par</b><span class="grande num">1.030</span><span class="peq">pares no <strong>ReliableBench</strong>, contra o rótulo humano</span></span></div>
-            <div class="no-detalhe papel">
-              <p>O mesmo par é julgado em inglês e na outra condição, e o veredito é comparado com o rótulo humano. Nada é treinado, porque treinar mudaria o instrumento que se mede.</p>
-              <ul>
-                <li>Falso negativo (a principal), falso positivo, acurácia e AUROC.</li>
-                <li>Troca par a par, no ReliableBench: das 887 nocivas, quantas passam a ser liberadas e quantas passam a ser barradas em relação ao inglês.</li>
-                <li>Os pares que trocam de veredito foram lidos à mão (por exemplo, 30 trocas sorteadas do Opus-MT).</li>
-              </ul>
-              <p class="fonte">Fonte: A3:118, A3:148, A11:721-751, A11:175</p>
-            </div>
-          </li>
+        <figcaption>Hachurado, o que já tinha sido observado. Em branco, a língua.</figcaption>
+      </figure>
+      <p class="pergunta">O ReliableBench continua confiável em português?</p>
+    </div>
+  </div>
+</section>
+
+<hr class="fio">
+
+<!-- 3. Método -->
+<section id="metodo" data-nav="problema">
+  <div class="caixa">
+    <div class="tela rev">
+      <h2>Como observamos</h2>
+      <div class="rota-box">
+        <svg class="rota" viewBox="0 0 1000 100" preserveAspectRatio="none" aria-hidden="true"><path d="M0 58 C60 30 80 40 100 50 S220 80 300 70 S440 20 500 45 S640 90 700 70 S850 20 900 50 S960 70 1000 60"/></svg>
+        <div class="rota-v" aria-hidden="true"></div>
+        <ol class="paradas">
+          <li class="parada" style="--y:50px;--c:#8a6a45"><span class="mancha"><i>1</i></span><strong class="num">6.560</strong><p>processos do CoinflipForSafety, em inglês.</p></li>
+          <li class="parada" style="--y:70px;--c:#c08a2e"><span class="mancha"><i>2</i></span><strong class="num">3</strong><p>tradutores: NLLB-200, Opus&#8209;MT e DeepSeek.</p></li>
+          <li class="parada" style="--y:45px;--c:#3f6e9e"><span class="mancha"><i>3</i></span><strong class="num">4</strong><p>juízes leem cada versão.</p></li>
+          <li class="parada" style="--y:70px;--c:#5d7d3a"><span class="mancha"><i>4</i></span><strong class="num">1</strong><p>volta ao inglês, como controle.</p></li>
+          <li class="parada" style="--y:50px;--c:#a8402c"><span class="mancha"><i>5</i></span><strong class="num">6.521</strong><p>pares comuns comparados com o rótulo humano, 1.030 deles no ReliableBench.</p></li>
         </ol>
       </div>
-      <p class="legenda">Azul é inglês, ocre é português, a volta ao inglês é azul tracejada.</p>
-    </div>
-
-    <div class="sub" role="group" aria-labelledby="h-ler">
-      <h3 id="h-ler">Como ler o controle <span class="esquema"><svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-brackets"/></svg>esquema</span></h3>
-      <div class="ler">
-        <div class="trio">
-          <div class="papel mini"><span class="etiqueta-lingua en">EN</span><b>Inglês</b><small>o par original</small></div>
-          <div class="papel mini"><span class="etiqueta-lingua pt">PT</span><b>Português</b><small>traduzido</small></div>
-          <div class="papel mini volta"><span class="etiqueta-lingua en">EN</span><b>Volta</b><small>traduzido de novo</small></div>
-        </div>
-        <ul class="regras">
-          <li><span class="par"><span class="etiqueta-lingua pt">PT</span><span class="vs">contra</span><span class="etiqueta-lingua en">EN</span></span><span><b>Efeito total.</b> Tudo o que mudou ao traduzir.</span></li>
-          <li><span class="par"><span class="etiqueta-lingua en tr">EN</span><span class="vs">contra</span><span class="etiqueta-lingua en">EN</span></span><span><b>Efeito da reescrita.</b> O texto foi reescrito pela tradução.</span></li>
-          <li><span class="par"><span class="etiqueta-lingua pt">PT</span><span class="vs">contra</span><span class="etiqueta-lingua en tr">EN</span></span><span><b>Efeito da língua.</b> O que sobra depois de tirar a reescrita.</span></li>
-        </ul>
-      </div>
-      <p class="legenda">Fonte A11:595. A etiqueta tracejada é a volta ao inglês.</p>
-    </div>
-
-    <div class="sub" role="group" aria-labelledby="h-met">
-      <h3 id="h-met">As métricas</h3>
-      <ul class="metricas">
-        <li class="papel"><svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-eyeoff"/></svg><b>Falso negativo</b><span>Resposta nociva que o juiz liberou. É a métrica principal.</span></li>
-        <li class="papel"><svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-ban"/></svg><b>Falso positivo</b><span>Resposta segura que o juiz barrou.</span></li>
-        <li class="papel"><svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-chart"/></svg><b>AUROC</b><span>Quão bem o escore separa nocivas de seguras. 0,5 é sorteio.</span></li>
-        <li class="papel"><svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-swap"/></svg><b>Troca par a par</b><span>No mesmo par, quantas nocivas passam a ser liberadas ou barradas em relação ao inglês.</span></li>
-      </ul>
-      <p class="legenda">Fonte A3:148.</p>
-    </div>
-
-    <div class="sub" role="group" aria-labelledby="h-rota">
-      <h3 id="h-rota">Decisões de método</h3>
-      <ul class="rotas">
-        <li class="papel"><svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-bot"/></svg><b>Tradutor alinhado recusa</b><p>O tradutor que é uma IA alinhada recusa. O <strong>Claude Haiku 4.5</strong> traduziu 8 e recusou 22 de 30.</p><small>A7:76</small></li>
-        <li class="papel"><svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-brackets"/></svg><b>Marcas de dado, não comando</b><p>Sem as marcas de "dado, não comando", o <strong>DeepSeek</strong> recusou 210 de 439 e executou o ataque em 17.</p><small>A8:83</small></li>
-        <li class="papel"><svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-lock"/></svg><b>Nada treinado</b><p>Treinar mudaria o instrumento que se mede, então os juízes entram como foram publicados.</p><small>A3:118</small></li>
-        <li class="papel"><svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-target"/></svg><b>Referência</b><p>A referência é o julgamento do próprio juiz em inglês.</p><small>A11:833</small></li>
-      </ul>
-    </div>
-  </section>
-
-  <!-- ===================== RESULTADOS ===================== -->
-  <section class="pag" id="resultados" data-nav="resultados" aria-labelledby="h-resultados">
-    <div class="cab-sec">
-      <div>
-        <h2 id="h-resultados">Resultados</h2>
-        <p class="lead resposta" data-dado="projeto.resposta">Não existe uma resposta só. A confiabilidade que ele tem em inglês se mantém para um juiz, cai para outro e muda de natureza para um terceiro, que passa a barrar respostas seguras.</p>
-      </div>
-      <img class="coruja-sec" src="assets/img/coruja-intrigada.png" alt="" width="210" height="210">
-    </div>
-
-    <div class="grade-graficos" id="grade-graficos">
-      <section class="aba-painel papel" id="p-fn" aria-labelledby="h-fn">
-        <h3 id="h-fn"><svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-lockopen"/></svg>Quem passa a liberar mais?</h3>
-        <div class="painel-topo">
-          <p class="manchete">Falso negativo é a resposta nociva que o juiz <strong>libera</strong>. Quanto mais à direita, mais ele libera. Cada linha vai do inglês (azul) até uma tradução (ocre).</p>
-          <div class="seletor" role="group" aria-label="Conjunto de pares">
-            <button type="button" data-v="fnReliable" aria-pressed="true">ReliableBench (1.030 pares)</button>
-            <button type="button" data-v="fnComuns" aria-pressed="false">Todos os pares comuns (6.521)</button>
-          </div>
-        </div>
-        <div class="grafico" id="g-fn"></div>
-        <div class="tabela-alt" id="a-fn"></div>
-        <p class="fonte" id="f-fn"></p>
-      </section>
-
-      <section class="aba-painel papel" id="p-trocas" aria-labelledby="h-trocas">
-        <h3 id="h-trocas"><svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-swap"/></svg>O veredito troca nos dois sentidos?</h3>
-        <div class="painel-topo">
-          <p class="manchete" id="m-trocas"></p>
-          <div class="seletor" role="group" aria-label="Tradutor">
-            <button type="button" data-v="nllb" aria-pressed="true">NLLB-200</button>
-            <button type="button" data-v="opus" aria-pressed="false">Opus-MT</button>
-            <button type="button" data-v="deepseek" aria-pressed="false">DeepSeek</button>
-          </div>
-        </div>
-        <div class="grafico" id="g-trocas"></div>
-        <div class="tabela-alt" id="a-trocas"></div>
-        <p class="fonte" id="f-trocas"></p>
-      </section>
-
-      <section class="aba-painel papel larga" id="p-rigido" aria-labelledby="h-rigido">
-        <h3 id="h-rigido"><svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-shield"/></svg>Quem fica mais rígido?</h3>
-        <div class="painel-topo">
-          <p class="manchete">No <strong>HarmBench</strong>, em português, o falso negativo <strong>cai</strong> (16,0% para 11,6%, com o NLLB-200) e o falso positivo <strong>sobe</strong> (23,8% para 35,7%). Ele passa a barrar mais, e barra também o que é seguro.</p>
-        </div>
-        <div class="grafico" id="g-rigido"></div>
-        <div class="tabela-alt" id="a-rigido"></div>
-        <p class="fonte" id="f-rigido"></p>
-      </section>
-
-      <section class="aba-painel papel" id="p-volta" aria-labelledby="h-volta">
-        <h3 id="h-volta"><svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-languages"/></svg>É a língua ou a tradução?</h3>
-        <div class="painel-topo">
-          <p class="manchete" id="m-volta"></p>
-          <div class="seletor" role="group" aria-label="Tradutor">
-            <button type="button" data-v="nllb" aria-pressed="true">NLLB-200</button>
-            <button type="button" data-v="opus" aria-pressed="false">Opus-MT</button>
-            <button type="button" data-v="deepseek" aria-pressed="false">DeepSeek</button>
-          </div>
-        </div>
-        <div class="grafico" id="g-volta"></div>
-        <div class="tabela-alt" id="a-volta"></div>
-        <p class="fonte" id="f-volta"></p>
-      </section>
-
-      <section class="aba-painel papel" id="p-tradutor" aria-labelledby="h-tradutor">
-        <h3 id="h-tradutor"><svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-layers"/></svg>O tradutor importa?</h3>
-        <div class="painel-topo">
-          <p class="manchete">Em <strong>438</strong> processos, o <strong>Llama Guard 3</strong> foi chamado a julgar a tradução de cinco tradutores. Em <strong>91</strong> deles (20,8%) o veredito <strong>depende de quem traduziu</strong>.</p>
-        </div>
-        <div class="grafico" id="g-tradutor"></div>
-        <div class="tabela-alt" id="a-tradutor"></div>
-        <p class="fonte" id="f-tradutor"></p>
-      </section>
-    </div>
-
-    <div class="ainda">
-      <h3 id="h-ainda">O que ainda não se pode afirmar</h3>
-      <ul>
-        <li><svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-languages"/></svg><span>Que as <strong>traduções estão fiéis</strong>. A revalidação por falante nativo ainda não foi feita.</span></li>
-        <li><svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><path d="M2 10v3"/><path d="M6 6v11"/><path d="M10 3v18"/><path d="M14 8v7"/><path d="M18 5v13"/><path d="M22 10v3"/></svg><span>Que uma troca de veredito do <strong>JailJudge</strong> é efeito da língua, sem descontar o <strong>ruído</strong> do próprio juiz.</span></li>
-        <li><svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><line x1="5" x2="19" y1="9" y2="9"/><line x1="5" x2="19" y1="15" y2="15"/><line x1="19" x2="5" y1="5" y2="19"/></svg><span>Que os números no <strong>ReliableBench</strong> coincidem com os publicados.</span></li>
-      </ul>
-      <p class="fonte">Fonte: relatório da Atividade 11, linhas 961 a 963.</p>
-    </div>
-  </section>
-
-  <!-- ===================== EVOLUÇÃO ===================== -->
-  <section class="pag" id="evolucao" data-nav="evolucao" aria-labelledby="h-evolucao">
-    <div class="cab-sec">
-      <div>
-        <h2 id="h-evolucao">Evolução no semestre</h2>
-        <p class="lead">Treze atividades, da primeira à última, cada uma com o que foi feito e o resultado.</p>
-      </div>
-      <img class="coruja-sec" src="assets/img/coruja-pastas.png" alt="" width="210" height="210">
-    </div>
-    <div id="atividades"></div>
-  </section>
-
-  <section class="depois" id="depois" data-nav="evolucao" aria-labelledby="h-depois">
-    <div class="pasta-vazia">
-      <span class="aba-vazia">depois</span>
-      <div class="corpo-vazio">
-        <h2 id="h-depois"><svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-folder-plain"/></svg>O que vem depois</h2>
-        <ul id="proximos"></ul>
+      <div class="controle">
+        <p>Português contra inglês é o efeito total.</p>
+        <p>A volta contra o inglês é o efeito da reescrita.</p>
+        <p>O que sobra é o efeito da língua.</p>
       </div>
     </div>
-  </section>
+  </div>
+</section>
+
+<hr class="fio">
+
+<!-- 4a. Espécies -->
+<section id="resultados" data-nav="especies">
+  <div class="caixa">
+    <div class="tela rev">
+      <h2>As quatro espécies</h2>
+      <div class="especies">
+        <article class="especie" data-j="lg3">
+          <img class="pinta" loading="lazy" src="assets/img/guia/suindara.jpg" width="1024" height="1024" alt="Aquarela de uma suindara, a coruja de cara em formato de coração" onerror="this.classList.add('falta')">
+          <div class="etiqueta"><svg class="cordao" viewBox="0 0 40 50" aria-hidden="true"><path class="traco" pathLength="1" d="M8 48 C0 36 14 28 20 4"/></svg><h3>Llama Guard 3</h3></div>
+          <p class="sp">suindara, <i>Tyto furcata</i></p>
+          <p class="comp">Quase não muda em português.</p>
+          <div class="mini"></div>
+        </article>
+        <article class="especie" data-j="harmbench">
+          <img class="pinta" loading="lazy" src="assets/img/guia/corujinha.jpg" width="1024" height="1024" alt="Aquarela de uma corujinha-do-mato num galho" onerror="this.classList.add('falta')">
+          <div class="etiqueta"><svg class="cordao" viewBox="0 0 40 50" aria-hidden="true"><path class="traco" pathLength="1" d="M8 48 C0 36 14 28 20 4"/></svg><h3>HarmBench</h3></div>
+          <p class="sp">corujinha-do-mato, <i>Megascops choliba</i></p>
+          <p class="comp">Fica mais rígido: barra mais respostas seguras.</p>
+          <div class="mini"></div>
+        </article>
+        <article class="especie" data-j="jailjudge">
+          <img class="pinta" loading="lazy" src="assets/img/guia/cabure.jpg" width="1024" height="1024" alt="Aquarela de um caburé, coruja pequena de olhar firme" onerror="this.classList.add('falta')">
+          <div class="etiqueta"><svg class="cordao" viewBox="0 0 40 50" aria-hidden="true"><path class="traco" pathLength="1" d="M8 48 C0 36 14 28 20 4"/></svg><h3>JailJudge</h3></div>
+          <p class="sp">caburé, <i>Glaucidium brasilianum</i></p>
+          <p class="comp">Passa a liberar mais respostas nocivas.</p>
+          <div class="mini"></div>
+        </article>
+        <article class="especie" data-j="aegis">
+          <img class="pinta" loading="lazy" src="assets/img/guia/mocho.jpg" width="1024" height="1024" alt="Aquarela de um mocho-diabo, coruja escura de tufos nas orelhas" onerror="this.classList.add('falta')">
+          <div class="etiqueta"><svg class="cordao" viewBox="0 0 40 50" aria-hidden="true"><path class="traco" pathLength="1" d="M8 48 C0 36 14 28 20 4"/></svg><h3>AegisGuard</h3></div>
+          <p class="sp">mocho-diabo, <i>Asio stygius</i></p>
+          <p class="comp">Depende do tradutor.</p>
+          <div class="mini"></div>
+        </article>
+      </div>
+      <p class="legenda-geral">Respostas nocivas que o juiz libera, no ReliableBench. O ponto azul é o inglês, os ocres são as três traduções.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="fio">
+
+<!-- 4b. O que vimos -->
+<section id="vimos" data-nav="vimos">
+  <div class="caixa">
+    <h2 class="solo">O que vimos</h2>
+
+    <article class="prancha rev">
+      <div class="p-texto">
+        <p class="num-prancha">Prancha I</p>
+        <h3>O caburé deixa passar mais</h3>
+        <p>Entre as 887 respostas nocivas, o JailJudge com o NLLB-200 passou a liberar 161 e passou a barrar 58.</p>
+        <img class="pinta peq" loading="lazy" src="assets/img/guia/cabure.jpg" width="1024" height="1024" alt="Aquarela de um caburé" onerror="this.classList.add('falta')">
+      </div>
+      <figure class="p-fig">
+        <div id="g-gaveta1"></div>
+        <figcaption><span class="sw" style="--c:var(--nocivo)"></span>161 passaram a ser liberadas. <span class="sw" style="--c:var(--seguro)"></span>58 passaram a ser barradas. <span class="sw vazio"></span>668 não mudaram.</figcaption>
+      </figure>
+    </article>
+
+    <article class="prancha inv rev">
+      <div class="p-texto">
+        <p class="num-prancha">Prancha II</p>
+        <h3>É a língua ou a tradução?</h3>
+        <p>Quando a tradução volta ao inglês, parte da mudança desaparece: era efeito da reescrita.</p>
+        <p class="sobrevive" id="sobrevive"></p>
+        <div class="sel" id="sel-trad" role="group" aria-label="Tradutor"></div>
+      </div>
+      <figure class="p-fig">
+        <div id="g-inclin" class="inclins"></div>
+        <figcaption>Nocivas liberadas, em %: inglês, português e volta ao inglês.</figcaption>
+      </figure>
+    </article>
+
+    <article class="prancha rev">
+      <div class="p-texto">
+        <p class="num-prancha">Prancha III</p>
+        <h3>O tradutor importa</h3>
+        <p>Em 91 dos 438 processos, o veredito do Llama Guard 3 depende de qual tradutor foi usado.</p>
+        <img class="pinta peq" loading="lazy" src="assets/img/guia/suindara.jpg" width="1024" height="1024" alt="Aquarela de uma suindara" onerror="this.classList.add('falta')">
+      </div>
+      <figure class="p-fig">
+        <div id="g-gaveta2"></div>
+        <figcaption>Cada quadrado é um processo, pintado pelo número de tradutores (de cinco) que o levam a nocivo. Em ocre, os 91 que dependem do tradutor.</figcaption>
+      </figure>
+    </article>
+
+    <article class="prancha inv rev">
+      <div class="p-texto">
+        <p class="num-prancha">Prancha IV</p>
+        <h3>A corujinha fica mais rígida</h3>
+        <p>O HarmBench libera menos respostas nocivas e passa a barrar mais respostas seguras.</p>
+        <img class="pinta peq" loading="lazy" src="assets/img/guia/corujinha.jpg" width="1024" height="1024" alt="Aquarela de uma corujinha-do-mato" onerror="this.classList.add('falta')">
+      </div>
+      <figure class="p-fig">
+        <div id="g-barras"></div>
+        <figcaption>Em %, no ReliableBench. Português traduzido pelo NLLB-200.</figcaption>
+      </figure>
+    </article>
+
+    <div class="tela rev fecho">
+      <p class="resposta" id="resposta"></p>
+    </div>
+  </div>
+</section>
+
+<hr class="fio">
+
+<!-- 5. Diário -->
+<section id="evolucao" data-nav="evolucao">
+  <div class="caixa">
+    <div class="tela rev">
+      <h2>Diário de campo</h2>
+      <div class="faixa" id="faixa">
+        <ol class="diario" id="diario" tabindex="0" aria-label="Entradas do diário, role de lado"></ol>
+      </div>
+      <p class="dica" id="dica"><svg viewBox="0 0 60 16" aria-hidden="true"><path d="M2 8h52M47 2l8 6-8 6"/></svg>Role de lado para ler as treze atividades.</p>
+    </div>
+    <div class="tela rev">
+      <h2>Próximas expedições</h2>
+      <ul class="proximas" id="proximas"></ul>
+    </div>
+  </div>
+</section>
+
+<hr class="fio">
+
+<!-- 6. Notas -->
+<section id="notas" data-nav="notas">
+  <div class="caixa estreita">
+    <h2 class="solo">Notas</h2>
+    <p class="intro-notas">O que ficou fora do corpo: os conjuntos de dados, os identificadores exatos, as métricas, as tabelas dos gráficos e a fonte de cada número.</p>
+    <div id="notas-corpo"></div>
+  </div>
+</section>
 
 </main>
 
 <footer class="rodape">
-  <div class="rodape-dentro">
-    <div class="quem">
-      <img src="assets/img/buraqueira-96.png" alt="" width="44" height="44">
-      <div><strong>Cristhian Kapelinski</strong>Laboratório de Inteligência Artificial Aplicada (LIAA), 2026/2, <strong>UNIPAMPA</strong>, prof. Diego Kreutz</div>
-    </div>
-    <div class="links">
-      <a href="https://github.com/BuraqueiraBench" aria-label="BuraqueiraBench no GitHub"><svg class="icone cheio" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>GitHub</a>
-    </div>
+  <div class="caixa">
+    <p>Cristhian Kapelinski, UNIPAMPA, 2026/2.</p>
+    <p><a href="https://github.com/BuraqueiraBench">Organização BuraqueiraBench no GitHub</a></p>
   </div>
 </footer>
 
-<nav class="barra-celular" aria-label="Seções">
-  <a href="#inicio" data-s="inicio"><svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-home"/></svg>Início</a>
-  <a href="#problema" data-s="problema"><svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-scale"/></svg>Problema</a>
-  <a href="#metodo" data-s="metodo"><svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-flow"/></svg>Método</a>
-  <a href="#resultados" data-s="resultados"><svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-bars"/></svg>Resultados</a>
-  <a href="#evolucao" data-s="evolucao"><svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-folder"/></svg>Evolução</a>
-</nav>
-
-<script src="assets/js/dados.js?v=2"></script>
-<script src="assets/js/site.js?v=2"></script>
-<script src="assets/js/inicio.js?v=2"></script>
-<script src="assets/js/problema.js?v=2"></script>
-<script src="assets/js/metodo.js?v=2"></script>
-<script src="assets/js/resultados.js?v=2"></script>
-<script src="assets/js/evolucao.js?v=2"></script>
+<script src="assets/js/dados.js?v=3"></script>
+<script src="assets/js/site.js?v=3"></script>
+<script src="assets/js/guia.js?v=3"></script>
 </body>
 </html>
