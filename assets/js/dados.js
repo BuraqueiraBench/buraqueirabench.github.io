@@ -7,7 +7,7 @@ window.DADOS = {
     nome: 'BuraqueiraBench',
     titulo: 'Juízes de segurança de LLM em português',
     subtitulo: 'medindo o deslocamento de língua',
-    autor: 'Cristhian Kapelinski',
+    autor: 'Cristhian Kapelinski e Beatriz Roland Machado',
     disciplina: 'Laboratório de Inteligência Artificial Aplicada (LIAA)',
     semestre: '2026/2',
     instituicao: 'UNIPAMPA',
