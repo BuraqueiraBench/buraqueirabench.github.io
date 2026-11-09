@@ -1,4 +1,4 @@
-// Evolução: as 13 atividades como pastas. Texto e números vêm de window.DADOS (fonte em cada atividade).
+// Evolução: as 13 atividades à vista, em quatro fases. Texto e números vêm de window.DADOS (fonte em cada atividade).
 (function () {
   const D = window.DADOS;
   const ICONES = {
@@ -16,13 +16,14 @@
     12: '<path d="M14.536 21.686a.5.5 0 0 0 .937-.024l6.5-19a.496.496 0 0 0-.635-.635l-19 6.5a.5.5 0 0 0-.024.937l7.93 3.18a2 2 0 0 1 1.112 1.11z"/><path d="m21.854 2.147-10.94 10.939"/>',
     13: '<rect width="18" height="7" x="3" y="3" rx="1"/><rect width="9" height="7" x="3" y="14" rx="1"/><rect width="5" height="7" x="16" y="14" rx="1"/>'
   };
-  // título curto só para caber na pasta; o título inteiro (dados.js) está no painel e no rótulo do botão
-  const CURTO = { 1: 'Proposta', 2: 'Investigação técnica', 3: 'Plano experimental', 4: 'Apresentação 1 a 3', 5: 'Piloto de tradução', 6: 'Custo de traduzir', 7: 'Tradução dos 30', 8: 'Tradução do corpus', 9: 'O juiz em inglês', 10: 'O juiz em português', 11: 'ReliableBench e quatro juízes', 12: 'Oitava entrega', 13: 'Este site' };
+  const FASES = [
+    { nome: 'Definir o problema', de: 1, ate: 4, icone: ICONES[2] },
+    { nome: 'Traduzir', de: 5, ate: 8, icone: ICONES[7] },
+    { nome: 'Julgar', de: 9, ate: 11, icone: ICONES[9] },
+    { nome: 'Mostrar', de: 12, ate: 13, icone: ICONES[4] }
+  ];
 
-  const gaveta = document.getElementById('gaveta');
-  const pastas = [];
-
-  function svgIcone(n) { return '<svg class="icone" viewBox="0 0 24 24" aria-hidden="true">' + ICONES[n] + '</svg>'; }
+  const svgIcone = p => '<svg class="icone" viewBox="0 0 24 24" aria-hidden="true">' + p + '</svg>';
 
   // negrito nos números do resultado (percentuais, valores em US$, contagens e "N de M")
   function negrito(txt) {
@@ -35,51 +36,29 @@
       return '<strong>' + m.replace(/\.$/, '') + '</strong>' + (m.endsWith('.') ? '.' : '');
     });
   }
+  const simples = txt => txt.replace(/&/g, '&amp;').replace(/</g, '&lt;');
 
-  D.atividades.forEach((a, i) => {
-    const b = document.createElement('button');
-    b.type = 'button'; b.className = 'pasta'; b.setAttribute('aria-expanded', 'false');
-    b.setAttribute('aria-label', 'Atividade ' + a.n + ', ' + a.data + '. ' + a.titulo + (a.rota ? '. Mudou a rota.' : ''));
-    b.innerHTML =
-      '<span class="aba"><b>' + a.n + '</b><small>' + a.data + '</small></span>' +
-      '<span class="folha"></span>' +
-      '<span class="capa">' + svgIcone(a.n) + '<span class="tit">' + CURTO[a.n] + '</span>' +
-      (a.rota ? '<span class="carimbo rota">mudou a rota</span>' : '') + '</span>';
-    b.addEventListener('click', () => abrir(i, b));
-    gaveta.appendChild(b);
-    pastas.push(b);
-  });
-
-  function abrir(i, b) {
-    pastas.forEach(p => p.setAttribute('aria-expanded', p === b ? 'true' : 'false'));
-    const a = D.atividades[i];
-    let h = '<p class="pn-sup">' + svgIcone(a.n) + '<b>Atividade ' + a.n + '</b><span>' + a.data + '</span></p>' +
-      '<h3>' + a.titulo + '</h3>' +
-      '<h4>O que foi feito</h4><p>' + negrito(a.feito) + '</p>';
-    if (a.resultado) h += '<h4>Resultado</h4><p>' + negrito(a.resultado) + '</p>';
-    if (a.rota) h += '<div class="pn-rota"><span class="carimbo rota">mudou a rota</span><p>' + a.rota + '</p></div>';
-    h += '<p class="pn-fonte">Fonte: ' + a.fonte + (/^A\d+:/.test(a.fonte) ? ' (A11:122 é a linha 122 do relatório da Atividade 11).' : '.') + '</p>';
-    window.abrirPainel(h, b);
+  function cartao(a) {
+    let h = '<article class="ativ papel" aria-labelledby="ativ-' + a.n + '">' +
+      '<div class="ativ-topo">' + svgIcone(ICONES[a.n]) + '<b>Atividade ' + a.n + '</b><span class="num">' + a.data + '</span></div>' +
+      '<h4 id="ativ-' + a.n + '">' + a.titulo + '</h4>' +
+      '<p><b>O que foi feito.</b> ' + negrito(a.feito) + '</p>';
+    if (a.resultado) h += '<p><b>Resultado.</b> ' + negrito(a.resultado) + '</p>';
+    if (a.rota) h += '<p class="decisao">Decisão: ' + simples(a.rota) + '</p>';
+    h += '<p class="fonte">Fonte: ' + a.fonte + '</p></article>';
+    return h;
   }
 
-  // setas do teclado passam de pasta em pasta
-  gaveta.addEventListener('keydown', e => {
-    const i = pastas.indexOf(document.activeElement);
-    if (i < 0) return;
-    let n = null;
-    if (e.key === 'ArrowRight' || e.key === 'ArrowDown') n = Math.min(i + 1, pastas.length - 1);
-    else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') n = Math.max(i - 1, 0);
-    else if (e.key === 'Home') n = 0;
-    else if (e.key === 'End') n = pastas.length - 1;
-    if (n !== null) { e.preventDefault(); pastas[n].focus(); }
-  });
-
-  // fechar o painel fecha a pasta
-  const painel = document.querySelector('.painel-lateral');
-  new MutationObserver(() => {
-    if (!painel.classList.contains('aberto')) pastas.forEach(p => p.setAttribute('aria-expanded', 'false'));
-  }).observe(painel, { attributes: true, attributeFilter: ['class'] });
+  const caixa = document.getElementById('atividades');
+  if (caixa) {
+    caixa.innerHTML = FASES.map(f => {
+      const doGrupo = D.atividades.filter(a => a.n >= f.de && a.n <= f.ate);
+      return '<section class="fase-grupo" aria-label="' + f.nome + '">' +
+        '<h3 class="fase-cab">' + svgIcone(f.icone) + '<span>' + f.nome + '</span><small>A' + f.de + (f.ate > f.de ? ' a A' + f.ate : '') + '</small></h3>' +
+        '<div class="ativs">' + doGrupo.map(cartao).join('') + '</div></section>';
+    }).join('');
+  }
 
   const ul = document.getElementById('proximos');
-  D.proximos.forEach(t => { const li = document.createElement('li'); li.textContent = t; ul.appendChild(li); });
+  if (ul) D.proximos.forEach(t => { const li = document.createElement('li'); li.textContent = t; ul.appendChild(li); });
 })();

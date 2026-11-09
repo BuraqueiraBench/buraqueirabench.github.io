@@ -1,29 +1,30 @@
 /* Juízes em português: o tribunal da coruja.
-   Mundo: uma sala de julgamento de madeira escura, processos em papel, carimbos de tinta. */
+   Mundo: uma biblioteca jurídica à noite, azul-marinho profundo, processos em papel claro sob a luz
+   de uma luminária, carimbos de tinta. (Os nomes --madeira* ficaram da v1; hoje são o azul da noite.) */
 
 :root {
-  --madeira: #2a1c13;
-  --madeira-2: #3a281c;
-  --madeira-3: #4a3424;
-  --veio: #1c120c;
-  --papel: #f3ebdd;
-  --papel-2: #e7dcc8;
-  --tinta: #1e1813;
-  --tinta-2: #4a3f35;
-  --luz: #ede3d2;
-  --luz-2: #c9b9a2;
-  --ocre: #d79a3b;
+  --madeira: #0e1a2c;
+  --madeira-2: #16243a;
+  --madeira-3: #24365a;
+  --veio: #08111e;
+  --papel: #f5f3ee;
+  --papel-2: #e6e8ee;
+  --tinta: #121c2b;
+  --tinta-2: #46536a;
+  --luz: #e7edf6;
+  --luz-2: #a9b8cc;
+  --ocre: #e8a94a;
   --ocre-escuro: #a35f14;
-  --en: #5b8fc7;
+  --en: #74aef0;
   --en-escuro: #2f5d8a;
-  --pt: #d79a3b;
+  --pt: #e8a94a;
   --pt-escuro: #a35f14;
-  --nocivo: #c8412f;
-  --nocivo-escuro: #a3301f;
-  --seguro: #3f9a63;
-  --seguro-escuro: #2b7449;
+  --nocivo: #ee5b45;
+  --nocivo-escuro: #b8321f;
+  --seguro: #4cc283;
+  --seguro-escuro: #22794a;
   --raio: 6px;
-  --sombra-papel: 0 1px 0 rgba(0, 0, 0, .35), 0 18px 34px -16px rgba(0, 0, 0, .7);
+  --sombra-papel: 0 1px 0 rgba(0, 0, 0, .3), 0 22px 40px -18px rgba(0, 0, 0, .75);
   --curva: cubic-bezier(0.16, 1, 0.3, 1);
   --fonte-titulo: "Zilla Slab", Georgia, serif;
   --fonte-texto: "Atkinson Hyperlegible", system-ui, sans-serif;
@@ -41,8 +42,11 @@ body {
   min-height: 100vh;
   background-color: var(--madeira);
   background-image:
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='2600' height='700'%3E%3Cfilter id='v'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.002 0.22' numOctaves='3' seed='7' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.11 0 0 0 0 0.07 0 0 0 0 0.04 0 0 0 0.55 0'/%3E%3C/filter%3E%3Crect width='2600' height='700' filter='url(%23v)'/%3E%3C/svg%3E"),
-    linear-gradient(180deg, #2f2016 0%, var(--madeira) 40%, #24180f 100%);
+    radial-gradient(1100px 620px at 78% -8%, rgba(232, 169, 74, .13), transparent 62%),
+    radial-gradient(900px 560px at -10% 38%, rgba(116, 174, 240, .09), transparent 60%),
+    radial-gradient(1000px 700px at 110% 85%, rgba(116, 174, 240, .06), transparent 60%),
+    linear-gradient(180deg, #112038 0%, var(--madeira) 45%, #0a1322 100%);
+  background-attachment: fixed;
   color: var(--luz);
   font-family: var(--fonte-texto);
   font-size: 1.0625rem;
@@ -73,9 +77,9 @@ strong { font-weight: 700; color: #fff4e2; }
 .menu {
   position: sticky; top: 0; z-index: 50;
   height: var(--menu-h);
-  background: rgba(28, 18, 12, .92);
+  background: rgba(9, 16, 28, .92);
   backdrop-filter: saturate(1.2);
-  border-bottom: 1px solid rgba(237, 227, 210, .08);
+  border-bottom: 1px solid rgba(231, 237, 246, .08);
 }
 .menu-dentro { max-width: var(--largura); margin: 0 auto; height: 100%; padding: 0 20px; display: flex; align-items: center; gap: 24px; }
 .marca { display: flex; align-items: center; gap: 10px; color: var(--luz); text-decoration: none; font-family: var(--fonte-titulo); font-weight: 700; font-size: 1.15rem; white-space: nowrap; }
@@ -88,7 +92,7 @@ strong { font-weight: 700; color: #fff4e2; }
   color: var(--luz); text-decoration: none; font-weight: 700; font-size: .95rem;
   transition: background .18s var(--curva), color .18s var(--curva);
 }
-.menu li a:hover { background: rgba(237, 227, 210, .1); color: #fff; }
+.menu li a:hover { background: rgba(231, 237, 246, .1); color: #fff; }
 .menu li a[aria-current="page"] { background: var(--papel); color: var(--tinta); }
 .menu li a[aria-current="page"] .icone { color: var(--ocre-escuro); }
 
@@ -155,7 +159,7 @@ main { max-width: var(--largura); margin: 0 auto; padding: 0 20px 64px; }
 .porta h3 { font-size: 1.3rem; display: flex; align-items: center; gap: 8px; }
 .porta h3 .icone { color: var(--ocre-escuro); }
 .porta p { font-size: .95rem; color: var(--tinta-2); }
-.porta .previa { height: 96px; border-radius: 3px; background: rgba(42, 28, 19, .06); display: grid; place-items: center; overflow: hidden; }
+.porta .previa { height: 96px; border-radius: 3px; background: rgba(18, 28, 43, .06); display: grid; place-items: center; overflow: hidden; }
 .porta .previa svg { width: 100%; height: 100%; }
 .porta .ir { margin-top: auto; font-weight: 700; color: var(--ocre-escuro); }
 
@@ -174,7 +178,7 @@ main { max-width: var(--largura); margin: 0 auto; padding: 0 20px 64px; }
 .painel-lateral p + p { margin-top: 10px; }
 
 /* ---------- rodapé ---------- */
-.rodape { border-top: 1px solid rgba(237, 227, 210, .08); background: rgba(20, 13, 9, .5); }
+.rodape { border-top: 1px solid rgba(231, 237, 246, .08); background: rgba(5, 10, 20, .5); }
 .rodape-dentro { max-width: var(--largura); margin: 0 auto; padding: 28px 20px 36px; display: flex; flex-wrap: wrap; gap: 18px 40px; align-items: center; color: var(--luz-2); font-size: .93rem; }
 .rodape-dentro img { width: 44px; height: 44px; border-radius: 50%; background: #f7f5f1; }
 .rodape-dentro .quem { display: flex; gap: 12px; align-items: center; }
@@ -203,7 +207,7 @@ main { max-width: var(--largura); margin: 0 auto; padding: 0 20px 64px; }
   .barra-celular {
     display: grid; grid-template-columns: repeat(5, 1fr);
     position: fixed; left: 0; right: 0; bottom: 0; z-index: 60;
-    background: rgba(28, 18, 12, .97); border-top: 1px solid rgba(237, 227, 210, .1);
+    background: rgba(9, 16, 28, .97); border-top: 1px solid rgba(231, 237, 246, .1);
     padding: 6px 4px calc(6px + env(safe-area-inset-bottom));
   }
   .barra-celular a { display: flex; flex-direction: column; align-items: center; gap: 2px; padding: 6px 2px; color: var(--luz-2); text-decoration: none; font-size: .7rem; font-weight: 700; border-radius: 10px; }

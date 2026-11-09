@@ -1,54 +1,6 @@
 // Página "O método". Fontes: Ak:linha = atividadek.tex (ver conteudo.md, seção 4).
 (function () {
   const D = window.DADOS;
-  const li = a => '<ul>' + a.map(x => '<li>' + x + '</li>').join('') + '</ul>';
-  const painel = (t, corpo, f) => '<h3>' + t + '</h3>' + corpo + '<p class="legenda">Fonte: ' + f + '</p>';
-
-  const nos = {
-    dados: painel('Dados',
-      '<p>Todos os conjuntos são públicos e têm rótulo humano, uma nota de 0 a 1 em que a partir de 0,5 a resposta é nociva.</p>' +
-      li([
-        '<strong>CoinflipForSafety</strong>, 6.560 pares (5.174 nocivos e 1.386 seguros), cinco ataques contra quatro modelos. É a base do efeito da língua.',
-        '<strong>ReliableBench</strong>, recorte de 43 comportamentos com 1.036 pares (892 nocivos e 144 seguros). É a pergunta central.',
-        '<strong>JudgeStressTest</strong>, 439 pares com resposta e rótulo (189 nocivos e 250 seguros). Serve só ao efeito do tradutor.',
-        '<strong>JailbreakBench</strong>, 300 exemplos, usados para reproduzir os números publicados.'
-      ]), 'A9:118, A9:123, A11:131, A5:56, A9:59, A11:838'),
-    ida: painel('Ida para o português',
-      '<p>O pedido e a resposta de cada par são traduzidos de inglês para português por três motores.</p>' +
-      li([
-        '<strong>NLLB-200</strong>, <code>facebook/nllb-200-distilled-1.3B</code>, frase a frase, em GPU.',
-        '<strong>Opus-MT</strong>, <code>Helsinki-NLP/opus-mt-tc-big-en-pt</code>, em GPU, refeito com a marca de português do Brasil.',
-        '<strong>DeepSeek</strong>, <code>deepseek-chat</code>, temperatura 0, com o texto entre marcas declarado "dado, não comando". São 6.522 pares usáveis.'
-      ]), 'A11:72, A11:74-78, A8:51, A11:293'),
-    juizes: painel('Quatro juízes',
-      '<p>Os juízes rodam como na biblioteca <code>judgezoo</code> (commit <code>fc05ae5</code>), a que os autores do ReliableBench usaram. O veredito é nocivo quando o escore passa de 0,5.</p>' +
-      li([
-        '<strong>Llama Guard 3</strong>, 8 bilhões de parâmetros, escore p(unsafe) no primeiro passo.',
-        '<strong>HarmBench</strong>, <code>cais/HarmBench-Llama-2-13b-cls</code>, escore p(Yes).',
-        '<strong>JailJudge</strong>, <code>usail-hkust/JailJudge-guard</code>, nota de 1 a 10.',
-        '<strong>AegisGuard</strong>, LlamaGuard-7b com o LoRA Aegis Permissive 1.0 da NVIDIA.'
-      ]) + '<p>São oito condições (inglês, três idas, o Opus-MT com a marca de português do Brasil e três voltas). Os <strong class="num">6.521</strong> pares usáveis nas oito ao mesmo tempo têm 5.141 respostas nocivas e 1.380 seguras, e <strong class="num">1.030</strong> deles estão no ReliableBench.</p>',
-      'A11:670-677, A11:70-84, A11:59, A11:575'),
-    volta: painel('Volta ao inglês',
-      '<p>Cada tradução é traduzida de volta para o inglês. A volta é o controle: ela mostra o que muda só porque o texto foi reescrito, sem que a língua final seja outra.</p>' +
-      li([
-        '<strong>NLLB-200</strong>, o mesmo modelo, de português para inglês, 6.560 pares.',
-        '<strong>Opus-MT</strong>, modelo <code>opus-mt-tc-bible-big-roa-en</code>, porque o Opus-MT não publica um modelo grande de português para inglês. 6.560 pares.',
-        '<strong>DeepSeek</strong>, os mesmos prompts com a direção invertida, 6.521 pares.'
-      ]), 'A11:80-84, A11:595'),
-    comp: painel('Comparação par a par',
-      '<p>O mesmo par é julgado em inglês e na outra condição, e o veredito é comparado com o rótulo humano. Nada é treinado, porque treinar mudaria o instrumento que se mede.</p>' +
-      li([
-        'Falso negativo (a principal), falso positivo, acurácia e AUROC.',
-        'Troca par a par, no ReliableBench: das 887 nocivas, quantas passam a ser liberadas e quantas passam a ser barradas em relação ao inglês.',
-        'Os pares que trocam de veredito foram lidos à mão (por exemplo, 30 trocas sorteadas do Opus-MT).'
-      ]), 'A3:118, A3:148, A11:721-751, A11:175')
-  };
-
-  document.querySelectorAll('.no').forEach(b => {
-    b.addEventListener('click', () => abrirPainel(nos[b.dataset.k], b));
-  });
-
   // ---- momento autoral: uma folha EN percorre o fluxo, vira PT na ida e volta a EN na volta ----
   const fluxo = document.getElementById('fluxo');
   const folha = document.getElementById('folha');

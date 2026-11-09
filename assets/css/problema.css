@@ -1,9 +1,9 @@
 .so-leitor { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; margin: 0; padding: 0; list-style: none; }
 .cabeca-pagina { padding-bottom: 4px; }
-.bloco { padding: 26px 0; }
-.bloco > h2 { font-size: clamp(1.4rem, 1.6vw + .8rem, 1.9rem); }
-.bloco .legenda { margin-top: 10px; }
-.bloco .lead { margin-bottom: 16px; font-size: 1.02rem; }
+.sub { padding: 26px 0; }
+.sub > h2 { font-size: clamp(1.4rem, 1.6vw + .8rem, 1.9rem); }
+.sub .legenda { margin-top: 10px; }
+.sub .lead { margin-bottom: 16px; font-size: 1.02rem; }
 
 /* diagrama do juiz */
 .fluxo-juiz { list-style: none; margin: 14px 0 0; padding: 0; display: flex; align-items: stretch; gap: 0; }
@@ -64,7 +64,7 @@
 .pergunta > .icone.grande { width: 44px; height: 44px; color: var(--ocre-escuro); }
 .pergunta p.grande { font-family: var(--fonte-titulo); font-weight: 700; font-size: clamp(1.7rem, 2vw + .8rem, 2.4rem); line-height: 1.1; }
 .duas-perg { list-style: none; margin: 4px 0 0; padding: 0; display: grid; gap: 10px; }
-.duas-perg li { display: flex; gap: 10px; align-items: flex-start; background: rgba(42, 28, 19, .07); padding: 10px 12px; border-radius: 3px; }
+.duas-perg li { display: flex; gap: 10px; align-items: flex-start; background: rgba(18, 28, 43, .07); padding: 10px 12px; border-radius: 3px; }
 .duas-perg .icone { width: 24px; height: 24px; color: var(--en-escuro); margin-top: 2px; }
 .dados { display: grid; gap: 18px; margin-top: 14px; }
 .dado { margin: 0; padding: 16px 18px; display: grid; grid-template-columns: 30px minmax(0, 1fr); gap: 8px 12px; }
@@ -75,7 +75,7 @@
 .barras { display: grid; gap: 6px; }
 .b { display: grid; grid-template-columns: 70px minmax(0, 1fr) 52px; align-items: center; gap: 8px; font-size: .88rem; }
 .b b { text-align: right; font-family: var(--fonte-titulo); font-size: 1.05rem; }
-.trilho { height: 16px; background: rgba(42, 28, 19, .1); border-radius: 2px; overflow: hidden; }
+.trilho { height: 16px; background: rgba(18, 28, 43, .1); border-radius: 2px; overflow: hidden; }
 .enche { height: 100%; width: var(--w); background: var(--en-escuro); transform-origin: left; animation: encher .8s var(--curva) both; }
 .enche.forte { background: var(--nocivo); }
 .enche.sorteio { background: repeating-linear-gradient(90deg, var(--tinta-2) 0 6px, transparent 6px 10px); opacity: .6; }

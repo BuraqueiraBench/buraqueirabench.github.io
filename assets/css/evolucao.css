@@ -66,7 +66,7 @@
 .fases { list-style: none; margin: 8px 0 0; padding: 0 2px; display: grid; grid-template-columns: repeat(13, minmax(0, 1fr)); gap: 4px; }
 .fase {
   display: flex; align-items: center; gap: 10px; padding: 8px 12px 9px;
-  border: 2px solid rgba(237, 227, 210, .38); border-top: 0; border-radius: 0 0 10px 10px;
+  border: 2px solid rgba(231, 237, 246, .38); border-top: 0; border-radius: 0 0 10px 10px;
   color: var(--luz); font-size: .93rem; line-height: 1.2;
 }
 .fase .icone { width: 22px; height: 22px; color: var(--ocre); }
@@ -80,10 +80,10 @@
 .pasta-vazia { position: relative; padding-top: 30px; }
 .aba-vazia {
   position: absolute; top: 0; left: 18px; height: 31px; padding: 4px 20px 0;
-  border: 2px dashed rgba(237, 227, 210, .45); border-bottom: 0; border-radius: 8px 8px 0 0;
+  border: 2px dashed rgba(231, 237, 246, .45); border-bottom: 0; border-radius: 8px 8px 0 0;
   font-family: var(--fonte-titulo); font-weight: 700; color: var(--luz-2); font-size: .9rem;
 }
-.corpo-vazio { border: 2px dashed rgba(237, 227, 210, .45); border-radius: 0 10px 10px 10px; padding: 16px 20px 18px; }
+.corpo-vazio { border: 2px dashed rgba(231, 237, 246, .45); border-radius: 0 10px 10px 10px; padding: 16px 20px 18px; }
 .corpo-vazio h2 { font-size: 1.3rem; display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
 .corpo-vazio h2 .icone { color: var(--ocre); }
 .corpo-vazio ul { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px 24px; }
@@ -115,7 +115,7 @@
   .pasta[aria-expanded="true"] .capa { transform: perspective(500px) rotateY(-26deg); }
   .corpo-vazio ul { grid-template-columns: minmax(0, 1fr); }
   .fases { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; margin-top: 14px; }
-  .fase, .f1, .f2, .f3, .f4 { grid-column: auto; border: 2px solid rgba(237, 227, 210, .38); border-radius: 8px; flex-direction: row; align-items: center; padding: 8px 10px; }
+  .fase, .f1, .f2, .f3, .f4 { grid-column: auto; border: 2px solid rgba(231, 237, 246, .38); border-radius: 8px; flex-direction: row; align-items: center; padding: 8px 10px; }
   .fase strong { font-size: .95rem; }
 }
 @media (prefers-reduced-motion: reduce) {

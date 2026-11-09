@@ -7,7 +7,7 @@
   const CURTO = { lg3: 'LG3', harmbench: 'Harm', jailjudge: 'Jail', aegis: 'Aegis' };
   const COR = {
     enFill: '#5b8fc7', enLinha: '#2f5d8a', ptFill: '#d79a3b', ptLinha: '#a35f14',
-    nocivo: '#c8412f', seguro: '#3f9a63', tinta: '#1e1813', papel: '#f3ebdd'
+    nocivo: '#c8412f', seguro: '#3f9a63', tinta: '#121c2b', papel: '#f5f3ee'
   };
   const $ = (s, r = document) => r.querySelector(s);
   const $$ = (s, r = document) => Array.from(r.querySelectorAll(s));
@@ -44,7 +44,7 @@
   }
   const pontoEn = { fill: COR.enFill, stroke: COR.enLinha, 'stroke-width': 2 };
   const pontoPt = { fill: COR.ptFill, stroke: COR.ptLinha, 'stroke-width': 2 };
-  const pontoNeutro = { fill: '#e7dcc8', stroke: COR.tinta, 'stroke-width': 1.8 };
+  const pontoNeutro = { fill: '#e6e8ee', stroke: COR.tinta, 'stroke-width': 1.8 };
 
   function criarSvg(host, W, H, rotulo) {
     const s = el('svg', { viewBox: '0 0 ' + W + ' ' + H, width: W, height: H, role: 'img', 'aria-label': rotulo });
@@ -289,8 +289,9 @@
 
   // ---------- 5. gráfico de unidades: 438 processos ----------
   function graficoTradutor(host) {
-    const dep = D.dependenciaTradutor, W = Math.max(300, host.clientWidth), mob = W < 560;
-    const cols = mob ? 18 : 28, g = 3, u = mob ? Math.floor((W - 4) / cols) - g : 17;
+    const dep = D.dependenciaTradutor, W = Math.max(300, host.clientWidth), mob = W < 420;
+    // quadrados do tamanho que cabe na largura, com 30 por linha (18 no celular)
+    const cols = mob ? 18 : 30, g = 3, u = Math.min(18, Math.floor((W - 4) / cols) - g);
     const rows = Math.ceil(dep.total / cols);
     const cores = ['#3f9a63', '#f3d9a0', '#e8bd6e', '#d79a3b', '#a35f14', '#c8412f'];
     const rotulos = ['Nenhum tradutor leva a nocivo (todos liberam)', '1 dos 5 leva a nocivo', '2 dos 5', '3 dos 5', '4 dos 5', 'Os 5 levam a nocivo (todos barram)'];
@@ -348,7 +349,6 @@
     return {
       painel: painel,
       desenhar: function () {
-        if (painel.hidden) return;
         host.innerHTML = '';
         atualizar = montar(host, estado);
         atualizar(estado);
@@ -363,47 +363,23 @@
     volta: registrar('volta', { v: 'nllb' }, graficoVolta),
     tradutor: registrar('tradutor', {}, graficoTradutor)
   };
-  const ids = Object.keys(graficos);
-  const abas = ids.map(id => $('#t-' + id));
-
-  function mostrar(id, foco) {
-    ids.forEach((k, i) => {
-      const ativa = k === id;
-      abas[i].setAttribute('aria-selected', ativa ? 'true' : 'false');
-      abas[i].tabIndex = ativa ? 0 : -1;
-      graficos[k].painel.hidden = !ativa;
-    });
-    graficos[id].desenhar();
-    const a = abas[ids.indexOf(id)];
-    if (foco) a.focus();
-    a.scrollIntoView({ block: 'nearest', inline: 'nearest' });
-  }
-  abas.forEach((a, i) => {
-    a.addEventListener('click', () => mostrar(ids[i]));
-    a.addEventListener('keydown', e => {
-      let n = null;
-      if (e.key === 'ArrowRight') n = (i + 1) % ids.length;
-      else if (e.key === 'ArrowLeft') n = (i + ids.length - 1) % ids.length;
-      else if (e.key === 'Home') n = 0;
-      else if (e.key === 'End') n = ids.length - 1;
-      if (n !== null) { e.preventDefault(); mostrar(ids[n], true); }
-    });
-  });
+  // todos os gráficos ficam à vista, um após o outro; redesenham quando a largura da grade muda
+  const todos = Object.keys(graficos);
+  const desenharTudo = () => todos.forEach(k => graficos[k].desenhar());
 
   $$('[data-dado]').forEach(e => {
     const v = e.dataset.dado.split('.').reduce((o, k) => o && o[k], D);
     if (typeof v === 'string') e.textContent = v;
   });
 
-  const inicial = ids.indexOf(location.hash.slice(1)) >= 0 ? location.hash.slice(1) : 'fn';
-  mostrar(inicial);
+  desenharTudo();
 
-  const caixa = $('.abas');
-  let larg = caixa.clientWidth, tmo = null;
+  const grade = $('#grade-graficos');
+  let larg = grade.clientWidth, tmo = null;
   new ResizeObserver(() => {
-    if (caixa.clientWidth === larg) return;
-    larg = caixa.clientWidth;
+    if (grade.clientWidth === larg) return;
+    larg = grade.clientWidth;
     clearTimeout(tmo);
-    tmo = setTimeout(() => { const a = ids.find(k => !graficos[k].painel.hidden); if (a) graficos[a].desenhar(); }, 150);
-  }).observe(caixa);
+    tmo = setTimeout(desenharTudo, 150);
+  }).observe(grade);
 })();
