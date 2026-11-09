@@ -1,0 +1,33 @@
+<svg class="desenho" viewBox="0 0 760 305" role="img" aria-labelledby="a11f1">
+  <title id="a11f1">Taxa de falso negativo do Llama Guard 3 no ReliableBench, eixo de 0% a 15%. Barras cinza, inglês: 8,3% (74 de 892) e 8,2% (73 de 887, pares do DeepSeek). Barras azuis, tradução: NLLB-200 7,4% (66 de 892), Opus-MT 8,2% (73 de 892) e DeepSeek 12,3% (109 de 887).</title>
+
+  <rect class="base" x="215" y="8" width="400" height="248" rx="2"/>
+  <path class="traco eixo" pathLength="1" style="--d:.2s" d="M215 256 H615"/>
+  <path class="traco eixo" pathLength="1" style="--d:.3s" d="M215 256 V266 M348.3 256 V266 M481.7 256 V266 M615 256 V266"/>
+
+  <rect class="ag bar cinza" style="--d:.4s" x="215" y="20" width="221.2" height="34" rx="2"/>
+  <rect class="ag bar en" style="--d:.7s" x="215" y="68" width="197.3" height="34" rx="2"/>
+  <rect class="ag bar en" style="--d:1.0s" x="215" y="116" width="218.2" height="34" rx="2"/>
+  <rect class="ag bar cinza" style="--d:1.3s" x="215" y="164" width="219.5" height="34" rx="2"/>
+  <rect class="ag bar en" style="--d:1.6s" x="215" y="212" width="327.7" height="34" rx="2"/>
+  <rect class="traco" pathLength="1" style="--d:.4s" x="215" y="20" width="221.2" height="34" rx="2"/>
+  <rect class="traco" pathLength="1" style="--d:.7s" x="215" y="68" width="197.3" height="34" rx="2"/>
+  <rect class="traco" pathLength="1" style="--d:1.0s" x="215" y="116" width="218.2" height="34" rx="2"/>
+  <rect class="traco" pathLength="1" style="--d:1.3s" x="215" y="164" width="219.5" height="34" rx="2"/>
+  <rect class="traco grossa" pathLength="1" style="--d:1.6s" x="215" y="212" width="327.7" height="34" rx="2"/>
+
+  <text class="rt p" text-anchor="end" x="203" y="43">Inglês</text>
+  <text class="rt p" text-anchor="end" x="203" y="91">NLLB-200</text>
+  <text class="rt p" text-anchor="end" x="203" y="139">Opus-MT</text>
+  <text class="rt p" text-anchor="end" x="203" y="187">Inglês, pares do DeepSeek</text>
+  <text class="rt p forte" text-anchor="end" x="203" y="235">DeepSeek</text>
+  <text class="rt p" x="444" y="43">8,3% (74 de 892)</text>
+  <text class="rt p" x="420" y="91">7,4% (66 de 892)</text>
+  <text class="rt p" x="441" y="139">8,2% (73 de 892)</text>
+  <text class="rt p" x="442" y="187">8,2% (73 de 887)</text>
+  <text class="rt p forte" x="551" y="235">12,3% (109 de 887)</text>
+  <text class="rt p" text-anchor="middle" x="215" y="288">0%</text>
+  <text class="rt p" text-anchor="middle" x="348.3" y="288">5%</text>
+  <text class="rt p" text-anchor="middle" x="481.7" y="288">10%</text>
+  <text class="rt p" text-anchor="middle" x="615" y="288">15%</text>
+</svg>

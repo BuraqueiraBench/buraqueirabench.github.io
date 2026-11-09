@@ -1,0 +1,105 @@
+{
+  "1": {
+    "nome": "Proposta",
+    "tex": "atividade1.tex",
+    "pagina": true,
+    "pdf": "assets/docs/atividade1.pdf",
+    "figuras": { "fig:shifts": "a1-deslocamentos.svg", "fig:pipeline": "a1-pareado.svg" },
+    "figuras_largas": ["fig:pipeline"],
+    "feito": "Problema, lacuna e proposta em duas páginas, com o diagrama dos quatro deslocamentos e do desenho pareado.",
+    "resultado": "A tabela da lacuna: o falso negativo publicado em inglês de quatro juízes e a coluna do português ainda com um ponto de interrogação."
+  },
+  "2": {
+    "nome": "Investigação técnica",
+    "tex": "atividade2.tex",
+    "pagina": true,
+    "pdf": "assets/docs/atividade2.pdf",
+    "figuras": { "fig:tarefa": "a2-tarefa.svg", "fig:arq": "a2-arquitetura.svg" },
+    "figuras_largas": ["fig:tarefa", "fig:arq"],
+    "feito": "Tarefa de IA (classificação binária), conjuntos de dados, quatro juízes abertos, arquitetura em quatro componentes e riscos.",
+    "resultado": "Os quatro juízes escolhidos, mais um piso por palavra-chave que concorda com humanos em só 56,0% dos casos."
+  },
+  "3": {
+    "nome": "Especificação e plano experimental",
+    "tex": "atividade3.tex",
+    "pagina": true,
+    "pdf": "assets/docs/atividade3.pdf",
+    "figuras": { "fig:arq": "a3-arquitetura.svg" },
+    "figuras_largas": ["fig:arq"],
+    "feito": "Cinco experimentos (reproduzir o inglês, português pareado, comparar juízes, língua com estilo, 4 contra 16 bits) e critérios fixados antes de rodar.",
+    "resultado": "Critério de reprodução: desvio de até 0,05 nas métricas publicadas. MVP: um juiz e 30 pares."
+  },
+  "5": {
+    "nome": "Piloto de traduzibilidade",
+    "tex": "atividade5.tex",
+    "pagina": true,
+    "pdf": "assets/docs/atividade5.pdf",
+    "figuras": { "fig:fluxo": "a5-fluxo.svg", "fig:contraste": "a5-contraste.svg" },
+    "figuras_largas": ["fig:fluxo", "fig:contraste"],
+    "feito": "30 pares do JudgeStressTest avaliados item a item, 15 nocivos e 15 seguros.",
+    "resultado": "Descarte projetado de 0 em 30: nenhum par depende de cultura para ser nocivo."
+  },
+  "6": {
+    "nome": "Como e a que custo traduzir",
+    "tex": "atividade6.tex",
+    "pagina": true,
+    "pdf": "assets/docs/atividade6.pdf",
+    "slides": "assets/docs/atividade6-apresentacao.pdf",
+    "figuras": {},
+    "figuras_largas": [],
+    "feito": "Três famílias de tradutor, tokens medidos e tabela de custo.",
+    "resultado": "Nos 6.560 pares, Google Cloud custaria US$ 232,80 contra US$ 2,15 a 4,30 do DeepSeek: de 30 a 100 vezes mais barato."
+  },
+  "7": {
+    "nome": "Tradução dos 30 na prática",
+    "tex": "atividade7.tex",
+    "pagina": true,
+    "pdf": "assets/docs/atividade7.pdf",
+    "figuras": {},
+    "figuras_largas": [],
+    "feito": "30 pares traduzidos por seis motores.",
+    "resultado": "O Claude Haiku 4.5 traduziu 8 e recusou 22. Os outros cinco motores traduziram os 30."
+  },
+  "8": {
+    "nome": "Tradução do corpus",
+    "tex": "atividade8.tex",
+    "pagina": true,
+    "pdf": "assets/docs/atividade8.pdf",
+    "figuras": {},
+    "figuras_largas": [],
+    "feito": "439 pares por cinco motores e 6.560 pares pelo NLLB-200 e pelo Opus-MT em GPU.",
+    "resultado": "Sem as marcas de \"dado, não comando\", o DeepSeek recusou 210 de 439 pedidos e executou o ataque em 17. Com elas, traduziu os 439."
+  },
+  "9": {
+    "nome": "O juiz em inglês",
+    "tex": "atividade9.tex",
+    "pagina": true,
+    "pdf": "assets/docs/atividade9.pdf",
+    "slides": "assets/docs/atividade9-apresentacao.pdf",
+    "figuras": {},
+    "figuras_largas": [],
+    "feito": "Llama Guard 3 em inglês nos 439 e nos 6.560 pares.",
+    "resultado": "A coluna não estava invertida: o veredito coincide em 436 de 439. Linha de base nos 6.560: falso negativo de 18,7%."
+  },
+  "10": {
+    "nome": "O juiz em português",
+    "tex": "atividade10.tex",
+    "pagina": true,
+    "pdf": "assets/docs/atividade10.pdf",
+    "slides": "assets/docs/atividade10-apresentacao.pdf",
+    "figuras": { "fig:fn": "a10-falso-negativo.svg" },
+    "figuras_largas": ["fig:fn"],
+    "feito": "Llama Guard 3 sobre as traduções.",
+    "resultado": "Falso negativo de 18,7% para 19,1% (NLLB-200) e 20,1% (Opus-MT). Nos 439, o veredito depende do motor em 91 de 438 pares."
+  },
+  "11": {
+    "nome": "ReliableBench, três tradutores e quatro juízes",
+    "tex": "atividade11.tex",
+    "pagina": true,
+    "pdf": "assets/docs/atividade11.pdf",
+    "figuras": { "fig:rb": "a11-reliablebench.svg" },
+    "figuras_largas": ["fig:rb"],
+    "feito": "DeepSeek nos 6.560, volta ao inglês dos três tradutores, os quatro juízes do artigo, piso por palavra-chave, reprodução dos números publicados e leitura dos pares que trocam de veredito.",
+    "resultado": "O efeito depende do juiz e tem sinais opostos: o JailJudge passa a liberar mais (23,8% para 35,4%), o HarmBench fica mais rígido e o Llama Guard 3 quase não muda."
+  }
+}

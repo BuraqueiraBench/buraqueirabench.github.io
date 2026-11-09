@@ -1,0 +1,32 @@
+<svg class="desenho" viewBox="0 0 900 250" role="img" aria-labelledby="a2f1">
+  <title id="a2f1">A tarefa de IA é a classificação feita pelo juiz: entra um par (prompt, resposta) em PT-BR, sai nocivo ou seguro. O projeto mede o erro do juiz, por língua, comparando a saída com o rótulo humano.</title>
+
+  <path class="traco seta" pathLength="1" style="--d:.6s" d="M180 85 H230"/>
+  <path class="traco seta" pathLength="1" style="--d:.9s" d="M410 85 H460"/>
+  <path class="traco seta pt" pathLength="1" style="--d:1.5s" d="M610 85 L690 120"/>
+  <path class="traco seta pt" pathLength="1" style="--d:1.6s" d="M610 195 L690 150"/>
+
+  <rect class="base" x="10" y="40" width="170" height="90" rx="4"/>
+  <rect class="base" x="230" y="40" width="180" height="90" rx="4"/>
+  <rect class="base" x="460" y="40" width="150" height="90" rx="4"/>
+  <rect class="base" x="460" y="160" width="150" height="70" rx="4"/>
+  <rect class="base" x="690" y="85" width="200" height="85" rx="4"/>
+
+  <rect class="ag en" style="--d:.1s" x="10" y="40" width="170" height="90" rx="4"/>
+  <rect class="ag juiz" style="--d:.4s" x="230" y="40" width="180" height="90" rx="4"/>
+  <rect class="ag papel" style="--d:.7s" x="460" y="40" width="150" height="90" rx="4"/>
+  <rect class="ag pt" style="--d:1.3s" x="460" y="160" width="150" height="70" rx="4"/>
+  <rect class="ag pt" style="--d:1.7s" x="690" y="85" width="200" height="85" rx="4"/>
+
+  <rect class="traco" pathLength="1" style="--d:.1s" x="10" y="40" width="170" height="90" rx="4"/>
+  <rect class="traco grossa" pathLength="1" style="--d:.4s" x="230" y="40" width="180" height="90" rx="4"/>
+  <rect class="traco" pathLength="1" style="--d:.7s" x="460" y="40" width="150" height="90" rx="4"/>
+  <rect class="traco pt" pathLength="1" style="--d:1.3s" x="460" y="160" width="150" height="70" rx="4"/>
+  <rect class="traco pt grossa" pathLength="1" style="--d:1.7s" x="690" y="85" width="200" height="85" rx="4"/>
+
+  <text class="rt p" text-anchor="middle"><tspan class="forte" x="95" y="77">entrada</tspan><tspan x="95" y="99">par (prompt, resposta)</tspan><tspan x="95" y="121">em PT-BR</tspan></text>
+  <text class="rt p" text-anchor="middle"><tspan class="forte" x="320" y="82">juiz de segurança</tspan><tspan x="320" y="104">(modelo de linguagem)</tspan></text>
+  <text class="rt p" text-anchor="middle"><tspan class="forte" x="535" y="82">saída</tspan><tspan x="535" y="104">nocivo ou seguro</tspan></text>
+  <text class="rt p" text-anchor="middle"><tspan x="535" y="193">rótulo humano</tspan><tspan x="535" y="215">(referência)</tspan></text>
+  <text class="rt p" text-anchor="middle"><tspan class="forte" x="790" y="125">o que o projeto mede</tspan><tspan x="790" y="147">erro do juiz, por língua</tspan></text>
+</svg>

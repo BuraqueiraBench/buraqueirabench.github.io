@@ -1,0 +1,285 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Atividade 2: Investigação técnica | BuraqueiraBench</title>
+<meta name="description" content="Relatório da Atividade 2 do projeto BuraqueiraBench: Investigação técnica.">
+<link rel="icon" type="image/png" sizes="32x32" href="../assets/img/buraqueira-32.png?v=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Old+Standard+TT:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/relatorio.css?v=2">
+<script>document.documentElement.classList.add('js');</script>
+</head>
+<body>
+<a class="pular" href="#texto">Pular para o texto</a>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <filter id="aquarela" x="-20%" y="-20%" width="140%" height="140%">
+    <feTurbulence type="fractalNoise" baseFrequency=".05" numOctaves="3" seed="7" result="r"/>
+    <feDisplacementMap in="SourceGraphic" in2="r" scale="5"/>
+  </filter>
+</svg>
+<header class="topo">
+  <div class="in">
+    <a class="marca" href="../index.html#linha">BuraqueiraBench</a>
+    <span class="onde">Atividade 2 <i>de 13</i></span>
+    <a class="volta" href="../index.html#linha">Linha do tempo</a>
+  </div>
+  <div class="progresso" aria-hidden="true"><span></span></div>
+</header>
+
+<main>
+  <header class="abre">
+    <p class="sobre">Relatório da Atividade 2 &middot; Investigação técnica</p>
+    <h1>Juízes de segurança de LLM em português: medindo o deslocamento de língua</h1>
+    <p class="autor">Cristhian Kapelinski</p>
+    <p class="datas">Primeira versão em 08/09/2026, última modificação em 08/09/2026</p>
+    <p class="docs"><a href="../assets/docs/atividade2.pdf">PDF da entrega</a></p>
+    <dl class="ficha"><div><dt>O que foi feito</dt><dd>Tarefa de IA (classificação binária), conjuntos de dados, quatro juízes abertos, arquitetura em quatro componentes e riscos.</dd></div><div><dt>O que saiu</dt><dd>Os quatro juízes escolhidos, mais um piso por palavra-chave que concorda com humanos em só 56,0% dos casos.</dd></div></dl>
+    <figure class="video"><video controls preload="metadata" playsinline poster="../assets/video/atividade2-pt.jpg"><source src="../assets/video/atividade2-pt.mp4" type="video/mp4"><track kind="captions" srclang="pt-BR" label="Português" src="../assets/video/atividade2-pt.vtt"></video><figcaption>O relatório em vídeo, narrado e com legenda.</figcaption></figure>
+  </header>
+
+  <div class="corpo">
+    <nav class="sumario" aria-label="Nesta página">
+      <p>Nesta página</p>
+      <ol><li><a href="#problema-e-aplicação" data-alvo="problema-e-aplicação"><span class="num">1</span>Problema e aplicação</a></li><li><a href="#dados" data-alvo="dados"><span class="num">2</span>Dados</a></li><li><a href="#inteligência-artificial-e-trabalhos-relacionados" data-alvo="inteligência-artificial-e-trabalhos-relacionados"><span class="num">3</span>Inteligência artificial e trabalhos relacionados</a></li><li><a href="#desenvolvimento-e-avaliação" data-alvo="desenvolvimento-e-avaliação"><span class="num">4</span>Desenvolvimento e avaliação</a></li><li><a href="#uso-da-ia-na-investigação" data-alvo="uso-da-ia-na-investigação"><span class="num">5</span>Uso da IA na investigação</a></li><li><a href="#referencias" data-alvo="referencias"><span class="num"></span>Referências</a></li></ol>
+    </nav>
+    <article id="texto">
+
+<section id="problema-e-aplicação" class="level2" data-number="1">
+<h2 data-number="1"><span class="header-section-number">1</span> Problema e aplicação</h2>
+<p>Medir se um modelo de linguagem produziu conteúdo nocivo é feito hoje por um <em>juiz</em>, que é outro modelo treinado para classificar a resposta como segura ou nociva. Todo número de segurança publicado depende desse classificador. O problema é que os juízes disponíveis foram construídos e validados em inglês, e, até onde pudemos verificar, não há medição do que acontece com eles em português. Afetados: quem avalia assistentes conversacionais em português, seja em pesquisa ou em empresa, e acaba reportando um número cuja margem de erro desconhece.</p>
+<p><strong>Tarefa de IA.</strong> Classificação binária. A <strong>entrada</strong> é um par (prompt, resposta) em português; a <strong>saída</strong> é o rótulo nocivo ou seguro. O sistema a construir não é o classificador, e sim o arcabouço que o <em>afere</em>, como mostra a Figura <a class="xref" href="#fig:tarefa">1</a>.</p>
+<figure class="fig larga" id="fig:tarefa"><div class="arte"><svg class="desenho" viewBox="0 0 900 250" role="img" aria-labelledby="a2f1">
+  <title id="a2f1">A tarefa de IA é a classificação feita pelo juiz: entra um par (prompt, resposta) em PT-BR, sai nocivo ou seguro. O projeto mede o erro do juiz, por língua, comparando a saída com o rótulo humano.</title>
+
+  <path class="traco seta" pathLength="1" style="--d:.6s" d="M180 85 H230"/>
+  <path class="traco seta" pathLength="1" style="--d:.9s" d="M410 85 H460"/>
+  <path class="traco seta pt" pathLength="1" style="--d:1.5s" d="M610 85 L690 120"/>
+  <path class="traco seta pt" pathLength="1" style="--d:1.6s" d="M610 195 L690 150"/>
+
+  <rect class="base" x="10" y="40" width="170" height="90" rx="4"/>
+  <rect class="base" x="230" y="40" width="180" height="90" rx="4"/>
+  <rect class="base" x="460" y="40" width="150" height="90" rx="4"/>
+  <rect class="base" x="460" y="160" width="150" height="70" rx="4"/>
+  <rect class="base" x="690" y="85" width="200" height="85" rx="4"/>
+
+  <rect class="ag en" style="--d:.1s" x="10" y="40" width="170" height="90" rx="4"/>
+  <rect class="ag juiz" style="--d:.4s" x="230" y="40" width="180" height="90" rx="4"/>
+  <rect class="ag papel" style="--d:.7s" x="460" y="40" width="150" height="90" rx="4"/>
+  <rect class="ag pt" style="--d:1.3s" x="460" y="160" width="150" height="70" rx="4"/>
+  <rect class="ag pt" style="--d:1.7s" x="690" y="85" width="200" height="85" rx="4"/>
+
+  <rect class="traco" pathLength="1" style="--d:.1s" x="10" y="40" width="170" height="90" rx="4"/>
+  <rect class="traco grossa" pathLength="1" style="--d:.4s" x="230" y="40" width="180" height="90" rx="4"/>
+  <rect class="traco" pathLength="1" style="--d:.7s" x="460" y="40" width="150" height="90" rx="4"/>
+  <rect class="traco pt" pathLength="1" style="--d:1.3s" x="460" y="160" width="150" height="70" rx="4"/>
+  <rect class="traco pt grossa" pathLength="1" style="--d:1.7s" x="690" y="85" width="200" height="85" rx="4"/>
+
+  <text class="rt p" text-anchor="middle"><tspan class="forte" x="95" y="77">entrada</tspan><tspan x="95" y="99">par (prompt, resposta)</tspan><tspan x="95" y="121">em PT-BR</tspan></text>
+  <text class="rt p" text-anchor="middle"><tspan class="forte" x="320" y="82">juiz de segurança</tspan><tspan x="320" y="104">(modelo de linguagem)</tspan></text>
+  <text class="rt p" text-anchor="middle"><tspan class="forte" x="535" y="82">saída</tspan><tspan x="535" y="104">nocivo ou seguro</tspan></text>
+  <text class="rt p" text-anchor="middle"><tspan x="535" y="193">rótulo humano</tspan><tspan x="535" y="215">(referência)</tspan></text>
+  <text class="rt p" text-anchor="middle"><tspan class="forte" x="790" y="125">o que o projeto mede</tspan><tspan x="790" y="147">erro do juiz, por língua</tspan></text>
+</svg></div><figcaption><span class="rot">Figura 1.</span> A tarefa de IA é a classificação feita pelo juiz. O projeto não constrói o juiz: mede a distância entre a saída dele e o rótulo humano, em cada língua.</figcaption></figure>
+<p><strong>Por que IA, e não uma abordagem tradicional.</strong> A alternativa tradicional é o casamento de palavras-chave, e ela já foi medida. No JailbreakBench, esse juiz por regras concorda com anotadores humanos em 56,0% dos casos <span class="cites">[<a class="cite" href="#ref-2" data-nota="ref-2">2</a>]</span>. Sortear daria perto disso. Julgar exige entender recusa educada, ironia e cumprimento parcial, o que uma lista de termos não captura. Por isso o método baseado em regras entra aqui como piso de comparação, não como solução.</p>
+</section>
+<section id="dados" class="level2" data-number="2">
+<h2 data-number="2"><span class="header-section-number">2</span> Dados</h2>
+<p>Não é necessário coletar nem anotar de zero, o que é decisivo para o prazo. Três conjuntos públicos já trazem rótulo humano e cobrem o que o projeto precisa, como resume a Tabela <a class="xref" href="#tab:dados">1</a>.</p>
+<figure class="tab" id="tab:dados"><figcaption><span class="rot">Tabela 1.</span> Conjuntos de dados. Todos públicos e com rótulo humano de origem.</figcaption><div class="rolar"><table class="t">
+
+<thead>
+<tr class="header">
+<th style="text-align: left;"><strong>Conjunto</strong></th>
+<th style="text-align: center;"><strong>Tamanho</strong></th>
+<th style="text-align: left;"><strong>Rótulo</strong></th>
+<th style="text-align: center;"><strong>Língua</strong></th>
+<th style="text-align: left;"><strong>Papel no projeto</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">ReliableBench <span class="cites">[<a class="cite" href="#ref-4" data-nota="ref-4">4</a>]</span></td>
+<td style="text-align: center;">41 comport.</td>
+<td style="text-align: left;">humano</td>
+<td style="text-align: center;">EN</td>
+<td style="text-align: left;">conjunto principal</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">JudgeStressTest <span class="cites">[<a class="cite" href="#ref-4" data-nota="ref-4">4</a>]</span></td>
+<td style="text-align: center;">971 amostras</td>
+<td style="text-align: left;">humano</td>
+<td style="text-align: center;">EN</td>
+<td style="text-align: left;">casos difíceis</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Comparação de juízes <span class="cites">[<a class="cite" href="#ref-2" data-nota="ref-2">2</a>]</span></td>
+<td style="text-align: center;">300 pares</td>
+<td style="text-align: left;">3 anotadores</td>
+<td style="text-align: center;">EN</td>
+<td style="text-align: left;">baseline de referência</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Versão PT-BR (a produzir)</strong></td>
+<td style="text-align: center;"><strong>100–300 pares</strong></td>
+<td style="text-align: left;"><strong>revalidado</strong></td>
+<td style="text-align: center;"><strong>PT-BR</strong></td>
+<td style="text-align: left;"><strong>contribuição</strong></td>
+</tr>
+</tbody>
+</table></div></figure>
+<p><strong>Qualidade, viés e risco.</strong> O risco central é a tradução. Brito et al. <span class="cites">[<a class="cite" href="#ref-5" data-nota="ref-5">5</a>]</span> descartaram tradução automática ao montar um corpus bilíngue porque a carga ofensiva depende da cultura e se perde no caminho. A mitigação é a revalidação às cegas: reanotar a versão traduzida sem ver o rótulo original e descartar o item que divergir. A taxa de descarte é resultado a reportar, não um detalhe de implementação. Há ainda desbalanceamento conhecido, tratado por subamostragem equilibrada como em <span class="cites">[<a class="cite" href="#ref-3" data-nota="ref-3">3</a>]</span>, e risco de contaminação, já que conjuntos públicos podem ter entrado no treino dos juízes. Sobre privacidade não há exposição: o conteúdo é sintético e público, sem dado pessoal.</p>
+</section>
+<section id="inteligência-artificial-e-trabalhos-relacionados" class="level2" data-number="3">
+<h2 data-number="3"><span class="header-section-number">3</span> Inteligência artificial e trabalhos relacionados</h2>
+<p><strong>Técnica.</strong> Nenhum treinamento é necessário: os juízes são usados em inferência, com temperatura zero para reprodutibilidade. Isso mantém o projeto pequeno e a comparação honesta, porque treinar mudaria o instrumento que se quer medir. Serão comparados quatro juízes abertos usados na literatura de referência, LlamaGuard-3 8B, o classificador HarmBench de 13B, AegisGuard e JailJudge, mais o piso baseado em regras. <strong>Requisitos:</strong> o maior modelo tem 13 bilhões de parâmetros, cerca de 26 GB em meia precisão, ou perto de 8 GB com quantização de 4 bits; o volume total fica na ordem de milhares de inferências, viável em horas em uma GPU com memória suficiente para o maior juiz.</p>
+<figure class="tab" id="tab:rel"><figcaption><span class="rot">Tabela 2.</span> Posicionamento. A coluna central indica se o juiz é o objeto medido ou apenas o instrumento usado.</figcaption><div class="rolar"><table class="t">
+
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>Trabalho</strong></td>
+<td style="text-align: left;"><strong>Abordagem</strong></td>
+<td style="text-align: center;"><strong>Juiz é o</strong></td>
+<td style="text-align: left;"><strong>Limitação a explorar</strong></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: center;"><strong>objeto?</strong></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Zheng et al. <span class="cites">[<a class="cite" href="#ref-1" data-nota="ref-1">1</a>]</span></td>
+<td style="text-align: left;">concordância juiz-humano em tarefas gerais</td>
+<td style="text-align: center;">sim</td>
+<td style="text-align: left;">não trata segurança nem outra língua</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Chao et al. <span class="cites">[<a class="cite" href="#ref-2" data-nota="ref-2">2</a>]</span></td>
+<td style="text-align: left;">escolhe o melhor juiz entre seis</td>
+<td style="text-align: center;">sim</td>
+<td style="text-align: left;">escolha estática, sem deslocamento</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Eiras et al. <span class="cites">[<a class="cite" href="#ref-3" data-nota="ref-3">3</a>]</span></td>
+<td style="text-align: left;">altera estilo e saída, mede falso negativo</td>
+<td style="text-align: center;">sim</td>
+<td style="text-align: left;">só inglês, 100 exemplos</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Schwinn et al. <span class="cites">[<a class="cite" href="#ref-4" data-nota="ref-4">4</a>]</span></td>
+<td style="text-align: left;">três deslocamentos, 6.642 rótulos</td>
+<td style="text-align: center;">sim</td>
+<td style="text-align: left;">língua não é um dos deslocamentos</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Brito et al. <span class="cites">[<a class="cite" href="#ref-5" data-nota="ref-5">5</a>]</span></td>
+<td style="text-align: left;">disparidade demográfica, corpus EN e PT</td>
+<td style="text-align: center;">não</td>
+<td style="text-align: left;">usa o juiz sem aferi-lo em PT</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Este trabalho</strong></td>
+<td style="text-align: left;"><strong>língua como quarto deslocamento</strong></td>
+<td style="text-align: center;"><strong>sim</strong></td>
+<td style="text-align: left;"><strong>—</strong></td>
+</tr>
+</tbody>
+</table></div></figure>
+<p>A Tabela <a class="xref" href="#tab:rel">2</a> situa o projeto entre esses trabalhos. A diferença em relação a todos eles é de eixo, não de método: o protocolo é o mesmo já publicado, aplicado a uma variável que nenhum deles varia. Isso é deliberado, pois reusar protocolo validado reduz risco e torna os resultados diretamente comparáveis aos números em inglês.</p>
+</section>
+<section id="desenvolvimento-e-avaliação" class="level2" data-number="4">
+<h2 data-number="4"><span class="header-section-number">4</span> Desenvolvimento e avaliação</h2>
+<figure class="tab" id="tab:risco"><figcaption><span class="rot">Tabela 3.</span> Riscos técnicos e alternativas.</figcaption><div class="rolar"><table class="t">
+
+<thead>
+<tr class="header">
+<th style="text-align: left;"><strong>Risco</strong></th>
+<th style="text-align: left;"><strong>Alternativa</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Tradução altera a nocividade e o descarte fica alto</td>
+<td style="text-align: left;">restringir a comportamentos sem carga cultural; reportar a taxa de descarte como achado</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">GPU insuficiente para o juiz de 13B</td>
+<td style="text-align: left;">quantização de 4 bits, ou usar somente juízes de até 8B</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Juiz se recusa a julgar, como relatado em <span class="cites">[<a class="cite" href="#ref-2" data-nota="ref-2">2</a>]</span></td>
+<td style="text-align: left;">adotar o prompt específico do JailbreakBench ou trocar o modelo</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Conjunto público já usado no treino do juiz</td>
+<td style="text-align: left;">declarar como limitação: não há como auditar os dados de treino desses modelos</td>
+</tr>
+</tbody>
+</table></div></figure>
+<p><strong>Arquitetura.</strong> Quatro componentes, na Figura <a class="xref" href="#fig:arq">2</a>. O executor expõe uma interface única para os quatro juízes e para o piso de regras, de modo que trocar de juiz não muda o resto do sistema.</p>
+<figure class="fig larga" id="fig:arq"><div class="arte"><svg class="desenho" viewBox="0 0 900 230" role="img" aria-labelledby="a2f2">
+  <title id="a2f2">Arquitetura em quatro componentes: carregador dos conjuntos públicos, tradutor com revalidação às cegas (em destaque, onde está o risco), executor de quatro juízes mais piso de regras e agregador de métricas, com comparação pareada.</title>
+
+  <path class="traco seta" pathLength="1" style="--d:.6s" d="M180 110 H230"/>
+  <path class="traco seta" pathLength="1" style="--d:1.0s" d="M430 110 H490"/>
+  <path class="traco seta" pathLength="1" style="--d:1.4s" d="M690 110 H750"/>
+
+  <rect class="base" x="10" y="70" width="170" height="80" rx="4"/>
+  <rect class="base" x="230" y="70" width="200" height="80" rx="4"/>
+  <rect class="base" x="490" y="70" width="200" height="80" rx="4"/>
+  <rect class="base" x="750" y="70" width="140" height="80" rx="4"/>
+
+  <rect class="ag papel" style="--d:.1s" x="10" y="70" width="170" height="80" rx="4"/>
+  <rect class="ag pt" style="--d:.5s" x="230" y="70" width="200" height="80" rx="4"/>
+  <rect class="ag papel" style="--d:.9s" x="490" y="70" width="200" height="80" rx="4"/>
+  <rect class="ag papel" style="--d:1.3s" x="750" y="70" width="140" height="80" rx="4"/>
+
+  <rect class="traco" pathLength="1" style="--d:.1s" x="10" y="70" width="170" height="80" rx="4"/>
+  <rect class="traco pt grossa" pathLength="1" style="--d:.5s" x="230" y="70" width="200" height="80" rx="4"/>
+  <rect class="traco" pathLength="1" style="--d:.9s" x="490" y="70" width="200" height="80" rx="4"/>
+  <rect class="traco" pathLength="1" style="--d:1.3s" x="750" y="70" width="140" height="80" rx="4"/>
+
+  <text class="rt p" text-anchor="middle"><tspan x="95" y="100"><tspan class="forte">(i)</tspan> carregador</tspan><tspan x="95" y="122">dos conjuntos</tspan><tspan x="95" y="144">públicos</tspan></text>
+  <text class="rt p" text-anchor="middle"><tspan x="330" y="100"><tspan class="forte">(ii)</tspan> tradutor com</tspan><tspan x="330" y="122">revalidação às cegas</tspan><tspan class="it" x="330" y="144">registra o descarte</tspan></text>
+  <text class="rt p" text-anchor="middle"><tspan x="590" y="100"><tspan class="forte">(iii)</tspan> executor</tspan><tspan x="590" y="122">4 juízes + piso</tspan><tspan x="590" y="144">de regras</tspan></text>
+  <text class="rt p" text-anchor="middle"><tspan x="820" y="105"><tspan class="forte">(iv)</tspan> agregador</tspan><tspan x="820" y="127">de métricas</tspan></text>
+
+  <text class="rt p it" text-anchor="middle" x="205" y="52">EN</text>
+  <text class="rt p it" text-anchor="middle" x="460" y="52" style="fill:var(--pt-texto)">EN + PT-BR</text>
+  <text class="rt p it" text-anchor="middle" x="720" y="52">rótulos preditos</text>
+  <text class="rt p it" text-anchor="middle" x="205" y="186">rótulo humano</text>
+  <text class="rt p it" text-anchor="middle" x="820" y="186">comparação pareada</text>
+</svg></div><figcaption><span class="rot">Figura 2.</span> Arquitetura. O componente (ii), em destaque, é onde está o risco do projeto: o que não sobrevive à tradução é descartado ali.</figcaption></figure>
+<p><strong>Menor protótipo funcional.</strong> Um script que recebe um par (prompt, resposta) e um juiz e devolve o rótulo, somado a 100 pares traduzidos e revalidados. Isso já preenche a primeira célula da comparação e é entregável sozinho.</p>
+<p><strong>Avaliação.</strong> A solução funciona se reproduzir, dentro do erro esperado, os números publicados em inglês, e então medir a versão em português. As métricas são as da literatura, o que permite comparar direto com os números em inglês. A principal é a taxa de falso negativo, a fração de respostas nocivas que o juiz libera como seguras. Acompanham acurácia, F1, taxa de falso positivo e área sob a curva ROC, em que 0,5 equivale a sortear, mais o Kappa contra o rótulo humano, que mede concordância descontando o acerto por sorte. Os baselines são dois: o juiz de regras, como piso, e os valores publicados em inglês, como referência. Três experimentos: E1 reproduz o inglês e valida o ambiente; E2 mede o português no desenho pareado; E3, opcional, cruza língua com a reescrita de estilo de <span class="cites">[<a class="cite" href="#ref-3" data-nota="ref-3">3</a>]</span> para ver se os efeitos se somam.</p>
+<p><strong>Riscos e viabilidade.</strong> A Tabela <a class="xref" href="#tab:risco">3</a> lista os riscos técnicos e a alternativa de cada um. O projeto cabe no semestre porque não treina modelo, não coleta dado novo e reusa protocolo publicado. Falta obter apenas tempo de GPU, já disponível no laboratório. O maior risco não é computacional, e sim a taxa de descarte na revalidação da tradução: se for alta, o conjunto final encolhe e a comparação perde poder estatístico. Por isso a primeira etapa do semestre é justamente medir esse descarte em uma amostra pequena, antes de traduzir o resto.</p>
+<section class="refs" id="referencias"><h2>Referências</h2><ol><li id="ref-1">Zheng, L., Chiang, W.-L., Sheng, Y., and others (2023). Judging LLM-as-a-Judge with MT-Bench and Chatbot Arena. <em>NeurIPS 2023, Datasets and Benchmarks</em>. <a href="https://arxiv.org/abs/2306.05685" target="_blank" rel="noopener">arXiv:2306.05685</a>.</li><li id="ref-2">Chao, P., Debenedetti, E., Robey, A., and others (2024). JailbreakBench: An Open Robustness Benchmark for Jailbreaking Large Language Models. <em>NeurIPS 2024, Datasets and Benchmarks</em>. <a href="https://arxiv.org/abs/2404.01318" target="_blank" rel="noopener">arXiv:2404.01318</a>.</li><li id="ref-3">Eiras, F., Zemour, E., Lin, E., and Mugunthan, V. (2025). Know Thy Judge: On the Robustness Meta-Evaluation of LLM Safety Judges. <em>ICBINB Workshop @ ICLR 2025</em>. <a href="https://arxiv.org/abs/2503.04474" target="_blank" rel="noopener">arXiv:2503.04474</a>.</li><li id="ref-4">Schwinn, L., Ladenburger, M., Beyer, T., Mofakhami, M., Gidel, G., and Günnemann, S. (2026). A Coin Flip for Safety: LLM Judges Fail to Reliably Measure Adversarial Robustness. <a href="https://arxiv.org/abs/2603.06594" target="_blank" rel="noopener">arXiv:2603.06594</a>.</li><li id="ref-5">Brito, I. A., Rios, W. S. R., Dollis, J. S., Silva, D. F. C., and Galvão Filho, A. R. (2026). Safety Is Not Universal: The Selective Safety Trap in LLM Alignment. <a href="https://arxiv.org/abs/2601.04389" target="_blank" rel="noopener">arXiv:2601.04389</a>.</li><li id="ref-6">Gu, J., Jiang, X., Shi, Z., and others (2024). A Survey on LLM-as-a-Judge. <a href="https://arxiv.org/abs/2411.15594" target="_blank" rel="noopener">arXiv:2411.15594</a>.</li><li id="ref-7">Zhang, Q., Xiong, Z., and Mao, Z. M. (2024). LLM Safeguard is a Double-Edged Sword: Exploiting False Positives for Denial-of-Service Attacks. <a href="https://arxiv.org/abs/2410.02916" target="_blank" rel="noopener">arXiv:2410.02916</a>.</li></ol></section>
+</section>
+<section id="uso-da-ia-na-investigação" class="level2" data-number="5">
+<h2 data-number="5"><span class="header-section-number">5</span> Uso da IA na investigação</h2>
+<p>A investigação foi conduzida com o Claude, em rodadas de crítica e verificação. Os prompts principais foram: (i) “pesquise se não tem algo exatamente assim na literatura”; (ii) “verifique qualquer afirmação sem citação”; (iii) “leia todos os artigos que são citados completos, baixe e leia inteiro todos”; e (iv) “corrija qualquer erro”.</p>
+<p>O terceiro prompt foi o mais produtivo e mudou o resultado. Cada afirmação passou a ser conferida contra o artigo original, e não contra resumo ou trecho de busca. Três não sobreviveram à checagem. Primeiro, Zheng et al. <span class="cites">[<a class="cite" href="#ref-1" data-nota="ref-1">1</a>]</span> eram citados como evidência de que o juiz automático “virou padrão”, mas o próprio artigo declara que não havia estudo sistemático do método, ou seja, ele propõe a técnica em vez de atestar sua adoção; a citação foi trocada. Segundo, um dado de anotação de Brito et al. <span class="cites">[<a class="cite" href="#ref-5" data-nota="ref-5">5</a>]</span> havia sido descartado como não confirmado, e o artigo confirma: três especialistas bilíngues, com 863 de 864 prompts validados no recorte em português. Terceiro, Zhang et al. <span class="cites">[<a class="cite" href="#ref-7" data-nota="ref-7">7</a>]</span> eram citados de forma larga, e verificou-se que cobrem a exploração de falsos positivos para negar serviço, mas não o laço adaptativo que se cogitava atacar.</p>
+<p>A checagem nas fontes primárias também revelou a principal ameaça à validade do projeto, que nenhum resumo mostrava: Brito et al. descartaram deliberadamente a tradução automática por perda de carga cultural, e a proposta se baseia em traduzir. Isso não foi descartado como inconveniente, e sim incorporado como risco explícito, com a revalidação às cegas como controle e a taxa de descarte como resultado a reportar.</p>
+<p>Sugestões descartadas na investigação, todas por viabilidade e não por mérito: otimizar sufixos adversariais por gradiente entre línguas, por custo computacional; envenenar o laço de adaptação de um limiar dinâmico de defesa, por exigir construir a defesa antes de atacá-la; e treinar um juiz próprio em português, porque treinar alteraria justamente o instrumento que o projeto se propõe a medir.</p>
+</section>
+
+    </article>
+  </div>
+
+  <nav class="vizinhos" aria-label="Outras atividades">
+    <a class="viz ant" href="atividade1.html"><span class="seta" aria-hidden="true">←</span><span><small>Atividade 1</small><b>Proposta</b></span></a>
+    <a class="meio" href="../index.html#linha">Linha do tempo</a>
+    <a class="viz prox" href="atividade3.html"><span class="seta" aria-hidden="true">→</span><span><small>Atividade 3</small><b>Especificação e plano experimental</b></span></a>
+  </nav>
+</main>
+
+<footer class="pe">
+  <p>Cristhian Kapelinski e Beatriz Roland Machado, Laboratório de Inteligência Artificial Aplicada, UNIPAMPA, 2026/2.
+  Texto convertido do relatório em LaTeX.</p>
+</footer>
+<script src="../assets/js/relatorio.js?v=2"></script>
+</body>
+</html>

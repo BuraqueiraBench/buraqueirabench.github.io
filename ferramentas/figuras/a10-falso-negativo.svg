@@ -1,0 +1,24 @@
+<svg class="desenho" viewBox="0 0 760 215" role="img" aria-labelledby="a10f1">
+  <title id="a10f1">Taxa de falso negativo do Llama Guard 3 nos mesmos 6.560 pares, em escala de 0% a 100%: inglês 966 de 5.174 (18,7%), NLLB-200 990 de 5.174 (19,1%) e Opus-MT 1.041 de 5.174 (20,1%).</title>
+
+  <rect class="base" x="120" y="8" width="620" height="164" rx="2"/>
+  <path class="traco eixo" pathLength="1" style="--d:.2s" d="M120 172 H740"/>
+  <path class="traco eixo" pathLength="1" style="--d:.3s" d="M120 172 V180"/>
+  <path class="traco eixo" pathLength="1" style="--d:.3s" d="M740 172 V180"/>
+
+  <rect class="ag bar en" style="--d:.4s" x="120" y="24" width="115.8" height="34" rx="2"/>
+  <rect class="ag bar pt" style="--d:.8s" x="120" y="78" width="118.6" height="34" rx="2"/>
+  <rect class="ag bar pt" style="--d:1.2s" x="120" y="132" width="124.7" height="34" rx="2"/>
+  <rect class="traco" pathLength="1" style="--d:.4s" x="120" y="24" width="115.8" height="34" rx="2"/>
+  <rect class="traco" pathLength="1" style="--d:.8s" x="120" y="78" width="118.6" height="34" rx="2"/>
+  <rect class="traco" pathLength="1" style="--d:1.2s" x="120" y="132" width="124.7" height="34" rx="2"/>
+
+  <text class="rt p" text-anchor="end" x="108" y="47">Inglês</text>
+  <text class="rt p" text-anchor="end" x="108" y="101">NLLB-200</text>
+  <text class="rt p" text-anchor="end" x="108" y="155">Opus-MT</text>
+  <text class="rt p" x="246" y="47">966 de 5.174 (18,7%)</text>
+  <text class="rt p" x="249" y="101">990 de 5.174 (19,1%)</text>
+  <text class="rt p" x="255" y="155">1.041 de 5.174 (20,1%)</text>
+  <text class="rt p" text-anchor="middle" x="120" y="204">0%</text>
+  <text class="rt p" text-anchor="middle" x="740" y="204">100%</text>
+</svg>

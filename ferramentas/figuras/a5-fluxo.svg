@@ -1,0 +1,35 @@
+<svg class="desenho" viewBox="0 0 980 200" role="img" aria-labelledby="a5f1">
+  <title id="a5f1">Fluxo do piloto: 439 pares rotulados em inglês, 30 sorteados (15 nocivos e 15 seguros, semente 20260921), avaliação da tradução (onde mora o risco), comparação com o rótulo e descarte de 0 de 30.</title>
+
+  <path class="traco seta" pathLength="1" style="--d:.6s" d="M170 80 H210"/>
+  <path class="traco seta" pathLength="1" style="--d:1.0s" d="M370 80 H410"/>
+  <path class="traco seta" pathLength="1" style="--d:1.4s" d="M570 80 H610"/>
+  <path class="traco seta" pathLength="1" style="--d:1.8s" d="M770 80 H810"/>
+
+  <rect class="base" x="10" y="30" width="160" height="100" rx="4"/>
+  <rect class="base" x="210" y="30" width="160" height="100" rx="4"/>
+  <rect class="base" x="410" y="30" width="160" height="100" rx="4"/>
+  <rect class="base" x="610" y="30" width="160" height="100" rx="4"/>
+  <rect class="base" x="810" y="30" width="160" height="100" rx="4"/>
+
+  <rect class="ag papel" style="--d:.1s" x="10" y="30" width="160" height="100" rx="4"/>
+  <rect class="ag papel" style="--d:.5s" x="210" y="30" width="160" height="100" rx="4"/>
+  <rect class="ag pt" style="--d:.9s" x="410" y="30" width="160" height="100" rx="4"/>
+  <rect class="ag papel" style="--d:1.3s" x="610" y="30" width="160" height="100" rx="4"/>
+  <rect class="ag en" style="--d:1.7s" x="810" y="30" width="160" height="100" rx="4"/>
+
+  <rect class="traco" pathLength="1" style="--d:.1s" x="10" y="30" width="160" height="100" rx="4"/>
+  <rect class="traco" pathLength="1" style="--d:.5s" x="210" y="30" width="160" height="100" rx="4"/>
+  <rect class="traco pt grossa" pathLength="1" style="--d:.9s" x="410" y="30" width="160" height="100" rx="4"/>
+  <rect class="traco" pathLength="1" style="--d:1.3s" x="610" y="30" width="160" height="100" rx="4"/>
+  <rect class="traco grossa" pathLength="1" style="--d:1.7s" x="810" y="30" width="160" height="100" rx="4"/>
+
+  <text class="rt p" text-anchor="middle"><tspan x="90" y="73"><tspan class="forte">439</tspan> pares</tspan><tspan x="90" y="95">rotulados (EN)</tspan></text>
+  <text class="rt p" text-anchor="middle"><tspan x="290" y="62"><tspan class="forte">30</tspan> sorteados</tspan><tspan x="290" y="84">15 nocivos</tspan><tspan x="290" y="106">15 seguros</tspan></text>
+  <text class="rt p" text-anchor="middle"><tspan class="forte" x="490" y="73">avaliar</tspan><tspan x="490" y="95">tradução</tspan></text>
+  <text class="rt p" text-anchor="middle"><tspan class="forte" x="690" y="73">comparar</tspan><tspan x="690" y="95">vs rótulo</tspan></text>
+  <text class="rt p" text-anchor="middle"><tspan class="forte" x="890" y="73">descarte</tspan><tspan x="890" y="95">0 de 30</tspan></text>
+
+  <text class="rt p it" text-anchor="middle" x="290" y="158">semente 20260921</text>
+  <text class="rt p it" text-anchor="middle" x="490" y="158" style="fill:var(--pt-texto)">onde mora o risco</text>
+</svg>

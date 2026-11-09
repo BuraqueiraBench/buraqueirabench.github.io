@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Atividade 7: Tradução dos 30 na prática | BuraqueiraBench</title>
+<meta name="description" content="Relatório da Atividade 7 do projeto BuraqueiraBench: Tradução dos 30 na prática.">
+<link rel="icon" type="image/png" sizes="32x32" href="../assets/img/buraqueira-32.png?v=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Old+Standard+TT:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/relatorio.css?v=2">
+<script>document.documentElement.classList.add('js');</script>
+</head>
+<body>
+<a class="pular" href="#texto">Pular para o texto</a>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <filter id="aquarela" x="-20%" y="-20%" width="140%" height="140%">
+    <feTurbulence type="fractalNoise" baseFrequency=".05" numOctaves="3" seed="7" result="r"/>
+    <feDisplacementMap in="SourceGraphic" in2="r" scale="5"/>
+  </filter>
+</svg>
+<header class="topo">
+  <div class="in">
+    <a class="marca" href="../index.html#linha">BuraqueiraBench</a>
+    <span class="onde">Atividade 7 <i>de 13</i></span>
+    <a class="volta" href="../index.html#linha">Linha do tempo</a>
+  </div>
+  <div class="progresso" aria-hidden="true"><span></span></div>
+</header>
+
+<main>
+  <header class="abre">
+    <p class="sobre">Relatório da Atividade 7 &middot; Tradução dos 30 na prática</p>
+    <h1>Juízes de segurança de LLM em português: terceira entrega, tradução dos trinta na prática</h1>
+    <p class="autor">Cristhian Kapelinski</p>
+    <p class="datas">Primeira versão em 06/10/2026, última modificação em 06/10/2026</p>
+    <p class="docs"><a href="../assets/docs/atividade7.pdf">PDF da entrega</a></p>
+    <dl class="ficha"><div><dt>O que foi feito</dt><dd>30 pares traduzidos por seis motores.</dd></div><div><dt>O que saiu</dt><dd>O Claude Haiku 4.5 traduziu 8 e recusou 22. Os outros cinco motores traduziram os 30.</dd></div></dl>
+    
+  </header>
+
+  <div class="corpo">
+    <nav class="sumario" aria-label="Nesta página">
+      <p>Nesta página</p>
+      <ol><li><a href="#o-que-esta-entrega-faz" data-alvo="o-que-esta-entrega-faz"><span class="num">1</span>O que esta entrega faz</a></li><li><a href="#montagem-do-teste" data-alvo="montagem-do-teste"><span class="num">2</span>Montagem do teste</a></li><li><a href="#cobertura-quem-traduz-tudo-e-quem-recusa" data-alvo="cobertura-quem-traduz-tudo-e-quem-recusa"><span class="num">3</span>Cobertura: quem traduz tudo e quem recusa</a></li><li><a href="#o-que-o-claude-recusou-e-por-quê" data-alvo="o-que-o-claude-recusou-e-por-quê"><span class="num">4</span>O que o Claude recusou, e por quê</a></li><li><a href="#qualidade-quando-o-motor-traduz" data-alvo="qualidade-quando-o-motor-traduz"><span class="num">5</span>Qualidade quando o motor traduz</a></li><li><a href="#leitura-e-recomendação" data-alvo="leitura-e-recomendação"><span class="num">6</span>Leitura e recomendação</a></li><li><a href="#uso-de-ia-e-verificação" data-alvo="uso-de-ia-e-verificação"><span class="num">7</span>Uso de IA e verificação</a></li><li><a href="#artefatos" data-alvo="artefatos"><span class="num">8</span>Artefatos</a></li></ol>
+    </nav>
+    <article id="texto">
+
+<section id="o-que-esta-entrega-faz" class="level2" data-number="1">
+<h2 data-number="1"><span class="header-section-number">1</span> O que esta entrega faz</h2>
+<p>A Atividade 5 projetou descarte nulo para o piloto de trinta pares, e a Atividade 6 comparou os métodos de tradução por custo e cobriu um teste pequeno. Esta entrega fecha o teste: traduz de fato os trinta pares com seis motores de tradução, mede quem traduz tudo e quem recusa, e analisa a qualidade. O ponto novo é o <em>Claude</em>, um LLM alinhado à segurança, posto a traduzir por um agente, sem API; e os três motores abertos agora rodam sobre os trinta itens inteiros, não sobre uma amostra. O resultado principal é direto e decide a escolha de motor do projeto: o único que recusa é o LLM alinhado, e ele recusa a maior parte do corpus.</p>
+</section>
+<section id="montagem-do-teste" class="level2" data-number="2">
+<h2 data-number="2"><span class="header-section-number">2</span> Montagem do teste</h2>
+<p>O material é a mesma amostra de trinta pares (prompt, resposta) da A5, sorteada do <em>JudgeStressTest</em>, com oito itens de conteúdo operacional, código de malware, injeção em banco, mineração clandestina, síntese de explosivo e de droga. O que se traduz é a resposta do modelo, que carrega o sinal de nocividade que o juiz avalia. Seis motores, das três famílias da A6: dois LLMs, o <em>Claude Haiku 4.5</em> por um agente e o <em>DeepSeek</em> pela API; a tradução dedicada, pelo <em>Google Tradutor</em> na interface pública gratuita; e os três abertos, <em>NLLB-200</em>, <em>Opus-MT</em> e <em>Argos</em>, rodando localmente na CPU, offline. Os itens operacionais entraram no teste, porque são os que mais podem fazer um tradutor recusar ou desviar. A tradução completa dos trinta por cada motor, inclusive a dos operacionais, está nos artefatos: é material de um benchmark público traduzido para a pesquisa. No corpo do relatório os exemplos mostrados são de itens benignos, só por legibilidade. A linha do Claude foi obtida mandando um agente traduzir cada item e registrar, por item, se traduziu ou declinou; a do Google, pelo endpoint web livre, o mesmo que serve o tradutor pessoal.</p>
+</section>
+<section id="cobertura-quem-traduz-tudo-e-quem-recusa" class="level2" data-number="3">
+<h2 data-number="3"><span class="header-section-number">3</span> Cobertura: quem traduz tudo e quem recusa</h2>
+<p>A Tabela <a class="xref" href="#tab:cobertura">1</a> traz o resultado central. Cinco dos seis motores traduzem os trinta de trinta, inclusive os oito operacionais, sem uma recusa. O <em>Claude Haiku</em>, não: traduziu apenas oito dos trinta e recusou vinte e dois, entre eles <strong>todos os oito operacionais</strong> e mais quatorze itens de persuasão, golpe, listas e afins. A recusa não é um detalhe de cobertura, é a variável que decide: um LLM alinhado à segurança trata a tradução de um ataque como um pedido a recusar, e o corpus é, por construção, feito de ataques.</p>
+<figure class="tab" id="tab:cobertura"><figcaption><span class="rot">Tabela 1.</span> Cobertura dos seis motores sobre os trinta pares, com os operacionais incluídos. Razão = caracteres PT sobre EN, nos itens que o motor traduziu. Tempo = total para os trinta; os remotos (Google, DeepSeek) são de rede, e os três abertos rodaram ao mesmo tempo na mesma CPU, então seus tempos são limite superior, não medição isolada. O recado é a ordem de grandeza: remoto em segundos, aberto local em muitos minutos.</figcaption><div class="rolar"><table class="t">
+
+<thead>
+<tr class="header">
+<th style="text-align: left;"><strong>Motor</strong></th>
+<th style="text-align: left;"><strong>Família</strong></th>
+<th style="text-align: center;"><strong>Traduziu</strong></th>
+<th style="text-align: center;"><strong>Recusou</strong></th>
+<th style="text-align: left;"><strong>Razão</strong></th>
+<th style="text-align: left;"><strong>Tempo</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Google Tradutor</td>
+<td style="text-align: left;">dedicada</td>
+<td style="text-align: center;">30 de 30</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: left;">1,09</td>
+<td style="text-align: left;">50 s</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">DeepSeek (API)</td>
+<td style="text-align: left;">LLM</td>
+<td style="text-align: center;">30 de 30</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: left;">1,18</td>
+<td style="text-align: left;">70 s</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Opus-MT (local)</td>
+<td style="text-align: left;">aberta</td>
+<td style="text-align: center;">30 de 30</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: left;">0,40</td>
+<td style="text-align: left;">74 min</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Argos (local)</td>
+<td style="text-align: left;">aberta</td>
+<td style="text-align: center;">30 de 30</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: left;">1,05</td>
+<td style="text-align: left;">8 min</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">NLLB-200 (local)</td>
+<td style="text-align: left;">aberta</td>
+<td style="text-align: center;">30 de 30</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: left;">1,05</td>
+<td style="text-align: left;">59 min</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Claude Haiku 4.5</strong></td>
+<td style="text-align: left;">LLM</td>
+<td style="text-align: center;"><strong>8 de 30</strong></td>
+<td style="text-align: center;"><strong>22</strong></td>
+<td style="text-align: left;">1,51</td>
+<td style="text-align: left;">2 min</td>
+</tr>
+</tbody>
+</table></div></figure>
+</section>
+<section id="o-que-o-claude-recusou-e-por-quê" class="level2" data-number="4">
+<h2 data-number="4"><span class="header-section-number">4</span> O que o Claude recusou, e por quê</h2>
+<p>O agente do Claude registrou o motivo de cada recusa. O padrão é claro: ele recusa sempre que a resposta <em>ensina ou cumpre</em> o pedido nocivo, não importa o tema. Recusou os oito operacionais (código de evasão, injeção SQL, rootkit, síntese de explosivo e montagem de laboratório de droga) e mais quatorze itens não operacionais: modelos de phishing e de golpe romântico, listas para desmanche de carro, artigos que reescrevem conflito ou história de forma enganosa, citação fabricada e incentivo a transtorno alimentar. Dos trinta, só sobraram oito que ele julgou inócuos o bastante para traduzir. O contraste com o DeepSeek, outro LLM, é o ponto fino: na A6 o DeepSeek traduziu os trinta sem recusar. A recusa, portanto, não é propriedade de “ser LLM”, é propriedade do <em>alinhamento</em> do modelo e do enquadramento do pedido, e varia de um fornecedor para outro.</p>
+</section>
+<section id="qualidade-quando-o-motor-traduz" class="level2" data-number="5">
+<h2 data-number="5"><span class="header-section-number">5</span> Qualidade quando o motor traduz</h2>
+<p>Recusa à parte, quando um motor traduz, o sinal sobrevive; a diferença entre eles é de qualidade e de robustez sobre o texto cru, não de significado. A Tabela <a class="xref" href="#tab:exemplo">2</a> mostra o começo de um item benigno em quatro motores: as versões são equivalentes. O Google é o mais consistente e fica colado no original (razão 1,09). Entre os abertos, o Argos foi o que melhor engoliu o documento inteiro de uma vez (razão 1,05). Os outros dois abertos exigiram cuidado, e isso é um achado: o Opus-MT, sobre o documento longo, trunca e traduz só o começo, a razão desaba para 0,40, porque é um modelo de sentença e precisa ser alimentado sentença a sentença; o NLLB-200 tem o problema oposto, na decodificação ingênua ele repete e dobra o texto, e só volta ao normal (razão 1,05) com trava de n-grama e tradução por sentença, ao custo de ser o mais lento, cerca de uma hora de CPU para os trinta. O Claude, quando aceita, traduz tão bem quanto o Google, apenas um pouco mais longo (razão 1,51); o problema dele nunca foi a qualidade, foi aceitar.</p>
+<figure class="tab" id="tab:exemplo"><figcaption><span class="rot">Tabela 2.</span> Início de um item benigno (artigo persuasivo) traduzido por quatro motores. Equivalentes; a diferença é estilística.</figcaption><div class="rolar"><table class="t">
+
+<thead>
+<tr class="header">
+<th style="text-align: left;"><strong>Fonte (EN)</strong></th>
+<th style="text-align: left;"><em>Sure, I can help you draft a persuasive article with that title.</em></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Google Tradutor</td>
+<td style="text-align: left;">Claro, posso ajudá-lo a redigir um artigo persuasivo com esse título.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Claude Haiku</td>
+<td style="text-align: left;">Claro, posso ajudá-lo a elaborar um artigo persuasivo com esse título.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Opus-MT (aberto)</td>
+<td style="text-align: left;">Claro, eu posso ajudá-lo a redigir um artigo persuasivo com esse título.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">NLLB-200 (aberto)</td>
+<td style="text-align: left;">Claro, posso ajudar-te a escrever um artigo convincente com esse título.</td>
+</tr>
+</tbody>
+</table></div></figure>
+</section>
+<section id="leitura-e-recomendação" class="level2" data-number="6">
+<h2 data-number="6"><span class="header-section-number">6</span> Leitura e recomendação</h2>
+<p>O teste confirma e endurece a recomendação da A6. O motor primário de tradução do corpus não pode ser um LLM alinhado à segurança: o Claude recusaria a maior parte do material, justamente os itens mais importantes de avaliar. O motor primário tem de ser um que nunca recusa, a tradução dedicada (Google) ou um modelo aberto (Opus-MT, Argos), e pode haver um LLM no conjunto, mas um permissivo como o DeepSeek, não um alinhado. O Claude e similares ficam, no máximo, como referência de fluência sobre o subconjunto benigno que aceitam. A proposta de conjunto da A6 segue de pé, com uma regra a mais, verificada aqui: pelo menos um motor do conjunto tem de ser garantidamente não recusante, e a discordância ou a recusa de um motor marca o item para outro motor assumir.</p>
+</section>
+<section id="uso-de-ia-e-verificação" class="level2" data-number="7">
+<h2 data-number="7"><span class="header-section-number">7</span> Uso de IA e verificação</h2>
+<p>As traduções foram executadas de fato, não descritas. O Google saiu do endpoint web gratuito; o Claude Haiku foi dirigido por um agente que registrou, por item, traduziu ou declinou, com o motivo; o DeepSeek vem da API, medido na A6; e o NLLB-200, o Opus-MT e o Argos rodaram localmente na CPU, com o tempo medido. A contagem de cobertura e a razão de comprimento foram calculadas sobre as saídas reais. A tradução completa dos trinta itens por motor está nos artefatos, incluindo os operacionais, por serem dados de um benchmark público traduzidos para a pesquisa; no corpo do relatório os exemplos são de itens benignos, só por legibilidade.</p>
+</section>
+<section id="artefatos" class="level2" data-number="8">
+<h2 data-number="8"><span class="header-section-number">8</span> Artefatos</h2>
+<p>Na pasta <code>atividade7/traducoes/</code> está o dado completo, um arquivo por motor (<code>google.json</code>, <code>deepseek.json</code>, <code>claude-haiku.json</code>, <code>opus-mt.json</code>, <code>argos.json</code>, <code>nllb-200.json</code>), com, por item, o prompt e a resposta em inglês, a tradução em português, os comprimentos, o desfecho e o tempo. <code>cobertura.json</code> resume por motor e item, e <code>recusas_haiku.json</code> traz o motivo de cada recusa do Claude.</p>
+</section>
+
+    </article>
+  </div>
+
+  <nav class="vizinhos" aria-label="Outras atividades">
+    <a class="viz ant" href="atividade6.html"><span class="seta" aria-hidden="true">←</span><span><small>Atividade 6</small><b>Como e a que custo traduzir</b></span></a>
+    <a class="meio" href="../index.html#linha">Linha do tempo</a>
+    <a class="viz prox" href="atividade8.html"><span class="seta" aria-hidden="true">→</span><span><small>Atividade 8</small><b>Tradução do corpus</b></span></a>
+  </nav>
+</main>
+
+<footer class="pe">
+  <p>Cristhian Kapelinski e Beatriz Roland Machado, Laboratório de Inteligência Artificial Aplicada, UNIPAMPA, 2026/2.
+  Texto convertido do relatório em LaTeX.</p>
+</footer>
+<script src="../assets/js/relatorio.js?v=2"></script>
+</body>
+</html>

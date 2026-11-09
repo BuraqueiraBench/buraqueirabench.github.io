@@ -1,0 +1,388 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Atividade 6: Como e a que custo traduzir | BuraqueiraBench</title>
+<meta name="description" content="Relatório da Atividade 6 do projeto BuraqueiraBench: Como e a que custo traduzir.">
+<link rel="icon" type="image/png" sizes="32x32" href="../assets/img/buraqueira-32.png?v=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Old+Standard+TT:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/relatorio.css?v=2">
+<script>document.documentElement.classList.add('js');</script>
+</head>
+<body>
+<a class="pular" href="#texto">Pular para o texto</a>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <filter id="aquarela" x="-20%" y="-20%" width="140%" height="140%">
+    <feTurbulence type="fractalNoise" baseFrequency=".05" numOctaves="3" seed="7" result="r"/>
+    <feDisplacementMap in="SourceGraphic" in2="r" scale="5"/>
+  </filter>
+</svg>
+<header class="topo">
+  <div class="in">
+    <a class="marca" href="../index.html#linha">BuraqueiraBench</a>
+    <span class="onde">Atividade 6 <i>de 13</i></span>
+    <a class="volta" href="../index.html#linha">Linha do tempo</a>
+  </div>
+  <div class="progresso" aria-hidden="true"><span></span></div>
+</header>
+
+<main>
+  <header class="abre">
+    <p class="sobre">Relatório da Atividade 6 &middot; Como e a que custo traduzir</p>
+    <h1>Juízes de segurança de LLM em português: segunda entrega, como e a que custo traduzir</h1>
+    <p class="autor">Cristhian Kapelinski</p>
+    <p class="datas">Primeira versão em 27/09/2026, última modificação em 06/10/2026</p>
+    <p class="docs"><a href="../assets/docs/atividade6.pdf">PDF da entrega</a> <a href="../assets/docs/atividade6-apresentacao.pdf">Slides</a></p>
+    <dl class="ficha"><div><dt>O que foi feito</dt><dd>Três famílias de tradutor, tokens medidos e tabela de custo.</dd></div><div><dt>O que saiu</dt><dd>Nos 6.560 pares, Google Cloud custaria US$ 232,80 contra US$ 2,15 a 4,30 do DeepSeek: de 30 a 100 vezes mais barato.</dd></div></dl>
+    
+  </header>
+
+  <div class="corpo">
+    <nav class="sumario" aria-label="Nesta página">
+      <p>Nesta página</p>
+      <ol><li><a href="#o-que-mudou-desde-a-atividade-5" data-alvo="o-que-mudou-desde-a-atividade-5"><span class="num">1</span>O que mudou desde a Atividade 5</a></li><li><a href="#métodos-considerados" data-alvo="métodos-considerados"><span class="num">2</span>Métodos considerados</a></li><li><a href="#sec:token" data-alvo="sec:token"><span class="num">3</span>Estimativa de tokens e custo do corpus</a></li><li><a href="#tabela-comparativa-de-custo" data-alvo="tabela-comparativa-de-custo"><span class="num">4</span>Tabela comparativa de custo</a></li><li><a href="#teste-real-tradutores-testados" data-alvo="teste-real-tradutores-testados"><span class="num">5</span>Teste real: tradutores testados</a></li><li><a href="#leitura-e-recomendação" data-alvo="leitura-e-recomendação"><span class="num">6</span>Leitura e recomendação</a></li><li><a href="#uso-de-ia-e-verificação" data-alvo="uso-de-ia-e-verificação"><span class="num">7</span>Uso de IA e verificação</a></li><li><a href="#artefatos" data-alvo="artefatos"><span class="num">8</span>Artefatos</a></li><li><a href="#notas" data-alvo="notas"><span class="num"></span>Notas</a></li></ol>
+    </nav>
+    <article id="texto">
+
+<section id="o-que-mudou-desde-a-atividade-5" class="level2" data-number="1">
+<h2 data-number="1"><span class="header-section-number">1</span> O que mudou desde a Atividade 5</h2>
+<p>A Atividade 5 entregou o piloto de traduzibilidade e projetou descarte nulo, 0 de 30, para o corpus de dano operacional. A conclusão de lá foi direta: o rótulo deve sobreviver à tradução, então o passo seguinte é executar a tradução do corpus. Isso abre uma decisão que a A5 não respondeu: com qual método traduzir, a que custo e com qual qualidade. Esta entrega investiga essa decisão, com preços verificados, estimativa de tokens do corpus real e um teste concreto de um tradutor dedicado contra um LLM. O achado principal muda a forma de pensar o passo: no subconjunto difícil de julgar o custo é desprezível em qualquer método, e mesmo no conjunto completo o LLM barato fica na casa de poucos dólares, então a escolha se decide por qualidade, controle e privacidade, não por preço.</p>
+</section>
+<section id="métodos-considerados" class="level2" data-number="2">
+<h2 data-number="2"><span class="header-section-number">2</span> Métodos considerados</h2>
+<p>Três famílias, com naturezas diferentes. <strong>LLM instruível</strong>, como DeepSeek, Gemini, GPT e Claude: aceita instrução, então dá para pedir que não suavize nem endureça o conteúdo e que mantenha código e números, o que interessa diretamente à preservação do rótulo medida na A5. <strong>Tradução automática dedicada</strong>, como Google Cloud Translation, DeepL, Azure e Amazon: motor de tradução puro, determinístico e forte em fluência, mas sem como receber a instrução de preservar um sinal deliberado. <strong>Modelos abertos auto-hospedados</strong>, como NLLB-200, Opus-MT e Argos: custo de API zero e nenhum dado sai para terceiros, o que importa aqui porque o conteúdo é material nocivo de benchmark, mas exigem GPU e configuração e tendem a fluência menor.</p>
+</section>
+<section id="sec:token" class="level2" data-number="3">
+<h2 data-number="3"><span class="header-section-number">3</span> Estimativa de tokens e custo do corpus</h2>
+<p>Os tokens não vêm de heurística: foram contados com um tokenizador real, o <code>o200k_base</code>, sobre o texto do corpus, e a razão saída sobre entrada foi medida no teste com o DeepSeek. A Tabela <a class="xref" href="#tab:premissas">1</a> traz as medições. Uma primeira versão usava a regra de bolso de 4 caracteres por token, que superestimou a entrada em cerca de 15 por cento; os números abaixo já estão corrigidos.</p>
+<figure class="tab" id="tab:premissas"><figcaption><span class="rot">Tabela 1.</span> Medições, não estimativas. Tokens de entrada contados com o tokenizador o200k sobre o texto real; razão saída sobre entrada medida no teste com o DeepSeek.</figcaption><div class="rolar"><table class="t">
+
+<thead>
+<tr class="header">
+<th style="text-align: left;"><strong>Medição</strong></th>
+<th style="text-align: left;"><strong>Valor medido</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Densidade de token, corpus real</td>
+<td style="text-align: left;">4,60 caracteres por token</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Tokens de entrada, JudgeStressTest 439</td>
+<td style="text-align: left;">151.962</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Tokens de entrada, CoinflipForSafety completo 6.560</td>
+<td style="text-align: left;">2.504.123</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Razão saída sobre entrada, PT sobre EN</td>
+<td style="text-align: left;">1,18 (medido no DeepSeek)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Sobrecarga de instrução por chamada</td>
+<td style="text-align: left;">cerca de 55 tokens</td>
+</tr>
+</tbody>
+</table></div></figure>
+</section>
+<section id="tabela-comparativa-de-custo" class="level2" data-number="4">
+<h2 data-number="4"><span class="header-section-number">4</span> Tabela comparativa de custo</h2>
+<p>A Tabela <a class="xref" href="#tab:custo">2</a> traz o custo total em dois escopos medidos por inteiro, ambos do mesmo artigo: o subconjunto de casos difíceis de julgar, com 439 pares (JudgeStressTest), e o conjunto completo de 6.560 pares (CoinflipForSafety), que o contém, com os preços de setembro de 2026.<a href="#fn1" class="fnref" id="fnref1" data-nota="fn1"><sup>1</sup></a> O escopo completo usa a versão do <em>CoinflipForSafety</em> publicada no HuggingFace (<code>ASSELab/CoinflipForSafety</code>), que traz a resposta do modelo para os 6.560 pares. O arquivo <code>a_coinflip_judge_data.csv</code> do repositório no GitHub vem sem a coluna de resposta, só com o prompt e os rótulos; medir sobre ele contaria apenas o pedido e subestimaria o volume, e com ele o custo. Como o experimento é julgar a resposta traduzida, o escopo tem de incluir a resposta, e por isso a medição é feita sobre a versão do HuggingFace.</p>
+<figure class="tab" id="tab:custo"><figcaption><span class="rot">Tabela 2.</span> Custo total da tradução, em dólares, com tokens medidos (o200k) sobre o corpus inteiro, em dois escopos do mesmo artigo: o subconjunto difícil de julgar JudgeStressTest (439 pares) e o conjunto completo CoinflipForSafety (6.560 pares) que o contém. Os dois trazem a resposta do modelo. LLMs cobram por token, tradutores dedicados por caractere. DeepSeek Flash na faixa off-peak a peak.</figcaption><div class="rolar"><table class="t">
+
+<thead>
+<tr class="header">
+<th style="text-align: left;"><strong>Método</strong></th>
+<th style="text-align: left;"><strong>Família</strong></th>
+<th style="text-align: left;"><strong>439</strong></th>
+<th style="text-align: left;"><strong>6.560</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">NLLB-200 / Opus-MT / Argos</td>
+<td style="text-align: left;">aberto</td>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">DeepSeek V4.1-Flash</td>
+<td style="text-align: left;">LLM</td>
+<td style="text-align: left;">0,13 a 0,26</td>
+<td style="text-align: left;">2,15 a 4,30</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">GPT-5.4 Nano</td>
+<td style="text-align: left;">LLM</td>
+<td style="text-align: left;">0,25</td>
+<td style="text-align: left;">4,19</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Gemini 3.1 Flash-Lite</td>
+<td style="text-align: left;">LLM</td>
+<td style="text-align: left;">0,31</td>
+<td style="text-align: left;">5,06</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">GPT-5.4 Mini</td>
+<td style="text-align: left;">LLM</td>
+<td style="text-align: left;">0,46</td>
+<td style="text-align: left;">7,60</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Gemini 3.5 Flash-Lite</td>
+<td style="text-align: left;">LLM</td>
+<td style="text-align: left;">0,49</td>
+<td style="text-align: left;">8,14</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">DeepSeek V4-Pro</td>
+<td style="text-align: left;">LLM</td>
+<td style="text-align: left;">0,91</td>
+<td style="text-align: left;">15,01</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Claude Haiku 4.5</td>
+<td style="text-align: left;">LLM</td>
+<td style="text-align: left;">1,05</td>
+<td style="text-align: left;">17,28</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Claude Sonnet 4.6</td>
+<td style="text-align: left;">LLM</td>
+<td style="text-align: left;">3,15</td>
+<td style="text-align: left;">51,84</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">DeepL API Pro</td>
+<td style="text-align: left;">dedicada</td>
+<td style="text-align: left;">3,84</td>
+<td style="text-align: left;">63,90</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Azure Translator</td>
+<td style="text-align: left;">dedicada</td>
+<td style="text-align: left;">6,99</td>
+<td style="text-align: left;">116,40</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Amazon Translate</td>
+<td style="text-align: left;">dedicada</td>
+<td style="text-align: left;">10,48</td>
+<td style="text-align: left;">174,60</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Google Cloud Translation</td>
+<td style="text-align: left;">dedicada</td>
+<td style="text-align: left;">13,97</td>
+<td style="text-align: left;">232,80</td>
+</tr>
+</tbody>
+</table></div></figure>
+<p>Duas leituras saltam. A primeira, sobre escala: no subconjunto difícil de 439 pares nenhum método passa de quatorze dólares, então ali o custo não decide nada; já no conjunto completo, de 6.560 pares com resposta, a tradução dedicada chega a duzentos e trinta e três dólares no Google, enquanto o LLM barato fica em poucos dólares, cerca de dois a quatro no DeepSeek. A segunda é estrutural e explica a primeira: os LLMs baratos saem de trinta a cem vezes mais baratos que as APIs de tradução dedicada, porque estas cobram por caractere, cerca de cinco a vinte dólares por milhão, enquanto um token barato de LLM equivale a poucos centavos por milhão de caracteres. O motor dedicado, historicamente a opção óbvia para traduzir em escala, é aqui o mais caro, e a diferença só vira dinheiro de verdade quando o corpus cresce.</p>
+<p>Cada linha traz a versão do modelo que a cobra, e são as servidas pela API em outubro de 2026. O Gemini entra com a 3.1 Flash-Lite, não com a 2.5 Flash-Lite que uma versão anterior desta conta usava: a 2.5 Flash-Lite, embora mais barata a 0,10 por 0,40 dólar por milhão de tokens, é descontinuada em 16 de outubro de 2026, então cotá-la seria cotar um preço que a API deixa de atender. A troca não muda a leitura: no conjunto completo o Gemini fica em cinco dólares, ainda uma ordem de grandeza abaixo dos duzentos e trinta e três do Google.</p>
+<p>Uma ressalva importante sobre o Google, porque há dois produtos com o mesmo nome. O Google Tradutor para uma pessoa, no site ou no aplicativo, é gratuito e sem limite prático, mas serve para traduzir à mão, não para rodar um corpus por programa. O que a Tabela <a class="xref" href="#tab:custo">2</a> custeia é a <em>Google Cloud Translation API</em>, a via oficial para tradução automatizada, que é paga, vinte dólares por milhão de caracteres, com os primeiros 500 mil por mês grátis. O teste desta entrega usou o endpoint web gratuito e não oficial, que funciona para poucas frases, mas não é rota sancionada para o corpus inteiro, tem limite de taxa e pode quebrar. Na prática, dá para testar o Google de graça, mas traduzir o corpus inteiro pela via oficial é pago. A cota gratuita de 500 mil caracteres por mês não cobre nem o subconjunto de 439 pares, de 699 mil caracteres, nem o completo de 6.560, de 11,6 milhões.</p>
+</section>
+<section id="teste-real-tradutores-testados" class="level2" data-number="5">
+<h2 data-number="5"><span class="header-section-number">5</span> Teste real: tradutores testados</h2>
+<p>Testei seis tradutores de verdade, das três famílias. Dois LLMs, o Claude e o DeepSeek pela sua API com o modelo <code>deepseek-chat</code>; a tradução dedicada, pelo Google; e os três abertos, Argos, Opus-MT e NLLB-200, rodando localmente na CPU. Desta vez os itens de payload operacional, malware e síntese, entraram no teste, porque são justamente os que mais podem quebrar um tradutor. A Tabela <a class="xref" href="#tab:cobertura">3</a> traz a cobertura: os motores locais e o DeepSeek traduzem tudo o que recebem, incluindo os quatro operacionais. Para os exemplos, o envio a serviços externos ficou restrito aos trechos benignos; dos operacionais só se registrou o desfecho, traduziu ou não, nunca o texto. Todos preservam o sinal de segurança nos trechos benignos, como mostra a Tabela <a class="xref" href="#tab:teste">5</a>: a cautela continua cautela, a diferença é estilística. O motor dedicado e os abertos são mais literais; os dois LLMs são mais naturais e, o que importa para o projeto, aceitam a instrução de manter código e números e de não suavizar, coisa que os outros não aceitam.</p>
+<figure class="tab" id="tab:cobertura"><figcaption><span class="rot">Tabela 3.</span> Cobertura dos tradutores, com os itens operacionais incluídos. Motores abertos rodam localmente na CPU; do DeepSeek registrou-se só o desfecho por item, sem o texto. O NLLB foi medido em uma amostra por ser lento na CPU.</figcaption><div class="rolar"><table class="t">
+
+<thead>
+<tr class="header">
+<th style="text-align: left;"><strong>Motor</strong></th>
+<th style="text-align: left;"><strong>Onde roda</strong></th>
+<th style="text-align: center;"><strong>Traduzidos</strong></th>
+<th style="text-align: center;"><strong>Tempo</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Argos (aberto)</td>
+<td style="text-align: left;">local, offline (CPU)</td>
+<td style="text-align: center;">30 de 30</td>
+<td style="text-align: center;">35 s</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Opus-MT (aberto)</td>
+<td style="text-align: left;">local, offline (CPU)</td>
+<td style="text-align: center;">30 de 30</td>
+<td style="text-align: center;">53 s</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">NLLB-200 (aberto)</td>
+<td style="text-align: left;">local, offline (CPU)</td>
+<td style="text-align: center;">10 de 10 (amostra)</td>
+<td style="text-align: center;">120 s</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">DeepSeek (LLM, API)</td>
+<td style="text-align: left;">remoto</td>
+<td style="text-align: center;">30 de 30</td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table></div></figure>
+<p>Com a vazão medida nesse teste dá para projetar quanto levaria rodar os dois conjuntos inteiros nos motores abertos locais, na CPU e sem custo de API. O Argos, a cerca de 1,2 segundo por par, levaria uns 9 minutos nos 439 pares e cerca de 2 horas nos 6.560; o Opus-MT, a 1,8 segundo por par, uns 13 minutos e 3 horas; o NLLB-200, bem mais lento a 12 segundos por par, cerca de 1,5 hora nos 439 e 22 horas nos 6.560, o que o inviabiliza para o conjunto completo sem GPU. Os motores abertos custam zero de API, então o preço deles é esse tempo de máquina; os LLMs e os dedicados cobram o valor da Tabela <a class="xref" href="#tab:custo">2</a> e rodam em paralelo pela API, com o gargalo em dinheiro, não em tempo. A Tabela <a class="xref" href="#tab:projecao">4</a> reúne a projeção.</p>
+<figure class="tab" id="tab:projecao"><figcaption><span class="rot">Tabela 4.</span> Projeção de tempo e custo para traduzir cada conjunto inteiro, a partir do que foi rodado: o tempo dos abertos vem da vazão medida na CPU; o custo vem da Tabela <a class="xref" href="#tab:custo">2</a>. O tempo de API dos LLMs e dedicados não foi medido, mas é paralelizável.</figcaption><div class="rolar"><table class="t">
+
+<thead>
+<tr class="header">
+<th style="text-align: left;"></th>
+<th colspan="2" style="text-align: center;"><strong>439 pares</strong></th>
+<th colspan="2" style="text-align: center;"><strong>6.560 pares</strong></th>
+</tr>
+<tr>
+<th style="text-align: left;"><strong>Motor</strong></th>
+<th style="text-align: left;"><strong>tempo</strong></th>
+<th style="text-align: left;"><strong>custo</strong></th>
+<th style="text-align: left;"><strong>tempo</strong></th>
+<th style="text-align: left;"><strong>custo</strong></th>
+</tr></thead>
+<tbody>
+
+<tr class="even">
+<td style="text-align: left;">Argos (aberto, CPU)</td>
+<td style="text-align: left;">~9 min</td>
+<td style="text-align: left;">US$ 0</td>
+<td style="text-align: left;">~2,1 h</td>
+<td style="text-align: left;">US$ 0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Opus-MT (aberto, CPU)</td>
+<td style="text-align: left;">~13 min</td>
+<td style="text-align: left;">US$ 0</td>
+<td style="text-align: left;">~3,2 h</td>
+<td style="text-align: left;">US$ 0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">NLLB-200 (aberto, CPU)</td>
+<td style="text-align: left;">~1,5 h</td>
+<td style="text-align: left;">US$ 0</td>
+<td style="text-align: left;">~22 h</td>
+<td style="text-align: left;">US$ 0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">DeepSeek V4.1-Flash (API)</td>
+<td style="text-align: left;">paralelo</td>
+<td style="text-align: left;">US$ 0,13 a 0,26</td>
+<td style="text-align: left;">paralelo</td>
+<td style="text-align: left;">US$ 2,15 a 4,30</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Google Cloud (API)</td>
+<td style="text-align: left;">paralelo</td>
+<td style="text-align: left;">US$ 13,97</td>
+<td style="text-align: left;">paralelo</td>
+<td style="text-align: left;">US$ 232,80</td>
+</tr>
+</tbody>
+</table></div></figure>
+<section id="risco-da-tradução-por-llm" class="level2 unnumbered">
+<h3 class="unnumbered">Risco da tradução por LLM</h3>
+<p>O LLM é o único tradutor que pode se recusar a traduzir, porque o conteúdo do corpus é, por construção, um ataque, e uma recusa devolve texto fora do tema que corromperia o dado em silêncio. Medi esse risco de fato: o DeepSeek traduziu os 30 itens, inclusive os 4 de payload operacional, sem nenhuma recusa. Mas o resultado depende do modelo e do prompt, um modelo com alinhamento mais rígido ou um prompt sem enquadramento claro de tradução pode recusar, então a recusa entra como risco a monitorar, com detecção automática e reserva em outro motor. Os tradutores dedicados e os abertos não têm esse risco: não são modelos de instrução alinhados à segurança, então traduzem qualquer entrada, como confirmam os 30 de 30 do Argos e do Opus-MT.</p>
+<figure class="tab" id="tab:teste"><figcaption><span class="rot">Tabela 5.</span> O mesmo trecho seguro traduzido pelos seis tradutores testados. Todos preservam o caráter de cautela.</figcaption><div class="rolar"><table class="t">
+
+<thead>
+<tr class="header">
+<th style="text-align: left;"><strong>Fonte (EN)</strong></th>
+<th style="text-align: left;"><em>Just a quick note of caution: please be careful with any links or attachments in emails, as they can sometimes be unsafe.</em></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Google Tradutor (dedicada)</td>
+<td style="text-align: left;">Apenas uma rápida nota de cautela: tenha cuidado com quaisquer links ou anexos em e-mails, pois às vezes eles podem ser inseguros.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Claude (LLM)</td>
+<td style="text-align: left;">Só um aviso rápido: tenha cuidado com links ou anexos em e-mails, que às vezes não são seguros.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">DeepSeek (LLM, API)</td>
+<td style="text-align: left;">Só um rápido aviso de cautela: por favor, tome cuidado com quaisquer links ou anexos em e-mails, pois às vezes eles podem ser inseguros.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Argos (aberto, local)</td>
+<td style="text-align: left;">Apenas uma rápida nota de cuidado: por favor, tenha cuidado com quaisquer links ou anexos em e-mails, pois eles podem às vezes ser inseguros.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Opus-MT (aberto, local)</td>
+<td style="text-align: left;">Apenas uma nota rápida de cautela: por favor, tenha cuidado com quaisquer links ou anexos em e-mails, pois eles às vezes podem ser inseguros.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">NLLB-200 (aberto, local)</td>
+<td style="text-align: left;">Apenas uma breve nota de cautela: por favor, tenha cuidado com quaisquer links ou anexos nos e-mails, pois às vezes podem ser inseguros.</td>
+</tr>
+</tbody>
+</table></div></figure>
+</section>
+</section>
+<section id="leitura-e-recomendação" class="level2" data-number="6">
+<h2 data-number="6"><span class="header-section-number">6</span> Leitura e recomendação</h2>
+<p>Como o custo é desprezível, a decisão passa a ser de qualidade, controle e privacidade, e cada família tem uma troca própria, resumida na Tabela <a class="xref" href="#tab:proscontras">6</a>.</p>
+<figure class="tab" id="tab:proscontras"><figcaption><span class="rot">Tabela 6.</span> Prós e contras por família de tradutor.</figcaption><div class="rolar"><table class="t">
+
+<thead>
+<tr class="header">
+<th style="text-align: left;"><strong>Família</strong></th>
+<th style="text-align: left;"><strong>Prós</strong></th>
+<th style="text-align: left;"><strong>Contras</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">LLM instruível</td>
+<td style="text-align: left;">aceita instrução, mantém código e números, não suaviza; fluente; barato</td>
+<td style="text-align: left;">pode recusar ou desviar em conteúdo adversarial, corrompendo o dado; custo por token varia por fornecedor</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Tradução dedicada</td>
+<td style="text-align: left;">determinística, forte em fluência, nunca recusa</td>
+<td style="text-align: left;">não aceita instrução; paga; envia o conteúdo a terceiros</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Aberto, auto-hospedado</td>
+<td style="text-align: left;">grátis, privado e offline, nunca recusa; reprodutível com versão presa</td>
+<td style="text-align: left;">mais lento na CPU, fluência um pouco menor; exige GPU ou paciência</td>
+</tr>
+</tbody>
+</table></div></figure>
+<p>Por isso a recomendação deixa de ser um tradutor único e passa a ser um pequeno conjunto, dois a três motores de famílias diferentes, todos baratos. Um LLM instruível, DeepSeek Flash ou Gemini 3.1 Flash-Lite, pela fidelidade e pela instrução de preservar código e rótulo. Um tradutor aberto local, Opus-MT ou Argos, como reserva privada que nunca recusa e cobre o item quando o LLM falha. E o Google como referência de fluência para auditar uma amostra. O custo somado continua baixo mesmo no conjunto completo, e o conjunto de motores dá resiliência: se o LLM recusar um item, o motor aberto assume, e a discordância entre motores sinaliza os casos difíceis de traduzir, que merecem revisão humana. Para reprodutibilidade, cada motor entra com versão e prompt presos, para que a mesma tradução saia amanhã.</p>
+</section>
+<section id="uso-de-ia-e-verificação" class="level2" data-number="7">
+<h2 data-number="7"><span class="header-section-number">7</span> Uso de IA e verificação</h2>
+<p>Os preços foram verificados por busca nas páginas dos fornecedores e em rastreadores de preço, em setembro de 2026, com a linha do Gemini reconferida em outubro quando a 2.5 Flash-Lite foi marcada para descontinuação, e conferidos entre si. Os tokens foram contados com o tokenizador o200k sobre o texto real do corpus, não por regra de bolso, incluindo o conjunto completo na versão do HuggingFace que traz as respostas, e a razão saída sobre entrada foi medida no teste com o DeepSeek. Os testes de tradução foram executados de fato: o Google Tradutor pela interface pública, o Claude pelo próprio assistente, o DeepSeek pela API, e os três abertos, Argos, Opus-MT e NLLB-200, rodando localmente na CPU. O teste de recusa exigiu enviar também os itens operacionais ao DeepSeek, mas dele se registrou apenas o desfecho, traduziu ou não, e a tradução em si foi descartada, nunca gravada nem incluída no repositório. Os exemplos de tradução mostrados usam só os trechos benignos.</p>
+</section>
+<section id="artefatos" class="level2" data-number="8">
+<h2 data-number="8"><span class="header-section-number">8</span> Artefatos</h2>
+<p>Na pasta <code>atividade6/</code>: <code>precos.csv</code> lista os preços por método com a fonte; <code>tokens_medidos.json</code> traz a contagem de tokens do corpus; <code>teste_deepseek.json</code>, <code>teste_comparativo.json</code> e <code>teste_abertos.json</code> trazem os trechos seguros traduzidos pelos tradutores testados, com os tokens reais da API do DeepSeek e a cobertura dos abertos; <code>risco_llm.json</code> traz o desfecho por item do teste de recusa, sem o texto traduzido; e <code>custo_medido.py</code> recomputa a Tabela <a class="xref" href="#tab:custo">2</a> a partir dos tokens medidos e da razão medida.</p>
+</section>
+<aside id="notas" class="notas" role="doc-endnotes"><h2>Notas</h2>
+<ol>
+<li id="fn1"><p>Preços por token: <a href="https://deepseek.ai/pricing" target="_blank" rel="noopener">DeepSeek</a>, <a href="https://ai.google.dev/pricing" target="_blank" rel="noopener">Gemini</a>, <a href="https://openai.com/api/pricing/" target="_blank" rel="noopener">OpenAI</a>, <a href="https://www.anthropic.com/pricing" target="_blank" rel="noopener">Anthropic</a>. Por caractere: <a href="https://cloud.google.com/translate/pricing" target="_blank" rel="noopener">Google Cloud Translation</a>, <a href="https://www.deepl.com/pro-api" target="_blank" rel="noopener">DeepL</a>, <a href="https://aws.amazon.com/translate/pricing/" target="_blank" rel="noopener">Amazon</a>, <a href="https://azure.microsoft.com/en-us/pricing/details/translator/" target="_blank" rel="noopener">Azure</a>. Verificados em setembro de 2026; a linha do Gemini foi reconferida em outubro de 2026.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</aside>
+
+    </article>
+  </div>
+
+  <nav class="vizinhos" aria-label="Outras atividades">
+    <a class="viz ant" href="atividade5.html"><span class="seta" aria-hidden="true">←</span><span><small>Atividade 5</small><b>Piloto de traduzibilidade</b></span></a>
+    <a class="meio" href="../index.html#linha">Linha do tempo</a>
+    <a class="viz prox" href="atividade7.html"><span class="seta" aria-hidden="true">→</span><span><small>Atividade 7</small><b>Tradução dos 30 na prática</b></span></a>
+  </nav>
+</main>
+
+<footer class="pe">
+  <p>Cristhian Kapelinski e Beatriz Roland Machado, Laboratório de Inteligência Artificial Aplicada, UNIPAMPA, 2026/2.
+  Texto convertido do relatório em LaTeX.</p>
+</footer>
+<script src="../assets/js/relatorio.js?v=2"></script>
+</body>
+</html>

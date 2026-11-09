@@ -1,0 +1,33 @@
+<svg class="desenho" viewBox="0 0 900 230" role="img" aria-labelledby="a2f2">
+  <title id="a2f2">Arquitetura em quatro componentes: carregador dos conjuntos públicos, tradutor com revalidação às cegas (em destaque, onde está o risco), executor de quatro juízes mais piso de regras e agregador de métricas, com comparação pareada.</title>
+
+  <path class="traco seta" pathLength="1" style="--d:.6s" d="M180 110 H230"/>
+  <path class="traco seta" pathLength="1" style="--d:1.0s" d="M430 110 H490"/>
+  <path class="traco seta" pathLength="1" style="--d:1.4s" d="M690 110 H750"/>
+
+  <rect class="base" x="10" y="70" width="170" height="80" rx="4"/>
+  <rect class="base" x="230" y="70" width="200" height="80" rx="4"/>
+  <rect class="base" x="490" y="70" width="200" height="80" rx="4"/>
+  <rect class="base" x="750" y="70" width="140" height="80" rx="4"/>
+
+  <rect class="ag papel" style="--d:.1s" x="10" y="70" width="170" height="80" rx="4"/>
+  <rect class="ag pt" style="--d:.5s" x="230" y="70" width="200" height="80" rx="4"/>
+  <rect class="ag papel" style="--d:.9s" x="490" y="70" width="200" height="80" rx="4"/>
+  <rect class="ag papel" style="--d:1.3s" x="750" y="70" width="140" height="80" rx="4"/>
+
+  <rect class="traco" pathLength="1" style="--d:.1s" x="10" y="70" width="170" height="80" rx="4"/>
+  <rect class="traco pt grossa" pathLength="1" style="--d:.5s" x="230" y="70" width="200" height="80" rx="4"/>
+  <rect class="traco" pathLength="1" style="--d:.9s" x="490" y="70" width="200" height="80" rx="4"/>
+  <rect class="traco" pathLength="1" style="--d:1.3s" x="750" y="70" width="140" height="80" rx="4"/>
+
+  <text class="rt p" text-anchor="middle"><tspan x="95" y="100"><tspan class="forte">(i)</tspan> carregador</tspan><tspan x="95" y="122">dos conjuntos</tspan><tspan x="95" y="144">públicos</tspan></text>
+  <text class="rt p" text-anchor="middle"><tspan x="330" y="100"><tspan class="forte">(ii)</tspan> tradutor com</tspan><tspan x="330" y="122">revalidação às cegas</tspan><tspan class="it" x="330" y="144">registra o descarte</tspan></text>
+  <text class="rt p" text-anchor="middle"><tspan x="590" y="100"><tspan class="forte">(iii)</tspan> executor</tspan><tspan x="590" y="122">4 juízes + piso</tspan><tspan x="590" y="144">de regras</tspan></text>
+  <text class="rt p" text-anchor="middle"><tspan x="820" y="105"><tspan class="forte">(iv)</tspan> agregador</tspan><tspan x="820" y="127">de métricas</tspan></text>
+
+  <text class="rt p it" text-anchor="middle" x="205" y="52">EN</text>
+  <text class="rt p it" text-anchor="middle" x="460" y="52" style="fill:var(--pt-texto)">EN + PT-BR</text>
+  <text class="rt p it" text-anchor="middle" x="720" y="52">rótulos preditos</text>
+  <text class="rt p it" text-anchor="middle" x="205" y="186">rótulo humano</text>
+  <text class="rt p it" text-anchor="middle" x="820" y="186">comparação pareada</text>
+</svg>

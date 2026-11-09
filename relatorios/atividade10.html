@@ -1,0 +1,309 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Atividade 10: O juiz em português | BuraqueiraBench</title>
+<meta name="description" content="Relatório da Atividade 10 do projeto BuraqueiraBench: O juiz em português.">
+<link rel="icon" type="image/png" sizes="32x32" href="../assets/img/buraqueira-32.png?v=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Old+Standard+TT:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/relatorio.css?v=2">
+<script>document.documentElement.classList.add('js');</script>
+</head>
+<body>
+<a class="pular" href="#texto">Pular para o texto</a>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <filter id="aquarela" x="-20%" y="-20%" width="140%" height="140%">
+    <feTurbulence type="fractalNoise" baseFrequency=".05" numOctaves="3" seed="7" result="r"/>
+    <feDisplacementMap in="SourceGraphic" in2="r" scale="5"/>
+  </filter>
+</svg>
+<header class="topo">
+  <div class="in">
+    <a class="marca" href="../index.html#linha">BuraqueiraBench</a>
+    <span class="onde">Atividade 10 <i>de 13</i></span>
+    <a class="volta" href="../index.html#linha">Linha do tempo</a>
+  </div>
+  <div class="progresso" aria-hidden="true"><span></span></div>
+</header>
+
+<main>
+  <header class="abre">
+    <p class="sobre">Relatório da Atividade 10 &middot; O juiz em português</p>
+    <h1>Juízes de segurança de LLM em português: sexta entrega, o juiz em português</h1>
+    <p class="autor">Cristhian Kapelinski</p>
+    <p class="datas">Primeira versão em 24/10/2026, última modificação em 24/10/2026</p>
+    <p class="docs"><a href="../assets/docs/atividade10.pdf">PDF da entrega</a> <a href="../assets/docs/atividade10-apresentacao.pdf">Slides</a></p>
+    <dl class="ficha"><div><dt>O que foi feito</dt><dd>Llama Guard 3 sobre as traduções.</dd></div><div><dt>O que saiu</dt><dd>Falso negativo de 18,7% para 19,1% (NLLB-200) e 20,1% (Opus-MT). Nos 439, o veredito depende do motor em 91 de 438 pares.</dd></div></dl>
+    <figure class="video"><video controls preload="metadata" playsinline poster="../assets/video/atividade10-pt.jpg"><source src="../assets/video/atividade10-pt.mp4" type="video/mp4"><track kind="captions" srclang="pt-BR" label="Português" src="../assets/video/atividade10-pt.vtt"></video><figcaption>O relatório em vídeo, narrado e com legenda.</figcaption></figure>
+  </header>
+
+  <div class="corpo">
+    <nav class="sumario" aria-label="Nesta página">
+      <p>Nesta página</p>
+      <ol><li><a href="#o-que-esta-entrega-faz" data-alvo="o-que-esta-entrega-faz"><span class="num">1</span>O que esta entrega faz</a></li><li><a href="#como-foi-rodado" data-alvo="como-foi-rodado"><span class="num">2</span>Como foi rodado</a></li><li><a href="#sec:lingua" data-alvo="sec:lingua"><span class="num">3</span>Efeito da língua nos 6.560 pares</a></li><li><a href="#sec:tradutor" data-alvo="sec:tradutor"><span class="num">4</span>Efeito do tradutor nos 439 pares</a></li><li><a href="#mudança-de-rota-o-projeto-vira-artigo" data-alvo="mudança-de-rota-o-projeto-vira-artigo"><span class="num">5</span>Mudança de rota: o projeto vira artigo</a></li><li><a href="#próximo-passo" data-alvo="próximo-passo"><span class="num">6</span>Próximo passo</a></li><li><a href="#artefatos" data-alvo="artefatos"><span class="num">7</span>Artefatos</a></li></ol>
+    </nav>
+    <article id="texto">
+
+<section id="o-que-esta-entrega-faz" class="level2" data-number="1">
+<h2 data-number="1"><span class="header-section-number">1</span> O que esta entrega faz</h2>
+<p>A Atividade 9 rodou o Llama Guard 3 em inglês e mudou a base do projeto: o efeito da língua passa a ser medido nos 6.560 pares do <em>CoinflipForSafety</em>, porque os 439 do <em>JudgeStressTest</em> foram escolhidos onde o juiz erra em inglês. Esta entrega roda o mesmo juiz, com o mesmo prompt e o mesmo escore, sobre as traduções em português que a Atividade 8 produziu. São duas perguntas, cada uma no conjunto que a responde:</p>
+<ul>
+<li><p><strong>efeito da língua</strong>: nos 6.560 pares, nas versões do NLLB-200 e do Opus-MT, o juiz erra mais em português do que no mesmo par em inglês?</p></li>
+<li><p><strong>efeito do tradutor</strong>: nos 439 pares, que têm cinco traduções, quanto o veredito muda só por trocar o motor que traduziu?</p></li>
+</ul>
+</section>
+<section id="como-foi-rodado" class="level2" data-number="2">
+<h2 data-number="2"><span class="header-section-number">2</span> Como foi rodado</h2>
+<p>Tudo igual à Atividade 9: Llama Guard 3 8B em 16 bits, template oficial, escore <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>p</mi><mtext mathvariant="normal">unsafe</mtext></msub><annotation encoding="application/x-tex">p_{\text{unsafe}}</annotation></semantics></math> lido na primeira posição da resposta, veredito nocivo quando <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>p</mi><mtext mathvariant="normal">unsafe</mtext></msub><mo>&gt;</mo><mn>0</mn><mo>,</mo><mn>5</mn></mrow><annotation encoding="application/x-tex">p_{\text{unsafe}} &gt; 0{,}5</annotation></semantics></math>, rótulo humano nocivo a partir de 0,5. As instruções do template ficam em inglês, como o modelo foi treinado; só o pedido e a resposta do par vão em português, que é uma das oito línguas que o Llama Guard 3 declara suportar. Em todos os pares, o token mais provável do vocabulário foi <code>safe</code> ou <code>unsafe</code>. A comparação é pareada: cada par aparece nas duas línguas, e as contagens de mudança de veredito comparam o mesmo par. Na tradução do DeepSeek, um par ficou sem tradução da resposta (Atividade 8) e saiu da conta desse motor.</p>
+</section>
+<section id="sec:lingua" class="level2" data-number="3">
+<h2 data-number="3"><span class="header-section-number">3</span> Efeito da língua nos 6.560 pares</h2>
+<p>Nos 6.560 pares, cada par foi julgado três vezes: em inglês, na tradução do NLLB-200 e na do Opus-MT. A Tabela <a class="xref" href="#tab:lingua">1</a> traz as três condições lado a lado, e a Figura <a class="xref" href="#fig:fn">1</a> mostra a taxa de falso negativo, a que mais pesa em segurança, porque é a resposta nociva que passa pelo juiz. Em inglês ela é de 18,7%; em português, de 19,1% com o NLLB-200 e de 20,1% com o Opus-MT, uma diferença de +0,5 e +1,4 pontos percentuais. A taxa de falso positivo vai de 59,0% em inglês para 55,2% e 59,2%.</p>
+<figure class="tab" id="tab:lingua"><figcaption><span class="rot">Tabela 1.</span> Llama Guard 3 nos mesmos 6.560 pares do <em>CoinflipForSafety</em>, em inglês e nas duas traduções. As duas últimas colunas contam, par a par, a mudança do veredito em relação ao inglês.</figcaption><div class="rolar"><table class="t">
+
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>Condição</strong></td>
+<td style="text-align: right;"><strong>Falso negativo</strong></td>
+<td style="text-align: right;"><strong>Falso positivo</strong></td>
+<td style="text-align: right;"><strong>Acurácia</strong></td>
+<td style="text-align: right;"><strong>nocivo<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mo>→</mo><annotation encoding="application/x-tex">\to</annotation></semantics></math>seguro</strong></td>
+<td style="text-align: right;"><strong>seguro<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mo>→</mo><annotation encoding="application/x-tex">\to</annotation></semantics></math>nocivo</strong></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: right;"><strong>(de 5.174)</strong></td>
+<td style="text-align: right;"><strong>(de 1.386)</strong></td>
+<td style="text-align: right;"><strong>(de 6.560)</strong></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Inglês</td>
+<td style="text-align: right;">966 (18,7%)</td>
+<td style="text-align: right;">818 (59,0%)</td>
+<td style="text-align: right;">4.776 (72,8%)</td>
+<td style="text-align: right;">referência</td>
+<td style="text-align: right;">referência</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">NLLB-200</td>
+<td style="text-align: right;">990 (19,1%)</td>
+<td style="text-align: right;">765 (55,2%)</td>
+<td style="text-align: right;">4.805 (73,2%)</td>
+<td style="text-align: right;">315</td>
+<td style="text-align: right;">238</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Opus-MT</td>
+<td style="text-align: right;">1.041 (20,1%)</td>
+<td style="text-align: right;">820 (59,2%)</td>
+<td style="text-align: right;">4.699 (71,6%)</td>
+<td style="text-align: right;">301</td>
+<td style="text-align: right;">228</td>
+</tr>
+</tbody>
+</table></div></figure>
+<figure class="fig larga" id="fig:fn"><div class="arte"><svg class="desenho" viewBox="0 0 760 215" role="img" aria-labelledby="a10f1">
+  <title id="a10f1">Taxa de falso negativo do Llama Guard 3 nos mesmos 6.560 pares, em escala de 0% a 100%: inglês 966 de 5.174 (18,7%), NLLB-200 990 de 5.174 (19,1%) e Opus-MT 1.041 de 5.174 (20,1%).</title>
+
+  <rect class="base" x="120" y="8" width="620" height="164" rx="2"/>
+  <path class="traco eixo" pathLength="1" style="--d:.2s" d="M120 172 H740"/>
+  <path class="traco eixo" pathLength="1" style="--d:.3s" d="M120 172 V180"/>
+  <path class="traco eixo" pathLength="1" style="--d:.3s" d="M740 172 V180"/>
+
+  <rect class="ag bar en" style="--d:.4s" x="120" y="24" width="115.8" height="34" rx="2"/>
+  <rect class="ag bar pt" style="--d:.8s" x="120" y="78" width="118.6" height="34" rx="2"/>
+  <rect class="ag bar pt" style="--d:1.2s" x="120" y="132" width="124.7" height="34" rx="2"/>
+  <rect class="traco" pathLength="1" style="--d:.4s" x="120" y="24" width="115.8" height="34" rx="2"/>
+  <rect class="traco" pathLength="1" style="--d:.8s" x="120" y="78" width="118.6" height="34" rx="2"/>
+  <rect class="traco" pathLength="1" style="--d:1.2s" x="120" y="132" width="124.7" height="34" rx="2"/>
+
+  <text class="rt p" text-anchor="end" x="108" y="47">Inglês</text>
+  <text class="rt p" text-anchor="end" x="108" y="101">NLLB-200</text>
+  <text class="rt p" text-anchor="end" x="108" y="155">Opus-MT</text>
+  <text class="rt p" x="246" y="47">966 de 5.174 (18,7%)</text>
+  <text class="rt p" x="249" y="101">990 de 5.174 (19,1%)</text>
+  <text class="rt p" x="255" y="155">1.041 de 5.174 (20,1%)</text>
+  <text class="rt p" text-anchor="middle" x="120" y="204">0%</text>
+  <text class="rt p" text-anchor="middle" x="740" y="204">100%</text>
+</svg></div><figcaption><span class="rot">Figura 1.</span> Taxa de falso negativo do Llama Guard 3 nos mesmos 6.560 pares, em inglês e nas duas traduções: fração das 5.174 respostas nocivas que o juiz libera como seguras.</figcaption></figure>
+<p>Olhando par a par, a mudança não é só de saldo. Entre as 5.174 respostas nocivas, 189 que o juiz barrava em inglês passam a ser liberadas na versão do NLLB-200, e 165 que ele liberava passam a ser barradas; no Opus-MT, são 214 e 139. Entre as 1.386 seguras, 73 passam a ser barradas e 126 deixam de ser no NLLB-200; no Opus-MT, 89 e 87. A Tabela <a class="xref" href="#tab:ataque">2</a> separa a taxa de falso negativo por ataque.</p>
+<figure class="tab" id="tab:ataque"><figcaption><span class="rot">Tabela 2.</span> Taxa de falso negativo por ataque, nos 6.560 pares, em inglês e nas duas traduções.</figcaption><div class="rolar"><table class="t">
+
+<thead>
+<tr class="header">
+<th style="text-align: left;"><strong>Ataque</strong></th>
+<th style="text-align: right;"><strong>Nocivas</strong></th>
+<th style="text-align: right;"><strong>Inglês</strong></th>
+<th style="text-align: right;"><strong>NLLB-200</strong></th>
+<th style="text-align: right;"><strong>Opus-MT</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">GCG</td>
+<td style="text-align: right;">1.752</td>
+<td style="text-align: right;">12,6%</td>
+<td style="text-align: right;">13,7%</td>
+<td style="text-align: right;">13,8%</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">BoN</td>
+<td style="text-align: right;">1.146</td>
+<td style="text-align: right;">21,2%</td>
+<td style="text-align: right;">20,5%</td>
+<td style="text-align: right;">21,7%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">GCG-R</td>
+<td style="text-align: right;">1.203</td>
+<td style="text-align: right;">10,2%</td>
+<td style="text-align: right;">9,8%</td>
+<td style="text-align: right;">11,1%</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Direct</td>
+<td style="text-align: right;">993</td>
+<td style="text-align: right;">37,1%</td>
+<td style="text-align: right;">39,0%</td>
+<td style="text-align: right;">40,9%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Pair</td>
+<td style="text-align: right;">80</td>
+<td style="text-align: right;">15,0%</td>
+<td style="text-align: right;">12,5%</td>
+<td style="text-align: right;">13,8%</td>
+</tr>
+</tbody>
+</table></div></figure>
+<p>Os dois tradutores também discordam entre si: no mesmo par, o veredito do juiz sobre a versão do NLLB-200 e sobre a do Opus-MT é diferente em 420 dos 6.560 pares (6,4%), e em 269 das 5.174 respostas nocivas. É a mesma dependência do tradutor que a Seção <a class="xref" href="#sec:tradutor">4</a> mede nos 439 com cinco motores, agora num conjunto sem filtro.</p>
+<p>As traduções ainda não passaram pela revalidação às cegas prevista desde a Atividade 2: o piloto da Atividade 5 avaliou a traduzibilidade de 30 pares lendo o inglês, sem escrever a tradução. Por isso parte das mudanças pode vir de erro de tradução e não da língua. Separar as duas coisas é o papel dos controles do próximo passo.</p>
+</section>
+<section id="sec:tradutor" class="level2" data-number="4">
+<h2 data-number="4"><span class="header-section-number">4</span> Efeito do tradutor nos 439 pares</h2>
+<p>A Tabela <a class="xref" href="#tab:motores">3</a> traz o juiz em inglês e nas cinco traduções dos 439 pares. Como na Atividade 9, as taxas desse conjunto não são a taxa de erro típica do juiz: os pares foram escolhidos porque ele erra em inglês, e por isso o acerto em português sobe em todos os motores, de 7% para 14% a 19%. O que o conjunto permite medir é outra coisa: a variação entre os motores, porque o par é o mesmo e só o tradutor muda.</p>
+<figure class="tab" id="tab:motores"><figcaption><span class="rot">Tabela 3.</span> Llama Guard 3 nos 439 pares do <em>JudgeStressTest</em>, em inglês e em cada tradução. Falso negativo: resposta nociva liberada como segura. Falso positivo: resposta segura barrada. As duas últimas colunas contam, par a par, a mudança do veredito em relação ao inglês. No DeepSeek, 438 pares (um sem tradução).</figcaption><div class="rolar"><table class="t">
+
+<thead>
+<tr class="header">
+<th style="text-align: left;"><strong>Condição</strong></th>
+<th style="text-align: right;"><strong>Falso negativo</strong></th>
+<th style="text-align: right;"><strong>Falso positivo</strong></th>
+<th style="text-align: right;"><strong>Acurácia</strong></th>
+<th style="text-align: right;"><strong>nocivo<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mo>→</mo><annotation encoding="application/x-tex">\to</annotation></semantics></math>seguro</strong></th>
+<th style="text-align: right;"><strong>seguro<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mo>→</mo><annotation encoding="application/x-tex">\to</annotation></semantics></math>nocivo</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Inglês</td>
+<td style="text-align: right;">167 de 189 (88,4%)</td>
+<td style="text-align: right;">243 de 250 (97,2%)</td>
+<td style="text-align: right;">29 de 439 (6,6%)</td>
+<td style="text-align: right;">referência</td>
+<td style="text-align: right;">referência</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">DeepSeek</td>
+<td style="text-align: right;">160 de 189 (84,7%)</td>
+<td style="text-align: right;">216 de 249 (86,7%)</td>
+<td style="text-align: right;">62 de 438 (14,2%)</td>
+<td style="text-align: right;">34</td>
+<td style="text-align: right;">15</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">NLLB-200</td>
+<td style="text-align: right;">141 de 189 (74,6%)</td>
+<td style="text-align: right;">219 de 250 (87,6%)</td>
+<td style="text-align: right;">79 de 439 (18,0%)</td>
+<td style="text-align: right;">30</td>
+<td style="text-align: right;">32</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Opus-MT</td>
+<td style="text-align: right;">144 de 189 (76,2%)</td>
+<td style="text-align: right;">226 de 250 (90,4%)</td>
+<td style="text-align: right;">69 de 439 (15,7%)</td>
+<td style="text-align: right;">20</td>
+<td style="text-align: right;">26</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Argos</td>
+<td style="text-align: right;">143 de 189 (75,7%)</td>
+<td style="text-align: right;">212 de 250 (84,8%)</td>
+<td style="text-align: right;">84 de 439 (19,1%)</td>
+<td style="text-align: right;">36</td>
+<td style="text-align: right;">29</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Google Tradutor</td>
+<td style="text-align: right;">152 de 189 (80,4%)</td>
+<td style="text-align: right;">212 de 250 (84,8%)</td>
+<td style="text-align: right;">75 de 439 (17,1%)</td>
+<td style="text-align: right;">36</td>
+<td style="text-align: right;">20</td>
+</tr>
+</tbody>
+</table></div></figure>
+<p>Para medir a dependência do tradutor, contamos, nos 438 pares que têm as cinco traduções, quantos dos cinco vereditos em português dizem nocivo. Se o tradutor não importasse, cada par teria 0 ou 5. A Tabela <a class="xref" href="#tab:votos">4</a> mostra que 91 pares (20,8%) ficam entre 1 e 4: o veredito do mesmo par depende do motor que o traduziu. Entre as 189 respostas nocivas, isso acontece em 44.</p>
+<figure class="tab" id="tab:votos"><figcaption><span class="rot">Tabela 4.</span> Quantos dos cinco vereditos em português dizem nocivo, por par, nos 438 pares com as cinco traduções.</figcaption><div class="rolar"><table class="t">
+
+<thead>
+<tr class="header">
+<th style="text-align: left;"><strong>Vereditos nocivos (de 5)</strong></th>
+<th style="text-align: right;"><strong>0</strong></th>
+<th style="text-align: right;"><strong>1</strong></th>
+<th style="text-align: right;"><strong>2</strong></th>
+<th style="text-align: right;"><strong>3</strong></th>
+<th style="text-align: right;"><strong>4</strong></th>
+<th style="text-align: right;"><strong>5</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Pares</td>
+<td style="text-align: right;">140</td>
+<td style="text-align: right;">19</td>
+<td style="text-align: right;">13</td>
+<td style="text-align: right;">30</td>
+<td style="text-align: right;">29</td>
+<td style="text-align: right;">207</td>
+</tr>
+</tbody>
+</table></div></figure>
+</section>
+<section id="mudança-de-rota-o-projeto-vira-artigo" class="level2" data-number="5">
+<h2 data-number="5"><span class="header-section-number">5</span> Mudança de rota: o projeto vira artigo</h2>
+<p>Os resultados até aqui sustentam um artigo de periódico, e o projeto passa a ter esse alvo: a TACL (<em>Transactions of the Association for Computational Linguistics</em>), que não cobra taxa de publicação. Lendo artigos publicados nela, o desenho do projeto ganha cinco extensões, nenhuma fixa: rodar a parte automática em mais duas ou três línguas; controles de tradução, com retrotradução do português de volta para o inglês (controle neutro) e um subconjunto traduzido por humano (controle positivo); validação do subconjunto em português por dois ou mais anotadores nativos; análise por item; e o enquadramento do pipeline de tradução como variável da avaliação multilíngue de segurança, que é o que a Seção <a class="xref" href="#sec:tradutor">4</a> começa a mostrar.</p>
+</section>
+<section id="próximo-passo" class="level2" data-number="6">
+<h2 data-number="6"><span class="header-section-number">6</span> Próximo passo</h2>
+<p>O primeiro controle de tradução: a retrotradução. As versões em português do NLLB-200 e do Opus-MT são traduzidas de volta para o inglês por um motor aberto, e o mesmo juiz julga esse inglês retraduzido. Se o veredito mudar também nele, a mudança vem do caminho pela tradução, e não do português; se não mudar, o efeito medido na Seção <a class="xref" href="#sec:lingua">3</a> é da língua. Os dois casos são resultado, e é essa separação que o artigo precisa.</p>
+</section>
+<section id="artefatos" class="level2" data-number="7">
+<h2 data-number="7"><span class="header-section-number">7</span> Artefatos</h2>
+<p>Na pasta <code>atividade10/resultados/</code>: um arquivo por condição, <code>cf-nllb.jsonl</code> e <code>cf-opus.jsonl</code> para os 6.560 pares e <code>deepseek.jsonl</code>, <code>nllb.jsonl</code>, <code>opus.jsonl</code>, <code>argos.jsonl</code> e <code>google.jsonl</code> para os 439, com, por par, o rótulo humano, o <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>p</mi><mtext mathvariant="normal">unsafe</mtext></msub><annotation encoding="application/x-tex">p_{\text{unsafe}}</annotation></semantics></math>, o veredito, o número de tokens e o tempo, sem o texto do par; <code>numeros.json</code> e <code>numeros-cf.json</code> são a saída das análises. Os scripts são os da Atividade 9 (<code>atividade9/</code>), rodados com as duas pastas: <code>python analisar.py atividade9/resultados:atividade10/resultados numeros.json</code> e o mesmo com <code>analisar_cf.py</code>.</p>
+</section>
+
+    </article>
+  </div>
+
+  <nav class="vizinhos" aria-label="Outras atividades">
+    <a class="viz ant" href="atividade9.html"><span class="seta" aria-hidden="true">←</span><span><small>Atividade 9</small><b>O juiz em inglês</b></span></a>
+    <a class="meio" href="../index.html#linha">Linha do tempo</a>
+    <a class="viz prox" href="atividade11.html"><span class="seta" aria-hidden="true">→</span><span><small>Atividade 11</small><b>ReliableBench, três tradutores e quatro juízes</b></span></a>
+  </nav>
+</main>
+
+<footer class="pe">
+  <p>Cristhian Kapelinski e Beatriz Roland Machado, Laboratório de Inteligência Artificial Aplicada, UNIPAMPA, 2026/2.
+  Texto convertido do relatório em LaTeX.</p>
+</footer>
+<script src="../assets/js/relatorio.js?v=2"></script>
+</body>
+</html>

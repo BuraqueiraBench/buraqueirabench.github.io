@@ -1,0 +1,44 @@
+<svg class="desenho" viewBox="0 0 1010 300" role="img" aria-labelledby="a3f1">
+  <title id="a3f1">Arquitetura do protótipo em cinco componentes: carregador de esquema único, tradução e revalidação às cegas (em destaque, concentra o risco), executor de juízes com interface única, métricas e significância, e relatório por juiz e língua. Os quatro juízes abertos e as regras alimentam o executor.</title>
+
+  <path class="traco seta" pathLength="1" style="--d:.6s" d="M178 130 H216"/>
+  <path class="traco seta" pathLength="1" style="--d:1.0s" d="M384 130 H422"/>
+  <path class="traco seta" pathLength="1" style="--d:1.4s" d="M590 130 H628"/>
+  <path class="traco seta" pathLength="1" style="--d:1.8s" d="M796 130 H834"/>
+  <path class="traco" pathLength="1" style="--d:2.2s" d="M506 230 V222"/>
+  <path class="traco" pathLength="1" style="--d:2.3s" d="M506 214 V206"/>
+  <path class="traco seta" pathLength="1" style="--d:2.4s" d="M506 198 V172"/>
+
+  <rect class="base" x="10" y="90" width="168" height="80" rx="4"/>
+  <rect class="base" x="216" y="90" width="168" height="80" rx="4"/>
+  <rect class="base" x="422" y="90" width="168" height="80" rx="4"/>
+  <rect class="base" x="628" y="90" width="168" height="80" rx="4"/>
+  <rect class="base" x="834" y="90" width="168" height="80" rx="4"/>
+  <rect class="base" x="381" y="232" width="250" height="56" rx="4"/>
+
+  <rect class="ag papel" style="--d:.1s" x="10" y="90" width="168" height="80" rx="4"/>
+  <rect class="ag pt" style="--d:.5s" x="216" y="90" width="168" height="80" rx="4"/>
+  <rect class="ag papel" style="--d:.9s" x="422" y="90" width="168" height="80" rx="4"/>
+  <rect class="ag papel" style="--d:1.3s" x="628" y="90" width="168" height="80" rx="4"/>
+  <rect class="ag en" style="--d:1.7s" x="834" y="90" width="168" height="80" rx="4"/>
+  <rect class="ag juiz" style="--d:2.1s" x="381" y="232" width="250" height="56" rx="4"/>
+
+  <rect class="traco" pathLength="1" style="--d:.1s" x="10" y="90" width="168" height="80" rx="4"/>
+  <rect class="traco pt grossa" pathLength="1" style="--d:.5s" x="216" y="90" width="168" height="80" rx="4"/>
+  <rect class="traco" pathLength="1" style="--d:.9s" x="422" y="90" width="168" height="80" rx="4"/>
+  <rect class="traco" pathLength="1" style="--d:1.3s" x="628" y="90" width="168" height="80" rx="4"/>
+  <rect class="traco" pathLength="1" style="--d:1.7s" x="834" y="90" width="168" height="80" rx="4"/>
+  <rect class="traco" pathLength="1" style="--d:2.1s" x="381" y="232" width="250" height="56" rx="4"/>
+
+  <text class="rt p" text-anchor="middle"><tspan x="94" y="125"><tspan class="forte">(1)</tspan> carregador</tspan><tspan x="94" y="147">esquema único</tspan></text>
+  <text class="rt p" text-anchor="middle"><tspan x="300" y="114"><tspan class="forte">(2)</tspan> tradução e</tspan><tspan x="300" y="136">revalidação às cegas</tspan><tspan class="it" x="300" y="158">registra descarte</tspan></text>
+  <text class="rt p" text-anchor="middle"><tspan x="506" y="114"><tspan class="forte">(3)</tspan> executor</tspan><tspan x="506" y="136">de juízes</tspan><tspan class="it" x="506" y="158">interface única</tspan></text>
+  <text class="rt p" text-anchor="middle"><tspan x="712" y="125"><tspan class="forte">(4)</tspan> métricas</tspan><tspan x="712" y="147">e significância</tspan></text>
+  <text class="rt p" text-anchor="middle"><tspan x="918" y="125"><tspan class="forte">(5)</tspan> relatório</tspan><tspan x="918" y="147">por juiz e língua</tspan></text>
+  <text class="rt p" text-anchor="middle"><tspan x="506" y="256">4 juízes abertos + regras</tspan><tspan class="it" x="506" y="278">temperatura 0, 4 bits</tspan></text>
+
+  <text class="rt p it" text-anchor="middle" x="197" y="68">EN + rótulo humano</text>
+  <text class="rt p it" text-anchor="middle" x="403" y="68" style="fill:var(--pt-texto)">par EN/PT-BR</text>
+  <text class="rt p it" text-anchor="middle" x="609" y="68">rótulos preditos</text>
+  <text class="rt p it" text-anchor="middle" x="815" y="68">McNemar pareado</text>
+</svg>

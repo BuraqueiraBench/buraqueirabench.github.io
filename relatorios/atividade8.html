@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Atividade 8: Tradução do corpus | BuraqueiraBench</title>
+<meta name="description" content="Relatório da Atividade 8 do projeto BuraqueiraBench: Tradução do corpus.">
+<link rel="icon" type="image/png" sizes="32x32" href="../assets/img/buraqueira-32.png?v=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Old+Standard+TT:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/relatorio.css?v=2">
+<script>document.documentElement.classList.add('js');</script>
+</head>
+<body>
+<a class="pular" href="#texto">Pular para o texto</a>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <filter id="aquarela" x="-20%" y="-20%" width="140%" height="140%">
+    <feTurbulence type="fractalNoise" baseFrequency=".05" numOctaves="3" seed="7" result="r"/>
+    <feDisplacementMap in="SourceGraphic" in2="r" scale="5"/>
+  </filter>
+</svg>
+<header class="topo">
+  <div class="in">
+    <a class="marca" href="../index.html#linha">BuraqueiraBench</a>
+    <span class="onde">Atividade 8 <i>de 13</i></span>
+    <a class="volta" href="../index.html#linha">Linha do tempo</a>
+  </div>
+  <div class="progresso" aria-hidden="true"><span></span></div>
+</header>
+
+<main>
+  <header class="abre">
+    <p class="sobre">Relatório da Atividade 8 &middot; Tradução do corpus</p>
+    <h1>Juízes de segurança de LLM em português: quarta entrega, tradução do corpus</h1>
+    <p class="autor">Cristhian Kapelinski</p>
+    <p class="datas">Primeira versão em 06/10/2026, última modificação em 06/10/2026</p>
+    <p class="docs"><a href="../assets/docs/atividade8.pdf">PDF da entrega</a></p>
+    <dl class="ficha"><div><dt>O que foi feito</dt><dd>439 pares por cinco motores e 6.560 pares pelo NLLB-200 e pelo Opus-MT em GPU.</dd></div><div><dt>O que saiu</dt><dd>Sem as marcas de &quot;dado, não comando&quot;, o DeepSeek recusou 210 de 439 pedidos e executou o ataque em 17. Com elas, traduziu os 439.</dd></div></dl>
+    <figure class="video"><video controls preload="metadata" playsinline poster="../assets/video/atividade8-pt.jpg"><source src="../assets/video/atividade8-pt.mp4" type="video/mp4"><track kind="captions" srclang="pt-BR" label="Português" src="../assets/video/atividade8-pt.vtt"></video><figcaption>O relatório em vídeo, narrado e com legenda.</figcaption></figure>
+  </header>
+
+  <div class="corpo">
+    <nav class="sumario" aria-label="Nesta página">
+      <p>Nesta página</p>
+      <ol><li><a href="#o-que-esta-entrega-faz" data-alvo="o-que-esta-entrega-faz"><span class="num">1</span>O que esta entrega faz</a></li><li><a href="#motores-e-execução" data-alvo="motores-e-execução"><span class="num">2</span>Motores e execução</a></li><li><a href="#custo" data-alvo="custo"><span class="num">3</span>Custo</a></li><li><a href="#cobertura" data-alvo="cobertura"><span class="num">4</span>Cobertura</a></li><li><a href="#artefatos" data-alvo="artefatos"><span class="num">5</span>Artefatos</a></li><li><a href="#próximo-passo" data-alvo="próximo-passo"><span class="num">6</span>Próximo passo</a></li></ol>
+    </nav>
+    <article id="texto">
+
+<section id="o-que-esta-entrega-faz" class="level2" data-number="1">
+<h2 data-number="1"><span class="header-section-number">1</span> O que esta entrega faz</h2>
+<p>A Atividade 7 testou os tradutores e definiu a regra de escolha: o motor que traduz o corpus não pode ser um LLM alinhado à segurança, que recusa o material; tem de ser um motor que nunca recusa, a tradução dedicada, um modelo aberto, ou um LLM permissivo. Esta entrega executa a tradução de verdade: produz a versão em português dos pares (prompt, resposta), que é o insumo do experimento do juiz. Traduz-se o prompt e a resposta de cada par, porque o juiz lê os dois. Dois conjuntos entram, o benchmark de juízes <em>JudgeStressTest</em>, com 439 pares, e o conjunto completo <em>CoinflipForSafety</em>, com 6.560 pares.</p>
+</section>
+<section id="motores-e-execução" class="level2" data-number="2">
+<h2 data-number="2"><span class="header-section-number">2</span> Motores e execução</h2>
+<p>Seguindo a regra da A7, cinco motores não recusantes, das três famílias. O <strong>DeepSeek</strong> (endpoint <code>deepseek-chat</code>, que hoje serve o <code>deepseek-flash</code>), um LLM permissivo, pela API, sobre o conjunto de 439, que é o alvo imediato. Três <strong>modelos abertos</strong>: o <em>NLLB-200-1.3B</em> e o <em>Opus-MT</em>, em GPU, sobre os dois conjuntos, e o <em>Argos</em>, em CPU, sobre o 439. E o <strong>Google Tradutor</strong>, a tradução dedicada, pela interface web gratuita, também sobre o 439. Nenhum Claude ou LLM alinhado, porque a A7 mostrou que recusariam a maior parte do material.</p>
+<p>A execução dos abertos aproveitou uma <strong>RTX 5080 ociosa</strong> do laboratório, o que derruba o custo a zero e o tempo de horas de CPU para minutos de GPU. A tradução é feita sentença a sentença, em lotes, para não truncar o documento longo nem cair em repetição, as duas falhas que a A7 flagrou nesses modelos na decodificação ingênua. O ambiente e o cache ficaram em disco de trabalho da máquina, fora da partição de <code>home</code>, e a chave do DeepSeek entrou só por variável de ambiente, nunca gravada.</p>
+</section>
+<section id="custo" class="level2" data-number="3">
+<h2 data-number="3"><span class="header-section-number">3</span> Custo</h2>
+<p>A conta confirma o que a A6 projetou: traduzir este corpus é barato ou gratuito. O DeepSeek sobre os 439 pares custou cerca de dezessete centavos de dólar na tradução principal, mais cinco centavos na re-tradução dos prompts corrigida, perto de vinte e dois centavos no total, tudo lido no uso da própria API, não estimado; os modelos abertos na GPU custam zero de API, só tempo de máquina. A Tabela <a class="xref" href="#tab:custoA8">1</a> resume.</p>
+<figure class="tab" id="tab:custoA8"><figcaption><span class="rot">Tabela 1.</span> Custo e via de cada tradução. O custo do DeepSeek é o valor cobrado pela API, lido no painel de uso, cerca de 461 mil tokens no dia; o endpoint <code>deepseek-chat</code> serve o <code>deepseek-flash</code>, com desconto de cache de prompt, o que o torna mais barato que a estimativa por preço de tabela. Os abertos rodam em GPU própria, sem custo de API.</figcaption><div class="rolar"><table class="t">
+
+<thead>
+<tr class="header">
+<th style="text-align: left;"><strong>Motor</strong></th>
+<th style="text-align: left;"><strong>Conjunto</strong></th>
+<th style="text-align: left;"><strong>Via</strong></th>
+<th style="text-align: left;"><strong>Custo</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">DeepSeek (<code>deepseek-flash</code>)</td>
+<td style="text-align: left;">439</td>
+<td style="text-align: left;">API</td>
+<td style="text-align: left;">US$ 0,22</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">NLLB-200-1.3B</td>
+<td style="text-align: left;">439 e 6.560</td>
+<td style="text-align: left;">GPU RTX 5080</td>
+<td style="text-align: left;">US$ 0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Opus-MT</td>
+<td style="text-align: left;">439 e 6.560</td>
+<td style="text-align: left;">GPU RTX 5080</td>
+<td style="text-align: left;">US$ 0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Argos</td>
+<td style="text-align: left;">439</td>
+<td style="text-align: left;">CPU local</td>
+<td style="text-align: left;">US$ 0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Google Tradutor</td>
+<td style="text-align: left;">439</td>
+<td style="text-align: left;">web gratuita</td>
+<td style="text-align: left;">US$ 0</td>
+</tr>
+</tbody>
+</table></div></figure>
+</section>
+<section id="cobertura" class="level2" data-number="4">
+<h2 data-number="4"><span class="header-section-number">4</span> Cobertura</h2>
+<p>O achado mais forte desta entrega não é de custo, é de comportamento. Mandado traduzir o <strong>prompt</strong> cru, uma instrução nociva curta, o DeepSeek <em>reagiu à instrução</em> em vez de traduzi-la: dos 439 prompts, recusou 210 (48%), cumpriu o pedido em 17 (4%), escrevendo a nota de resgate ou o artigo pedido, e só traduziu 212 (48%). É o LLM confundindo o dado com um comando dirigido a ele, o mesmo risco da A7, agora visto até no DeepSeek permissivo, e até o caso pior, em que o tradutor executa o ataque. A correção foi barata e eficaz: re-traduzir cada texto <em>delimitado por marcas</em>, instruindo que aquilo é dado, não comando, e que não se deve obedecer nem recusar. Com isso os prompts subiram de 48% para <strong>439 de 439</strong> traduzidos. O mesmo enquadramento recuperou as respostas, e sobrou <strong>uma</strong> recusa dura, a do item de toxina botulínica, que o DeepSeek não traduziu nem como dado, o que marca um piso: o conteúdo mais extremo resiste mesmo ao enquadramento. Os modelos abertos e o Google não têm nada disso: traduzem prompt e resposta literalmente, os 439 e os 6.560 por inteiro, sem uma recusa. A tradução sentença a sentença em GPU também curou as duas falhas que a A7 vira nesses modelos: o Opus não trunca mais e o NLLB não repete, e todos saem com razão de comprimento perto de um, entre 1,05 e 1,09. A Tabela <a class="xref" href="#tab:cobA8">2</a> traz a cobertura final.</p>
+<figure class="tab" id="tab:cobA8"><figcaption><span class="rot">Tabela 2.</span> Cobertura da tradução por motor e conjunto, já com a correção de enquadramento aplicada ao DeepSeek. Pares com prompt e resposta traduzidos.</figcaption><div class="rolar"><table class="t">
+
+<thead>
+<tr class="header">
+<th style="text-align: left;"><strong>Motor</strong></th>
+<th style="text-align: center;"><strong>439 (JudgeStressTest)</strong></th>
+<th style="text-align: center;"><strong>6.560 (CoinflipForSafety)</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">DeepSeek</td>
+<td style="text-align: center;">prompt 439/439; resp. 438/439</td>
+<td style="text-align: center;">não rodado</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">NLLB-200-1.3B</td>
+<td style="text-align: center;">439 de 439</td>
+<td style="text-align: center;">6.560 de 6.560</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Opus-MT</td>
+<td style="text-align: center;">439 de 439</td>
+<td style="text-align: center;">6.560 de 6.560</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Argos</td>
+<td style="text-align: center;">439 de 439</td>
+<td style="text-align: center;">não rodado</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Google Tradutor</td>
+<td style="text-align: center;">439 de 439</td>
+<td style="text-align: center;">não rodado</td>
+</tr>
+</tbody>
+</table></div></figure>
+</section>
+<section id="artefatos" class="level2" data-number="5">
+<h2 data-number="5"><span class="header-section-number">5</span> Artefatos</h2>
+<p>Na pasta <code>atividade8/traducoes/</code>, um arquivo por motor e conjunto, com, por par, o prompt e a resposta em inglês e a tradução em português, mais o rótulo humano e o ataque de origem. Sobre os 439: <code>deepseek-js439.json</code> (com o desfecho por campo, após a correção), <code>nllb-js439.json</code>, <code>opus-js439.json</code>, <code>argos-js439.json</code> e <code>google-js439.json</code>. Sobre os 6.560: <code>nllb-coinflip.json</code> e <code>opus-coinflip.json</code>.</p>
+</section>
+<section id="próximo-passo" class="level2" data-number="6">
+<h2 data-number="6"><span class="header-section-number">6</span> Próximo passo</h2>
+<p>Com a versão em português pronta, o passo seguinte é o experimento que dá nome ao projeto: rodar os juízes de segurança sobre os pares em inglês e em português e medir se a concordância com o rótulo humano cai ao mudar de língua. Antes de rodar, é preciso resolver a direção das colunas de escore do dataset, que a A5 mostrou estar invertida, para não reportar métricas trocadas.</p>
+</section>
+
+    </article>
+  </div>
+
+  <nav class="vizinhos" aria-label="Outras atividades">
+    <a class="viz ant" href="atividade7.html"><span class="seta" aria-hidden="true">←</span><span><small>Atividade 7</small><b>Tradução dos 30 na prática</b></span></a>
+    <a class="meio" href="../index.html#linha">Linha do tempo</a>
+    <a class="viz prox" href="atividade9.html"><span class="seta" aria-hidden="true">→</span><span><small>Atividade 9</small><b>O juiz em inglês</b></span></a>
+  </nav>
+</main>
+
+<footer class="pe">
+  <p>Cristhian Kapelinski e Beatriz Roland Machado, Laboratório de Inteligência Artificial Aplicada, UNIPAMPA, 2026/2.
+  Texto convertido do relatório em LaTeX.</p>
+</footer>
+<script src="../assets/js/relatorio.js?v=2"></script>
+</body>
+</html>

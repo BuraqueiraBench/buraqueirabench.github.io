@@ -1,0 +1,39 @@
+<svg class="desenho" viewBox="0 0 880 210" role="img" aria-labelledby="a5f2">
+  <title id="a5f2">Duas linhas. Brito et al., discurso de ódio: a ofensa está na palavra, ao traduzir a carga se perde, o rótulo muda e o item é descartado. Esta amostra, dano operacional: a ofensa está no ato, código e ato sobrevivem, o rótulo fica igual e o item é preservado (0 de 30 descartados).</title>
+
+  <path class="traco seta nocivo" pathLength="1" style="--d:.7s" d="M385 55 H415"/>
+  <path class="traco seta nocivo" pathLength="1" style="--d:1.1s" d="M625 55 H655"/>
+  <path class="traco seta" pathLength="1" style="--d:1.5s" d="M385 155 H415"/>
+  <path class="traco seta" pathLength="1" style="--d:1.9s" d="M625 155 H655"/>
+
+  <rect class="base" x="175" y="20" width="210" height="70" rx="4"/>
+  <rect class="base" x="415" y="20" width="210" height="70" rx="4"/>
+  <rect class="base" x="655" y="20" width="210" height="70" rx="4"/>
+  <rect class="base" x="175" y="120" width="210" height="70" rx="4"/>
+  <rect class="base" x="415" y="120" width="210" height="70" rx="4"/>
+  <rect class="base" x="655" y="120" width="210" height="70" rx="4"/>
+
+  <rect class="ag nocivo" style="--d:.1s" x="175" y="20" width="210" height="70" rx="4"/>
+  <rect class="ag nocivo" style="--d:.5s" x="415" y="20" width="210" height="70" rx="4"/>
+  <rect class="ag nocivo" style="--d:.9s" x="655" y="20" width="210" height="70" rx="4"/>
+  <rect class="ag en" style="--d:1.3s" x="175" y="120" width="210" height="70" rx="4"/>
+  <rect class="ag en" style="--d:1.7s" x="415" y="120" width="210" height="70" rx="4"/>
+  <rect class="ag en" style="--d:2.1s" x="655" y="120" width="210" height="70" rx="4"/>
+
+  <rect class="traco nocivo" pathLength="1" style="--d:.1s" x="175" y="20" width="210" height="70" rx="4"/>
+  <rect class="traco nocivo" pathLength="1" style="--d:.5s" x="415" y="20" width="210" height="70" rx="4"/>
+  <rect class="traco nocivo" pathLength="1" style="--d:.9s" x="655" y="20" width="210" height="70" rx="4"/>
+  <rect class="traco" pathLength="1" style="--d:1.3s" x="175" y="120" width="210" height="70" rx="4"/>
+  <rect class="traco" pathLength="1" style="--d:1.7s" x="415" y="120" width="210" height="70" rx="4"/>
+  <rect class="traco" pathLength="1" style="--d:2.1s" x="655" y="120" width="210" height="70" rx="4"/>
+
+  <text class="rt p" text-anchor="end"><tspan class="forte" x="160" y="50">Brito et al.</tspan><tspan x="160" y="72">(ódio)</tspan></text>
+  <text class="rt p" text-anchor="end"><tspan class="forte" x="160" y="150">esta amostra</tspan><tspan x="160" y="172">(0/30)</tspan></text>
+
+  <text class="rt p" text-anchor="middle"><tspan x="280" y="50">discurso de ódio</tspan><tspan x="280" y="72">ofensa na <tspan class="forte">palavra</tspan></tspan></text>
+  <text class="rt p" text-anchor="middle"><tspan x="520" y="50">traduz e a carga</tspan><tspan x="520" y="72">se perde</tspan></text>
+  <text class="rt p" text-anchor="middle"><tspan x="760" y="50">rótulo <tspan class="forte">muda</tspan></tspan><tspan x="760" y="72">descarta</tspan></text>
+  <text class="rt p" text-anchor="middle"><tspan x="280" y="150">dano operacional</tspan><tspan x="280" y="172">ofensa no <tspan class="forte">ato</tspan></tspan></text>
+  <text class="rt p" text-anchor="middle"><tspan x="520" y="150">código e ato</tspan><tspan x="520" y="172">sobrevivem</tspan></text>
+  <text class="rt p" text-anchor="middle"><tspan x="760" y="150">rótulo <tspan class="forte">igual</tspan></tspan><tspan x="760" y="172">preserva</tspan></text>
+</svg>

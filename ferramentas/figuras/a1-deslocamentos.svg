@@ -1,0 +1,34 @@
+<svg class="desenho" viewBox="0 0 760 262" role="img" aria-labelledby="a1f1">
+  <title id="a1f1">Quatro deslocamentos apontam para o juiz de segurança: do ataque, do modelo e da categoria, já medidos em inglês, e o da língua, ainda não medido, que é o deste projeto.</title>
+  <text class="rot en" x="275" y="28" text-anchor="middle">já medidos, em inglês</text>
+  <text class="rot pt" x="650" y="28" text-anchor="middle">não medido: este projeto</text>
+
+  <path class="traco seta" pathLength="1" style="--d:1s" d="M105 96 L192 178"/>
+  <path class="traco seta" pathLength="1" style="--d:1.15s" d="M275 96 L292 178"/>
+  <path class="traco seta" pathLength="1" style="--d:1.3s" d="M445 96 L418 178"/>
+  <path class="traco seta pt grossa" pathLength="1" style="--d:2.1s" d="M650 96 V207 H446"/>
+
+  <rect class="base" x="30" y="48" width="150" height="48" rx="4"/>
+  <rect class="base" x="200" y="48" width="150" height="48" rx="4"/>
+  <rect class="base" x="370" y="48" width="150" height="48" rx="4"/>
+  <rect class="base" x="570" y="48" width="160" height="48" rx="4"/>
+  <rect class="base" x="170" y="180" width="270" height="54" rx="4"/>
+
+  <rect class="ag en" style="--d:.1s" x="30" y="48" width="150" height="48" rx="4"/>
+  <rect class="ag en" style="--d:.25s" x="200" y="48" width="150" height="48" rx="4"/>
+  <rect class="ag en" style="--d:.4s" x="370" y="48" width="150" height="48" rx="4"/>
+  <rect class="ag pt" style="--d:1.7s" x="570" y="48" width="160" height="48" rx="4"/>
+  <rect class="ag juiz" style="--d:.6s" x="170" y="180" width="270" height="54" rx="4"/>
+
+  <rect class="traco" pathLength="1" style="--d:.1s" x="30" y="48" width="150" height="48" rx="4"/>
+  <rect class="traco" pathLength="1" style="--d:.25s" x="200" y="48" width="150" height="48" rx="4"/>
+  <rect class="traco" pathLength="1" style="--d:.4s" x="370" y="48" width="150" height="48" rx="4"/>
+  <rect class="traco pt grossa" pathLength="1" style="--d:1.7s" x="570" y="48" width="160" height="48" rx="4"/>
+  <rect class="traco grossa" pathLength="1" style="--d:.6s" x="170" y="180" width="270" height="54" rx="4"/>
+
+  <text class="rt" x="105" y="78" text-anchor="middle">do ataque</text>
+  <text class="rt" x="275" y="78" text-anchor="middle">do modelo</text>
+  <text class="rt" x="445" y="78" text-anchor="middle">da categoria</text>
+  <text class="rt forte" x="650" y="78" text-anchor="middle">da língua</text>
+  <text class="rt forte" x="305" y="213" text-anchor="middle">juiz de segurança</text>
+</svg>
