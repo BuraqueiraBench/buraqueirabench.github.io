@@ -55,11 +55,12 @@
 
   // inclinação: inglês, português e volta, um painel por juiz
   function inclin(tr) {
-    const xs = [48, 130, 212], Y = v => 112 - v / 40 * 84, cores = [C.en, C.pt, C.sepia];
+    const xs = [48, 130, 212], Y = v => 112 - v / 40 * 84, cores = [C.en, C.pt, C.en];
     return D.juizes.map(j => {
       const v = D.volta[tr][j.id];
       let s = `<line class="ref" x1="48" x2="212" y1="${Y(v[0])}" y2="${Y(v[0])}"/>`;
-      s += `<path class="traco" pathLength="1" d="M${xs[0]} ${Y(v[0])} L${xs[1]} ${Y(v[1])} L${xs[2]} ${Y(v[2])}"/>`;
+      s += `<path class="traco" pathLength="1" d="M${xs[0]} ${Y(v[0])} L${xs[1]} ${Y(v[1])}"/>`;
+      s += `<path class="volta-linha" d="M${xs[1]} ${Y(v[1])} L${xs[2]} ${Y(v[2])}"/>`;
       v.forEach((val, i) => { s += dot(xs[i], Y(val), cores[i], 7) + `<text class="val" text-anchor="middle" x="${xs[i]}" y="${Y(val) - 13}">${f(val)}</text>`; });
       ['inglês', 'português', 'volta'].forEach((n, i) => { s += `<text class="rot-m" x="${xs[i]}" y="140">${n}</text>`; });
       return `<div><h4>${j.nome}</h4>${svg('0 0 260 148', s, `${j.nome}: nocivas liberadas, inglês ${f(v[0])}%, português ${f(v[1])}%, volta ${f(v[2])}%.`)}</div>`;
@@ -93,19 +94,59 @@
 
   $('#resposta').textContent = D.projeto.resposta;
 
-  // diário de campo
-  $('#diario').innerHTML = D.atividades.map(a =>
-    `<li class="entrada"><span class="dia">Atividade ${a.n}, ${a.data}</span><h3>${a.titulo}</h3><p>${a.resultado || a.feito}</p></li>`).join('');
-  const faixa = $('#faixa'), rol = $('#diario'), dica = $('#dica');
-  function marcarFaixa() {
-    const fim = rol.scrollLeft + rol.clientWidth >= rol.scrollWidth - 4;
-    faixa.classList.toggle('fim', fim);
-    faixa.classList.toggle('ini', rol.scrollLeft > 4);
-    if (rol.scrollLeft > 40) dica.style.opacity = '.45';
-  }
-  rol.addEventListener('scroll', marcarFaixa, { passive: true });
-  window.addEventListener('resize', marcarFaixa);
-  marcarFaixa();
+  // o tradutor também é um juiz: barras empilhadas
+  (function () {
+    const r = D.recusas, a = r.haiku, b = r.deepseekSem, c = r.deepseekCom, L = 10, W = 540;
+    const COR = { traduziu: C.seguro, recusou: C.nocivo, executou: '#5a2418' };
+    const linhas = [
+      ['Claude Haiku 4.5, ' + a.total + ' pedidos', a.total, [['traduziu', a.traduziu], ['recusou', a.recusou]]],
+      ['DeepSeek sem as marcas, ' + b.total + ' pedidos', b.total, [['traduziu', b.traduziu], ['recusou', b.recusou], ['executou', b.executou]]],
+      ['DeepSeek com as marcas, ' + c.total + ' pedidos', c.total, [['traduziu', c.traduziu]]]
+    ];
+    let s = '';
+    linhas.forEach(([nome, tot, segs], i) => {
+      const y = 38 + i * 78;
+      s += `<text class="rot-s" x="${L}" y="${y - 10}">${nome}</text>`;
+      let x = L;
+      segs.forEach(([k, n]) => {
+        const w = n / tot * W;
+        s += `<rect x="${x}" y="${y}" width="${w}" height="34" fill="${COR[k]}" fill-opacity=".85" stroke="${C.tinta}" stroke-width="1" filter="url(#aquarela)"/>`;
+        s += w > 34 ? `<text class="val-i" x="${x + w / 2}" y="${y + 23}">${fi(n)}</text>` : `<text class="val-g" x="${x + w / 2}" y="${y - 6}">${fi(n)}</text>`;
+        x += w;
+      });
+    });
+    $('#g-recusas').innerHTML = svg('0 0 560 240', s, `Tradutores: Claude Haiku 4.5 traduziu ${a.traduziu} e recusou ${a.recusou} de ${a.total}; DeepSeek sem as marcas traduziu ${b.traduziu}, recusou ${b.recusou} e executou o ataque em ${b.executou} de ${b.total}; com as marcas traduziu ${c.traduziu}.`);
+
+    const i = D.instrucaoLargada, X = v => 190 + v / 15 * 330;
+    const bs = [['inglês', i.fnIngles, C.en], ['DeepSeek, como traduzido', i.fnComoTraduzido, C.pt], ['instrução reposta', i.fnReposta, '#d9a94f']];
+    let t = `<path class="traco moldura" pathLength="1" d="M190 8 L190 112"/>`;
+    bs.forEach(([n, v, c2], k) => {
+      const y = 14 + k * 34;
+      t += `<text class="rot-s" x="182" y="${y + 19}" text-anchor="end">${n}</text>`;
+      t += `<rect x="190" y="${y}" width="${X(v) - 190}" height="26" fill="${c2}" fill-opacity=".85" stroke="${C.tinta}" stroke-width="1" filter="url(#aquarela)"/>`;
+      t += `<text class="val" x="${X(v) + 8}" y="${y + 19}">${f(v)}%</text>`;
+    });
+    $('#g-largada').innerHTML = svg('0 0 560 120', t, `Llama Guard 3 no ReliableBench com o DeepSeek: ${f(i.fnComoTraduzido)}% como traduzido, ${f(i.fnReposta)}% com a instrução reposta, inglês ${f(i.fnIngles)}%.`);
+  })();
+
+  // diário de campo: quatro fases, tudo à vista
+  const relat = { 1: 3, 2: 3, 3: 5, 5: 3, 6: 4, 7: 2, 8: 2, 9: 3, 10: 3, 11: 24 };
+  const slides = { 4: 12, 6: 13, 9: 11, 10: 12 };
+  const fases = [['Definir o problema', 1, 4], ['Traduzir', 5, 8], ['Julgar', 9, 11], ['Mostrar', 12, 13]];
+  const negrito = tx => tx.replace(/\d+(?:[.,]\d+)*%?/g, m => `<b>${m}</b>`);
+  const doc = '<svg class="doc" viewBox="0 0 64 64" aria-hidden="true"><use href="#s-doc"/></svg>';
+  $('#diario').innerHTML = fases.map(([nome, de, ate]) => {
+    const itens = D.atividades.filter(a => a.n >= de && a.n <= ate).map(a => {
+      const links = [];
+      if (relat[a.n]) links.push(`<a href="assets/docs/atividade${a.n}.pdf" target="_blank" rel="noopener">${doc}Relatório (${relat[a.n]} p.)</a>`);
+      if (slides[a.n]) links.push(`<a href="assets/docs/atividade${a.n}-apresentacao.pdf" target="_blank" rel="noopener">${doc}Slides (${slides[a.n]} telas)</a>`);
+      return `<li class="entrada"><span class="dia">${a.data}</span><div><h4>${a.titulo}</h4><p>${a.feito}</p>` +
+        (a.resultado ? `<p class="res">${negrito(a.resultado)}</p>` : '') +
+        (a.rota ? `<p class="dec">Nota: ${a.rota}</p>` : '') +
+        (links.length ? `<p class="docs">${links.join('')}</p>` : '') + '</div></li>';
+    }).join('');
+    return `<section class="fase"><h3>${nome} <small>Atividades ${de} a ${ate}</small></h3><ol class="paginas">${itens}</ol></section>`;
+  }).join('');
 
   const icones = ['s-lupa', 's-escudo', 's-linguas'];
   $('#proximas').innerHTML = D.proximos.map((p, i) =>

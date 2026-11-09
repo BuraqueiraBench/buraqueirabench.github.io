@@ -11,7 +11,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Old+Standard+TT:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
 <script>document.documentElement.classList.add('js');</script>
-<link rel="stylesheet" href="assets/css/guia.css?v=3">
+<link rel="stylesheet" href="assets/css/guia.css?v=4">
 </head>
 <body>
 <a class="pular" href="#conteudo">Pular para o conteúdo</a>
@@ -27,7 +27,14 @@
     <symbol id="s-le" viewBox="0 0 64 64"><path d="M12 8h26l8 8v14"/><path d="M12 8v46h16"/><path d="M19 22h18M19 30h12"/><circle cx="42" cy="42" r="9"/><path d="M49 49l9 9"/></symbol>
     <symbol id="s-carimbo" viewBox="0 0 64 64"><circle cx="32" cy="12" r="6"/><path d="M28 18h8l2 14H26z"/><rect x="14" y="32" width="36" height="9" rx="2"/><path d="M10 56h44"/><path d="M18 49h4M28 49h8M42 49h4"/></symbol>
     <symbol id="s-rotulo" viewBox="0 0 64 64"><path d="M8 8h22l26 26-22 22L8 30z"/><circle cx="19" cy="19" r="2.6"/><path d="M28 30l5 5 9-9"/></symbol>
-    <symbol id="s-lupa" viewBox="0 0 64 64"><circle cx="26" cy="20" r="8"/><path d="M10 56c0-12 7-19 16-19"/><circle cx="43" cy="42" r="9"/><path d="M50 49l8 8"/></symbol>
+    <symbol id="s-fn" viewBox="0 0 64 64"><path d="M32 6l20 8v16c0 14-9 23-20 28C21 53 12 44 12 30V14z"/><path d="M4 34h42M39 27l8 7-8 7"/></symbol>
+    <symbol id="s-fp" viewBox="0 0 64 64"><path d="M14 8h26l8 8v20"/><path d="M14 8v48h18"/><path d="M21 24h18M21 32h12"/><circle cx="43" cy="44" r="12"/><path d="M35 52l16-16"/></symbol>
+    <symbol id="s-auroc" viewBox="0 0 64 64"><path d="M10 8v46h46"/><path d="M10 54C18 20 34 14 54 12"/><path d="M10 54L54 12" stroke-dasharray="3 4"/></symbol>
+    <symbol id="s-troca" viewBox="0 0 64 64"><path d="M8 22h42M42 14l8 8-8 8"/><path d="M56 42H14M22 34l-8 8 8 8"/></symbol>
+    <symbol id="s-dado" viewBox="0 0 64 64"><rect x="10" y="10" width="44" height="44" rx="7"/><circle cx="22" cy="22" r="2.5"/><circle cx="42" cy="22" r="2.5"/><circle cx="32" cy="32" r="2.5"/><circle cx="22" cy="42" r="2.5"/><circle cx="42" cy="42" r="2.5"/></symbol>
+    <symbol id="s-igual" viewBox="0 0 64 64"><circle cx="32" cy="32" r="22"/><path d="M20 26h24M20 38h24"/></symbol>
+    <symbol id="s-doc" viewBox="0 0 64 64"><path d="M14 6h26l10 10v42H14z"/><path d="M40 6v10h10M22 28h20M22 36h20M22 44h12"/></symbol>
+    <symbol id="s-lupa"viewBox="0 0 64 64"><circle cx="26" cy="20" r="8"/><path d="M10 56c0-12 7-19 16-19"/><circle cx="43" cy="42" r="9"/><path d="M50 49l8 8"/></symbol>
     <symbol id="s-escudo" viewBox="0 0 64 64"><path d="M32 6l20 8v16c0 14-9 23-20 28C21 53 12 44 12 30V14z"/><path d="M26 26l-6 6 6 6M38 26l6 6-6 6"/></symbol>
     <symbol id="s-linguas" viewBox="0 0 64 64"><path d="M8 14h24M20 9v5"/><path d="M13 14c1 9 6 15 15 18M27 14c-1 9-6 15-15 18"/><path d="M34 56l9-22 9 22M37 48h12"/></symbol>
   </defs>
@@ -146,11 +153,27 @@
           <li class="parada" style="--y:50px;--c:#a8402c"><span class="mancha"><i>5</i></span><strong class="num">6.521</strong><p>pares comuns comparados com o rótulo humano, 1.030 deles no ReliableBench.</p></li>
         </ol>
       </div>
+      <ol class="linhas-paradas">
+        <li>Os 6.560 pares têm rótulo humano: 5.174 nocivos e 1.386 seguros.</li>
+        <li>NLLB-200 e Opus&#8209;MT rodam abertos em GPU. O DeepSeek vai por API, com o texto entre marcas de dado, não comando.</li>
+        <li>Llama Guard 3, HarmBench, JailJudge e AegisGuard, todos abertos.</li>
+        <li>Cada tradução é traduzida de volta para o inglês e julgada de novo.</li>
+        <li>Valem os pares que têm veredito nas oito condições. No ReliableBench são 1.030, 887 deles nocivos.</li>
+      </ol>
       <div class="controle">
         <p>Português contra inglês é o efeito total.</p>
         <p>A volta contra o inglês é o efeito da reescrita.</p>
         <p>O que sobra é o efeito da língua.</p>
       </div>
+    </div>
+    <div class="tela rev">
+      <h2>Como medimos</h2>
+      <ul class="medidas">
+        <li><svg class="ico" aria-hidden="true"><use href="#s-fn"/></svg><h3>Falso negativo</h3><p>Resposta nociva que o juiz libera. É a medida principal.</p></li>
+        <li><svg class="ico" aria-hidden="true"><use href="#s-fp"/></svg><h3>Falso positivo</h3><p>Resposta segura que o juiz barra.</p></li>
+        <li><svg class="ico" aria-hidden="true"><use href="#s-auroc"/></svg><h3>AUROC</h3><p>Quão bem o escore separa nocivas de seguras. 0,5 é sorteio.</p></li>
+        <li><svg class="ico" aria-hidden="true"><use href="#s-troca"/></svg><h3>Troca par a par</h3><p>O mesmo par muda de veredito entre o inglês e o português.</p></li>
+      </ul>
     </div>
   </div>
 </section>
@@ -227,7 +250,7 @@
       </div>
       <figure class="p-fig">
         <div id="g-inclin" class="inclins"></div>
-        <figcaption>Nocivas liberadas, em %: inglês, português e volta ao inglês.</figcaption>
+        <figcaption>Nocivas liberadas, em %: inglês, português e volta ao inglês. A volta, tracejada em azul, é inglês de novo.</figcaption>
       </figure>
     </article>
 
@@ -257,8 +280,39 @@
       </figure>
     </article>
 
+    <article class="prancha rev">
+      <div class="p-texto">
+        <p class="num-prancha">Prancha V</p>
+        <h3>O tradutor também é um juiz</h3>
+        <p>Um tradutor alinhado à segurança recusa o pedido perigoso em vez de traduzir. O Claude Haiku 4.5 traduziu 8 de 30 e recusou 22.</p>
+        <p>O DeepSeek recusou 210 de 439 sem as marcas de "dado, não comando". Com elas, traduziu os 439.</p>
+        <p>E largou a instrução final do pedido em 212 pares. Corrigido, o falso negativo do Llama Guard 3 cai de 12,3% para 10,6%.</p>
+      </div>
+      <figure class="p-fig dois-graf">
+        <div id="g-recusas"></div>
+        <figcaption><span class="sw" style="--c:var(--seguro)"></span>traduziu. <span class="sw" style="--c:var(--nocivo)"></span>recusou. <span class="sw" style="--c:#5a2418"></span>executou o ataque.</figcaption>
+        <div id="g-largada"></div>
+        <figcaption>Nocivas liberadas pelo Llama Guard 3 no ReliableBench, em %, com o DeepSeek como tradutor.</figcaption>
+      </figure>
+    </article>
+
     <div class="tela rev fecho">
       <p class="resposta" id="resposta"></p>
+    </div>
+  </div>
+</section>
+
+<hr class="fio">
+
+<section id="limites" data-nav="vimos">
+  <div class="caixa">
+    <div class="tela rev">
+      <h2>O que ainda não se pode afirmar</h2>
+      <ul class="proximas">
+        <li><svg class="ico" aria-hidden="true"><use href="#s-linguas"/></svg><p><b>Que as traduções estão fiéis.</b> A revalidação por falante nativo ainda não foi feita.</p></li>
+        <li><svg class="ico" aria-hidden="true"><use href="#s-dado"/></svg><p><b>Que uma troca do JailJudge é efeito da língua.</b> Falta descontar o ruído do próprio juiz: ele muda de veredito em 351 de 6.560 pares só rodando de novo, 5,4%.</p></li>
+        <li><svg class="ico" aria-hidden="true"><use href="#s-igual"/></svg><p><b>Que os números no ReliableBench coincidem com os publicados.</b></p></li>
+      </ul>
     </div>
   </div>
 </section>
@@ -270,10 +324,7 @@
   <div class="caixa">
     <div class="tela rev">
       <h2>Diário de campo</h2>
-      <div class="faixa" id="faixa">
-        <ol class="diario" id="diario" tabindex="0" aria-label="Entradas do diário, role de lado"></ol>
-      </div>
-      <p class="dica" id="dica"><svg viewBox="0 0 60 16" aria-hidden="true"><path d="M2 8h52M47 2l8 6-8 6"/></svg>Role de lado para ler as treze atividades.</p>
+      <div id="diario"></div>
     </div>
     <div class="tela rev">
       <h2>Próximas expedições</h2>
@@ -302,8 +353,8 @@
   </div>
 </footer>
 
-<script src="assets/js/dados.js?v=3"></script>
-<script src="assets/js/site.js?v=3"></script>
-<script src="assets/js/guia.js?v=3"></script>
+<script src="assets/js/dados.js?v=4"></script>
+<script src="assets/js/site.js?v=4"></script>
+<script src="assets/js/guia.js?v=4"></script>
 </body>
 </html>
