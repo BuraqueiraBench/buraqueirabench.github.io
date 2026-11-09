@@ -1,0 +1,142 @@
+WEBVTT
+
+00:00:00.696 --> 00:00:05.761
+Juízes de segurança de LLM em português: especificação e plano experimental.
+
+00:00:06.306 --> 00:00:07.667
+Atividade 3.
+
+00:00:09.128 --> 00:00:12.365
+Todo número de segurança vem de um juiz, outro modelo.
+
+00:00:12.909 --> 00:00:15.108
+Os juízes foram validados em inglês e quebram
+
+00:00:15.108 --> 00:00:17.372
+sob mudanças que não alteram o conteúdo.
+
+00:00:17.921 --> 00:00:19.560
+Falta medir o português.
+
+00:00:20.716 --> 00:00:24.022
+O sistema não é um juiz, é um aferidor de juízes.
+
+00:00:24.567 --> 00:00:29.000
+Ele passa cada par, pedido e resposta com rótulo humano, a vários juízes,
+
+00:00:29.000 --> 00:00:32.294
+nas duas línguas, e devolve o erro de cada um por língua.
+
+00:00:33.456 --> 00:00:34.818
+O escopo é fechado.
+
+00:00:35.362 --> 00:00:40.485
+Entram juízes abertos, português contra inglês, texto de um turno e rótulo binário.
+
+00:00:41.034 --> 00:00:44.605
+Ficam fora treinar juiz, outras línguas e coletar dados.
+
+00:00:45.764 --> 00:00:47.854
+Nenhum dado novo será coletado.
+
+00:00:48.400 --> 00:00:53.816
+Três conjuntos públicos já têm rótulo humano, o ReliableBench, com 41 comportamentos,
+
+00:00:53.816 --> 00:00:59.333
+o JudgeStressTest, com 971 amostras, e uma comparação de 300 pares.
+
+00:00:59.881 --> 00:01:01.173
+Falta o português.
+
+00:01:02.320 --> 00:01:05.903
+Quatro passos: normalizar, traduzir com revisão humana,
+
+00:01:05.920 --> 00:01:08.508
+revalidar às cegas e descartar o que divergir.
+
+00:01:09.053 --> 00:01:13.585
+Como Brito e colegas evitaram a tradução automática, o descarte é um resultado.
+
+00:01:14.748 --> 00:01:17.290
+Sem treinamento, com temperatura zero.
+
+00:01:17.835 --> 00:01:23.154
+O piso é o juiz por palavras-chave, com 56,0% de concordância.
+
+00:01:23.703 --> 00:01:25.747
+O comitê por voto é a alternativa,
+
+00:01:25.786 --> 00:01:28.663
+mas Schwinn e colegas mostram que os juízes erram juntos.
+
+00:01:29.816 --> 00:01:32.022
+Quatro modelos, mais as regras.
+
+00:01:32.567 --> 00:01:39.623
+O maior, de 13 bilhões de parâmetros, ocupa 26 GB em 16 bits e 8 GB em 4 bits.
+
+00:01:40.171 --> 00:01:43.130
+São cerca de 3 mil inferências, em horas.
+
+00:01:44.284 --> 00:01:48.504
+O falso negativo, nociva liberada como segura, é o que mais pesa.
+
+00:01:49.049 --> 00:01:51.023
+O falso positivo é o inverso.
+
+00:01:51.572 --> 00:01:53.686
+O F1 resume acerto e cobertura,
+
+00:01:53.690 --> 00:01:58.408
+a AUROC vale 0,5 no sorteio e o Kappa desconta o acerto por sorte.
+
+00:01:59.568 --> 00:02:02.728
+O fluxo é linear, em cinco peças: carregador,
+
+00:02:02.728 --> 00:02:07.260
+tradução com revalidação, executor de juízes, métricas e relatório.
+
+00:02:07.805 --> 00:02:09.884
+Trocar um juiz não mexe no resto.
+
+00:02:11.036 --> 00:02:15.268
+O protótipo mínimo é um comando que recebe um par e um juiz e devolve o rótulo.
+
+00:02:15.813 --> 00:02:20.333
+Traz 30 pares traduzidos e revalidados, com o LlamaGuard-3 de ponta a ponta.
+
+00:02:20.882 --> 00:02:22.371
+O resto vem depois.
+
+00:02:23.536 --> 00:02:24.932
+Cinco experimentos.
+
+00:02:25.477 --> 00:02:30.067
+O E1 reproduz o inglês, o E2 mede o português, o E3 compara os juízes,
+
+00:02:30.107 --> 00:02:34.199
+o E4 cruza língua e estilo e o E5 compara 4 e 16 bits.
+
+00:02:34.748 --> 00:02:37.648
+O McNemar diz se a diferença passa do ruído.
+
+00:02:38.796 --> 00:02:42.912
+Os critérios foram fixados antes e nenhum exige diferença entre as línguas.
+
+00:02:43.457 --> 00:02:48.661
+São 100 pares aprovados e todo juiz acima dos 56,0% do piso.
+
+00:02:49.209 --> 00:02:51.045
+Qualquer direção é resultado.
+
+00:02:52.208 --> 00:02:53.407
+Sete etapas.
+
+00:02:53.952 --> 00:02:58.346
+A segunda, um piloto de 30 pares, mede o descarte e decide o resto.
+
+00:02:58.894 --> 00:03:01.181
+Cada um dos seis riscos tem plano B.
+
+00:03:01.730 --> 00:03:05.927
+Se o descarte for alto, restringe-se a comportamentos sem carga cultural.

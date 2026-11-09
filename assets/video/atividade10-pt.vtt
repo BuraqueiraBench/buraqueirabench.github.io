@@ -1,0 +1,124 @@
+WEBVTT
+
+00:00:00.696 --> 00:00:02.763
+A língua muda o veredito do juiz?
+
+00:00:03.308 --> 00:00:06.521
+Atividade 10, o Llama Guard 3 em português.
+
+00:00:07.976 --> 00:00:12.775
+Agora o mesmo juiz, o Llama Guard 3, lê as traduções da Atividade 8.
+
+00:00:13.320 --> 00:00:17.100
+São duas perguntas, cada uma no conjunto que pode respondê-la.
+
+00:00:17.648 --> 00:00:20.954
+O juiz erra mais em português do que no mesmo par em inglês?
+
+00:00:21.503 --> 00:00:24.368
+E quanto o veredito muda só por trocar o tradutor?
+
+00:00:25.516 --> 00:00:30.169
+Para a primeira, cada um dos 6.560 pares é julgado três vezes,
+
+00:00:30.169 --> 00:00:33.903
+em inglês, na tradução do NLLB-200 e na do Opus-MT.
+
+00:00:35.003 --> 00:00:37.371
+A comparação é pareada, par com par.
+
+00:00:38.520 --> 00:00:42.212
+O falso negativo, uma resposta nociva liberada como segura,
+
+00:00:42.212 --> 00:00:49.291
+é 18,7% em inglês, 19,1% no NLLB-200 e 20,1% no Opus-MT.
+
+00:00:50.380 --> 00:00:54.693
+A diferença é de 0,5 e 1,4 pontos percentuais.
+
+00:00:55.241 --> 00:01:02.482
+O falso positivo oscila de 59,0% para 55,2% e 59,2%.
+
+00:01:03.594 --> 00:01:05.627
+O saldo esconde uma troca grande.
+
+00:01:06.172 --> 00:01:11.600
+Entre as 5.174 nocivas, o NLLB-200 libera 189 que o
+
+00:01:11.600 --> 00:01:15.253
+juiz barrava em inglês e barra 165 que ele liberava.
+
+00:01:15.801 --> 00:01:19.593
+No Opus-MT, são 214 e 139.
+
+00:01:20.700 --> 00:01:28.439
+Os dois tradutores também discordam entre si, em 420 dos 6.560 pares, 6,4%.
+
+00:01:28.984 --> 00:01:32.429
+Por ataque, a diferença é pequena e vai nos dois sentidos.
+
+00:01:33.584 --> 00:01:34.760
+Há uma ressalva.
+
+00:01:35.305 --> 00:01:38.557
+As traduções ainda não passaram pela revalidação às cegas,
+
+00:01:38.557 --> 00:01:41.782
+em que um falante nativo confere o rótulo sem ver o original.
+
+00:01:42.331 --> 00:01:46.284
+Parte das mudanças pode ser erro de tradução, e não efeito da língua.
+
+00:01:47.452 --> 00:01:52.320
+A segunda pergunta usa os 439 pares, que têm cinco traduções.
+
+00:01:52.865 --> 00:01:57.606
+Aqui o acerto sobe de 7% para entre 14% e 19%.
+
+00:01:58.155 --> 00:02:00.273
+Isso não é a taxa típica do juiz,
+
+00:02:00.273 --> 00:02:03.150
+porque os pares foram escolhidos onde ele erra em inglês.
+
+00:02:04.596 --> 00:02:07.682
+O que esse conjunto mede é a variação entre tradutores.
+
+00:02:08.227 --> 00:02:12.725
+Para cada par, contamos quantos dos cinco vereditos em português dizem nocivo.
+
+00:02:13.273 --> 00:02:16.764
+Se o tradutor não importasse, cada par teria 0 ou 5.
+
+00:02:17.312 --> 00:02:21.869
+Mas 91 pares, 20,8%, ficam entre 1 e 4.
+
+00:02:23.024 --> 00:02:25.547
+O projeto passa a mirar um artigo de periódico,
+
+00:02:25.547 --> 00:02:28.737
+a TACL, que não cobra taxa de publicação.
+
+00:02:29.282 --> 00:02:32.403
+O desenho ganha cinco extensões, nenhuma fixa.
+
+00:02:32.951 --> 00:02:36.898
+Mais línguas, controles de tradução, validação por nativos,
+
+00:02:36.898 --> 00:02:39.462
+análise por item e o tradutor como variável.
+
+00:02:40.562 --> 00:02:44.701
+O primeiro controle é a retrotradução, a volta do português para o inglês.
+
+00:02:45.246 --> 00:02:47.475
+O juiz julga esse inglês retraduzido.
+
+00:02:48.024 --> 00:02:52.094
+Se o veredito mudar também nele, a mudança vem do caminho pela tradução.
+
+00:02:52.642 --> 00:02:55.021
+Se não mudar, o efeito é da língua.
+
+00:02:55.570 --> 00:02:57.429
+Os dois casos são resultado.

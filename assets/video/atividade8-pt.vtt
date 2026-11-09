@@ -1,0 +1,136 @@
+WEBVTT
+
+00:00:00.696 --> 00:00:05.171
+Traduzindo o corpus para o português: o tradutor que obedeceu em vez de traduzir.
+
+00:00:05.716 --> 00:00:06.926
+Atividade 8.
+
+00:00:08.384 --> 00:00:12.662
+O projeto mede se um juiz de segurança erra mais em português do que em inglês.
+
+00:00:13.207 --> 00:00:17.624
+Um juiz de segurança é um modelo que lê a resposta de outro e diz se ela é nociva.
+
+00:00:18.172 --> 00:00:21.779
+Para comparar, é preciso o mesmo conteúdo nas duas línguas.
+
+00:00:22.948 --> 00:00:25.525
+Cada exemplo é um par, pedido e resposta.
+
+00:00:26.070 --> 00:00:29.283
+Os dois são traduzidos, porque o juiz lê os dois.
+
+00:00:29.831 --> 00:00:31.933
+Entram dois conjuntos, o JudgeStressTest,
+
+00:00:32.574 --> 00:00:38.067
+com 439 pares, e o CoinflipForSafety, com 6.560.
+
+00:00:39.216 --> 00:00:41.480
+A atividade anterior deixou uma regra.
+
+00:00:42.025 --> 00:00:44.757
+O tradutor não pode ser um modelo que recusa o material.
+
+00:00:44.757 --> 00:00:46.234
+Entram cinco motores.
+
+00:00:46.782 --> 00:00:49.625
+O DeepSeek, um modelo de linguagem permissivo.
+
+00:00:50.173 --> 00:00:53.699
+O NLLB-200 e o Opus-MT, abertos.
+
+00:00:54.247 --> 00:00:56.291
+O Argos, aberto e simples.
+
+00:00:56.840 --> 00:00:58.178
+E o Google Tradutor.
+
+00:00:59.274 --> 00:01:01.353
+O achado mais forte veio do DeepSeek.
+
+00:01:02.234 --> 00:01:06.893
+Mandado traduzir um pedido nocivo curto, ele reagiu ao pedido em vez de traduzi-lo.
+
+00:01:07.442 --> 00:01:12.796
+Dos 439 pedidos, recusou 210, 48%.
+
+00:01:13.345 --> 00:01:18.131
+Cumpriu 17, 4%, escrevendo o artigo ou a nota de resgate.
+
+00:01:18.680 --> 00:01:22.125
+E só traduziu 212, 48%.
+
+00:01:23.244 --> 00:01:26.712
+O modelo tomou o texto a traduzir por uma ordem dirigida a ele.
+
+00:01:27.257 --> 00:01:29.625
+É o risco que a atividade anterior previa.
+
+00:01:30.173 --> 00:01:33.722
+E apareceu o caso pior, em que o tradutor executa o ataque.
+
+00:01:34.880 --> 00:01:36.380
+A correção foi barata.
+
+00:01:36.925 --> 00:01:39.178
+Cada texto passou a ir entre marcas,
+
+00:01:39.205 --> 00:01:41.978
+com a instrução de que aquilo é dado, não comando.
+
+00:01:42.527 --> 00:01:48.541
+Os pedidos traduzidos subiram de 48% para 439 de 439.
+
+00:01:49.708 --> 00:01:53.314
+O mesmo enquadramento recuperou as respostas, com uma exceção.
+
+00:01:53.860 --> 00:01:57.697
+O item de toxina botulínica o DeepSeek não traduziu nem como dado.
+
+00:01:58.246 --> 00:02:02.166
+Foram 438 respostas de 439.
+
+00:02:02.714 --> 00:02:05.753
+O conteúdo mais extremo resiste até ao enquadramento.
+
+00:02:07.212 --> 00:02:11.096
+Os modelos abertos e o Google traduzem pedido e resposta literalmente,
+
+00:02:11.136 --> 00:02:16.085
+os 439 e os 6.560 por inteiro, sem uma recusa.
+
+00:02:16.630 --> 00:02:20.016
+Traduzir frase a frase também curou duas falhas anteriores,
+
+00:02:20.044 --> 00:02:21.973
+o corte do texto e a repetição.
+
+00:02:22.521 --> 00:02:27.736
+A tradução fica entre 1,05 e 1,09 vez o tamanho do original.
+
+00:02:28.904 --> 00:02:30.161
+O custo é baixo.
+
+00:02:30.706 --> 00:02:36.824
+O DeepSeek saiu por US$ 0,22 nos 439 pares, valor lido no painel da API.
+
+00:02:37.813 --> 00:02:40.019
+Os modelos abertos rodaram numa RTX 5080
+
+00:02:41.296 --> 00:02:43.850
+ociosa do laboratório e custaram zero de API.
+
+00:02:45.386 --> 00:02:48.935
+Agora a versão em português está pronta, nos dois conjuntos.
+
+00:02:49.480 --> 00:02:53.473
+Antes de rodar os juízes, falta resolver a direção das colunas de escore,
+
+00:02:53.473 --> 00:02:56.199
+que a Atividade 5 viu aparentemente invertida.
+
+00:02:56.748 --> 00:02:59.475
+Sem isso, as métricas sairiam trocadas.

@@ -1,0 +1,145 @@
+WEBVTT
+
+00:00:00.696 --> 00:00:05.506
+Juízes de segurança de LLM em português: medindo o deslocamento de língua.
+
+00:00:06.051 --> 00:00:09.611
+Atividade 2, investigação e aprofundamento técnico.
+
+00:00:11.072 --> 00:00:14.702
+Quem decide se uma resposta é nociva é um juiz, outro modelo.
+
+00:00:15.247 --> 00:00:17.376
+Os juízes foram validados em inglês e,
+
+00:00:17.376 --> 00:00:20.983
+até onde pudemos verificar, ninguém os mediu em português.
+
+00:00:22.132 --> 00:00:23.944
+A tarefa é uma classificação.
+
+00:00:24.490 --> 00:00:27.194
+A entrada é um par, o pedido e a resposta.
+
+00:00:27.742 --> 00:00:29.555
+A saída é nocivo ou seguro.
+
+00:00:30.103 --> 00:00:34.184
+O projeto mede a distância entre a saída do juiz e o rótulo de uma pessoa.
+
+00:00:35.352 --> 00:00:37.582
+Uma lista de palavras-chave serviria?
+
+00:00:38.126 --> 00:00:41.089
+No JailbreakBench, o juiz por regras concorda com
+
+00:00:41.089 --> 00:00:45.506
+humanos em 56,0% dos casos, quase um sorteio.
+
+00:00:46.055 --> 00:00:48.122
+Ele serve de piso de comparação.
+
+00:00:49.268 --> 00:00:51.255
+Não é preciso rotular do zero.
+
+00:00:51.799 --> 00:00:55.603
+Três conjuntos públicos em inglês já têm rótulo humano, o ReliableBench,
+
+00:00:56.047 --> 00:01:03.345
+com 41 comportamentos, o JudgeStressTest, com 971 amostras, e uma comparação com 300 pares.
+
+00:01:03.894 --> 00:01:05.186
+Falta o português.
+
+00:01:06.352 --> 00:01:08.223
+O risco central é a tradução.
+
+00:01:08.768 --> 00:01:11.522
+Brito e colegas descartaram a tradução automática,
+
+00:01:11.522 --> 00:01:13.994
+porque a carga ofensiva depende da cultura.
+
+00:01:14.543 --> 00:01:16.580
+A resposta é revalidar às cegas,
+
+00:01:16.580 --> 00:01:19.759
+sem ver o rótulo original, e descartar o que divergir.
+
+00:01:20.307 --> 00:01:22.351
+A taxa de descarte é resultado.
+
+00:01:23.508 --> 00:01:25.298
+Nenhum modelo será treinado.
+
+00:01:25.843 --> 00:01:30.676
+Os juízes rodam só em inferência, com temperatura zero, para o resultado se repetir.
+
+00:01:31.224 --> 00:01:34.715
+São quatro juízes abertos, mais um piso por regras.
+
+00:01:35.864 --> 00:01:39.055
+Quatro trabalhos medem juízes, e nenhum varia a língua.
+
+00:01:39.599 --> 00:01:44.549
+Schwinn e colegas medem três deslocamentos, mudanças nos dados que desviam o juiz.
+
+00:01:45.097 --> 00:01:47.383
+Aqui a língua é o quarto deslocamento.
+
+00:01:48.532 --> 00:01:50.437
+O sistema tem quatro peças.
+
+00:01:50.982 --> 00:01:55.052
+Um carregador dos conjuntos, um tradutor com revalidação às cegas,
+
+00:01:55.068 --> 00:01:58.037
+um executor dos juízes e um agregador de métricas.
+
+00:01:58.586 --> 00:02:00.677
+Trocar de juiz não muda o resto.
+
+00:02:01.824 --> 00:02:05.778
+Ele funciona se reproduzir os números em inglês e então medir o português.
+
+00:02:06.323 --> 00:02:08.615
+A métrica principal é o falso negativo,
+
+00:02:08.615 --> 00:02:12.163
+a fração de respostas nocivas que o juiz libera como seguras.
+
+00:02:12.712 --> 00:02:14.247
+Quanto menor, melhor.
+
+00:02:15.404 --> 00:02:20.717
+Acompanham a acurácia, o falso positivo, o Kappa, que desconta o acerto por sorte,
+
+00:02:20.717 --> 00:02:26.361
+e a AUROC, que mede quão bem o juiz separa nocivo de seguro e vale 0,5 no sorteio.
+
+00:02:27.520 --> 00:02:31.046
+Para comparar, há o juiz por regras e os números em inglês.
+
+00:02:31.591 --> 00:02:34.746
+O E1 reproduz o inglês, o E2 mede o português,
+
+00:02:34.762 --> 00:02:37.998
+e o E3, opcional, cruza a língua com o estilo.
+
+00:02:39.156 --> 00:02:43.353
+O juiz de 13 bilhões de parâmetros ocupa cerca de 26 GB,
+
+00:02:43.392 --> 00:02:46.837
+ou perto de 8 GB com quantização de 4 bits.
+
+00:02:47.382 --> 00:02:51.579
+Se o descarte for alto, restringe-se a comportamentos sem carga cultural.
+
+00:02:52.736 --> 00:02:57.026
+O projeto cabe no semestre, porque não treina modelo nem coleta dado novo.
+
+00:02:57.571 --> 00:02:59.973
+O maior risco é o descarte da tradução,
+
+00:03:00.036 --> 00:03:02.832
+e por isso a primeira etapa o mede numa amostra pequena.

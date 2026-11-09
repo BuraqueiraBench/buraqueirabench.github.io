@@ -1,0 +1,127 @@
+WEBVTT
+
+00:00:00.696 --> 00:00:05.506
+Juízes de segurança de LLM em português: medindo o deslocamento de língua.
+
+00:00:06.051 --> 00:00:08.119
+Atividade 1, a proposta.
+
+00:00:09.584 --> 00:00:13.839
+Um juiz de segurança é um modelo que lê a resposta de outro e diz se é nociva.
+
+00:00:14.384 --> 00:00:17.261
+É ele que produz a taxa de sucesso de um ataque.
+
+00:00:17.810 --> 00:00:22.030
+Zheng e colegas mediram concordância acima de 80% com humanos.
+
+00:00:23.188 --> 00:00:27.837
+Eiras e colegas reescreveram a resposta em tom narrativo, sem mudar o conteúdo,
+
+00:00:27.853 --> 00:00:33.473
+e o falso negativo do HarmBench foi de 0,12 para 0,36: triplicou.
+
+00:00:34.018 --> 00:00:37.427
+Falso negativo é uma resposta nociva liberada como segura.
+
+00:00:38.592 --> 00:00:41.886
+O WildGuard, o melhor juiz na condição de referência,
+
+00:00:41.891 --> 00:00:46.516
+deixa de detectar qualquer resposta nociva quando o texto vem envolto em conteúdo benigno.
+
+00:00:47.610 --> 00:00:52.733
+Schwinn e colegas partiram de 6.642 rótulos atribuídos por pessoas.
+
+00:00:53.278 --> 00:00:57.602
+Sob os deslocamentos de red teaming, os juízes caem para perto do acaso.
+
+00:00:58.716 --> 00:01:01.084
+A AUROC do JailJudge, no Llama-3.1-8B,
+
+00:01:02.640 --> 00:01:09.105
+fica entre 0,48 e 0,64, e 0,50 é o sorteio, uma moeda.
+
+00:01:09.650 --> 00:01:11.035
+O artigo se chama A Coin Flip for Safety.
+
+00:01:13.376 --> 00:01:16.890
+Schwinn e colegas nomeiam três deslocamentos: o do ataque,
+
+00:01:16.906 --> 00:01:20.201
+o do modelo e o da categoria, todos medidos em inglês.
+
+00:01:20.745 --> 00:01:24.687
+O quarto é o da língua, que até onde pudemos verificar ninguém mediu.
+
+00:01:25.852 --> 00:01:29.459
+HarmBench, 0,12 e 0,36.
+
+00:01:30.004 --> 00:01:33.459
+ShieldGemma, 0,50 e 0,70.
+
+00:01:34.008 --> 00:01:37.545
+WildGuard, 0,02 e 0,12.
+
+00:01:38.094 --> 00:01:42.337
+LLaMA Guard 3, 0,04 e 0,02.
+
+00:01:42.886 --> 00:01:44.003
+Em português?
+
+00:01:44.552 --> 00:01:46.052
+Só interrogações.
+
+00:01:47.508 --> 00:01:52.902
+A pergunta central: o ReliableBench, com 41 comportamentos confiáveis de julgar,
+
+00:01:52.902 --> 00:01:57.261
+sobe a acurácia média dos juízes de 57% para 70%.
+
+00:01:57.805 --> 00:01:59.954
+Continua confiável em português?
+
+00:02:01.112 --> 00:02:04.453
+Se a acurácia cair, a confiabilidade é da língua inglesa.
+
+00:02:04.998 --> 00:02:08.303
+Se não cair, é evidência de estabilidade em português.
+
+00:02:08.852 --> 00:02:10.931
+Nos dois casos, há resultado.
+
+00:02:12.050 --> 00:02:15.842
+O desenho é pareado: mesmo conteúdo, mesmo rótulo humano,
+
+00:02:15.847 --> 00:02:18.458
+mesmos juízes, em inglês e em português.
+
+00:02:19.003 --> 00:02:20.908
+A diferença é o efeito da língua.
+
+00:02:22.054 --> 00:02:25.464
+Não há rotulação do zero: o ReliableBench e o JudgeStressTest,
+
+00:02:26.186 --> 00:02:30.174
+com 971 amostras difíceis, já trazem rótulo humano.
+
+00:02:30.720 --> 00:02:35.032
+O maior juiz tem 13 bilhões de parâmetros, e basta uma placa gráfica.
+
+00:02:36.186 --> 00:02:40.272
+Traduzir não é neutro: Brito e colegas descartaram a tradução automática,
+
+00:02:40.272 --> 00:02:42.293
+porque a ofensa depende da cultura.
+
+00:02:42.838 --> 00:02:47.069
+Por isso a revalidação é às cegas, e quantos itens caem é um resultado.
+
+00:02:48.230 --> 00:02:50.869
+No fim, haverá um conjunto em português com rótulo
+
+00:02:50.869 --> 00:02:53.677
+humano validado e a medida de quanto cada juiz erra.
+
+00:02:54.222 --> 00:02:58.881
+Resultado nulo também informa: hoje a confiabilidade é suposta, não medida.

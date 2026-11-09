@@ -1,0 +1,136 @@
+WEBVTT
+
+00:00:00.696 --> 00:00:04.927
+Uma coluna que parecia invertida, e a mudança de rota que ela provocou.
+
+00:00:05.473 --> 00:00:06.788
+Atividade 9.
+
+00:00:08.240 --> 00:00:10.388
+A Atividade 8 deixou uma dúvida.
+
+00:00:10.933 --> 00:00:13.480
+As colunas de escore do JudgeStressTest pareciam
+
+00:00:13.480 --> 00:00:15.767
+invertidas em relação ao rótulo humano.
+
+00:00:16.315 --> 00:00:20.015
+Aqui roda um juiz só, o Llama Guard 3, em inglês.
+
+00:00:21.172 --> 00:00:24.362
+O juiz lê o pedido e a resposta e diz seguro ou nocivo.
+
+00:00:24.907 --> 00:00:27.136
+O escore é a probabilidade de nocivo.
+
+00:00:27.685 --> 00:00:30.967
+Acima de 0,5, o veredito é nocivo.
+
+00:00:31.516 --> 00:00:33.664
+O rótulo humano usa o mesmo corte.
+
+00:00:34.824 --> 00:00:38.234
+O nosso escore e a coluna publicada são quase o mesmo número.
+
+00:00:38.779 --> 00:00:43.334
+O veredito coincide em 436 dos 439 pares.
+
+00:00:43.883 --> 00:00:50.059
+A correlação de Spearman, que compara a ordem dos pares nas duas listas, é 0,999.
+
+00:00:50.608 --> 00:00:51.876
+Não há inversão.
+
+00:00:52.986 --> 00:00:54.707
+Por que parecia invertida?
+
+00:00:55.251 --> 00:00:59.621
+Quando o humano diz nocivo, a coluna tem mediana 0,148.
+
+00:01:00.170 --> 00:01:03.152
+Quando diz seguro, 0,967.
+
+00:01:03.700 --> 00:01:06.288
+A explicação está na montagem do conjunto.
+
+00:01:07.404 --> 00:01:09.696
+Schwinn e colegas guardaram só as amostras em
+
+00:01:09.696 --> 00:01:12.203
+que no máximo um juiz acertou o rótulo humano.
+
+00:01:12.748 --> 00:01:14.688
+O Llama Guard 3 é um deles.
+
+00:01:15.236 --> 00:01:18.415
+O conjunto é feito de erros de juiz, por construção.
+
+00:01:19.568 --> 00:01:26.542
+Contra o rótulo humano, o Llama Guard 3 acerta 29 dos 439 pares, 6,6%.
+
+00:01:27.088 --> 00:01:31.122
+Libera 167 das 189 respostas nocivas.
+
+00:01:31.671 --> 00:01:36.666
+Lida ao contrário, a coluna acertaria 93,2%, e isso enganou.
+
+00:01:37.828 --> 00:01:40.810
+Esse conjunto não serve para medir o efeito da língua.
+
+00:01:41.355 --> 00:01:45.082
+Partindo de quase zero de acerto, qualquer mudança no texto faz o
+
+00:01:45.082 --> 00:01:48.618
+acerto subir só porque o ponto de partida foi escolhido no extremo.
+
+00:01:49.167 --> 00:01:51.130
+Isso se chama regressão à média.
+
+00:01:52.596 --> 00:01:55.427
+A base passa a ser o CoinflipForSafety completo,
+
+00:01:55.478 --> 00:01:59.756
+com 6.560 pares auditados por pessoas e sem esse filtro.
+
+00:02:00.301 --> 00:02:04.706
+Os 439 servem a outra pergunta, o peso do tradutor.
+
+00:02:05.864 --> 00:02:07.503
+A linha de base em inglês.
+
+00:02:08.048 --> 00:02:16.226
+Falso negativo, nociva liberada como segura, 966 de 5.174, 18,7%.
+
+00:02:16.775 --> 00:02:24.409
+Falso positivo, segura barrada, 818 de 1.386, 59,0%.
+
+00:02:24.958 --> 00:02:29.340
+Acurácia, a fração de acertos, 72,8%.
+
+00:02:30.434 --> 00:02:32.518
+Cada par vem de um de cinco ataques,
+
+00:02:32.518 --> 00:02:35.418
+técnicas para levar um modelo a responder o que não devia.
+
+00:02:35.963 --> 00:02:42.382
+O falso negativo vai de 10,2% no GCG-R a 37,1% no ataque direto.
+
+00:02:43.534 --> 00:02:44.641
+Uma ressalva.
+
+00:02:45.186 --> 00:02:51.698
+Nos 6.560, o veredito coincide com a coluna publicada em 5.899 pares,
+
+00:02:51.760 --> 00:02:54.127
+e a causa da diferença não foi investigada.
+
+00:02:54.676 --> 00:02:56.385
+Isso não afeta a comparação,
+
+00:02:56.436 --> 00:02:59.660
+porque o juiz é comparado com ele mesmo nas duas línguas.
+
+00:03:00.209 --> 00:03:02.438
+Próximo passo, as traduções.

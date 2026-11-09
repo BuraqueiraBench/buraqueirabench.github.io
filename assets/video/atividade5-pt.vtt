@@ -1,0 +1,139 @@
+WEBVTT
+
+00:00:00.696 --> 00:00:03.601
+Juízes de segurança de LLM em português:
+
+00:00:03.601 --> 00:00:06.502
+primeira entrega, avaliação de traduzibilidade.
+
+00:00:07.047 --> 00:00:08.362
+Atividade 5.
+
+00:00:09.824 --> 00:00:12.678
+Se um item de segurança é traduzido para o português,
+
+00:00:12.776 --> 00:00:14.716
+o rótulo humano continua valendo?
+
+00:00:15.260 --> 00:00:17.698
+A resposta decide o resto do semestre.
+
+00:00:18.844 --> 00:00:22.994
+Os pares vêm do JudgeStressTest, com 971 linhas.
+
+00:00:23.540 --> 00:00:29.739
+Em 439 há resposta do modelo e rótulo humano, de 1 a 5, normalizado de 0 a 1.
+
+00:00:30.287 --> 00:00:33.940
+A partir de 0,5, o item conta como nocivo.
+
+00:00:35.088 --> 00:00:39.956
+Sorteamos 30 pares, com semente fixa, 15 nocivos e 15 seguros.
+
+00:00:40.501 --> 00:00:43.483
+São casos adversariais, difíceis de julgar,
+
+00:00:43.534 --> 00:00:46.121
+o que torna o teste severo também para a tradução.
+
+00:00:47.276 --> 00:00:51.103
+Isto é uma avaliação de traduzibilidade, não uma tradução executada.
+
+00:00:51.648 --> 00:00:54.275
+Para cada par, li o prompt e a resposta em inglês e
+
+00:00:54.275 --> 00:00:56.851
+julguei se uma tradução fiel preservaria o rótulo.
+
+00:00:57.400 --> 00:00:59.861
+Se mudasse, o item seria descartado.
+
+00:01:01.024 --> 00:01:03.798
+Cada item foi classificado por onde mora o rótulo.
+
+00:01:04.342 --> 00:01:07.798
+Em INV, é código ou número, que não se traduz.
+
+00:01:08.347 --> 00:01:12.416
+Em NL, é o sentido da linguagem natural, que se transfere.
+
+00:01:12.965 --> 00:01:17.219
+Em CULT, é uma palavra cultural, como watermelon, e se perde.
+
+00:01:18.372 --> 00:01:20.845
+Nenhum dos 30 itens mudaria de rótulo.
+
+00:01:21.389 --> 00:01:25.401
+A taxa de descarte projetada é 0 de 30, ou 0%.
+
+00:01:25.950 --> 00:01:29.892
+São 4 itens INV, 26 NL e nenhum CULT.
+
+00:01:31.040 --> 00:01:32.691
+O resultado tem fronteira.
+
+00:01:33.236 --> 00:01:36.506
+Esta amostra é de dano operacional, como fraude e malware,
+
+00:01:36.777 --> 00:01:38.914
+em que a nocividade está no ato descrito.
+
+00:01:39.462 --> 00:01:44.481
+No discurso de ódio, a ofensa mora numa palavra, e a tradução pode mudar o rótulo.
+
+00:01:45.030 --> 00:01:46.460
+Isso não foi testado.
+
+00:01:47.620 --> 00:01:50.706
+O número é uma projeção, não uma tradução revalidada.
+
+00:01:51.251 --> 00:01:56.443
+Alguns itens, como o malware dos itens 1, 8 e 29, exigem julgamento.
+
+00:01:56.992 --> 00:02:01.455
+Se divergirem, divergiriam igual em inglês, e isso não conta como descarte.
+
+00:02:02.616 --> 00:02:06.304
+Para este corpus, traduzir e depois julgar tende a ser viável.
+
+00:02:06.849 --> 00:02:11.220
+O risco se concentra em conteúdo preso à cultura, que o conjunto quase não tem.
+
+00:02:11.768 --> 00:02:14.274
+A confirmação vem com a tradução escrita.
+
+00:02:15.428 --> 00:02:17.414
+Os juízes não foram rodados.
+
+00:02:17.959 --> 00:02:22.041
+O conjunto traz o escore de cada juiz, mas a direção está invertida.
+
+00:02:22.589 --> 00:02:27.040
+Escore alto corresponde a rótulo seguro, com média 0,08,
+
+00:02:27.114 --> 00:02:30.883
+e escore baixo a nocivo, com média 0,95.
+
+00:02:32.032 --> 00:02:34.192
+O repositório não documenta isso.
+
+00:02:34.737 --> 00:02:37.835
+Publicar métricas assim inverteria todos os números.
+
+00:02:38.383 --> 00:02:41.573
+A linha de base em inglês espera uma configuração verificada.
+
+00:02:42.121 --> 00:02:44.570
+Registrar a ambiguidade já é um resultado.
+
+00:02:45.732 --> 00:02:48.371
+O próximo passo é escrever a tradução dos 30 pares
+
+00:02:48.371 --> 00:02:50.982
+e reconferir os rótulos com um falante nativo.
+
+00:02:51.527 --> 00:02:55.180
+Depois, rodar os quatro juízes em inglês e em português.
+
+00:02:55.729 --> 00:02:58.965
+Descarte nulo libera o caminho, sem mudar o escopo.
