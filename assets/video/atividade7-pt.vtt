@@ -1,0 +1,109 @@
+WEBVTT
+
+00:00:00.696 --> 00:00:03.636
+Juízes de segurança de LLM em português:
+
+00:00:03.636 --> 00:00:06.583
+terceira entrega, tradução dos trinta na prática.
+
+00:00:07.128 --> 00:00:08.501
+Atividade 7.
+
+00:00:09.968 --> 00:00:13.263
+Esta entrega traduz de fato os 30 pares com seis motores,
+
+00:00:13.278 --> 00:00:15.566
+e mede quem traduz tudo e quem recusa.
+
+00:00:16.110 --> 00:00:18.479
+O resultado decide o motor do projeto.
+
+00:00:19.636 --> 00:00:23.271
+É a amostra da Atividade 5, com 8 itens operacionais,
+
+00:00:23.271 --> 00:00:26.599
+como malware, injeção em banco e síntese de explosivo.
+
+00:00:27.144 --> 00:00:31.063
+Traduz-se a resposta do modelo, que carrega o sinal de nocividade.
+
+00:00:32.232 --> 00:00:37.910
+Os motores são dois LLMs, Claude Haiku 4.5 e DeepSeek, o Google,
+
+00:00:37.950 --> 00:00:44.277
+como dedicado, e três abertos, NLLB-200, Opus-MT e Argos, rodando na CPU.
+
+00:00:45.956 --> 00:00:49.968
+Cinco traduziram os 30 de 30, inclusive os 8 operacionais.
+
+00:00:50.513 --> 00:00:53.644
+O Claude Haiku traduziu só 8 e recusou 22.
+
+00:00:54.808 --> 00:00:59.322
+As 22 recusas incluem todos os 8 operacionais e mais 14 itens,
+
+00:00:59.322 --> 00:01:03.137
+como phishing, golpe romântico e incentivo a transtorno alimentar.
+
+00:01:04.284 --> 00:01:05.553
+O padrão é claro.
+
+00:01:06.098 --> 00:01:09.674
+Ele recusa sempre que a resposta ensina ou cumpre o pedido nocivo,
+
+00:01:09.674 --> 00:01:11.081
+qualquer que seja o tema.
+
+00:01:11.630 --> 00:01:15.803
+E o corpus é feito de ataques, então a recusa é a variável que decide.
+
+00:01:16.952 --> 00:01:20.930
+O DeepSeek, outro LLM, traduziu os 30 sem recusar.
+
+00:01:21.474 --> 00:01:22.893
+Recusar não é ser LLM.
+
+00:01:23.928 --> 00:01:26.909
+É o alinhamento do modelo e o enquadramento do pedido.
+
+00:01:28.060 --> 00:01:30.417
+Quando traduzem, o sinal sobrevive.
+
+00:01:30.962 --> 00:01:36.517
+O comprimento em português sobre o inglês é 1,09 no Google e 1,05 no Argos,
+
+00:01:36.517 --> 00:01:38.191
+que engoliu o documento inteiro.
+
+00:01:39.336 --> 00:01:44.262
+O Opus-MT trunca o documento longo, e o comprimento cai a 0,40,
+
+00:01:44.267 --> 00:01:46.554
+porque ele traduz sentença a sentença.
+
+00:01:47.099 --> 00:01:53.333
+O NLLB-200 repete o texto, e só volta a 1,05 com trava e tradução por sentença.
+
+00:01:54.500 --> 00:01:57.979
+O Google levou 50 segundos e o DeepSeek, 70.
+
+00:01:58.524 --> 00:02:05.823
+Os abertos, na CPU, levaram 8 minutos no Argos, 59 no NLLB-200 e 74 no Opus-MT.
+
+00:02:07.528 --> 00:02:12.582
+O Claude, quando aceita, traduz tão bem quanto o Google, com 1,51.
+
+00:02:13.126 --> 00:02:15.969
+O problema nunca foi a qualidade, foi aceitar.
+
+00:02:17.124 --> 00:02:18.856
+A recomendação endurece.
+
+00:02:19.401 --> 00:02:22.428
+O motor primário não pode ser um LLM alinhado.
+
+00:02:22.977 --> 00:02:25.901
+Tem de nunca recusar, como o Google ou um aberto,
+
+00:02:25.928 --> 00:02:30.113
+e um LLM permissivo, como o DeepSeek, pode entrar no conjunto.

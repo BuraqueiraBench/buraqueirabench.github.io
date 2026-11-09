@@ -212,7 +212,7 @@ window.DADOS = {
     // relatórios que já têm página em HTML
     paginas: [1, 2, 3, 5, 6, 7, 8, 9, 10, 11],
     // relatórios com vídeo narrado (assets/video/atividadeN-pt.mp4) e apresentações em página animada
-    videos: [1, 2, 3, 5, 8, 9, 10, 11],
+    videos: [1, 2, 3, 5, 6, 7, 8, 9, 10, 11],
     apresentacoes: [4, 6, 9, 10]
   },
 

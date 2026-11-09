@@ -1,0 +1,121 @@
+WEBVTT
+
+00:00:00.696 --> 00:00:03.590
+Juízes de segurança de LLM em português:
+
+00:00:03.590 --> 00:00:06.421
+segunda entrega, como e a que custo traduzir.
+
+00:00:06.966 --> 00:00:08.338
+Atividade 6.
+
+00:00:09.800 --> 00:00:12.388
+A Atividade 5 projetou descarte nulo.
+
+00:00:12.933 --> 00:00:14.688
+Falta escolher como traduzir.
+
+00:00:15.236 --> 00:00:20.185
+O achado é que o preço não decide, e sim a qualidade, o controle e a privacidade.
+
+00:00:21.340 --> 00:00:22.667
+Há três famílias.
+
+00:00:23.212 --> 00:00:26.922
+O LLM aceita instrução, como não suavizar o conteúdo.
+
+00:00:27.471 --> 00:00:30.383
+O dedicado é fluente, mas não aceita instrução.
+
+00:00:30.932 --> 00:00:34.272
+O aberto roda em casa, sem mandar dados a terceiros.
+
+00:00:35.424 --> 00:00:39.506
+Tokens são os pedaços de texto pelos quais os LLMs cobram.
+
+00:00:40.050 --> 00:00:45.833
+O JudgeStressTest tem 439 pares e 151.962 tokens.
+
+00:00:46.381 --> 00:00:52.522
+O conjunto completo tem 6.560 pares e 2.504.123.
+
+00:00:53.684 --> 00:00:58.171
+Em 439 pares, nenhum método passa de 14 dólares.
+
+00:00:58.715 --> 00:01:07.137
+Em 6.560 pares, o DeepSeek custa até 4,30 dólares, e o Google Cloud, 232,80.
+
+00:01:07.685 --> 00:01:09.833
+Os dedicados cobram por caractere.
+
+00:01:10.984 --> 00:01:12.820
+O Google tem dois produtos.
+
+00:01:13.365 --> 00:01:16.960
+O tradutor do site é grátis, mas não roda um corpus.
+
+00:01:17.508 --> 00:01:21.323
+A API oficial custa 20 dólares por milhão de caracteres.
+
+00:01:22.476 --> 00:01:24.220
+Testei seis tradutores.
+
+00:01:24.764 --> 00:01:28.382
+Dois LLMs, Claude e DeepSeek, o Google,
+
+00:01:28.456 --> 00:01:33.255
+e três abertos, Argos, Opus-MT e NLLB-200, na CPU.
+
+00:01:34.301 --> 00:01:37.607
+Os itens operacionais, como malware, entraram.
+
+00:01:38.768 --> 00:01:43.706
+Os abertos e o DeepSeek traduziram os 30 de 30, inclusive os 4 operacionais.
+
+00:01:44.251 --> 00:01:48.702
+O Argos levou 35 segundos, e o Opus-MT, 53.
+
+00:01:49.852 --> 00:01:56.839
+Na CPU, o Argos levaria 9 minutos nos 439 pares e 2 horas nos 6.560.
+
+00:01:57.383 --> 00:02:01.499
+O NLLB-200 levaria 22 horas, inviável sem GPU.
+
+00:02:02.522 --> 00:02:06.649
+Os abertos custam zero de API, mas gastam tempo de máquina.
+
+00:02:07.800 --> 00:02:11.974
+Só o LLM pode recusar, porque o corpus é feito de ataques.
+
+00:02:12.519 --> 00:02:17.468
+O DeepSeek traduziu os 30 itens sem recusar, mas isso depende do modelo e do prompt.
+
+00:02:18.016 --> 00:02:19.887
+A recusa é um risco a monitorar.
+
+00:02:21.044 --> 00:02:24.871
+Todos preservam o sinal de segurança, e a diferença é de estilo.
+
+00:02:25.416 --> 00:02:29.462
+Só os LLMs aceitam a instrução de manter código e números.
+
+00:02:30.616 --> 00:02:34.130
+O LLM é flexível e barato, mas pode recusar.
+
+00:02:34.675 --> 00:02:38.860
+O dedicado nunca recusa, mas é pago e envia o conteúdo a terceiros.
+
+00:02:39.409 --> 00:02:42.298
+O aberto é grátis e privado, mas mais lento.
+
+00:02:43.452 --> 00:02:45.311
+Recomendo um pequeno conjunto.
+
+00:02:45.856 --> 00:02:49.995
+Um LLM instruível, o DeepSeek Flash ou o Gemini 3.1 Flash-Lite,
+
+00:02:50.393 --> 00:02:55.481
+um aberto local, o Opus-MT ou o Argos, e o Google, para auditar uma amostra.
+
+00:02:56.030 --> 00:02:58.930
+Se o LLM recusar, o aberto assume.
