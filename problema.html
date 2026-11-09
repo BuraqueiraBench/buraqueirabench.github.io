@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>O problema | BuraqueiraBench</title>
+<meta name="description" content="Quem dá a nota de segurança de uma IA é outra IA, o juiz, e ninguém mediu o que acontece com ele em português.">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/img/buraqueira-32.png?v=1">
+<link rel="apple-touch-icon" href="assets/img/buraqueira-192.png?v=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Zilla+Slab:wght@500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/site.css">
+<link rel="stylesheet" href="assets/css/problema.css">
+</head>
+<body data-pagina="problema">
+<a class="pular" href="#conteudo">Pular para o conteúdo</a>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <filter id="tinta-gasta" x="-10%" y="-10%" width="120%" height="120%">
+    <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" seed="4" result="ruido"/>
+    <feDisplacementMap in="SourceGraphic" in2="ruido" scale="2.6"/>
+  </filter>
+  <symbol id="i-user" viewBox="0 0 24 24"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></symbol>
+  <symbol id="i-bot" viewBox="0 0 24 24"><path d="M12 8V4H8"/><rect width="16" height="12" x="4" y="8" rx="2"/><path d="M2 14h2"/><path d="M20 14h2"/><path d="M15 13v2"/><path d="M9 13v2"/></symbol>
+  <symbol id="i-file" viewBox="0 0 24 24"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M10 9H8"/><path d="M16 13H8"/><path d="M16 17H8"/></symbol>
+  <symbol id="i-scale" viewBox="0 0 24 24"><path d="m16 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"/><path d="m2 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"/><path d="M7 21h10"/><path d="M12 3v18"/><path d="M3 7h2c2 0 5-1 7-2 2 1 5 2 7 2h2"/></symbol>
+  <symbol id="i-stamp" viewBox="0 0 24 24"><path d="M5 22h14"/><path d="M19.27 13.73A2.5 2.5 0 0 0 17.5 13h-11A2.5 2.5 0 0 0 4 15.5V17a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-1.5c0-.66-.26-1.3-.73-1.77Z"/><path d="M14 13V8.5C14 7 15 7 15 5a3 3 0 0 0-3-3c-1.66 0-3 1-3 3s1 2 1 3.5V13"/></symbol>
+  <symbol id="i-compare" viewBox="0 0 24 24"><circle cx="18" cy="18" r="3"/><circle cx="6" cy="6" r="3"/><path d="M13 6h3a2 2 0 0 1 2 2v7"/><path d="M11 18H8a2 2 0 0 1-2-2V9"/></symbol>
+  <symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></symbol>
+  <symbol id="i-languages" viewBox="0 0 24 24"><path d="m5 8 6 6"/><path d="m4 14 6-6 2-3"/><path d="M2 5h12"/><path d="M7 2h1"/><path d="m22 22-5-10-5 10"/><path d="M14 18h6"/></symbol>
+  <symbol id="i-help" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><path d="M12 17h.01"/></symbol>
+  <symbol id="i-swords" viewBox="0 0 24 24"><path d="m14.5 17.5 5.5 5.5"/><path d="m13 19 6-6"/><path d="M14.5 6.5 4 17l3 3L17.5 9.5"/><path d="m8 7 3.5 3.5"/><path d="M13 11 21 3v5"/></symbol>
+  <symbol id="i-layers" viewBox="0 0 24 24"><path d="m12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83Z"/><path d="m22 17.65-9.17 4.16a2 2 0 0 1-1.66 0L2 17.65"/><path d="m22 12.65-9.17 4.16a2 2 0 0 1-1.66 0L2 12.65"/></symbol>
+  <symbol id="i-tag" viewBox="0 0 24 24"><path d="M12.586 2.586A2 2 0 0 0 11.172 2H4a2 2 0 0 0-2 2v7.172a2 2 0 0 0 .586 1.414l8.704 8.704a2.426 2.426 0 0 0 3.42 0l6.58-6.58a2.426 2.426 0 0 0 0-3.42z"/><circle cx="7.5" cy="7.5" r=".5" fill="currentColor"/></symbol>
+  <symbol id="i-pen" viewBox="0 0 24 24"><path d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z"/><path d="m15 5 4 4"/></symbol>
+  <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></symbol>
+</svg>
+
+<header class="menu">
+  <div class="menu-dentro">
+    <a class="marca" href="index.html">
+      <img src="assets/img/buraqueira-96.png" alt="" width="38" height="38">
+      <span>BuraqueiraBench<small>juízes de segurança em português</small></span>
+    </a>
+    <nav aria-label="Páginas">
+      <ul>
+        <li><a href="index.html" data-p="inicio"><svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8"/><path d="M3 10a2 2 0 0 1 .709-1.528l7-5.999a2 2 0 0 1 2.582 0l7 5.999A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg><span>Início</span></a></li>
+        <li><a href="problema.html" data-p="problema"><svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><path d="m16 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"/><path d="m2 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"/><path d="M7 21h10"/><path d="M12 3v18"/><path d="M3 7h2c2 0 5-1 7-2 2 1 5 2 7 2h2"/></svg><span>O problema</span></a></li>
+        <li><a href="metodo.html" data-p="metodo"><svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><rect width="8" height="8" x="3" y="3" rx="2"/><path d="M7 11v4a2 2 0 0 0 2 2h4"/><rect width="8" height="8" x="13" y="13" rx="2"/></svg><span>O método</span></a></li>
+        <li><a href="resultados.html" data-p="resultados"><svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 3v16a2 2 0 0 0 2 2h16"/><path d="M18 17V9"/><path d="M13 17V5"/><path d="M8 17v-3"/></svg><span>Resultados</span></a></li>
+        <li><a href="evolucao.html" data-p="evolucao"><svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><circle cx="16" cy="16" r="6"/><path d="M7 20H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h3.9a2 2 0 0 1 1.69.9l.81 1.2a2 2 0 0 0 1.67.9H20a2 2 0 0 1 2 2"/><path d="M16 14v2.2l1.6 1"/></svg><span>Evolução</span></a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="conteudo">
+  <div class="cabeca-pagina">
+    <div>
+      <h1>O problema</h1>
+      <p class="lead">Quando alguém testa se uma IA responde coisa perigosa, quem dá a nota é outra IA, o <strong>juiz</strong>. Todos os juízes foram medidos em inglês.</p>
+    </div>
+    <img class="coruja" src="assets/img/coruja-apontando.png" alt="" width="420" height="420">
+  </div>
+
+  <section class="secao bloco" aria-labelledby="t-juiz">
+    <h2 id="t-juiz">O que é um juiz de segurança</h2>
+    <ol class="fluxo-juiz" id="fluxo-juiz">
+      <li><button type="button" class="etapa" data-k="ataque"><svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-user"/></svg><b>Pessoa</b><span>faz um ataque</span></button></li>
+      <li class="seta" aria-hidden="true"></li>
+      <li><button type="button" class="etapa" data-k="modelo"><svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-bot"/></svg><b>Modelo de linguagem</b><span>a IA testada</span></button></li>
+      <li class="seta" aria-hidden="true"></li>
+      <li><button type="button" class="etapa" data-k="resposta"><svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-file"/></svg><b>Resposta</b><span>o processo vai aos autos</span></button></li>
+      <li class="seta" aria-hidden="true"></li>
+      <li><button type="button" class="etapa juiz" data-k="juiz"><svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-scale"/></svg><b>Juiz</b><span>outra IA</span></button></li>
+      <li class="seta" aria-hidden="true"></li>
+      <li><button type="button" class="etapa veredito" data-k="carimbo"><span class="carimbo nocivo">Nocivo</span><span class="ou">ou</span><span class="carimbo seguro">Seguro</span><span class="contra"><svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-compare"/></svg>contra o rótulo humano</span></button></li>
+    </ol>
+    <p class="legenda">Clique em uma etapa. O veredito do juiz é comparado com o rótulo que uma pessoa deu à mesma resposta.</p>
+  </section>
+
+  <section class="secao bloco" aria-labelledby="t-desl">
+    <h2 id="t-desl">Os quatro deslocamentos</h2>
+    <p class="lead">Um juiz é validado numa situação e usado em outras. Três mudanças já foram medidas em inglês. A quarta, a língua, ninguém mediu.</p>
+    <div class="deslocs" id="deslocs">
+      <div class="desl"><svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-swords"/></svg><div><b>Ataque</b><small>medido por Schwinn et al.</small></div></div>
+      <span class="fio" style="--n:0" aria-hidden="true"><i></i></span>
+      <div class="desl"><svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-bot"/></svg><div><b>Modelo avaliado</b><small>medido por Schwinn et al.</small></div></div>
+      <span class="fio" style="--n:1" aria-hidden="true"><i></i></span>
+      <div class="desl"><svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-tag"/></svg><div><b>Categoria</b><small>medido por Schwinn et al.</small></div></div>
+      <span class="fio" style="--n:2" aria-hidden="true"><i></i></span>
+      <div class="desl lingua"><svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-languages"/></svg><div><b>Língua</b><small>nunca medida</small></div></div>
+      <span class="fio lingua" style="--n:3" aria-hidden="true"><i></i><em class="interroga"><svg class="icone" viewBox="0 0 24 24"><use href="#i-help"/></svg></em></span>
+      <div class="juiz-alvo"><svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-scale"/></svg><b>Juiz</b></div>
+    </div>
+    <p class="legenda">Cada seta é uma mudança que pode fazer o juiz errar. A seta ocre é a que este projeto mede.</p>
+    <ul class="so-leitor">
+      <li>Ataque: medido em inglês por Schwinn et al.</li>
+      <li>Modelo avaliado: medido em inglês por Schwinn et al.</li>
+      <li>Categoria do conteúdo: medida em inglês por Schwinn et al.</li>
+      <li>Língua: nunca medida.</li>
+    </ul>
+  </section>
+
+  <div class="duas">
+    <section class="secao bloco" aria-labelledby="t-perg">
+      <h2 id="t-perg" class="so-leitor">A pergunta</h2>
+      <div class="pergunta papel">
+        <svg class="icone grande" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-help"/></svg>
+        <p class="grande">O <strong>ReliableBench</strong> continua confiável em português?</p>
+        <p>O <strong>ReliableBench</strong> é o recorte de comportamentos que são mais confiáveis de julgar. Nele a acurácia média dos juízes sobe de <strong class="num">57%</strong> para <strong class="num">70%</strong>. Se ela cair ao traduzir, essa confiança era do inglês, não do comportamento.</p>
+        <ul class="duas-perg">
+          <li><svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-globe"/></svg><span><b>Efeito da língua.</b> O juiz erra mais em português do que no mesmo par em inglês?</span></li>
+          <li><svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-languages"/></svg><span><b>Efeito do tradutor.</b> Quanto o veredito muda só por trocar o motor que traduziu?</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="secao bloco" aria-labelledby="t-ctx">
+      <h2 id="t-ctx">Por que desconfiar</h2>
+      <div class="dados">
+        <figure class="papel dado" aria-labelledby="f1">
+          <svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-pen"/></svg>
+          <figcaption id="f1">Reescrever a resposta no estilo narrativo faz o <strong>HarmBench</strong> liberar mais nocivas (falso negativo).</figcaption>
+          <div class="barras">
+            <div class="b"><span>original</span><div class="trilho"><div class="enche" style="--w:12%"></div></div><b class="num">0,12</b></div>
+            <div class="b"><span>narrativo</span><div class="trilho"><div class="enche forte" style="--w:36%"></div></div><b class="num">0,36</b></div>
+          </div>
+          <small>Eiras et al., em inglês. Fonte A1:47.</small>
+        </figure>
+        <figure class="papel dado" aria-labelledby="f2">
+          <svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-search"/></svg>
+          <figcaption id="f2">O piso sem IA, buscar palavra de recusa, concorda com humanos em pouco mais da metade dos casos.</figcaption>
+          <div class="barras">
+            <div class="b"><span>concorda</span><div class="trilho"><div class="enche" style="--w:56%"></div></div><b class="num">56,0%</b></div>
+            <div class="b"><span>sorteio</span><div class="trilho"><div class="enche sorteio" style="--w:50%"></div></div><b class="num">50%</b></div>
+          </div>
+          <small>JailbreakBench. Fonte A2:76.</small>
+        </figure>
+      </div>
+    </section>
+  </div>
+</main>
+
+<aside class="painel-lateral" aria-hidden="true" aria-label="Detalhes">
+  <button class="fechar" type="button" aria-label="Fechar detalhes"><svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></button>
+  <div class="painel-corpo"></div>
+</aside>
+
+<footer class="rodape">
+  <div class="rodape-dentro">
+    <div class="quem">
+      <img src="assets/img/buraqueira-96.png" alt="" width="44" height="44">
+      <div><strong>Cristhian Kapelinski</strong>Laboratório de Inteligência Artificial Aplicada (LIAA), 2026/2, <strong>UNIPAMPA</strong>, prof. Diego Kreutz</div>
+    </div>
+    <div class="links">
+      <a href="https://github.com/BuraqueiraBench" aria-label="BuraqueiraBench no GitHub"><svg class="icone cheio" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>GitHub</a>
+    </div>
+  </div>
+</footer>
+
+<nav class="barra-celular" aria-label="Páginas">
+  <a href="index.html" data-p="inicio"><svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8"/><path d="M3 10a2 2 0 0 1 .709-1.528l7-5.999a2 2 0 0 1 2.582 0l7 5.999A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>Início</a>
+  <a href="problema.html" data-p="problema"><svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><path d="m16 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"/><path d="m2 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"/><path d="M7 21h10"/><path d="M12 3v18"/><path d="M3 7h2c2 0 5-1 7-2 2 1 5 2 7 2h2"/></svg>Problema</a>
+  <a href="metodo.html" data-p="metodo"><svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><rect width="8" height="8" x="3" y="3" rx="2"/><path d="M7 11v4a2 2 0 0 0 2 2h4"/><rect width="8" height="8" x="13" y="13" rx="2"/></svg>Método</a>
+  <a href="resultados.html" data-p="resultados"><svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 3v16a2 2 0 0 0 2 2h16"/><path d="M18 17V9"/><path d="M13 17V5"/><path d="M8 17v-3"/></svg>Resultados</a>
+  <a href="evolucao.html" data-p="evolucao"><svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><circle cx="16" cy="16" r="6"/><path d="M7 20H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h3.9a2 2 0 0 1 1.69.9l.81 1.2a2 2 0 0 0 1.67.9H20a2 2 0 0 1 2 2"/><path d="M16 14v2.2l1.6 1"/></svg>Evolução</a>
+</nav>
+
+<script src="assets/js/dados.js"></script>
+<script src="assets/js/site.js"></script>
+<script src="assets/js/problema.js"></script>
+</body>
+</html>
