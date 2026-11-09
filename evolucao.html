@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Evolução | BuraqueiraBench</title>
+<meta name="description" content="As 13 atividades do semestre como pastas de um arquivo, com o que foi feito, o resultado e cada vez que o projeto mudou de rota.">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/img/buraqueira-32.png?v=1">
+<link rel="apple-touch-icon" href="assets/img/buraqueira-192.png?v=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Zilla+Slab:wght@500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/site.css">
+<link rel="stylesheet" href="assets/css/evolucao.css">
+</head>
+<body data-pagina="evolucao">
+<a class="pular" href="#conteudo">Pular para o conteúdo</a>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <filter id="tinta-gasta" x="-10%" y="-10%" width="120%" height="120%">
+    <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" seed="4" result="ruido"/>
+    <feDisplacementMap in="SourceGraphic" in2="ruido" scale="2.6"/>
+  </filter>
+</svg>
+
+<header class="menu">
+  <div class="menu-dentro">
+    <a class="marca" href="index.html">
+      <img src="assets/img/buraqueira-96.png" alt="" width="38" height="38">
+      <span>BuraqueiraBench<small>juízes de segurança em português</small></span>
+    </a>
+    <nav aria-label="Páginas">
+      <ul>
+        <li><a href="index.html" data-p="inicio"><svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8"/><path d="M3 10a2 2 0 0 1 .709-1.528l7-5.999a2 2 0 0 1 2.582 0l7 5.999A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg><span>Início</span></a></li>
+        <li><a href="problema.html" data-p="problema"><svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><path d="m16 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"/><path d="m2 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"/><path d="M7 21h10"/><path d="M12 3v18"/><path d="M3 7h2c2 0 5-1 7-2 2 1 5 2 7 2h2"/></svg><span>O problema</span></a></li>
+        <li><a href="metodo.html" data-p="metodo"><svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><rect width="8" height="8" x="3" y="3" rx="2"/><path d="M7 11v4a2 2 0 0 0 2 2h4"/><rect width="8" height="8" x="13" y="13" rx="2"/></svg><span>O método</span></a></li>
+        <li><a href="resultados.html" data-p="resultados"><svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 3v16a2 2 0 0 0 2 2h16"/><path d="M18 17V9"/><path d="M13 17V5"/><path d="M8 17v-3"/></svg><span>Resultados</span></a></li>
+        <li><a href="evolucao.html" data-p="evolucao"><svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><circle cx="16" cy="16" r="6"/><path d="M7 20H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h3.9a2 2 0 0 1 1.69.9l.81 1.2a2 2 0 0 0 1.67.9H20a2 2 0 0 1 2 2"/><path d="M16 14v2.2l1.6 1"/></svg><span>Evolução</span></a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="conteudo">
+  <div class="cabeca-pagina">
+    <div>
+      <h1>Evolução no semestre</h1>
+      <p class="lead">Treze atividades, uma pasta para cada. Abra uma para ver o que foi feito e o resultado. O carimbo <span class="carimbo rota mini">mudou a rota</span> marca onde o projeto virou.</p>
+    </div>
+    <img class="coruja" src="assets/img/coruja-pastas.png" alt="Coruja-buraqueira juíza segurando uma pilha de pastas" width="210" height="210">
+  </div>
+
+  <section class="arquivo" aria-label="As 13 atividades, da primeira à última">
+    <div class="gaveta" id="gaveta" role="group" aria-label="Pastas das atividades"></div>
+    <ol class="fases" aria-label="As quatro fases do semestre">
+      <li class="fase f1"><svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg><span><strong>Definir o problema</strong> A1 a A4</span></li>
+      <li class="fase f2"><svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><path d="m5 8 6 6"/><path d="m4 14 6-6 2-3"/><path d="M2 5h12"/><path d="M7 2h1"/><path d="m22 22-5-10-5 10"/><path d="M14 18h6"/></svg><span><strong>Traduzir</strong> A5 a A8</span></li>
+      <li class="fase f3"><svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><path d="m16 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"/><path d="m2 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"/><path d="M7 21h10"/><path d="M12 3v18"/><path d="M3 7h2c2 0 5-1 7-2 2 1 5 2 7 2h2"/></svg><span><strong>Julgar</strong> A9 a A11</span></li>
+      <li class="fase f4"><svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><path d="M2 3h20"/><path d="M21 3v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V3"/><path d="m7 21 5-5 5 5"/></svg><span><strong>Mostrar</strong> A12 e A13</span></li>
+    </ol>
+  </section>
+
+  <section class="depois" aria-labelledby="h-depois">
+    <div class="pasta-vazia">
+      <span class="aba-vazia">depois</span>
+      <div class="corpo-vazio">
+        <h2 id="h-depois"><svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 20a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.69-.9L9.6 3.9A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2Z"/></svg>O que vem depois</h2>
+        <ul id="proximos"></ul>
+      </div>
+    </div>
+  </section>
+</main>
+
+<aside class="painel-lateral" aria-hidden="true" aria-label="Detalhes">
+  <button class="fechar" type="button" aria-label="Fechar detalhes"><svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></button>
+  <div class="painel-corpo"></div>
+</aside>
+
+<footer class="rodape">
+  <div class="rodape-dentro">
+    <div class="quem">
+      <img src="assets/img/buraqueira-96.png" alt="" width="44" height="44">
+      <div><strong>Cristhian Kapelinski</strong>Laboratório de Inteligência Artificial Aplicada (LIAA), 2026/2, <strong>UNIPAMPA</strong>, prof. Diego Kreutz</div>
+    </div>
+    <div class="links">
+      <a href="https://github.com/BuraqueiraBench" aria-label="BuraqueiraBench no GitHub"><svg class="icone cheio" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>GitHub</a>
+    </div>
+  </div>
+</footer>
+
+<nav class="barra-celular" aria-label="Páginas">
+  <a href="index.html" data-p="inicio"><svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8"/><path d="M3 10a2 2 0 0 1 .709-1.528l7-5.999a2 2 0 0 1 2.582 0l7 5.999A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>Início</a>
+  <a href="problema.html" data-p="problema"><svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><path d="m16 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"/><path d="m2 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"/><path d="M7 21h10"/><path d="M12 3v18"/><path d="M3 7h2c2 0 5-1 7-2 2 1 5 2 7 2h2"/></svg>Problema</a>
+  <a href="metodo.html" data-p="metodo"><svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><rect width="8" height="8" x="3" y="3" rx="2"/><path d="M7 11v4a2 2 0 0 0 2 2h4"/><rect width="8" height="8" x="13" y="13" rx="2"/></svg>Método</a>
+  <a href="resultados.html" data-p="resultados"><svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 3v16a2 2 0 0 0 2 2h16"/><path d="M18 17V9"/><path d="M13 17V5"/><path d="M8 17v-3"/></svg>Resultados</a>
+  <a href="evolucao.html" data-p="evolucao"><svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><circle cx="16" cy="16" r="6"/><path d="M7 20H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h3.9a2 2 0 0 1 1.69.9l.81 1.2a2 2 0 0 0 1.67.9H20a2 2 0 0 1 2 2"/><path d="M16 14v2.2l1.6 1"/></svg>Evolução</a>
+</nav>
+
+<script src="assets/js/dados.js"></script>
+<script src="assets/js/site.js"></script>
+<script src="assets/js/evolucao.js"></script>
+</body>
+</html>

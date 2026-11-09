@@ -1,0 +1,100 @@
+/* Resultados: abas de gráfico sobre a mesa, cada gráfico num papel. */
+
+.cabeca-pagina { padding-bottom: 14px; }
+.cabeca-pagina h1 { margin-bottom: 8px; }
+.resposta { font-size: 1.15rem; max-width: 66ch; color: var(--luz); }
+.cabeca-pagina .coruja { width: clamp(100px, 11vw, 150px); }
+
+/* ---------- abas ---------- */
+.abas { margin-top: 6px; min-width: 0; }
+.abas-lista, .aba-painel { min-width: 0; max-width: 100%; }
+.abas-lista { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 6px; position: relative; z-index: 1; }
+.abas-lista button {
+  display: flex; align-items: center; gap: 10px; text-align: left;
+  font: inherit; font-weight: 700; font-size: .95rem; line-height: 1.2;
+  padding: 12px 14px 14px; border: 0; cursor: pointer;
+  border-radius: 8px 8px 0 0;
+  background: var(--madeira-3); color: var(--luz);
+  transition: background .2s var(--curva), color .2s var(--curva), transform .2s var(--curva);
+}
+.abas-lista button .icone { width: 22px; height: 22px; color: var(--ocre); }
+.abas-lista button:hover { background: #5a4130; }
+.abas-lista button[aria-selected="true"] { background: var(--papel); color: var(--tinta); transform: translateY(2px); padding-bottom: 16px; }
+.abas-lista button[aria-selected="true"] .icone { color: var(--ocre-escuro); }
+
+.aba-painel { padding: 18px 22px 16px; border-radius: 0 0 4px 4px; position: relative; }
+.aba-painel[hidden] { display: none; }
+.painel-topo { display: flex; gap: 16px 28px; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; margin-bottom: 10px; }
+.manchete { font-size: 1.08rem; max-width: 70ch; flex: 1 1 380px; }
+.manchete strong { color: var(--tinta); }
+
+.seletor { display: inline-flex; border: 2px solid var(--tinta); border-radius: 999px; padding: 2px; gap: 2px; flex: none; }
+.seletor button {
+  font: inherit; font-weight: 700; font-size: .9rem; cursor: pointer;
+  border: 0; background: transparent; color: var(--tinta); padding: 6px 14px; border-radius: 999px;
+  transition: background .18s var(--curva), color .18s var(--curva);
+}
+.seletor button:hover { background: rgba(30, 24, 19, .09); }
+.seletor button[aria-pressed="true"] { background: var(--tinta); color: var(--papel); }
+
+.grafico { width: 100%; min-height: 120px; }
+.grafico svg { display: block; width: 100%; height: auto; overflow: visible; }
+.grafico text { font-family: var(--fonte-texto); fill: var(--tinta); font-size: 13px; }
+.grafico .halo { paint-order: stroke; stroke: var(--papel); stroke-width: 4px; stroke-linejoin: round; }
+.grafico .val { font-weight: 700; font-variant-numeric: tabular-nums; }
+.grafico .tenue { fill: var(--tinta-2); font-size: 12px; }
+.grafico .nome-juiz { font-weight: 700; font-family: var(--fonte-titulo); font-size: 15px; }
+.grafico .grade { stroke: rgba(30, 24, 19, .13); stroke-width: 1; }
+.grafico .mover { transition: transform .7s var(--curva); }
+.grafico path.mover-d { transition: d .7s var(--curva), opacity .4s var(--curva); }
+.grafico .barra { transition: x .6s var(--curva), width .6s var(--curva); }
+
+.legenda-grafico { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: .88rem; color: var(--tinta-2); margin: 2px 0 4px; align-items: center; }
+.legenda-grafico span { display: inline-flex; align-items: center; gap: 6px; }
+.legenda-grafico svg { width: 18px; height: 18px; overflow: visible; }
+
+.tabela-alt { margin-top: 6px; }
+.tabela-alt summary { cursor: pointer; font-size: .88rem; font-weight: 700; color: var(--ocre-escuro); display: inline-flex; align-items: center; gap: 6px; }
+.tabela-alt table { border-collapse: collapse; margin-top: 8px; font-size: .88rem; font-variant-numeric: tabular-nums; }
+.tabela-alt th, .tabela-alt td { padding: 4px 12px; border-bottom: 1px solid rgba(30, 24, 19, .15); text-align: right; }
+.tabela-alt th:first-child, .tabela-alt td:first-child { text-align: left; }
+.tabela-alt .rolar { overflow-x: auto; }
+
+.fonte { font-size: .78rem; color: var(--tinta-2); margin-top: 8px; }
+.ainda .fonte { color: var(--luz-2); }
+
+/* waffle do tradutor */
+.waffle-caixa { display: flex; gap: 20px 36px; flex-wrap: wrap; align-items: flex-start; }
+.waffle-legenda { list-style: none; margin: 0; padding: 0; display: grid; gap: 4px; flex: 1 1 260px; }
+.waffle-legenda button {
+  display: flex; align-items: center; gap: 10px; width: 100%; text-align: left;
+  font: inherit; font-size: .95rem; color: var(--tinta); background: transparent; border: 0; border-radius: 4px; padding: 3px 6px; cursor: pointer;
+}
+.waffle-legenda button:hover, .waffle-legenda button.vivo { background: rgba(30, 24, 19, .09); }
+.waffle-legenda i { width: 16px; height: 16px; border-radius: 3px; flex: none; }
+.waffle-legenda b { margin-left: auto; font-variant-numeric: tabular-nums; }
+.waffle-legenda .grupo { margin-top: 6px; font-weight: 700; font-size: .85rem; color: var(--tinta-2); padding-left: 6px; }
+.waffle-svg rect { transition: opacity .2s var(--curva); }
+.waffle-svg.foco rect:not(.vivo) { opacity: .18; }
+
+/* ---------- o que ainda não se pode afirmar ---------- */
+.ainda { padding: 36px 0 8px; }
+.ainda h2 { font-size: 1.5rem; margin-bottom: 12px; }
+.ainda ul { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.ainda li { display: flex; gap: 12px; align-items: flex-start; background: rgba(237, 227, 210, .06); border: 1px dashed rgba(237, 227, 210, .3); border-radius: 6px; padding: 14px 16px; color: var(--luz); }
+.ainda li .icone { width: 26px; height: 26px; color: var(--ocre); margin-top: 2px; }
+
+@media (max-width: 1100px) {
+  .abas-lista { grid-template-columns: none; grid-auto-flow: column; grid-auto-columns: minmax(168px, 1fr); overflow-x: auto; scrollbar-width: thin; padding-top: 2px; }
+}
+@media (max-width: 720px) {
+  .cabeca-pagina { padding-top: 22px; }
+  .resposta { font-size: 1.02rem; }
+  .abas-lista { grid-auto-columns: 150px; }
+  .abas-lista button { font-size: .85rem; padding: 10px; }
+  .aba-painel { padding: 14px 12px; }
+  .manchete { font-size: 1rem; flex-basis: 100%; }
+  .ainda ul { grid-template-columns: minmax(0, 1fr); }
+  .seletor { display: flex; width: 100%; flex-wrap: wrap; border-radius: 18px; }
+  .seletor button { padding: 6px 10px; font-size: .84rem; flex: 1 1 auto; }
+}
