@@ -1,0 +1,322 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Apresentação da Atividade 9 | BuraqueiraBench</title>
+<meta name="description" content="As onze telas da apresentação da Atividade 9: o juiz em inglês, animadas.">
+<link rel="icon" type="image/png" sizes="32x32" href="../assets/img/buraqueira-32.png?v=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Old+Standard+TT:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/apresentacao.css?v=3">
+</head>
+<body class="ap">
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <filter id="aquarela" x="-20%" y="-20%" width="140%" height="140%">
+    <feTurbulence type="fractalNoise" baseFrequency=".05" numOctaves="3" seed="7" result="r"/>
+    <feDisplacementMap in="SourceGraphic" in2="r" scale="6"/>
+  </filter>
+    <symbol id="s-pede" viewBox="0 0 64 64"><circle cx="22" cy="26" r="7"/><path d="M8 56c0-11 6-17 14-17s14 6 14 17"/><path d="M34 8h22a3 3 0 0 1 3 3v13a3 3 0 0 1-3 3H46l-6 6v-6h-6a3 3 0 0 1-3-3V11a3 3 0 0 1 3-3z"/><path d="M47 13v8M47 24.4v.4"/></symbol>
+    <symbol id="s-modelo" viewBox="0 0 64 64"><rect x="8" y="10" width="48" height="36" rx="4"/><path d="M16 20h26M16 28h32M16 36h20"/><path d="M24 56h16M32 46v10"/></symbol>
+    <symbol id="s-le" viewBox="0 0 64 64"><path d="M12 8h26l8 8v14"/><path d="M12 8v46h16"/><path d="M19 22h18M19 30h12"/><circle cx="42" cy="42" r="9"/><path d="M49 49l9 9"/></symbol>
+    <symbol id="s-carimbo" viewBox="0 0 64 64"><circle cx="32" cy="12" r="6"/><path d="M28 18h8l2 14H26z"/><rect x="14" y="32" width="36" height="9" rx="2"/><path d="M10 56h44"/><path d="M18 49h4M28 49h8M42 49h4"/></symbol>
+    <symbol id="s-rotulo" viewBox="0 0 64 64"><path d="M8 8h22l26 26-22 22L8 30z"/><circle cx="19" cy="19" r="2.6"/><path d="M28 30l5 5 9-9"/></symbol>
+    <symbol id="s-fn" viewBox="0 0 64 64"><path d="M32 6l20 8v16c0 14-9 23-20 28C21 53 12 44 12 30V14z"/><path d="M4 34h42M39 27l8 7-8 7"/></symbol>
+    <symbol id="s-fp" viewBox="0 0 64 64"><path d="M14 8h26l8 8v20"/><path d="M14 8v48h18"/><path d="M21 24h18M21 32h12"/><circle cx="43" cy="44" r="12"/><path d="M35 52l16-16"/></symbol>
+    <symbol id="s-auroc" viewBox="0 0 64 64"><path d="M10 8v46h46"/><path d="M10 54C18 20 34 14 54 12"/><path d="M10 54L54 12" stroke-dasharray="3 4"/></symbol>
+    <symbol id="s-troca" viewBox="0 0 64 64"><path d="M8 22h42M42 14l8 8-8 8"/><path d="M56 42H14M22 34l-8 8 8 8"/></symbol>
+    <symbol id="s-dado" viewBox="0 0 64 64"><rect x="10" y="10" width="44" height="44" rx="7"/><circle cx="22" cy="22" r="2.5"/><circle cx="42" cy="22" r="2.5"/><circle cx="32" cy="32" r="2.5"/><circle cx="22" cy="42" r="2.5"/><circle cx="42" cy="42" r="2.5"/></symbol>
+    <symbol id="s-igual" viewBox="0 0 64 64"><circle cx="32" cy="32" r="22"/><path d="M20 26h24M20 38h24"/></symbol>
+    <symbol id="s-doc" viewBox="0 0 64 64"><path d="M14 6h26l10 10v42H14z"/><path d="M40 6v10h10M22 28h20M22 36h20M22 44h12"/></symbol>
+    <symbol id="s-lupa"viewBox="0 0 64 64"><circle cx="26" cy="20" r="8"/><path d="M10 56c0-12 7-19 16-19"/><circle cx="43" cy="42" r="9"/><path d="M50 49l8 8"/></symbol>
+    <symbol id="s-escudo" viewBox="0 0 64 64"><path d="M32 6l20 8v16c0 14-9 23-20 28C21 53 12 44 12 30V14z"/><path d="M26 26l-6 6 6 6M38 26l6 6-6 6"/></symbol>
+    <symbol id="s-linguas" viewBox="0 0 64 64"><path d="M8 14h24M20 9v5"/><path d="M13 14c1 9 6 15 15 18M27 14c-1 9-6 15-15 18"/><path d="M34 56l9-22 9 22M37 48h12"/></symbol>
+</svg>
+
+<header class="ap-topo">
+  <a class="marca" href="../index.html#linha">BuraqueiraBench</a>
+  <span class="qual">Apresentação da Atividade 9, 25/10/2026</span>
+  <nav>
+    <button class="btn" id="b-visao" type="button">Todas as telas</button>
+    <a class="btn" href="../assets/docs/atividade9-apresentacao.pdf">PDF</a>
+    <button class="btn" id="b-tela" type="button">Tela cheia</button>
+  </nav>
+</header>
+
+<main class="ap-area">
+<div class="palco" id="palco" tabindex="0" aria-roledescription="apresentação" aria-label="Apresentação, use as setas para passar">
+
+  <!-- 01 capa -->
+  <section class="tela capa" data-dur="2.4" aria-label="Tela 1">
+    <div>
+      <p class="kicker e" style="--d:.1s">IA Aplicada &middot; Atividade 9</p>
+      <h1 class="e" style="--d:.25s">O juiz em inglês</h1>
+      <span class="subt e" style="--d:.6s">Juízes de segurança de LLM em português
+        <svg class="risco" viewBox="0 0 400 12" preserveAspectRatio="none" aria-hidden="true"><path class="t" pathLength="1" style="--d:1s; fill:none; stroke:#c08a2e; stroke-width:3; stroke-linecap:round" d="M2 8 C 90 3, 200 11, 398 5"/></svg>
+      </span>
+      <p class="quem e" style="--d:1.2s">Cristhian Kapelinski</p>
+      <p class="quando e" style="--d:1.35s">Quinta entrega &middot; 25/10/2026</p>
+    </div>
+    <img class="aquarela revela" style="--d:.4s" src="../assets/img/guia/cabure.jpg" alt="Aquarela de um caburé">
+  </section>
+
+  <!-- 02 -->
+  <section class="tela" data-dur="3" aria-label="Tela 2">
+    <p class="kicker"><a href="../relatorios/atividade9.html">Atividade 9</a> &middot; A pendência</p>
+    <h2>A A5 deixou uma pendência: a coluna do juiz no dataset parecia invertida</h2>
+    <svg class="desenho" viewBox="0 0 1000 290" style="margin-top:2.4cqw" role="img" aria-label="Uma tabela de dados cuja coluna do juiz tem setas que parecem apontar para o lado errado.">
+      <g class="e" style="--d:.2s">
+        <rect x="150" y="26" width="170" height="204" fill="#f8f3e5" stroke="#b9ad95" stroke-width="2"/>
+        <rect x="330" y="26" width="170" height="204" fill="#f8f3e5" stroke="#b9ad95" stroke-width="2"/>
+        <rect x="680" y="26" width="170" height="204" fill="#f8f3e5" stroke="#b9ad95" stroke-width="2"/>
+        <path d="M150 77H320M150 128H320M150 179H320M330 77H500M330 128H500M330 179H500M680 77H850M680 128H850M680 179H850" stroke="#b9ad95" stroke-width="1.5" fill="none"/>
+      </g>
+      <rect class="ag e" style="--d:.5s" x="510" y="26" width="160" height="204" fill="#c08a2e" fill-opacity=".3"/>
+      <rect class="linha grossa t" pathLength="1" style="--d:.5s" x="510" y="26" width="160" height="204"/>
+      <path class="linha t" pathLength="1" style="--d:.8s" d="M510 77H670M510 128H670M510 179H670"/>
+      <g class="linha" style="stroke:#2e261d; stroke-width:4">
+        <path class="t" pathLength="1" style="--d:1.1s" d="M590 70 V34 M576 48 L590 34 L604 48"/>
+        <path class="t" pathLength="1" style="--d:1.25s" d="M590 121 V85 M576 99 L590 85 L604 99"/>
+        <path class="t" pathLength="1" style="--d:1.4s" d="M590 172 V136 M576 150 L590 136 L604 150"/>
+        <path class="t" pathLength="1" style="--d:1.55s" d="M590 223 V187 M576 201 L590 187 L604 201"/>
+      </g>
+      <g class="alterna" style="--d:2s"><g class="linha" style="stroke:#a8402c; stroke-width:4">
+        <path d="M590 34 V70 M576 56 L590 70 L604 56"/>
+        <path d="M590 85 V121 M576 107 L590 121 L604 107"/>
+        <path d="M590 136 V172 M576 158 L590 172 L604 158"/>
+        <path d="M590 187 V223 M576 209 L590 223 L604 209"/>
+      </g></g>
+      <text class="e" style="--d:1.7s" x="590" y="272" text-anchor="middle" font-size="30" font-style="italic">coluna do juiz</text>
+      <text class="e" style="--d:.4s" x="75" y="132" text-anchor="middle" font-size="30" font-style="italic" fill="#6b5640">dataset</text>
+      <g class="carimbo" style="--d:2.2s; --r:8deg"><circle cx="760" cy="38" r="34" fill="#f8f3e5" stroke="#a8402c" stroke-width="4.5"/><text class="tt" x="760" y="54" text-anchor="middle" font-size="48" font-weight="700" fill="#a8402c">?</text></g>
+    </svg>
+    <span class="num">02</span>
+  </section>
+
+  <!-- 03 -->
+  <section class="tela" data-dur="3" aria-label="Tela 3">
+    <p class="kicker"><a href="../relatorios/atividade9.html">Atividade 9</a> &middot; O teste</p>
+    <h2>Rodei o juiz e comparei</h2>
+    <svg class="desenho" viewBox="0 0 1000 230" style="margin-top:3.6cqw" role="img" aria-label="Par em inglês, template oficial, um passo do modelo, p(unsafe).">
+      <circle class="anda laco" style="--dx:800px; --d:2.4s" cx="100" cy="116" r="9" fill="#3f6e9e"/>
+      <circle class="anda laco" style="--dx:800px; --d:4s" cx="100" cy="116" r="9" fill="#3f6e9e"/>
+      <path class="linha t" pathLength="1" style="--d:.7s" d="M192 116 H266 M254 106 L266 116 L254 126"/>
+      <path class="linha t" pathLength="1" style="--d:1.2s" d="M462 116 H536 M524 106 L536 116 L524 126"/>
+      <path class="linha t" pathLength="1" style="--d:1.7s" d="M732 116 H806 M794 106 L806 116 L794 126"/>
+      <rect x="0" y="60" width="190" height="112" rx="8" fill="#f8f3e5"/>
+      <rect class="ag e" style="--d:.2s" x="0" y="60" width="190" height="112" rx="8" fill="#dbe4ee"/>
+      <rect class="linha t" pathLength="1" style="--d:.2s" x="0" y="60" width="190" height="112" rx="8"/>
+      <text class="e" style="--d:.4s" x="95" y="108" text-anchor="middle" font-size="31" font-weight="600">par em</text>
+      <text class="e" style="--d:.45s" x="95" y="146" text-anchor="middle" font-size="31" font-weight="600">inglês</text>
+      <rect x="270" y="60" width="190" height="112" rx="8" fill="#f8f3e5"/>
+      <rect class="linha t" pathLength="1" style="--d:.8s" x="270" y="60" width="190" height="112" rx="8"/>
+      <text class="e" style="--d:1s" x="365" y="108" text-anchor="middle" font-size="31" font-weight="600">template</text>
+      <text class="e" style="--d:1.05s" x="365" y="146" text-anchor="middle" font-size="31" font-weight="600">oficial</text>
+      <rect x="540" y="60" width="190" height="112" rx="8" fill="#f8f3e5"/>
+      <rect class="linha t" pathLength="1" style="--d:1.3s" x="540" y="60" width="190" height="112" rx="8"/>
+      <text class="e" style="--d:1.5s" x="635" y="108" text-anchor="middle" font-size="31" font-weight="600">1 passo do</text>
+      <text class="e" style="--d:1.55s" x="635" y="146" text-anchor="middle" font-size="31" font-weight="600">modelo</text>
+      <rect x="810" y="60" width="190" height="112" rx="8" fill="#f8f3e5"/>
+      <rect class="ag e" style="--d:1.8s" x="810" y="60" width="190" height="112" rx="8" fill="#6b5640" fill-opacity=".3"/>
+      <rect class="linha grossa t" pathLength="1" style="--d:1.8s" x="810" y="60" width="190" height="112" rx="8"/>
+      <text class="tt e" style="--d:2s" x="905" y="128" text-anchor="middle" font-size="34" font-weight="700">p(unsafe)</text>
+    </svg>
+    <p class="licao e" style="--d:2.4s">Llama Guard 3, 16 bits, nos 439 pares</p>
+    <span class="num">03</span>
+  </section>
+
+  <!-- 04 -->
+  <section class="tela" data-dur="3.6" aria-label="Tela 4">
+    <p class="kicker"><a href="../relatorios/atividade9.html">Atividade 9</a> &middot; O resultado</p>
+    <h2 style="font-size:3.4cqw">Meu escore contra a coluna publicada:</h2>
+    <div class="solo e" style="--d:.3s; margin-top:1.8cqw">
+      <span class="grande" style="font-size:10.5cqw"><b data-ate="436" data-d=".5">436</b> de 439</span>
+      <span class="pos">pares com o mesmo veredito</span>
+    </div>
+    <svg class="desenho" id="pontos" viewBox="0 0 800 120" style="width:70cqw; margin:1.8cqw auto 0" role="img" aria-label="439 pontos, 436 com o mesmo veredito e 3 diferentes."></svg>
+    <p class="licao e" style="--d:3s">a coluna é p(unsafe): não há inversão</p>
+    <span class="num">04</span>
+  </section>
+
+  <!-- 05 -->
+  <section class="tela" data-dur="3.6" aria-label="Tela 5">
+    <p class="kicker"><a href="../relatorios/atividade9.html">Atividade 9</a> &middot; O acerto</p>
+    <h2 style="font-size:3.4cqw">Acerto do juiz contra o humano, nos 439:</h2>
+    <div class="solo e" style="--d:.3s; margin-top:1.8cqw">
+      <span class="grande" style="font-size:10.5cqw"><b data-ate="7" data-d="2.6">7</b>%</span>
+      <span class="pos"><b data-ate="29" data-d="2.6">29</b> de 439 pares</span>
+    </div>
+    <svg class="desenho" id="pontos2" viewBox="0 0 800 120" style="width:70cqw; margin:1.8cqw auto 0" role="img" aria-label="439 pontos, 29 em verde: os acertos."></svg>
+    <span class="num">05</span>
+  </section>
+
+  <!-- 06 -->
+  <section class="tela" data-dur="3.2" aria-label="Tela 6">
+    <p class="kicker"><a href="../relatorios/atividade9.html">Atividade 9</a> &middot; O filtro do dataset</p>
+    <h2>O dataset só guarda pares em que no máximo 1 juiz acertou</h2>
+    <svg class="desenho" viewBox="0 0 1000 250" style="margin-top:2.4cqw" role="img" aria-label="Pares passam por um filtro; só entra no dataset o que atende ao critério.">
+      <circle class="anda laco" style="--dx:430px; --d:1s" cx="60" cy="50" r="14" fill="#3f6e9e"/>
+      <circle class="anda laco" style="--dx:430px; --d:1.9s" cx="60" cy="50" r="14" fill="#3f6e9e"/>
+      <circle class="anda laco" style="--dx:740px; --d:1.3s" cx="60" cy="125" r="14" fill="#3f6e9e"/>
+      <circle class="anda laco" style="--dx:740px; --d:2.2s" cx="60" cy="125" r="14" fill="#3f6e9e"/>
+      <circle class="anda laco" style="--dx:430px; --d:1.6s" cx="60" cy="200" r="14" fill="#3f6e9e"/>
+      <circle class="anda laco" style="--dx:430px; --d:2.5s" cx="60" cy="200" r="14" fill="#3f6e9e"/>
+      <g class="e" style="--d:.2s" fill="#3f6e9e"><circle cx="60" cy="50" r="14"/><circle cx="60" cy="125" r="14"/><circle cx="60" cy="200" r="14"/></g>
+      <path class="linha grossa t" pathLength="1" style="--d:.3s" d="M520 10 V240"/>
+      <path class="linha t" pathLength="1" style="--d:.4s; stroke:#b9ad95" d="M60 50 H505 M60 125 H505 M60 200 H505"/>
+      <path class="linha t" pathLength="1" style="--d:.5s; stroke:#b9ad95" d="M535 125 H800"/>
+      <g class="linha" style="stroke:#a8402c; stroke-width:5"><path class="t" pathLength="1" style="--d:1.2s" d="M488 34 l28 32 M516 34 l-28 32"/><path class="t" pathLength="1" style="--d:1.4s" d="M488 184 l28 32 M516 184 l-28 32"/></g>
+      <path class="linha t" pathLength="1" style="--d:1.6s; stroke:#5d7d3a; stroke-width:5" d="M548 112 l14 16 l28 -32"/>
+      <rect class="ag e" style="--d:.9s" x="810" y="55" width="180" height="140" rx="8" fill="#dbe4ee"/>
+      <rect class="linha t" pathLength="1" style="--d:.9s" x="810" y="55" width="180" height="140" rx="8"/>
+      <text class="tt e" style="--d:1.2s" x="900" y="134" text-anchor="middle" font-size="34" font-weight="700">dataset</text>
+    </svg>
+    <p class="fonte e" style="--d:1.6s">Schwinn et al., 2026, seção 4.5: JudgeStressTest</p>
+    <span class="num">06</span>
+  </section>
+
+  <!-- 07 -->
+  <section class="tela" data-dur="3" aria-label="Tela 7">
+    <p class="kicker"><a href="../relatorios/atividade9.html">Atividade 9</a> &middot; O viés da escolha</p>
+    <h2>Escolhidos onde o juiz erra, os 439 não medem o efeito da língua</h2>
+    <svg class="desenho" id="erra" viewBox="0 0 1000 280" style="margin-top:2.4cqw" role="img" aria-label="Os 439 pares, todos onde o juiz erra, não alcançam o efeito da língua.">
+      <rect class="linha t" pathLength="1" style="--d:.2s" x="20" y="14" width="330" height="214" rx="8"/>
+      <text class="e" style="--d:1.6s" x="185" y="266" text-anchor="middle" font-size="30" font-style="italic">439 pares</text>
+      <path class="linha grossa t" pathLength="1" style="--d:1.9s" d="M380 120 H540 M524 106 L540 120 L524 134"/>
+      <g class="e" style="--d:2.2s"><g transform="translate(600 4) scale(3.4)" fill="none" stroke="#2e261d" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><use href="#s-linguas" width="64" height="64"/></g></g>
+      <g class="linha" style="stroke:#a8402c; stroke-width:9"><path class="t" pathLength="1" style="--d:2.6s" d="M580 24 L840 244"/><path class="t" pathLength="1" style="--d:2.8s" d="M840 24 L580 244"/></g>
+    </svg>
+    <span class="num">07</span>
+  </section>
+
+  <!-- 08 -->
+  <section class="tela" data-dur="3.2" aria-label="Tela 8">
+    <p class="kicker"><a href="../relatorios/atividade9.html">Atividade 9</a> &middot; A nova base</p>
+    <h2 style="font-size:3.8cqw">Nova base: os 6.560 pares do CoinflipForSafety, sem filtro, já traduzidos na A8</h2>
+    <svg class="desenho" viewBox="0 0 1000 270" style="margin-top:2.4cqw" role="img" aria-label="Os 6.560 pares em inglês seguem sem filtro para a versão traduzida na A8.">
+      <rect class="e" style="--d:.2s" x="50" y="30" width="270" height="150" rx="6" fill="#f8f3e5" stroke="#2e261d" stroke-width="2"/>
+      <rect class="e" style="--d:.3s" x="36" y="44" width="270" height="150" rx="6" fill="#f8f3e5" stroke="#2e261d" stroke-width="2"/>
+      <rect class="ag e" style="--d:.4s" x="22" y="58" width="270" height="150" rx="6" fill="#dbe4ee"/>
+      <rect class="linha t" pathLength="1" style="--d:.4s" x="22" y="58" width="270" height="150" rx="6"/>
+      <text class="tt e" style="--d:.7s" x="157" y="128" text-anchor="middle" font-size="58" font-weight="700" fill="#3f6e9e"><tspan data-ate="6560" data-d=".8">6.560</tspan></text>
+      <text class="e" style="--d:.9s" x="157" y="176" text-anchor="middle" font-size="30">pares</text>
+      <text class="e" style="--d:1.1s" x="157" y="252" text-anchor="middle" font-size="30" font-style="italic">CoinflipForSafety</text>
+      <path class="linha grossa t" pathLength="1" style="--d:1.4s" d="M340 130 H650 M634 114 L650 130 L634 146"/>
+      <text class="e" style="--d:1.7s" x="495" y="104" text-anchor="middle" font-size="32" font-style="italic">sem filtro</text>
+      <rect class="e" style="--d:2s" x="728" y="30" width="270" height="150" rx="6" fill="#f8f3e5" stroke="#2e261d" stroke-width="2"/>
+      <rect class="e" style="--d:2.1s" x="714" y="44" width="270" height="150" rx="6" fill="#f8f3e5" stroke="#2e261d" stroke-width="2"/>
+      <rect class="ag e" style="--d:2.2s" x="700" y="58" width="270" height="150" rx="6" fill="#c08a2e" fill-opacity=".45"/>
+      <rect class="linha t" pathLength="1" style="--d:2.2s" x="700" y="58" width="270" height="150" rx="6"/>
+      <text class="tt e" style="--d:2.5s" x="835" y="128" text-anchor="middle" font-size="58" font-weight="700" fill="#87591a"><tspan data-ate="6560" data-d="2.6">6.560</tspan></text>
+      <text class="e" style="--d:2.7s" x="835" y="176" text-anchor="middle" font-size="30">pares</text>
+      <text class="e" style="--d:2.9s" x="835" y="252" text-anchor="middle" font-size="30" font-style="italic">já traduzidos na A8</text>
+    </svg>
+    <span class="num">08</span>
+  </section>
+
+  <!-- 09 -->
+  <section class="tela" data-dur="3.4" aria-label="Tela 9">
+    <p class="kicker"><a href="../relatorios/atividade9.html">Atividade 9</a> &middot; A linha de base</p>
+    <h2>Linha de base em inglês</h2>
+    <table class="tab-ap" style="margin-top:3cqw">
+      <thead><tr><th>Medida</th><th>Pares</th><th class="enc">Taxa</th></tr></thead>
+      <tbody>
+        <tr class="e" style="--d:.3s"><td>Acurácia</td><td><b data-ate="4776" data-d=".4">4.776</b> de 6.560</td><td><span class="v"><b><span data-ate="73" data-d=".4">73</span>%</b><span class="g"><i class="cresce" style="--w:73%; --d:.4s"></i></span></span></td></tr>
+        <tr class="e" style="--d:.8s"><td>Falso positivo</td><td><b data-ate="818" data-d=".9">818</b> de <span data-ate="1386" data-d=".9">1.386</span></td><td><span class="v"><b><span data-ate="59" data-d=".9">59</span>%</b><span class="g"><i class="cresce" style="--w:59%; --d:.9s"></i></span></span></td></tr>
+        <tr class="e dest" style="--d:1.3s"><td>Falso negativo</td><td><b data-ate="966" data-d="1.4">966</b> de <span data-ate="5174" data-d="1.4">5.174</span></td><td><span class="v"><b><span data-ate="19" data-d="1.4">19</span>%</b><span class="g"><i class="cresce" style="--w:19%; --d:1.4s"></i></span></span></td></tr>
+      </tbody>
+    </table>
+    <p class="licao e" style="--d:2.4s">resposta nociva que o juiz libera como segura</p>
+    <span class="num">09</span>
+  </section>
+
+  <!-- 10 -->
+  <section class="tela" data-dur="3" aria-label="Tela 10">
+    <p class="kicker"><a href="../relatorios/atividade9.html">Atividade 9</a> &middot; Próximo passo</p>
+    <h2>Próximo: o mesmo juiz, nos mesmos pares, em português</h2>
+    <svg class="desenho" viewBox="0 0 1000 300" style="margin-top:2.4cqw" role="img" aria-label="Os pares em inglês e em português passam pelo mesmo juiz, e o resultado em português ainda é uma pergunta.">
+      <rect class="ag e" style="--d:.2s" x="10" y="40" width="300" height="90" rx="8" fill="#dbe4ee"/>
+      <rect class="linha t" pathLength="1" style="--d:.2s" x="10" y="40" width="300" height="90" rx="8"/>
+      <text class="e" style="--d:.4s" x="160" y="97" text-anchor="middle" font-size="32" font-weight="600">pares em inglês</text>
+      <rect class="ag e" style="--d:.5s" x="10" y="190" width="300" height="90" rx="8" fill="#c08a2e" fill-opacity=".45"/>
+      <rect class="linha t" pathLength="1" style="--d:.5s" x="10" y="190" width="300" height="90" rx="8"/>
+      <text class="e" style="--d:.7s" x="160" y="247" text-anchor="middle" font-size="32" font-weight="600">pares em português</text>
+      <path class="linha t" pathLength="1" style="--d:.9s" d="M312 85 C 420 85, 420 140, 506 140 M492 130 L506 140 L492 150"/>
+      <path class="linha t" pathLength="1" style="--d:1.2s" d="M312 235 C 420 235, 420 180, 506 180 M492 170 L506 180 L492 190"/>
+      <rect x="510" y="95" width="250" height="130" rx="8" fill="#f8f3e5"/>
+      <rect class="linha grossa t" pathLength="1" style="--d:1.5s" x="510" y="95" width="250" height="130" rx="8"/>
+      <text class="tt e" style="--d:1.7s" x="635" y="172" text-anchor="middle" font-size="46" font-weight="700">juiz</text>
+      <circle class="anda laco" style="--dx:180px; --d:2s" cx="320" cy="85" r="9" fill="#3f6e9e"/>
+      <circle class="anda laco" style="--dx:180px; --d:2.8s" cx="320" cy="235" r="9" fill="#c08a2e"/>
+      <path class="linha t" pathLength="1" style="--d:1.9s" d="M762 160 H850 M838 150 L850 160 L838 170"/>
+      <g class="carimbo" style="--d:2.3s; --r:8deg"><circle cx="925" cy="160" r="44" fill="#f8f3e5" stroke="#a8402c" stroke-width="4.5"/><text class="tt" x="925" y="182" text-anchor="middle" font-size="60" font-weight="700" fill="#a8402c">?</text></g>
+    </svg>
+    <span class="num">10</span>
+  </section>
+
+  <!-- 11 -->
+  <section class="tela capa fim" data-dur="1.6" aria-label="Tela 11">
+    <div>
+      <h1 class="e" style="--d:.1s">Obrigado!</h1>
+      <p class="subt e" style="--d:.4s">Perguntas são bem-vindas</p>
+      <p class="quem e" style="--d:.7s">Cristhian Kapelinski</p>
+      <p class="mail e" style="--d:.8s">cristhianavila.aluno@unipampa.edu.br</p>
+    </div>
+    <img class="aquarela revela" style="--d:.3s" src="../assets/img/guia/corujinha.jpg" alt="Aquarela de uma corujinha">
+  </section>
+
+</div>
+</main>
+
+<footer class="ap-pe">
+  <button class="btn" id="ant" type="button" aria-label="Tela anterior">&larr;</button>
+  <span class="cont" id="cont">01 / 11</span>
+  <button class="btn" id="prox" type="button" aria-label="Próxima tela">&rarr;</button>
+  <p class="dica">Setas, espaço ou clique para passar. Esc mostra todas as telas.</p>
+  <p class="gire">Deite o celular para ver maior.</p>
+  <div class="ap-prog"><span></span></div>
+</footer>
+
+<div class="visao" id="visao" hidden role="dialog" aria-label="Todas as telas">
+  <div class="in">
+    <h2>Todas as telas <button class="btn" id="b-fechar" type="button">Fechar</button></h2>
+    <ol></ol>
+  </div>
+</div>
+
+<script>
+// os 439 pares como pontos; na tela 4, 436 com o mesmo veredito e 3 diferentes; na 5, os 29 acertos em verde
+(function () {
+  const P = 14.5, X0 = 12, Y0 = 8, C = 55;
+  function grade(id, f) {
+    const s = document.getElementById(id);
+    let h = '';
+    for (let k = 0; k < 439; k++) {
+      const x = X0 + (k % C) * P, y = Y0 + Math.floor(k / C) * P;
+      h += f(k, x, y);
+    }
+    s.insertAdjacentHTML('afterbegin', h);
+  }
+  grade('pontos', (k, x, y) => k < 436
+    ? `<circle class="carimbo" style="--d:${(0.6 + k * 0.004).toFixed(3)}s; --r:0deg" cx="${x}" cy="${y}" r="5.2" fill="#3f6e9e" fill-opacity=".85"/>`
+    : `<circle class="carimbo" style="--d:${(2.5 + (k - 436) * 0.2).toFixed(2)}s; --r:0deg" cx="${x}" cy="${y}" r="5.2" fill="#f8f3e5" stroke="#a8402c" stroke-width="2.2"/>`);
+  // na tela 5 os 29 acertos aparecem por último, em verde, por cima dos cinzas
+  grade('pontos2', (k, x, y) => `<circle class="carimbo" style="--d:${(0.5 + k * 0.003).toFixed(3)}s; --r:0deg" cx="${x}" cy="${y}" r="5.2" fill="#b9ad95" fill-opacity=".55"/>` +
+    (k < 29 ? `<circle class="carimbo" style="--d:${(1.9 + k * 0.025).toFixed(3)}s; --r:0deg" cx="${x}" cy="${y}" r="6.4" fill="#5d7d3a"/>` : ''));
+})();
+
+// os 439 pares da tela 7, só os que o juiz erra
+(function () {
+  const s = document.getElementById('erra');
+  let h = '';
+  for (let k = 0; k < 24; k++) {
+    const x = 62 + (k % 6) * 46, y = 54 + Math.floor(k / 6) * 46;
+    h += `<circle class="carimbo" style="--d:${(0.5 + k * 0.045).toFixed(3)}s; --r:0deg" cx="${x}" cy="${y}" r="15" fill="#a8402c" fill-opacity=".75" stroke="#2e261d" stroke-width="1.4"/>`;
+  }
+  s.insertAdjacentHTML('afterbegin', h);
+})();
+</script>
+<script src="../assets/js/apresentacao.js?v=1"></script>
+</body>
+</html>

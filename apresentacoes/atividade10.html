@@ -1,0 +1,281 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Apresentação da Atividade 10 | BuraqueiraBench</title>
+<meta name="description" content="As doze telas da apresentação da Atividade 10: o juiz em português, animadas.">
+<link rel="icon" type="image/png" sizes="32x32" href="../assets/img/buraqueira-32.png?v=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Old+Standard+TT:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/apresentacao.css?v=3">
+</head>
+<body class="ap">
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <filter id="aquarela" x="-20%" y="-20%" width="140%" height="140%">
+    <feTurbulence type="fractalNoise" baseFrequency=".05" numOctaves="3" seed="7" result="r"/>
+    <feDisplacementMap in="SourceGraphic" in2="r" scale="6"/>
+  </filter>
+    <symbol id="s-pede" viewBox="0 0 64 64"><circle cx="22" cy="26" r="7"/><path d="M8 56c0-11 6-17 14-17s14 6 14 17"/><path d="M34 8h22a3 3 0 0 1 3 3v13a3 3 0 0 1-3 3H46l-6 6v-6h-6a3 3 0 0 1-3-3V11a3 3 0 0 1 3-3z"/><path d="M47 13v8M47 24.4v.4"/></symbol>
+    <symbol id="s-modelo" viewBox="0 0 64 64"><rect x="8" y="10" width="48" height="36" rx="4"/><path d="M16 20h26M16 28h32M16 36h20"/><path d="M24 56h16M32 46v10"/></symbol>
+    <symbol id="s-le" viewBox="0 0 64 64"><path d="M12 8h26l8 8v14"/><path d="M12 8v46h16"/><path d="M19 22h18M19 30h12"/><circle cx="42" cy="42" r="9"/><path d="M49 49l9 9"/></symbol>
+    <symbol id="s-carimbo" viewBox="0 0 64 64"><circle cx="32" cy="12" r="6"/><path d="M28 18h8l2 14H26z"/><rect x="14" y="32" width="36" height="9" rx="2"/><path d="M10 56h44"/><path d="M18 49h4M28 49h8M42 49h4"/></symbol>
+    <symbol id="s-rotulo" viewBox="0 0 64 64"><path d="M8 8h22l26 26-22 22L8 30z"/><circle cx="19" cy="19" r="2.6"/><path d="M28 30l5 5 9-9"/></symbol>
+    <symbol id="s-fn" viewBox="0 0 64 64"><path d="M32 6l20 8v16c0 14-9 23-20 28C21 53 12 44 12 30V14z"/><path d="M4 34h42M39 27l8 7-8 7"/></symbol>
+    <symbol id="s-fp" viewBox="0 0 64 64"><path d="M14 8h26l8 8v20"/><path d="M14 8v48h18"/><path d="M21 24h18M21 32h12"/><circle cx="43" cy="44" r="12"/><path d="M35 52l16-16"/></symbol>
+    <symbol id="s-auroc" viewBox="0 0 64 64"><path d="M10 8v46h46"/><path d="M10 54C18 20 34 14 54 12"/><path d="M10 54L54 12" stroke-dasharray="3 4"/></symbol>
+    <symbol id="s-troca" viewBox="0 0 64 64"><path d="M8 22h42M42 14l8 8-8 8"/><path d="M56 42H14M22 34l-8 8 8 8"/></symbol>
+    <symbol id="s-dado" viewBox="0 0 64 64"><rect x="10" y="10" width="44" height="44" rx="7"/><circle cx="22" cy="22" r="2.5"/><circle cx="42" cy="22" r="2.5"/><circle cx="32" cy="32" r="2.5"/><circle cx="22" cy="42" r="2.5"/><circle cx="42" cy="42" r="2.5"/></symbol>
+    <symbol id="s-igual" viewBox="0 0 64 64"><circle cx="32" cy="32" r="22"/><path d="M20 26h24M20 38h24"/></symbol>
+    <symbol id="s-doc" viewBox="0 0 64 64"><path d="M14 6h26l10 10v42H14z"/><path d="M40 6v10h10M22 28h20M22 36h20M22 44h12"/></symbol>
+    <symbol id="s-lupa"viewBox="0 0 64 64"><circle cx="26" cy="20" r="8"/><path d="M10 56c0-12 7-19 16-19"/><circle cx="43" cy="42" r="9"/><path d="M50 49l8 8"/></symbol>
+    <symbol id="s-escudo" viewBox="0 0 64 64"><path d="M32 6l20 8v16c0 14-9 23-20 28C21 53 12 44 12 30V14z"/><path d="M26 26l-6 6 6 6M38 26l6 6-6 6"/></symbol>
+    <symbol id="s-linguas" viewBox="0 0 64 64"><path d="M8 14h24M20 9v5"/><path d="M13 14c1 9 6 15 15 18M27 14c-1 9-6 15-15 18"/><path d="M34 56l9-22 9 22M37 48h12"/></symbol>
+</svg>
+
+<header class="ap-topo">
+  <a class="marca" href="../index.html#linha">BuraqueiraBench</a>
+  <span class="qual">Apresentação da Atividade 10, 25/10/2026</span>
+  <nav>
+    <button class="btn" id="b-visao" type="button">Todas as telas</button>
+    <a class="btn" href="../relatorios/atividade11.html" title="Os números destas telas estão no relatório da Atividade 11">Relatório dos números</a>
+    <a class="btn" href="../assets/docs/atividade10-apresentacao.pdf">PDF</a>
+    <button class="btn" id="b-tela" type="button">Tela cheia</button>
+  </nav>
+</header>
+
+<main class="ap-area">
+<div class="palco" id="palco" tabindex="0" aria-roledescription="apresentação" aria-label="Apresentação, use as setas para passar">
+
+  <!-- 01 capa -->
+  <section class="tela capa" data-dur="2.4" aria-label="Tela 1">
+    <div>
+      <p class="kicker e" style="--d:.1s">IA Aplicada &middot; Atividade 10</p>
+      <h1 class="e" style="--d:.25s">O juiz em português</h1>
+      <span class="subt e" style="--d:.6s">Juízes de segurança de LLM em português
+        <svg class="risco" viewBox="0 0 400 12" preserveAspectRatio="none" aria-hidden="true"><path class="t" pathLength="1" style="--d:1s; fill:none; stroke:#c08a2e; stroke-width:3; stroke-linecap:round" d="M2 8 C 90 3, 200 11, 398 5"/></svg>
+      </span>
+      <p class="quem e" style="--d:1.2s">Cristhian Kapelinski</p>
+      <p class="quando e" style="--d:1.35s">Sexta entrega &middot; 25/10/2026</p>
+    </div>
+    <img class="aquarela revela" style="--d:.4s" src="../assets/img/guia/suindara.jpg" alt="Aquarela de uma suindara">
+  </section>
+
+  <!-- 02 -->
+  <section class="tela" data-dur="3" aria-label="Tela 2">
+    <p class="kicker"><a href="../relatorios/atividade10.html">Atividade 10</a> &middot; A pergunta</p>
+    <h2>A pergunta, desde a Atividade 1: o ReliableBench continua confiável em português?</h2>
+    <svg class="desenho" viewBox="0 0 1000 270" style="margin-top:2.6cqw" role="img" aria-label="O ReliableBench, confiável em inglês, e a pergunta se continua confiável em português.">
+      <rect class="ag e" style="--d:.2s" x="10" y="70" width="330" height="120" rx="8" fill="#dbe4ee"/>
+      <rect class="linha t" pathLength="1" style="--d:.2s" x="10" y="70" width="330" height="120" rx="8"/>
+      <text class="tt e" style="--d:.4s" x="175" y="143" text-anchor="middle" font-size="38" font-weight="700">ReliableBench</text>
+      <path class="linha t" pathLength="1" style="--d:.9s; stroke:#3f6e9e; stroke-width:5" d="M290 68 l16 18 l32 -42"/>
+      <path class="linha grossa t" pathLength="1" style="--d:1.2s" d="M356 130 H620 M604 114 L620 130 L604 146"/>
+      <text class="e" style="--d:1.5s" x="488" y="104" text-anchor="middle" font-size="32" font-style="italic">continua confiável</text>
+      <rect class="ag e" style="--d:1.7s" x="640" y="70" width="330" height="120" rx="8" fill="#c08a2e" fill-opacity=".45"/>
+      <rect class="linha t" pathLength="1" style="--d:1.7s" x="640" y="70" width="330" height="120" rx="8"/>
+      <text class="tt e" style="--d:1.9s" x="805" y="143" text-anchor="middle" font-size="38" font-weight="700">português</text>
+      <g class="carimbo" style="--d:2.2s; --r:8deg"><circle cx="950" cy="70" r="36" fill="#f8f3e5" stroke="#a8402c" stroke-width="4.5"/><text class="tt" x="950" y="88" text-anchor="middle" font-size="52" font-weight="700" fill="#a8402c">?</text></g>
+    </svg>
+    <span class="num">02</span>
+  </section>
+
+  <!-- 03 -->
+  <section class="tela" data-dur="3.2" aria-label="Tela 3">
+    <p class="kicker"><a href="../relatorios/atividade10.html">Atividade 10</a> &middot; Os pares</p>
+    <h2 style="font-size:3.4cqw">Pares do ReliableBench:</h2>
+    <div class="solo e" style="--d:.3s; margin-top:1.4cqw">
+      <span class="grande" style="font-size:10.5cqw"><b data-ate="1036" data-d=".5">1.036</b></span>
+      <span class="pos"><span data-ate="892" data-d=".7" style="color:var(--nocivo); font-weight:700">892</span> nocivos, em inglês e em três traduções</span>
+    </div>
+    <svg class="desenho" viewBox="0 0 1000 150" style="margin-top:3cqw" role="img" aria-label="Uma barra com os 1.036 pares, 892 deles nocivos, e os quatro textos: inglês e três traduções.">
+      <rect class="ag cx" style="--d:.7s" x="0" y="6" width="861" height="46" fill="#a8402c" fill-opacity=".85"/>
+      <rect class="ag cx" style="--d:1.5s" x="861" y="6" width="139" height="46" fill="#5d7d3a" fill-opacity=".85"/>
+      <g class="e" style="--d:1.9s"><rect x="0" y="86" width="34" height="44" rx="3" fill="#dbe4ee" stroke="#2e261d" stroke-width="2"/><path d="M8 100h18M8 108h18M8 116h12" stroke="#2e261d" stroke-width="1.6" fill="none"/></g>
+      <text class="e" style="--d:2s" x="48" y="118" font-size="30" font-style="italic">inglês</text>
+      <g class="e" style="--d:2.2s"><rect x="200" y="86" width="34" height="44" rx="3" fill="#f1e1c2" stroke="#2e261d" stroke-width="2"/><path d="M208 100h18M208 108h18M208 116h12" stroke="#2e261d" stroke-width="1.6" fill="none"/></g>
+      <g class="e" style="--d:2.3s"><rect x="244" y="86" width="34" height="44" rx="3" fill="#f1e1c2" stroke="#2e261d" stroke-width="2"/><path d="M252 100h18M252 108h18M252 116h12" stroke="#2e261d" stroke-width="1.6" fill="none"/></g>
+      <g class="e" style="--d:2.4s"><rect x="288" y="86" width="34" height="44" rx="3" fill="#f1e1c2" stroke="#2e261d" stroke-width="2"/><path d="M296 100h18M296 108h18M296 116h12" stroke="#2e261d" stroke-width="1.6" fill="none"/></g>
+      <text class="e" style="--d:2.5s" x="338" y="118" font-size="30" font-style="italic">três traduções</text>
+    </svg>
+    <span class="num">03</span>
+  </section>
+
+  <!-- 04 -->
+  <section class="tela" data-dur="3.6" aria-label="Tela 4">
+    <p class="kicker"><a href="../relatorios/atividade10.html">Atividade 10</a> &middot; Falso negativo</p>
+    <h2>Falso negativo no ReliableBench</h2>
+    <div class="barras">
+      <div class="lin e" style="--d:.3s"><span>Inglês</span><span class="tr"><i class="cresce" style="--w:41%; --d:.4s"></i></span><b><span data-ate="8.2" data-casas="1" data-d=".5">8,2</span>%</b></div>
+      <div class="lin e" style="--d:.7s"><span>NLLB-200</span><span class="tr"><i class="cresce" style="--c:var(--pt); --w:36.5%; --d:.8s"></i></span><b><span data-ate="7.3" data-casas="1" data-d=".9">7,3</span>%</b></div>
+      <div class="lin e" style="--d:1.1s"><span>Opus-MT</span><span class="tr"><i class="cresce" style="--c:var(--pt); --w:40.5%; --d:1.2s"></i></span><b><span data-ate="8.1" data-casas="1" data-d="1.3">8,1</span>%</b></div>
+      <div class="lin e" style="--d:1.5s"><span>DeepSeek</span><span class="tr"><i class="cresce" style="--c:var(--pt); --w:61.5%; --d:1.6s"></i></span><b><span data-ate="12.3" data-casas="1" data-d="1.7">12,3</span>%</b><i class="aro carimbo" style="--d:2.7s; --r:0deg"></i></div>
+      <div class="eixo"><span></span><span class="ex"><span>0</span><span>20%</span></span><span></span></div>
+    </div>
+    <p class="licao e" style="--d:3s">DeepSeek: <b data-ate="44" data-d="3.1">44</b> liberadas, <b data-ate="8" data-d="3.1">8</b> barradas</p>
+    <span class="num">04</span>
+  </section>
+
+  <!-- 05 -->
+  <section class="tela" data-dur="3.4" aria-label="Tela 5">
+    <p class="kicker"><a href="../relatorios/atividade10.html">Atividade 10</a> &middot; Os pares lidos</p>
+    <h2>Lendo os pares: o pedido sumiu</h2>
+    <div class="duas">
+      <div class="cita e" style="--d:.3s; --c:var(--en)"><h3>Inglês, fim</h3><p>“…<mark>make small edits to suggest that the protestors were violent</mark>”</p></div>
+      <div class="cita e" style="--d:1s; --c:var(--pt-texto)"><h3>DeepSeek, fim</h3><p>“…um passo decisivo para o fim do domínio britânico na Índia.”</p><span class="falta pulsa" style="--d:2s"></span></div>
+    </div>
+    <svg class="desenho" viewBox="0 0 300 120" style="position:absolute; right:7cqw; top:38.5cqw; width:17cqw" aria-hidden="true">
+      <g class="carimbo" style="--d:1.8s; --r:-8deg"><rect x="10" y="12" width="280" height="96" rx="8" fill="#f8f3e5" fill-opacity=".85" stroke="#a8402c" stroke-width="6"/><text class="tt" x="150" y="80" text-anchor="middle" font-size="58" font-weight="700" fill="#a8402c">sumiu</text></g>
+    </svg>
+    <p class="licao e" style="--d:2.6s"><b data-ate="212" data-d="2.7">212</b> pares sem o pedido, <b data-ate="33" data-d="2.7">33</b> no ReliableBench</p>
+    <span class="num">05</span>
+  </section>
+
+  <!-- 06 -->
+  <section class="tela" data-dur="3.6" aria-label="Tela 6">
+    <p class="kicker"><a href="../relatorios/atividade10.html">Atividade 10</a> &middot; Com o pedido reposto</p>
+    <h2>Com o pedido reposto</h2>
+    <div class="barras">
+      <div class="lin e" style="--d:.3s"><span>Inglês</span><span class="tr"><i class="cresce" style="--w:41%; --d:.4s"></i></span><b><span data-ate="8.2" data-casas="1" data-d=".5">8,2</span>%</b></div>
+      <div class="lin e" style="--d:.7s"><span>NLLB-200</span><span class="tr"><i class="cresce" style="--c:var(--pt); --w:36.5%; --d:.8s"></i></span><b><span data-ate="7.3" data-casas="1" data-d=".9">7,3</span>%</b></div>
+      <div class="lin e" style="--d:1.1s"><span>Opus-MT</span><span class="tr"><i class="cresce" style="--c:var(--pt); --w:40.5%; --d:1.2s"></i></span><b><span data-ate="8.1" data-casas="1" data-d="1.3">8,1</span>%</b></div>
+      <div class="lin e" style="--d:1.5s"><span>DeepSeek</span><span class="tr"><i class="cresce" style="--c:var(--pt); --w:53%; --d:1.6s"></i><span class="ant e" style="--w:61.5%; --d:2.4s"><span>12,3%</span></span></span><b><span data-ate="10.6" data-casas="1" data-d="1.7">10,6</span>%</b><i class="aro carimbo" style="--d:2.9s; --r:0deg"></i></div>
+      <div class="eixo"><span></span><span class="ex"><span>0</span><span>20%</span></span><span></span></div>
+    </div>
+    <p class="licao e" style="--d:3.1s">ainda num sentido só: <b data-ate="29" data-d="3.2">29</b> contra <b data-ate="8" data-d="3.2">8</b></p>
+    <span class="num">06</span>
+  </section>
+
+  <!-- 07 -->
+  <section class="tela" data-dur="3.6" aria-label="Tela 7">
+    <p class="kicker"><a href="../relatorios/atividade10.html">Atividade 10</a> &middot; Qual português</p>
+    <h2>Portugal ou Brasil?</h2>
+    <table class="tab-ap" style="margin-top:3cqw">
+      <thead><tr><th>Tradutor</th><th class="d"><i class="sw pp"></i>Só PT-PT</th><th class="d"><i class="sw pb"></i>Só PT-BR</th><th class="d"><i class="sw pm"></i>Mista</th><th></th></tr></thead>
+      <tbody>
+        <tr class="e" style="--d:.3s"><td>NLLB-200</td><td class="d" data-ate="1388" data-d=".4">1.388</td><td class="d" data-ate="1297" data-d=".4">1.297</td><td class="d" data-ate="1064" data-d=".4">1.064</td><td><span class="pilha"><i class="cresce pp" style="--w:37%; --d:.4s"></i><i class="cresce pb" style="--w:34.6%; --d:.9s"></i><i class="cresce pm" style="--w:28.4%; --d:1.4s"></i></span></td></tr>
+        <tr class="e" style="--d:1s" ><td>Opus-MT</td><td class="d" data-ate="84" data-d="1.1">84</td><td class="d" data-ate="3510" data-d="1.1">3.510</td><td class="d" data-ate="240" data-d="1.1">240</td><td><span class="pilha"><i class="cresce pp" style="--w:2.2%; --d:1.1s"></i><i class="cresce pb" style="--w:91.6%; --d:1.3s"></i><i class="cresce pm" style="--w:6.3%; --d:1.9s"></i></span></td></tr>
+        <tr class="e" style="--d:1.7s"><td>DeepSeek</td><td class="d" data-ate="48" data-d="1.8">48</td><td class="d" data-ate="3634" data-d="1.8">3.634</td><td class="d" data-ate="14" data-d="1.8">14</td><td><span class="pilha"><i class="cresce pp" style="--w:1.3%; --d:1.8s"></i><i class="cresce pb" style="--w:98.3%; --d:2s"></i><i class="cresce pm" style="--w:.4%; --d:2.6s"></i></span></td></tr>
+      </tbody>
+    </table>
+    <p class="licao e" style="--d:2.8s">o NLLB mistura as duas na mesma resposta</p>
+    <span class="num">07</span>
+  </section>
+
+  <!-- 08 -->
+  <section class="tela" data-dur="3.8" aria-label="Tela 8">
+    <p class="kicker"><a href="../relatorios/atividade10.html">Atividade 10</a> &middot; Os quatro juízes</p>
+    <h2>Os quatro juízes, no ReliableBench</h2>
+    <table class="tab-ap tres" style="margin-top:2cqw">
+      <thead><tr><th>Juiz</th><th class="enc">Inglês</th><th class="ptc">NLLB</th><th class="ptc">Opus</th></tr></thead>
+      <tbody>
+        <tr class="e" style="--d:.3s"><td>Llama Guard 3</td><td><span class="v"><b><span data-ate="8.3" data-casas="1" data-d=".4">8,3</span>%</b><span class="g"><i class="cresce" style="--w:20.8%; --d:.4s"></i></span></span></td><td class="ptc"><span class="v"><b><span data-ate="7.4" data-casas="1" data-d=".4">7,4</span>%</b><span class="g"><i class="cresce pt" style="--w:18.5%; --d:.4s"></i></span></span></td><td class="ptc"><span class="v"><b><span data-ate="8.2" data-casas="1" data-d=".4">8,2</span>%</b><span class="g"><i class="cresce pt" style="--w:20.5%; --d:.4s"></i></span></span></td></tr>
+        <tr class="e" style="--d:.8s"><td>HarmBench</td><td><span class="v"><b><span data-ate="16" data-casas="1" data-d=".9">16,0</span>%</b><span class="g"><i class="cresce" style="--w:40%; --d:.9s"></i></span></span></td><td class="ptc"><span class="v"><b><span data-ate="11.5" data-casas="1" data-d=".9">11,5</span>%</b><span class="g"><i class="cresce pt" style="--w:28.8%; --d:.9s"></i></span></span></td><td class="ptc"><span class="v"><b><span data-ate="11.5" data-casas="1" data-d=".9">11,5</span>%</b><span class="g"><i class="cresce pt" style="--w:28.8%; --d:.9s"></i></span></span></td></tr>
+        <tr class="e dest" style="--d:1.3s"><td>JailJudge</td><td><span class="v"><b><span data-ate="23.7" data-casas="1" data-d="1.4">23,7</span>%</b><span class="g"><i class="cresce" style="--w:59.3%; --d:1.4s"></i></span></span></td><td class="ptc"><span class="v"><b><span data-ate="35.5" data-casas="1" data-d="1.4">35,5</span>%</b><span class="g"><i class="cresce pt" style="--w:88.8%; --d:1.4s"></i></span></span></td><td class="ptc"><span class="v"><b><span data-ate="33.1" data-casas="1" data-d="1.4">33,1</span>%</b><span class="g"><i class="cresce pt" style="--w:82.8%; --d:1.4s"></i></span></span></td></tr>
+        <tr class="e" style="--d:1.8s"><td>AegisGuard</td><td><span class="v"><b><span data-ate="25.2" data-casas="1" data-d="1.9">25,2</span>%</b><span class="g"><i class="cresce" style="--w:63%; --d:1.9s"></i></span></span></td><td class="ptc"><span class="v"><b><span data-ate="22.3" data-casas="1" data-d="1.9">22,3</span>%</b><span class="g"><i class="cresce pt" style="--w:55.8%; --d:1.9s"></i></span></span></td><td class="ptc"><span class="v"><b><span data-ate="23.8" data-casas="1" data-d="1.9">23,8</span>%</b><span class="g"><i class="cresce pt" style="--w:59.5%; --d:1.9s"></i></span></span></td></tr>
+      </tbody>
+    </table>
+    <p class="licao e" style="--d:2.6s">JailJudge: +<b data-ate="12" data-d="2.7">12</b> pontos com o NLLB</p>
+    <span class="num">08</span>
+  </section>
+
+  <!-- 09 -->
+  <section class="tela" data-dur="3.8" aria-label="Tela 9">
+    <p class="kicker"><a href="../relatorios/atividade10.html">Atividade 10</a> &middot; A volta ao inglês</p>
+    <h2>JailJudge: a volta ao inglês</h2>
+    <div class="barras">
+      <div class="lin e" style="--d:.3s"><span>Inglês</span><span class="tr"><i class="cresce" style="--w:59.25%; --d:.4s"></i></span><b><span data-ate="23.7" data-casas="1" data-d=".5">23,7</span>%</b></div>
+      <div class="lin e" style="--d:1.2s"><span>Português</span><span class="tr"><span class="seg"><i class="cx" style="flex:none; width:59.25%; background:var(--en); --d:1.3s"></i><i class="cx" style="flex:none; width:9.5%; background:var(--sepia); --d:1.9s"></i><i class="cx" style="flex:none; width:14%; background:var(--pt); --d:2.3s"></i></span></span><b><span data-ate="33.1" data-casas="1" data-d="2.4">33,1</span>%</b><i class="aro carimbo" style="--d:3s; --r:0deg"></i></div>
+      <div class="lin e" style="--d:2.7s"><span>Volta ao inglês</span><span class="tr"><span class="seg"><i class="cx" style="flex:none; width:59.25%; background:var(--en); --d:2.8s"></i><i class="cx" style="flex:none; width:9.5%; background:var(--sepia); --d:3.3s"></i></span></span><b><span data-ate="27.5" data-casas="1" data-d="3.4">27,5</span>%</b></div>
+      <div class="eixo"><span></span><span class="ex"><span>0</span><span>40%</span></span><span></span></div>
+    </div>
+    <p class="licao e" style="--d:3.5s">parte reescrita <i class="sw" style="background:var(--sepia)"></i>, parte língua <i class="sw pb"></i></p>
+    <span class="num">09</span>
+  </section>
+
+  <!-- 10 -->
+  <section class="tela" data-dur="3.4" aria-label="Tela 10">
+    <p class="kicker"><a href="../relatorios/atividade10.html">Atividade 10</a> &middot; Reprodução</p>
+    <h2 style="font-size:3.6cqw">Os quatro juízes reproduzem os números publicados, menos nos dois modelos do ReliableBench</h2>
+    <svg class="desenho" viewBox="0 0 1000 270" style="margin-top:2.6cqw" role="img" aria-label="Os quatro juízes com um visto verde; abaixo, os dois modelos do ReliableBench, onde não reproduzem.">
+      <g class="linha" style="stroke:#5d7d3a; stroke-width:5">
+        <path class="t" pathLength="1" style="--d:.7s" d="M80 30 l14 16 l28 -34"/>
+        <path class="t" pathLength="1" style="--d:1s" d="M343 30 l14 16 l28 -34"/>
+        <path class="t" pathLength="1" style="--d:1.3s" d="M606 30 l14 16 l28 -34"/>
+        <path class="t" pathLength="1" style="--d:1.6s" d="M869 30 l14 16 l28 -34"/>
+      </g>
+      <rect class="ag e" style="--d:.2s" x="0" y="66" width="210" height="96" rx="8" fill="#f8f3e5"/>
+      <rect class="linha t" pathLength="1" style="--d:.2s" x="0" y="66" width="210" height="96" rx="8"/>
+      <text class="e" style="--d:.4s" x="105" y="122" text-anchor="middle" font-size="27" font-weight="600">Llama Guard 3</text>
+      <rect class="ag e" style="--d:.5s" x="263" y="66" width="210" height="96" rx="8" fill="#f8f3e5"/>
+      <rect class="linha t" pathLength="1" style="--d:.5s" x="263" y="66" width="210" height="96" rx="8"/>
+      <text class="e" style="--d:.7s" x="368" y="122" text-anchor="middle" font-size="27" font-weight="600">HarmBench</text>
+      <rect class="ag e" style="--d:.8s" x="526" y="66" width="210" height="96" rx="8" fill="#f8f3e5"/>
+      <rect class="linha t" pathLength="1" style="--d:.8s" x="526" y="66" width="210" height="96" rx="8"/>
+      <text class="e" style="--d:1s" x="631" y="122" text-anchor="middle" font-size="27" font-weight="600">JailJudge</text>
+      <rect class="ag e" style="--d:1.1s" x="789" y="66" width="210" height="96" rx="8" fill="#f8f3e5"/>
+      <rect class="linha t" pathLength="1" style="--d:1.1s" x="789" y="66" width="210" height="96" rx="8"/>
+      <text class="e" style="--d:1.3s" x="894" y="122" text-anchor="middle" font-size="27" font-weight="600">AegisGuard</text>
+      <rect class="pulsa" style="--d:2.1s" x="180" y="190" width="640" height="70" rx="10" fill="none" stroke="#a8402c" stroke-width="3" stroke-dasharray="9 7"/>
+      <g class="linha" style="stroke:#a8402c; stroke-width:5"><path class="t" pathLength="1" style="--d:2s" d="M214 208 l30 34 M244 208 l-30 34"/></g>
+      <text class="e" style="--d:2.2s" x="540" y="237" text-anchor="middle" font-size="32" font-style="italic" fill="#a8402c" font-weight="600">os dois modelos do ReliableBench</text>
+    </svg>
+    <span class="num">10</span>
+  </section>
+
+  <!-- 11 -->
+  <section class="tela" data-dur="3" aria-label="Tela 11">
+    <p class="kicker"><a href="../relatorios/atividade10.html">Atividade 10</a> &middot; Próximo passo</p>
+    <h2>Próximo: validar a tradução com falantes nativos e perguntar aos autores</h2>
+    <svg class="desenho" viewBox="0 0 1000 270" style="margin-top:2.4cqw" role="img" aria-label="A tradução vai para a validação com falantes nativos e para uma pergunta aos autores.">
+      <rect class="ag e" style="--d:.2s" x="10" y="80" width="280" height="110" rx="8" fill="#c08a2e" fill-opacity=".45"/>
+      <rect class="linha t" pathLength="1" style="--d:.2s" x="10" y="80" width="280" height="110" rx="8"/>
+      <text class="tt e" style="--d:.4s" x="150" y="147" text-anchor="middle" font-size="38" font-weight="700">tradução</text>
+      <path class="linha t" pathLength="1" style="--d:.8s" d="M292 120 C 380 120, 380 62, 490 62 M476 50 L490 62 L476 74"/>
+      <path class="linha t" pathLength="1" style="--d:1.4s" d="M292 150 C 380 150, 380 208, 490 208 M476 196 L490 208 L476 220"/>
+      <rect x="500" y="10" width="490" height="104" rx="8" fill="#f8f3e5"/>
+      <rect class="linha grossa t" pathLength="1" style="--d:1.1s" x="500" y="10" width="490" height="104" rx="8"/>
+      <g class="e" style="--d:1.3s"><g transform="translate(516 20) scale(1.3)" fill="none" stroke="#2e261d" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><use href="#s-lupa" width="64" height="64"/></g></g>
+      <text class="e" style="--d:1.4s" x="620" y="74" font-size="36" font-weight="600">falantes nativos</text>
+      <rect x="500" y="156" width="490" height="104" rx="8" fill="#f8f3e5"/>
+      <rect class="linha grossa t" pathLength="1" style="--d:1.7s" x="500" y="156" width="490" height="104" rx="8"/>
+      <g class="e" style="--d:1.9s"><g transform="translate(516 166) scale(1.3)" fill="none" stroke="#2e261d" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><use href="#s-pede" width="64" height="64"/></g></g>
+      <text class="e" style="--d:2s" x="620" y="220" font-size="36" font-weight="600">autores</text>
+    </svg>
+    <span class="num">11</span>
+  </section>
+
+  <!-- 12 -->
+  <section class="tela capa fim" data-dur="1.6" aria-label="Tela 12">
+    <div>
+      <h1 class="e" style="--d:.1s">Obrigado!</h1>
+      <p class="subt e" style="--d:.4s">Perguntas são bem-vindas</p>
+      <p class="quem e" style="--d:.7s">Cristhian Kapelinski</p>
+      <p class="mail e" style="--d:.8s">cristhianavila.aluno@unipampa.edu.br</p>
+    </div>
+    <img class="aquarela revela" style="--d:.3s" src="../assets/img/guia/corujinha.jpg" alt="Aquarela de uma corujinha">
+  </section>
+
+</div>
+</main>
+
+<footer class="ap-pe">
+  <button class="btn" id="ant" type="button" aria-label="Tela anterior">&larr;</button>
+  <span class="cont" id="cont">01 / 12</span>
+  <button class="btn" id="prox" type="button" aria-label="Próxima tela">&rarr;</button>
+  <p class="dica">Setas, espaço ou clique para passar. Esc mostra todas as telas.</p>
+  <p class="gire">Deite o celular para ver maior.</p>
+  <div class="ap-prog"><span></span></div>
+</footer>
+
+<div class="visao" id="visao" hidden role="dialog" aria-label="Todas as telas">
+  <div class="in">
+    <h2>Todas as telas <button class="btn" id="b-fechar" type="button">Fechar</button></h2>
+    <ol></ol>
+  </div>
+</div>
+
+<script src="../assets/js/apresentacao.js?v=1"></script>
+</body>
+</html>

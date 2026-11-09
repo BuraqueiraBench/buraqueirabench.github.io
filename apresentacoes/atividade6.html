@@ -1,0 +1,309 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Apresentação da Atividade 6 | BuraqueiraBench</title>
+<meta name="description" content="As treze telas da apresentação da Atividade 6: como e a que custo traduzir, animadas.">
+<link rel="icon" type="image/png" sizes="32x32" href="../assets/img/buraqueira-32.png?v=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Old+Standard+TT:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/apresentacao.css?v=3">
+</head>
+<body class="ap">
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <filter id="aquarela" x="-20%" y="-20%" width="140%" height="140%">
+    <feTurbulence type="fractalNoise" baseFrequency=".05" numOctaves="3" seed="7" result="r"/>
+    <feDisplacementMap in="SourceGraphic" in2="r" scale="6"/>
+  </filter>
+    <symbol id="s-pede" viewBox="0 0 64 64"><circle cx="22" cy="26" r="7"/><path d="M8 56c0-11 6-17 14-17s14 6 14 17"/><path d="M34 8h22a3 3 0 0 1 3 3v13a3 3 0 0 1-3 3H46l-6 6v-6h-6a3 3 0 0 1-3-3V11a3 3 0 0 1 3-3z"/><path d="M47 13v8M47 24.4v.4"/></symbol>
+    <symbol id="s-modelo" viewBox="0 0 64 64"><rect x="8" y="10" width="48" height="36" rx="4"/><path d="M16 20h26M16 28h32M16 36h20"/><path d="M24 56h16M32 46v10"/></symbol>
+    <symbol id="s-le" viewBox="0 0 64 64"><path d="M12 8h26l8 8v14"/><path d="M12 8v46h16"/><path d="M19 22h18M19 30h12"/><circle cx="42" cy="42" r="9"/><path d="M49 49l9 9"/></symbol>
+    <symbol id="s-carimbo" viewBox="0 0 64 64"><circle cx="32" cy="12" r="6"/><path d="M28 18h8l2 14H26z"/><rect x="14" y="32" width="36" height="9" rx="2"/><path d="M10 56h44"/><path d="M18 49h4M28 49h8M42 49h4"/></symbol>
+    <symbol id="s-rotulo" viewBox="0 0 64 64"><path d="M8 8h22l26 26-22 22L8 30z"/><circle cx="19" cy="19" r="2.6"/><path d="M28 30l5 5 9-9"/></symbol>
+    <symbol id="s-fn" viewBox="0 0 64 64"><path d="M32 6l20 8v16c0 14-9 23-20 28C21 53 12 44 12 30V14z"/><path d="M4 34h42M39 27l8 7-8 7"/></symbol>
+    <symbol id="s-fp" viewBox="0 0 64 64"><path d="M14 8h26l8 8v20"/><path d="M14 8v48h18"/><path d="M21 24h18M21 32h12"/><circle cx="43" cy="44" r="12"/><path d="M35 52l16-16"/></symbol>
+    <symbol id="s-auroc" viewBox="0 0 64 64"><path d="M10 8v46h46"/><path d="M10 54C18 20 34 14 54 12"/><path d="M10 54L54 12" stroke-dasharray="3 4"/></symbol>
+    <symbol id="s-troca" viewBox="0 0 64 64"><path d="M8 22h42M42 14l8 8-8 8"/><path d="M56 42H14M22 34l-8 8 8 8"/></symbol>
+    <symbol id="s-dado" viewBox="0 0 64 64"><rect x="10" y="10" width="44" height="44" rx="7"/><circle cx="22" cy="22" r="2.5"/><circle cx="42" cy="22" r="2.5"/><circle cx="32" cy="32" r="2.5"/><circle cx="22" cy="42" r="2.5"/><circle cx="42" cy="42" r="2.5"/></symbol>
+    <symbol id="s-igual" viewBox="0 0 64 64"><circle cx="32" cy="32" r="22"/><path d="M20 26h24M20 38h24"/></symbol>
+    <symbol id="s-doc" viewBox="0 0 64 64"><path d="M14 6h26l10 10v42H14z"/><path d="M40 6v10h10M22 28h20M22 36h20M22 44h12"/></symbol>
+    <symbol id="s-lupa"viewBox="0 0 64 64"><circle cx="26" cy="20" r="8"/><path d="M10 56c0-12 7-19 16-19"/><circle cx="43" cy="42" r="9"/><path d="M50 49l8 8"/></symbol>
+    <symbol id="s-escudo" viewBox="0 0 64 64"><path d="M32 6l20 8v16c0 14-9 23-20 28C21 53 12 44 12 30V14z"/><path d="M26 26l-6 6 6 6M38 26l6 6-6 6"/></symbol>
+    <symbol id="s-linguas" viewBox="0 0 64 64"><path d="M8 14h24M20 9v5"/><path d="M13 14c1 9 6 15 15 18M27 14c-1 9-6 15-15 18"/><path d="M34 56l9-22 9 22M37 48h12"/></symbol>
+</svg>
+
+<header class="ap-topo">
+  <a class="marca" href="../index.html#linha">BuraqueiraBench</a>
+  <span class="qual">Apresentação da Atividade 6, 06/10/2026</span>
+  <nav>
+    <button class="btn" id="b-visao" type="button">Todas as telas</button>
+    <a class="btn" href="../assets/docs/atividade6-apresentacao.pdf">PDF</a>
+    <button class="btn" id="b-tela" type="button">Tela cheia</button>
+  </nav>
+</header>
+
+<main class="ap-area">
+<div class="palco" id="palco" tabindex="0" aria-roledescription="apresentação" aria-label="Apresentação, use as setas para passar">
+
+  <!-- 01 capa -->
+  <section class="tela capa" data-dur="2.4" aria-label="Tela 1">
+    <div>
+      <p class="kicker e" style="--d:.1s">IA Aplicada &middot; Atividade 6</p>
+      <h1 class="e" style="--d:.25s">Como e a que custo traduzir</h1>
+      <span class="subt e" style="--d:.6s">Juízes de segurança de LLM em português
+        <svg class="risco" viewBox="0 0 400 12" preserveAspectRatio="none" aria-hidden="true"><path class="t" pathLength="1" style="--d:1s; fill:none; stroke:#c08a2e; stroke-width:3; stroke-linecap:round" d="M2 8 C 90 3, 200 11, 398 5"/></svg>
+      </span>
+      <p class="quem e" style="--d:1.2s">Cristhian Kapelinski</p>
+      <p class="quando e" style="--d:1.35s">Segunda entrega &middot; 06/10/2026</p>
+    </div>
+    <img class="aquarela revela" style="--d:.4s" src="../assets/img/guia/buraqueira.jpg" alt="Aquarela de uma coruja-buraqueira">
+  </section>
+
+  <!-- 02 -->
+  <section class="tela" data-dur="2.8" aria-label="Tela 2">
+    <p class="kicker"><a href="../relatorios/atividade6.html">Atividade 6</a> &middot; De onde viemos</p>
+    <h2>A A5 disse: traduzir é viável</h2>
+    <ul class="lista" style="max-width:58cqw">
+      <li class="e" style="--d:.3s"><svg class="i" style="--d:.3s" viewBox="0 0 64 64" aria-hidden="true"><use href="#s-fp"/></svg><span>o piloto projetou descarte 0 de 30</span></li>
+      <li class="e" style="--d:.9s"><svg class="i" style="--d:.9s" viewBox="0 0 64 64" aria-hidden="true"><use href="#s-rotulo"/></svg><span>o rótulo deve sobreviver à tradução</span></li>
+      <li class="e" style="--d:1.5s"><svg class="i" style="--d:1.5s" viewBox="0 0 64 64" aria-hidden="true"><use href="#s-linguas"/></svg><span>faltava decidir: traduzir com quê?</span></li>
+    </ul>
+    <svg class="desenho" viewBox="0 0 300 300" style="position:absolute; right:6cqw; top:12cqw; width:22cqw" aria-hidden="true">
+      <g class="carimbo" style="--d:.9s; --r:-9deg">
+        <circle cx="150" cy="150" r="128" fill="none" stroke="#5d7d3a" stroke-width="7"/>
+        <circle cx="150" cy="150" r="110" fill="none" stroke="#5d7d3a" stroke-width="2.5"/>
+        <text class="tt" x="150" y="128" text-anchor="middle" font-size="38" font-weight="700" fill="#5d7d3a">descarte</text>
+        <text class="tt" x="150" y="190" text-anchor="middle" font-size="54" font-weight="700" fill="#5d7d3a">0 de 30</text>
+      </g>
+    </svg>
+    <p class="licao e" style="--d:2.2s">Esta entrega responde o “com quê”.</p>
+    <span class="num">02</span>
+  </section>
+
+  <!-- 03 -->
+  <section class="tela" data-dur="2.8" aria-label="Tela 3">
+    <p class="kicker"><a href="../relatorios/atividade6.html">Atividade 6</a> &middot; Os caminhos</p>
+    <h2>Três famílias de tradução</h2>
+    <div class="cartoes">
+      <div class="cartao e" style="--d:.3s"><span class="nome"><svg class="i" style="--d:.4s" viewBox="0 0 64 64" aria-hidden="true"><use href="#s-modelo"/></svg>LLM instruível</span><p>DeepSeek, Gemini, GPT</p><p class="ex">aceita instrução</p></div>
+      <div class="cartao e" style="--d:.9s"><span class="nome"><svg class="i" style="--d:1s" viewBox="0 0 64 64" aria-hidden="true"><use href="#s-linguas"/></svg>tradução dedicada</span><p>Google, DeepL, Azure</p><p class="ex">motor puro, forte</p></div>
+      <div class="cartao e" style="--d:1.5s"><span class="nome"><svg class="i" style="--d:1.6s" viewBox="0 0 64 64" aria-hidden="true"><use href="#s-escudo"/></svg>modelos abertos</span><p>NLLB, Opus-MT, Argos</p><p class="ex">grátis, self-host</p></div>
+    </div>
+    <span class="num">03</span>
+  </section>
+
+  <!-- 04 -->
+  <section class="tela" data-dur="3" aria-label="Tela 4">
+    <p class="kicker"><a href="../relatorios/atividade6.html">Atividade 6</a> &middot; Quanto é preciso traduzir</p>
+    <h2 style="font-size:3.4cqw">Subconjunto difícil, 439 pares, medido (o200k):</h2>
+    <div class="solo e" style="--d:.3s">
+      <span class="grande"><b data-ate="152" data-d=".5" style="color:var(--en)">152</b>k / <b data-ate="179" data-d=".7" style="color:var(--pt-texto)">179</b>k</span>
+      <span class="pos">tokens de entrada e de saída, corpus inteiro</span>
+    </div>
+    <svg class="desenho" viewBox="0 0 1000 120" style="margin-top:3cqw" role="img" aria-label="Duas barras: 152 mil tokens de entrada e 179 mil de saída.">
+      <text class="e" style="--d:.5s" x="150" y="40" text-anchor="end" font-size="30" font-style="italic">entrada</text>
+      <rect class="ag cx" style="--d:.6s" x="170" y="12" width="645" height="36" fill="#3f6e9e"/>
+      <text class="e" style="--d:.9s" x="150" y="100" text-anchor="end" font-size="30" font-style="italic">saída</text>
+      <rect class="ag cx" style="--d:.8s" x="170" y="68" width="760" height="36" fill="#c08a2e"/>
+    </svg>
+    <span class="num">04</span>
+  </section>
+
+  <!-- 05 -->
+  <section class="tela" data-dur="3.4" aria-label="Tela 5">
+    <p class="kicker"><a href="../relatorios/atividade6.html">Atividade 6</a> &middot; Quanto custa &middot; tokens medidos &middot; out/2026</p>
+    <h2>Custo por escopo, em US$</h2>
+    <table class="tab-ap larga">
+      <thead><tr><th>Método</th><th>439</th><th>6.560</th></tr></thead>
+      <tbody>
+        <tr class="e" style="--d:.3s"><td>NLLB-200 / Opus-MT</td><td><span class="v"><b data-ate="0" data-casas="0" data-d=".4">0</b><span class="g"><i class="cresce cu" style="--w:0%; --d:.4s"></i></span></span></td><td><span class="v"><b data-ate="0" data-casas="0" data-d=".4">0</b><span class="g"><i class="cresce cu" style="--w:0%; --d:.4s"></i></span></span></td></tr>
+        <tr class="e" style="--d:.7s"><td>DeepSeek V4.1-Flash</td><td><span class="v"><b data-ate="0.26" data-casas="2" data-d=".8">0,26</b><span class="g"><i class="cresce cu" style="--w:1.9%; --d:.8s"></i></span></span></td><td><span class="v"><b data-ate="4.3" data-casas="2" data-d=".8">4,30</b><span class="g"><i class="cresce cu" style="--w:1.8%; --d:.8s"></i></span></span></td></tr>
+        <tr class="e" style="--d:1.1s"><td>Gemini 3.1 Flash-Lite</td><td><span class="v"><b data-ate="0.31" data-casas="2" data-d="1.2">0,31</b><span class="g"><i class="cresce cu" style="--w:2.2%; --d:1.2s"></i></span></span></td><td><span class="v"><b data-ate="5.06" data-casas="2" data-d="1.2">5,06</b><span class="g"><i class="cresce cu" style="--w:2.2%; --d:1.2s"></i></span></span></td></tr>
+        <tr class="e" style="--d:1.5s"><td>DeepL API Pro</td><td><span class="v"><b data-ate="3.84" data-casas="2" data-d="1.6">3,84</b><span class="g"><i class="cresce cu" style="--w:27.4%; --d:1.6s"></i></span></span></td><td><span class="v"><b data-ate="63.9" data-casas="1" data-d="1.6">63,9</b><span class="g"><i class="cresce cu" style="--w:27.4%; --d:1.6s"></i></span></span></td></tr>
+        <tr class="e" style="--d:1.9s"><td>Google Cloud Transl.</td><td><span class="v"><b data-ate="14" data-casas="1" data-d="2">14,0</b><span class="g"><i class="cresce cu" style="--w:100%; --d:2s"></i></span></span></td><td><span class="v"><b data-ate="233" data-casas="0" data-d="2">233</b><span class="g"><i class="cresce cu" style="--w:100%; --d:2s"></i></span></span></td></tr>
+      </tbody>
+    </table>
+    <span class="num">05</span>
+  </section>
+
+  <!-- 06 -->
+  <section class="tela" data-dur="3.4" aria-label="Tela 6">
+    <p class="kicker"><a href="../relatorios/atividade6.html">Atividade 6</a> &middot; Achado 1</p>
+    <h2 style="font-size:3.3cqw; max-width:84cqw">Nos 439, nada passa de US$ 14. Nos 6.560, o Google vai a US$ 233; o LLM barato, a US$ 5.</h2>
+    <svg class="desenho" viewBox="0 0 1000 290" style="margin-top:3cqw" role="img" aria-label="Barras de custo: Google nos 439, US$ 14; Google nos 6.560, US$ 233; LLM barato nos 6.560, US$ 5.">
+      <path class="linha t" pathLength="1" style="--d:.2s; stroke:#b9ad95; stroke-width:1.5" d="M300 10 V280"/>
+      <text class="e" style="--d:.3s" x="285" y="58" text-anchor="end" font-size="27">Google, nos 439</text>
+      <rect class="ag cx" style="--d:.5s" x="302" y="34" width="31" height="40" fill="#6b5640"/>
+      <text class="tt e" style="--d:.8s" x="348" y="64" font-size="30" font-weight="700">US$ <tspan data-ate="14" data-d=".9">14</tspan></text>
+      <text class="e" style="--d:1s" x="285" y="158" text-anchor="end" font-size="27">Google, nos 6.560</text>
+      <rect class="ag cx" style="--d:1.2s" x="302" y="134" width="520" height="40" fill="#6b5640"/>
+      <text class="tt e" style="--d:1.9s" x="838" y="164" font-size="30" font-weight="700">US$ <tspan data-ate="233" data-d="1.9">233</tspan></text>
+      <text class="e" style="--d:2s" x="285" y="258" text-anchor="end" font-size="27">LLM barato, nos 6.560</text>
+      <rect class="ag cx" style="--d:2.2s" x="302" y="234" width="12" height="40" fill="#6b5640"/>
+      <text class="tt e" style="--d:2.5s" x="334" y="264" font-size="30" font-weight="700">US$ <tspan data-ate="5" data-d="2.6">5</tspan></text>
+      <g class="carimbo" style="--d:2.9s; --r:-4deg"><ellipse cx="392" cy="254" rx="82" ry="34" fill="none" stroke="#5d7d3a" stroke-width="4.5"/></g>
+    </svg>
+    <span class="num">06</span>
+  </section>
+
+  <!-- 07 -->
+  <section class="tela" data-dur="3.2" aria-label="Tela 7">
+    <p class="kicker"><a href="../relatorios/atividade6.html">Atividade 6</a> &middot; Achado 2</p>
+    <h2 style="font-size:3.4cqw">LLM barato contra tradutor dedicado:</h2>
+    <div class="solo e" style="--d:.3s">
+      <span class="grande"><b data-ate="30" data-d=".5">30</b> a <b data-ate="100" data-d=".7">100</b>x</span>
+      <span class="pos">mais barato: o dedicado cobra por caractere</span>
+    </div>
+    <svg class="desenho" viewBox="0 0 1000 130" style="margin-top:3.6cqw" role="img" aria-label="O dedicado custa de 30 a 100 vezes o LLM barato.">
+      <text class="e" style="--d:.6s" x="230" y="40" text-anchor="end" font-size="30" font-style="italic">LLM barato</text>
+      <rect class="ag cx" style="--d:.8s" x="250" y="12" width="7" height="38" fill="#6b5640"/>
+      <text class="e" style="--d:.9s" x="230" y="104" text-anchor="end" font-size="30" font-style="italic">dedicado</text>
+      <rect class="ag cx" style="--d:1.2s" x="250" y="76" width="210" height="38" fill="#6b5640"/>
+      <rect class="cx" style="--d:2.3s" x="460" y="77" width="490" height="36" fill="none" stroke="#6b5640" stroke-width="2.5" stroke-dasharray="9 7"/>
+      <text class="tt e" style="--d:2.6s" x="460" y="140" text-anchor="middle" font-size="26" font-weight="700" fill="#6b5640">30</text>
+      <text class="tt e" style="--d:2.8s" x="950" y="140" text-anchor="middle" font-size="26" font-weight="700" fill="#6b5640">100</text>
+    </svg>
+    <span class="num">07</span>
+  </section>
+
+  <!-- 08 -->
+  <section class="tela" data-dur="3.4" aria-label="Tela 8">
+    <p class="kicker"><a href="../relatorios/atividade6.html">Atividade 6</a> &middot; Teste real</p>
+    <h2>Seis tradutores, mesmo sinal</h2>
+    <svg class="desenho" viewBox="0 0 1000 320" style="margin-top:3cqw" role="img" aria-label="O Google Tradutor diz tenha cuidado com links; o DeepSeek diz cuidado com links; seis motores, a cautela continua.">
+      <rect class="ag e" style="--d:.2s" x="10" y="20" width="400" height="140" rx="8" fill="#c08a2e" fill-opacity=".4"/>
+      <rect class="linha t" pathLength="1" style="--d:.2s" x="10" y="20" width="400" height="140" rx="8"/>
+      <text class="tt e" style="--d:.4s" x="210" y="70" text-anchor="middle" font-size="29" font-weight="700">Google Tradutor</text>
+      <text class="e" style="--d:.6s" x="210" y="125" text-anchor="middle" font-size="33" font-style="italic">“tenha cuidado com links”</text>
+      <rect class="ag e" style="--d:.9s" x="590" y="20" width="400" height="140" rx="8" fill="#c08a2e" fill-opacity=".4"/>
+      <rect class="linha t" pathLength="1" style="--d:.9s" x="590" y="20" width="400" height="140" rx="8"/>
+      <text class="tt e" style="--d:1.1s" x="790" y="70" text-anchor="middle" font-size="29" font-weight="700">DeepSeek (API)</text>
+      <text class="e" style="--d:1.3s" x="790" y="125" text-anchor="middle" font-size="33" font-style="italic">“cuidado com links”</text>
+      <path class="linha grossa t" pathLength="1" style="--d:1.6s" d="M450 76 H550 M450 106 H550"/>
+      <g class="anda laco" style="--dx:100px; --d:2.2s"><rect x="450" y="84" width="14" height="14" rx="2" fill="#2e261d"/></g>
+      <g class="linha" style="stroke:#5d7d3a; stroke-width:4.5">
+        <circle class="t" pathLength="1" style="--d:1.8s" cx="130" cy="250" r="38"/><path class="t" pathLength="1" style="--d:2s" d="M112 252 l12 12 l24 -28"/>
+        <circle class="t" pathLength="1" style="--d:2s" cx="270" cy="250" r="38"/><path class="t" pathLength="1" style="--d:2.2s" d="M252 252 l12 12 l24 -28"/>
+        <circle class="t" pathLength="1" style="--d:2.2s" cx="410" cy="250" r="38"/><path class="t" pathLength="1" style="--d:2.4s" d="M392 252 l12 12 l24 -28"/>
+        <circle class="t" pathLength="1" style="--d:2.4s" cx="550" cy="250" r="38"/><path class="t" pathLength="1" style="--d:2.6s" d="M532 252 l12 12 l24 -28"/>
+        <circle class="t" pathLength="1" style="--d:2.6s" cx="690" cy="250" r="38"/><path class="t" pathLength="1" style="--d:2.8s" d="M672 252 l12 12 l24 -28"/>
+        <circle class="t" pathLength="1" style="--d:2.8s" cx="830" cy="250" r="38"/><path class="t" pathLength="1" style="--d:3s" d="M812 252 l12 12 l24 -28"/>
+      </g>
+    </svg>
+    <p class="licao e" style="--d:3.2s">6 motores, 3 abertos locais: a cautela continua.</p>
+    <span class="num">08</span>
+  </section>
+
+  <!-- 09 -->
+  <section class="tela" data-dur="3.2" aria-label="Tela 9">
+    <p class="kicker"><a href="../relatorios/atividade6.html">Atividade 6</a> &middot; Projeção do que foi rodado</p>
+    <h2>Rodar os dois: tempo e custo</h2>
+    <table class="tab-ap" style="width:84cqw">
+      <thead><tr><th>Motor</th><th>439</th><th>6.560</th></tr></thead>
+      <tbody>
+        <tr class="e" style="--d:.3s"><td><svg class="i ic" style="--d:.3s" viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="24"/><path d="M32 18v15l10 6"/></svg>Argos (local)</td><td>~<b data-ate="9" data-d=".4">9</b> min</td><td>~<b data-ate="2.1" data-casas="1" data-d=".4">2,1</b> h</td></tr>
+        <tr class="e" style="--d:.8s"><td><svg class="i ic" style="--d:.8s" viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="24"/><path d="M32 18v15l10 6"/></svg>Opus-MT (local)</td><td>~<b data-ate="13" data-d=".9">13</b> min</td><td>~<b data-ate="3.2" data-casas="1" data-d=".9">3,2</b> h</td></tr>
+        <tr class="e" style="--d:1.3s"><td><svg class="i ic" style="--d:1.3s" viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="24"/><path d="M40 25c-2-4-14-4-14 3 0 8 15 4 15 12 0 7-12 7-15 2M32 15v6M32 43v6"/></svg>DeepSeek (API)</td><td>US$ <b data-ate="0.26" data-casas="2" data-d="1.4">0,26</b></td><td>US$ 2 a 4</td></tr>
+        <tr class="e" style="--d:1.8s"><td><svg class="i ic" style="--d:1.8s" viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="24"/><path d="M40 25c-2-4-14-4-14 3 0 8 15 4 15 12 0 7-12 7-15 2M32 15v6M32 43v6"/></svg>Google (API)</td><td>US$ <b data-ate="14" data-d="1.9">14</b></td><td>US$ <b data-ate="233" data-d="1.9">233</b></td></tr>
+      </tbody>
+    </table>
+    <p class="licao e" style="--d:2.6s">Aberto paga em tempo; API, em dólar.</p>
+    <span class="num">09</span>
+  </section>
+
+  <!-- 10 -->
+  <section class="tela" data-dur="3.2" aria-label="Tela 10">
+    <p class="kicker"><a href="../relatorios/atividade6.html">Atividade 6</a> &middot; O risco do LLM</p>
+    <h2>O LLM pode recusar. Medi o risco.</h2>
+    <p class="sub e" style="--d:.2s">DeepSeek, nos 30 itens, com os 4 operacionais:</p>
+    <div class="solo e" style="--d:.5s; text-align:left; max-width:44cqw; margin-top:3cqw">
+      <span class="grande" style="font-size:10.5cqw">0 em <b data-ate="30" data-d=".7">30</b></span>
+      <span class="pos">recusas: traduziu todos os 30</span>
+    </div>
+    <svg class="desenho" id="trinta" viewBox="0 0 300 180" style="position:absolute; right:6cqw; top:17cqw; width:36cqw" role="img" aria-label="Trinta pontos, os 30 itens traduzidos, nenhuma recusa"></svg>
+    <p class="licao e" style="--d:2.4s">Se recusar, o motor aberto assume.</p>
+    <span class="num">10</span>
+  </section>
+
+  <!-- 11 -->
+  <section class="tela" data-dur="3" aria-label="Tela 11">
+    <p class="kicker"><a href="../relatorios/atividade6.html">Atividade 6</a> &middot; Prós e contras</p>
+    <h2>Cada família tem seu preço</h2>
+    <table class="tab-ap alta">
+      <thead><tr><th>Família</th><th class="pro">Prós</th><th class="con">Contras</th></tr></thead>
+      <tbody>
+        <tr class="e" style="--d:.3s"><td>LLM</td><td class="pro">aceita instrução</td><td class="con">pode recusar</td></tr>
+        <tr class="e" style="--d:.9s"><td>Dedicada</td><td class="pro">fluente, não recusa</td><td class="con">sem instrução</td></tr>
+        <tr class="e" style="--d:1.5s"><td>Aberta</td><td class="pro">grátis e privada</td><td class="con">menos fluente</td></tr>
+      </tbody>
+    </table>
+    <span class="num">11</span>
+  </section>
+
+  <!-- 12 -->
+  <section class="tela" data-dur="3" aria-label="Tela 12">
+    <p class="kicker"><a href="../relatorios/atividade6.html">Atividade 6</a> &middot; A decisão</p>
+    <h2>Não um tradutor. Um conjunto.</h2>
+    <ul class="lista" style="max-width:62cqw">
+      <li class="e" style="--d:.3s"><svg class="i" style="--d:.3s" viewBox="0 0 64 64" aria-hidden="true"><use href="#s-modelo"/></svg><span>1 LLM barato: DeepSeek ou Gemini</span></li>
+      <li class="e" style="--d:.9s"><svg class="i" style="--d:.9s" viewBox="0 0 64 64" aria-hidden="true"><use href="#s-escudo"/></svg><span>1 aberto local: Opus-MT ou Argos, reserva privada</span></li>
+      <li class="e" style="--d:1.5s"><svg class="i" style="--d:1.5s" viewBox="0 0 64 64" aria-hidden="true"><use href="#s-linguas"/></svg><span>Google como referência de fluência</span></li>
+    </ul>
+    <svg class="desenho" viewBox="0 0 300 300" style="position:absolute; right:5cqw; top:17cqw; width:19cqw" aria-hidden="true">
+      <g class="carimbo" style="--d:2s; --r:8deg">
+        <circle cx="150" cy="150" r="128" fill="none" stroke="#5d7d3a" stroke-width="7"/>
+        <circle cx="150" cy="150" r="110" fill="none" stroke="#5d7d3a" stroke-width="2.5"/>
+        <text class="tt" x="150" y="166" text-anchor="middle" font-size="46" font-weight="700" fill="#5d7d3a">conjunto</text>
+      </g>
+    </svg>
+    <p class="licao e" style="--d:2.5s">Dois a três, e ainda em centavos.</p>
+    <span class="num">12</span>
+  </section>
+
+  <!-- 13 -->
+  <section class="tela capa fim" data-dur="1.6" aria-label="Tela 13">
+    <div>
+      <h1 class="e" style="--d:.1s">Obrigado!</h1>
+      <p class="subt e" style="--d:.4s">Perguntas são bem-vindas</p>
+      <p class="quem e" style="--d:.7s">Cristhian Kapelinski</p>
+      <p class="mail e" style="--d:.8s">cristhianavila.aluno@unipampa.edu.br</p>
+    </div>
+    <img class="aquarela revela" style="--d:.3s" src="../assets/img/guia/corujinha.jpg" alt="Aquarela de uma corujinha">
+  </section>
+
+</div>
+</main>
+
+<footer class="ap-pe">
+  <button class="btn" id="ant" type="button" aria-label="Tela anterior">&larr;</button>
+  <span class="cont" id="cont">01 / 13</span>
+  <button class="btn" id="prox" type="button" aria-label="Próxima tela">&rarr;</button>
+  <p class="dica">Setas, espaço ou clique para passar. Esc mostra todas as telas.</p>
+  <p class="gire">Deite o celular para ver maior.</p>
+  <div class="ap-prog"><span></span></div>
+</footer>
+
+<div class="visao" id="visao" hidden role="dialog" aria-label="Todas as telas">
+  <div class="in">
+    <h2>Todas as telas <button class="btn" id="b-fechar" type="button">Fechar</button></h2>
+    <ol></ol>
+  </div>
+</div>
+
+<script>
+// os 30 itens traduzidos, um ponto cada, entrando um a um
+(function () {
+  const s = document.getElementById('trinta');
+  let h = '';
+  for (let k = 0; k < 30; k++) {
+    const x = 20 + (k % 10) * 29, y = 28 + Math.floor(k / 10) * 62;
+    h += `<circle class="carimbo" style="--d:${(0.7 + k * 0.05).toFixed(3)}s; --r:0deg" cx="${x}" cy="${y}" r="11" fill="#c08a2e" fill-opacity=".85" stroke="#2e261d" stroke-width="1.3"/>`;
+  }
+  s.insertAdjacentHTML('afterbegin', h);
+})();
+</script>
+<script src="../assets/js/apresentacao.js?v=1"></script>
+</body>
+</html>

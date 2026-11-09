@@ -1,0 +1,318 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Apresentação da Atividade 4 | BuraqueiraBench</title>
+<meta name="description" content="As doze telas da apresentação das Atividades 1 a 3: o problema, a lacuna, a proposta e o plano, animadas.">
+<link rel="icon" type="image/png" sizes="32x32" href="../assets/img/buraqueira-32.png?v=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Old+Standard+TT:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/apresentacao.css?v=2">
+</head>
+<body class="ap">
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <filter id="aquarela" x="-20%" y="-20%" width="140%" height="140%">
+    <feTurbulence type="fractalNoise" baseFrequency=".05" numOctaves="3" seed="7" result="r"/>
+    <feDisplacementMap in="SourceGraphic" in2="r" scale="6"/>
+  </filter>
+    <symbol id="s-pede" viewBox="0 0 64 64"><circle cx="22" cy="26" r="7"/><path d="M8 56c0-11 6-17 14-17s14 6 14 17"/><path d="M34 8h22a3 3 0 0 1 3 3v13a3 3 0 0 1-3 3H46l-6 6v-6h-6a3 3 0 0 1-3-3V11a3 3 0 0 1 3-3z"/><path d="M47 13v8M47 24.4v.4"/></symbol>
+    <symbol id="s-modelo" viewBox="0 0 64 64"><rect x="8" y="10" width="48" height="36" rx="4"/><path d="M16 20h26M16 28h32M16 36h20"/><path d="M24 56h16M32 46v10"/></symbol>
+    <symbol id="s-le" viewBox="0 0 64 64"><path d="M12 8h26l8 8v14"/><path d="M12 8v46h16"/><path d="M19 22h18M19 30h12"/><circle cx="42" cy="42" r="9"/><path d="M49 49l9 9"/></symbol>
+    <symbol id="s-carimbo" viewBox="0 0 64 64"><circle cx="32" cy="12" r="6"/><path d="M28 18h8l2 14H26z"/><rect x="14" y="32" width="36" height="9" rx="2"/><path d="M10 56h44"/><path d="M18 49h4M28 49h8M42 49h4"/></symbol>
+    <symbol id="s-rotulo" viewBox="0 0 64 64"><path d="M8 8h22l26 26-22 22L8 30z"/><circle cx="19" cy="19" r="2.6"/><path d="M28 30l5 5 9-9"/></symbol>
+    <symbol id="s-fn" viewBox="0 0 64 64"><path d="M32 6l20 8v16c0 14-9 23-20 28C21 53 12 44 12 30V14z"/><path d="M4 34h42M39 27l8 7-8 7"/></symbol>
+    <symbol id="s-fp" viewBox="0 0 64 64"><path d="M14 8h26l8 8v20"/><path d="M14 8v48h18"/><path d="M21 24h18M21 32h12"/><circle cx="43" cy="44" r="12"/><path d="M35 52l16-16"/></symbol>
+    <symbol id="s-auroc" viewBox="0 0 64 64"><path d="M10 8v46h46"/><path d="M10 54C18 20 34 14 54 12"/><path d="M10 54L54 12" stroke-dasharray="3 4"/></symbol>
+    <symbol id="s-troca" viewBox="0 0 64 64"><path d="M8 22h42M42 14l8 8-8 8"/><path d="M56 42H14M22 34l-8 8 8 8"/></symbol>
+    <symbol id="s-dado" viewBox="0 0 64 64"><rect x="10" y="10" width="44" height="44" rx="7"/><circle cx="22" cy="22" r="2.5"/><circle cx="42" cy="22" r="2.5"/><circle cx="32" cy="32" r="2.5"/><circle cx="22" cy="42" r="2.5"/><circle cx="42" cy="42" r="2.5"/></symbol>
+    <symbol id="s-igual" viewBox="0 0 64 64"><circle cx="32" cy="32" r="22"/><path d="M20 26h24M20 38h24"/></symbol>
+    <symbol id="s-doc" viewBox="0 0 64 64"><path d="M14 6h26l10 10v42H14z"/><path d="M40 6v10h10M22 28h20M22 36h20M22 44h12"/></symbol>
+    <symbol id="s-lupa"viewBox="0 0 64 64"><circle cx="26" cy="20" r="8"/><path d="M10 56c0-12 7-19 16-19"/><circle cx="43" cy="42" r="9"/><path d="M50 49l8 8"/></symbol>
+    <symbol id="s-escudo" viewBox="0 0 64 64"><path d="M32 6l20 8v16c0 14-9 23-20 28C21 53 12 44 12 30V14z"/><path d="M26 26l-6 6 6 6M38 26l6 6-6 6"/></symbol>
+    <symbol id="s-linguas" viewBox="0 0 64 64"><path d="M8 14h24M20 9v5"/><path d="M13 14c1 9 6 15 15 18M27 14c-1 9-6 15-15 18"/><path d="M34 56l9-22 9 22M37 48h12"/></symbol>
+</svg>
+
+<header class="ap-topo">
+  <a class="marca" href="../index.html#linha">BuraqueiraBench</a>
+  <span class="qual">Apresentação da Atividade 4, 08/09/2026</span>
+  <nav>
+    <button class="btn" id="b-visao" type="button">Todas as telas</button>
+    <a class="btn" href="../assets/docs/atividade4-apresentacao.pdf">PDF</a>
+    <button class="btn" id="b-tela" type="button">Tela cheia</button>
+  </nav>
+</header>
+
+<main class="ap-area">
+<div class="palco" id="palco" tabindex="0" aria-roledescription="apresentação" aria-label="Apresentação, use as setas para passar">
+
+  <!-- 01 capa -->
+  <section class="tela capa" data-dur="2.4" aria-label="Tela 1">
+    <div>
+      <p class="kicker e" style="--d:.1s">IA Aplicada &middot; Atividade 4</p>
+      <h1 class="e" style="--d:.25s">Juízes de segurança de LLM em português</h1>
+      <span class="subt e" style="--d:.6s">Medindo o efeito da língua
+        <svg class="risco" viewBox="0 0 400 12" preserveAspectRatio="none" aria-hidden="true"><path class="t" pathLength="1" style="--d:1s; fill:none; stroke:#c08a2e; stroke-width:3; stroke-linecap:round" d="M2 8 C 90 3, 200 11, 398 5"/></svg>
+      </span>
+      <p class="quem e" style="--d:1.2s">Cristhian Kapelinski</p>
+      <p class="quando e" style="--d:1.35s">Atividades 1 a 3 &middot; 08/09/2026</p>
+    </div>
+    <img class="aquarela revela" style="--d:.4s" src="../assets/img/guia/buraqueira.jpg" alt="Aquarela de uma coruja-buraqueira">
+  </section>
+
+  <!-- 02 -->
+  <section class="tela" data-dur="2.6" aria-label="Tela 2">
+    <p class="kicker"><a href="../relatorios/atividade1.html">Atividade 1</a> &middot; O problema</p>
+    <h2>Como se mede segurança de LLM</h2>
+    <ul class="lista">
+      <li class="e" style="--d:.3s"><svg class="i" style="--d:.3s" viewBox="0 0 64 64" aria-hidden="true"><use href="#s-pede"/></svg><span>envia-se um ataque e olha-se a resposta</span></li>
+      <li class="e" style="--d:.9s"><svg class="i" style="--d:.9s" viewBox="0 0 64 64" aria-hidden="true"><use href="#s-carimbo"/></svg><span>quem rotula nocivo ou seguro é outro LLM</span></li>
+      <li class="e" style="--d:1.5s"><svg class="i" style="--d:1.5s" viewBox="0 0 64 64" aria-hidden="true"><use href="#s-rotulo"/></svg><span>a taxa de sucesso do ataque sai do rótulo</span></li>
+    </ul>
+    <p class="licao e" style="--d:2.1s">Rotular à mão não escala. O juiz é automático.</p>
+    <span class="num">02</span>
+  </section>
+
+  <!-- 03 -->
+  <section class="tela" data-dur="2.6" aria-label="Tela 3">
+    <p class="kicker"><a href="../relatorios/atividade1.html">Atividade 1</a> &middot; O problema</p>
+    <h2>Juiz: de onde sai a taxa</h2>
+    <svg class="desenho" viewBox="0 0 1000 300" style="margin-top:3cqw" role="img" aria-label="Ataque e resposta entram no juiz, que é outro LLM, e sai nocivo ou seguro.">
+      <g class="anda laco" style="--dx:100px; --d:2.2s"><rect x="272" y="134" width="24" height="30" rx="2" fill="#f8f3e5" stroke="#2e261d" stroke-width="2"/><path d="M277 143 h14 M277 150 h14 M277 157 h9" stroke="#2e261d" stroke-width="1.6"/></g>
+      <rect class="ag e" style="--d:.2s" x="30" y="90" width="240" height="120" rx="8" fill="#dbe4ee"/>
+      <rect class="linha t" pathLength="1" style="--d:.2s" x="30" y="90" width="240" height="120" rx="8"/>
+      <text class="e" style="--d:.5s" x="150" y="142" text-anchor="middle" font-size="36">ataque</text>
+      <text class="e" style="--d:.6s" x="150" y="186" text-anchor="middle" font-size="36">+ resposta</text>
+      <path class="linha t" pathLength="1" style="--d:.8s" d="M272 150 L374 150 M362 140 L374 150 L362 160"/>
+      <rect class="e" style="--d:1s" x="380" y="60" width="260" height="180" rx="8" fill="#f8f3e5"/>
+      <rect class="linha grossa t" pathLength="1" style="--d:1s" x="380" y="60" width="260" height="180" rx="8"/>
+      <text class="tt e" style="--d:1.2s" x="510" y="146" text-anchor="middle" font-size="46" font-weight="700">juiz</text>
+      <text class="e" style="--d:1.3s" x="510" y="192" text-anchor="middle" font-size="32" font-style="italic">(outro LLM)</text>
+      <path class="linha t" pathLength="1" style="--d:1.5s" d="M642 150 L736 150 M724 140 L736 150 L724 160"/>
+      <g class="carimbo" style="--d:1.8s; --r:-5deg"><g class="alterna" style="--d:2.6s"><rect x="752" y="66" width="214" height="70" rx="6" fill="none" stroke="#a8402c" stroke-width="4"/><text class="tt" x="859" y="114" text-anchor="middle" font-size="38" font-weight="700" fill="#a8402c">nocivo</text></g></g>
+      <text class="e" style="--d:2s" x="859" y="162" text-anchor="middle" font-size="28" font-style="italic" fill="#6b5640">ou</text>
+      <g class="carimbo" style="--d:2.1s; --r:4deg"><g class="alterna" style="--d:3.8s"><rect x="752" y="176" width="214" height="70" rx="6" fill="none" stroke="#5d7d3a" stroke-width="4"/><text class="tt" x="859" y="224" text-anchor="middle" font-size="38" font-weight="700" fill="#5d7d3a">seguro</text></g></g>
+    </svg>
+    <p class="licao e" style="--d:2.3s">Toda taxa de sucesso publicada sai daqui.</p>
+    <span class="num">03</span>
+  </section>
+
+  <!-- 04 -->
+  <section class="tela" data-dur="3" aria-label="Tela 4">
+    <p class="kicker"><a href="../relatorios/atividade1.html">Atividade 1</a> &middot; O problema</p>
+    <h2>Mudar o texto quebra o juiz</h2>
+    <svg class="desenho" viewBox="0 0 1000 330" style="margin-top:2.6cqw" role="img" aria-label="Reescrita de estilo: falso negativo de 0,12 para 0,36. Texto benigno anexado: F1 do melhor juiz a zero.">
+      <text class="e" style="--d:.2s" x="0" y="44" font-size="34">reescrita de estilo: <tspan font-weight="600">falso negativo</tspan></text>
+      <path class="linha t" pathLength="1" style="--d:.4s; stroke:#b9ad95; stroke-width:1.5" d="M150 70 V170"/>
+      <text class="e" style="--d:.5s" x="140" y="106" text-anchor="end" font-size="26" fill="#6b5640">antes</text>
+      <rect class="ag e" style="--d:.6s" x="152" y="84" width="96" height="30" fill="#3f6e9e"/>
+      <text class="tt e" style="--d:.9s" x="260" y="108" font-size="30" font-weight="700">0,12</text>
+      <text class="e" style="--d:1.1s" x="140" y="156" text-anchor="end" font-size="26" fill="#6b5640">depois</text>
+      <rect class="ag e" style="--d:1.2s" x="152" y="134" width="288" height="30" fill="#a8402c"/>
+      <text class="tt e" style="--d:1.5s" x="452" y="158" font-size="30" font-weight="700" fill="#a8402c">0,36</text>
+      <text class="e" style="--d:1.7s" x="560" y="146" font-size="30" font-style="italic" fill="#a8402c">o triplo</text>
+      <text class="e" style="--d:2s" x="0" y="250" font-size="34">texto benigno anexado: <tspan font-weight="600">F1 do melhor juiz</tspan></text>
+      <g class="carimbo" style="--d:2.4s; --r:-7deg"><circle cx="760" cy="238" r="52" fill="none" stroke="#a8402c" stroke-width="5"/><text class="tt" x="760" y="258" text-anchor="middle" font-size="58" font-weight="700" fill="#a8402c">0</text></g>
+    </svg>
+    <p class="licao e" style="--d:2.7s">O conteúdo nocivo fica. O juiz deixa de ver.</p>
+    <span class="num">04</span>
+  </section>
+
+  <!-- 05 -->
+  <section class="tela" data-dur="3" aria-label="Tela 5">
+    <p class="kicker"><a href="../relatorios/atividade1.html">Atividade 1</a> &middot; A lacuna</p>
+    <h2>Língua: não medida</h2>
+    <svg class="desenho" viewBox="0 0 1000 330" style="margin-top:3cqw" role="img" aria-label="Ataque, modelo e categoria já medidos em inglês; a língua, não. Trocar de língua é a mudança mais barata, e ninguém testou.">
+      <rect class="ag e" style="--d:.2s" x="10" y="40" width="190" height="84" rx="8" fill="#dbe4ee"/>
+      <rect class="linha t" pathLength="1" style="--d:.2s" x="10" y="40" width="190" height="84" rx="8"/>
+      <text class="e" style="--d:.4s" x="105" y="94" text-anchor="middle" font-size="36" font-weight="600">ataque</text>
+      <rect class="ag e" style="--d:.4s" x="220" y="40" width="190" height="84" rx="8" fill="#dbe4ee"/>
+      <rect class="linha t" pathLength="1" style="--d:.4s" x="220" y="40" width="190" height="84" rx="8"/>
+      <text class="e" style="--d:.6s" x="315" y="94" text-anchor="middle" font-size="36" font-weight="600">modelo</text>
+      <rect class="ag e" style="--d:.6s" x="430" y="40" width="220" height="84" rx="8" fill="#dbe4ee"/>
+      <rect class="linha t" pathLength="1" style="--d:.6s" x="430" y="40" width="220" height="84" rx="8"/>
+      <text class="e" style="--d:.8s" x="540" y="94" text-anchor="middle" font-size="36" font-weight="600">categoria</text>
+      <path class="linha t" pathLength="1" style="--d:1s; stroke:#3f6e9e; stroke-width:4" d="M160 30 l12 14 l24 -30"/>
+      <path class="linha t" pathLength="1" style="--d:1.15s; stroke:#3f6e9e; stroke-width:4" d="M370 30 l12 14 l24 -30"/>
+      <path class="linha t" pathLength="1" style="--d:1.3s; stroke:#3f6e9e; stroke-width:4" d="M610 30 l12 14 l24 -30"/>
+      <text class="e" style="--d:1.2s" x="10" y="172" font-size="32" font-style="italic" fill="#3f6e9e" font-weight="600">já medidas, em inglês</text>
+      <rect class="ag e" style="--d:1.6s" x="730" y="40" width="250" height="84" rx="8" fill="#c08a2e" fill-opacity=".45"/>
+      <rect class="linha grossa t" pathLength="1" style="--d:1.6s; stroke:#c08a2e" x="730" y="40" width="250" height="84" rx="8"/>
+      <text class="e" style="--d:1.8s" x="855" y="94" text-anchor="middle" font-size="38" font-weight="700">língua</text>
+      <g class="carimbo" style="--d:2.1s; --r:8deg"><circle cx="975" cy="38" r="30" fill="#f8f3e5" stroke="#a8402c" stroke-width="4"/><text class="tt" x="975" y="54" text-anchor="middle" font-size="44" font-weight="700" fill="#a8402c">?</text></g>
+      <path class="linha t" pathLength="1" style="--d:2.3s" d="M855 126 L820 208"/>
+      <rect class="e" style="--d:2.4s" x="330" y="206" width="600" height="104" rx="6" fill="#2e261d"/>
+      <text class="e" style="--d:2.5s" x="630" y="250" text-anchor="middle" font-size="33" fill="#f8f3e5" font-weight="600">trocar de língua é a mudança</text>
+      <text class="e" style="--d:2.55s" x="630" y="290" text-anchor="middle" font-size="33" fill="#f8f3e5" font-weight="600">mais barata, e ninguém testou</text>
+    </svg>
+    <span class="num">05</span>
+  </section>
+
+  <!-- 06 -->
+  <section class="tela" data-dur="3.2" aria-label="Tela 6">
+    <p class="kicker"><a href="../relatorios/atividade1.html">Atividade 1</a> &middot; A proposta</p>
+    <h2>Falso negativo: só em inglês</h2>
+    <p class="sub">resposta nociva liberada como segura (0 a 1)</p>
+    <table class="tab-ap">
+      <thead><tr><th>Juiz</th><th>EN base</th><th>reescrito</th><th class="ptc">PT-BR</th></tr></thead>
+      <tbody>
+        <tr class="e" style="--d:.3s"><td>HarmBench</td><td><span class="v"><b data-ate="0.12" data-casas="2" data-d=".4">0,12</b><span class="g"><i class="cresce" style="--w:12%; --d:.4s"></i></span></span></td><td><span class="v"><b data-ate="0.36" data-casas="2" data-d=".5">0,36</b><span class="g"><i class="cresce" style="--w:36%; --d:.5s"></i></span></span></td><td class="ptc"><span class="q carimbo" style="--d:2s; --r:-8deg">?</span></td></tr>
+        <tr class="e" style="--d:.6s"><td>ShieldGemma</td><td><span class="v"><b data-ate="0.50" data-casas="2" data-d=".7">0,50</b><span class="g"><i class="cresce" style="--w:50%; --d:.7s"></i></span></span></td><td><span class="v"><b data-ate="0.70" data-casas="2" data-d=".8">0,70</b><span class="g"><i class="cresce" style="--w:70%; --d:.8s"></i></span></span></td><td class="ptc"><span class="q carimbo" style="--d:2.15s; --r:6deg">?</span></td></tr>
+        <tr class="e" style="--d:.9s"><td>WildGuard</td><td><span class="v"><b data-ate="0.02" data-casas="2" data-d="1">0,02</b><span class="g"><i class="cresce" style="--w:2%; --d:1s"></i></span></span></td><td><span class="v"><b data-ate="0.12" data-casas="2" data-d="1.1">0,12</b><span class="g"><i class="cresce" style="--w:12%; --d:1.1s"></i></span></span></td><td class="ptc"><span class="q carimbo" style="--d:2.3s; --r:-4deg">?</span></td></tr>
+        <tr class="e" style="--d:1.2s"><td>LLaMA Guard</td><td><span class="v"><b data-ate="0.04" data-casas="2" data-d="1.3">0,04</b><span class="g"><i class="cresce" style="--w:4%; --d:1.3s"></i></span></span></td><td><span class="v"><b data-ate="0.02" data-casas="2" data-d="1.4">0,02</b><span class="g"><i class="cresce" style="--w:2%; --d:1.4s"></i></span></span></td><td class="ptc"><span class="q carimbo" style="--d:2.45s; --r:9deg">?</span></td></tr>
+      </tbody>
+    </table>
+    <p class="nota-col e" style="--d:2.7s; bottom:6cqw">a coluna que o projeto vai preencher</p>
+    <span class="num">06</span>
+  </section>
+
+  <!-- 07 -->
+  <section class="tela" data-dur="2.6" aria-label="Tela 7">
+    <p class="kicker"><a href="../relatorios/atividade2.html">Atividade 2</a> &middot; O que já existe pronto</p>
+    <h2>Nada a coletar, nada a treinar</h2>
+    <div class="cartoes">
+      <div class="cartao e" style="--d:.3s"><span class="grande" data-ate="3" data-d=".4">3</span><p>conjuntos públicos já com rótulo humano</p></div>
+      <div class="cartao e" style="--d:.8s"><span class="grande" data-ate="4" data-d=".9">4</span><p>juízes abertos, rodando só em inferência</p></div>
+      <div class="cartao e" style="--d:1.3s"><span class="grande pal"><svg class="i" style="--d:1.4s; width:7cqw; height:7cqw" viewBox="0 0 64 64" aria-hidden="true"><use href="#s-lupa"/></svg></span><p>baseline: buscar palavra-chave numa lista</p></div>
+    </div>
+    <p class="licao e" style="--d:2s">Cabe no semestre porque reusa o que existe.</p>
+    <span class="num">07</span>
+  </section>
+
+  <!-- 08 -->
+  <section class="tela" data-dur="3.4" aria-label="Tela 8">
+    <p class="kicker"><a href="../relatorios/atividade2.html">Atividade 2</a> &middot; O achado</p>
+    <h2>Traduzir muda o rótulo</h2>
+    <svg class="desenho" viewBox="0 0 1000 300" style="margin-top:3cqw" role="img" aria-label="Watermelon, insulto racial em inglês, vira melancia, fruta: o rótulo nocivo não sobrevive à tradução.">
+      <rect class="ag e" style="--d:.2s" x="30" y="50" width="360" height="104" rx="8" fill="#dbe4ee"/>
+      <rect class="linha t" pathLength="1" style="--d:.2s" x="30" y="50" width="360" height="104" rx="8"/>
+      <text class="tt e" style="--d:.4s" x="210" y="116" text-anchor="middle" font-size="40" font-weight="700">“watermelon”</text>
+      <text class="e" style="--d:.7s" x="210" y="208" text-anchor="middle" font-size="31" font-weight="600" fill="#a8402c">insulto racial em inglês</text>
+      <path class="linha grossa t" pathLength="1" style="--d:1s" d="M402 102 L556 102 M538 88 L556 102 L538 116"/>
+      <rect class="ag e" style="--d:1.3s" x="570" y="50" width="360" height="104" rx="8" fill="#c08a2e" fill-opacity=".45"/>
+      <rect class="linha t" pathLength="1" style="--d:1.3s" x="570" y="50" width="360" height="104" rx="8"/>
+      <text class="tt e" style="--d:1.5s" x="750" y="116" text-anchor="middle" font-size="40" font-weight="700">“melancia”</text>
+      <text class="e" style="--d:1.8s" x="750" y="208" text-anchor="middle" font-size="31" font-weight="600" fill="#5d7d3a">fruta</text>
+      <g class="cai" style="--d:2.1s; --dx:300px"><rect x="250" y="16" width="118" height="40" rx="5" fill="#a8402c"/><text class="tt" x="309" y="44" text-anchor="middle" font-size="24" font-weight="700" fill="#f8f3e5">nocivo</text></g>
+    </svg>
+    <p class="licao e" style="--d:2.9s">O rótulo “nocivo” não sobrevive à tradução.</p>
+    <span class="num">08</span>
+  </section>
+
+  <!-- 09 -->
+  <section class="tela" data-dur="2.8" aria-label="Tela 9">
+    <p class="kicker"><a href="../relatorios/atividade3.html">Atividade 3</a> &middot; O plano</p>
+    <h2>Arquitetura: quatro etapas</h2>
+    <svg class="desenho" viewBox="0 0 1000 300" style="margin-top:3.4cqw" role="img" aria-label="Dados em inglês, traduzir e revalidar, onde está o risco, rodar os juízes, medir.">
+      <circle class="anda laco" style="--dx:780px; --d:2.6s" cx="110" cy="140" r="9" fill="#3f6e9e"/>
+      <circle class="anda laco" style="--dx:780px; --d:4.2s" cx="110" cy="140" r="9" fill="#c08a2e"/>
+      <path class="linha t" pathLength="1" style="--d:.5s" d="M212 140 L262 140 M250 130 L262 140 L250 150"/>
+      <path class="linha t" pathLength="1" style="--d:1.1s" d="M488 140 L538 140 M526 130 L538 140 L526 150"/>
+      <path class="linha t" pathLength="1" style="--d:1.6s" d="M742 140 L792 140 M780 130 L792 140 L780 150"/>
+      <rect x="10" y="84" width="200" height="112" rx="8" fill="#f8f3e5"/>
+      <rect class="ag e" style="--d:.2s" x="10" y="84" width="200" height="112" rx="8" fill="#dbe4ee"/>
+      <rect class="linha t" pathLength="1" style="--d:.2s" x="10" y="84" width="200" height="112" rx="8"/>
+      <text class="e" style="--d:.35s" x="110" y="134" text-anchor="middle" font-size="31" font-weight="600">dados</text>
+      <text class="e" style="--d:.4s" x="110" y="170" text-anchor="middle" font-size="31" font-weight="600">em inglês</text>
+      <rect class="pulsa" style="--d:2.4s" x="258" y="72" width="236" height="136" rx="12" fill="none" stroke="#a8402c" stroke-width="3" stroke-dasharray="8 6"/>
+      <rect x="266" y="84" width="220" height="112" rx="8" fill="#f8f3e5"/>
+      <rect class="ag e" style="--d:.8s" x="266" y="84" width="220" height="112" rx="8" fill="#c08a2e" fill-opacity=".45"/>
+      <rect class="linha grossa t" pathLength="1" style="--d:.8s; stroke:#c08a2e" x="266" y="84" width="220" height="112" rx="8"/>
+      <text class="e" style="--d:.95s" x="376" y="134" text-anchor="middle" font-size="31" font-weight="600">traduzir e</text>
+      <text class="e" style="--d:1s" x="376" y="170" text-anchor="middle" font-size="31" font-weight="600">revalidar</text>
+      <rect x="542" y="84" width="200" height="112" rx="8" fill="#f8f3e5"/>
+      <rect class="linha t" pathLength="1" style="--d:1.3s" x="542" y="84" width="200" height="112" rx="8"/>
+      <text class="e" style="--d:1.45s" x="642" y="134" text-anchor="middle" font-size="31" font-weight="600">rodar os</text>
+      <text class="e" style="--d:1.5s" x="642" y="170" text-anchor="middle" font-size="31" font-weight="600">juízes</text>
+      <rect x="796" y="84" width="190" height="112" rx="8" fill="#f8f3e5"/>
+      <rect class="ag e" style="--d:1.8s" x="796" y="84" width="190" height="112" rx="8" fill="#6b5640" fill-opacity=".18"/>
+      <rect class="linha t" pathLength="1" style="--d:1.8s" x="796" y="84" width="190" height="112" rx="8"/>
+      <text class="e" style="--d:1.95s" x="891" y="152" text-anchor="middle" font-size="31" font-weight="600">medir</text>
+      <text class="e" style="--d:2.2s" x="376" y="252" text-anchor="middle" font-size="30" font-style="italic" font-weight="600" fill="#a8402c">onde está o risco</text>
+    </svg>
+    <p class="licao e" style="--d:2.4s">Nada é treinado: treinar mudaria o juiz.</p>
+    <span class="num">09</span>
+  </section>
+
+  <!-- 10 -->
+  <section class="tela" data-dur="2.6" aria-label="Tela 10">
+    <p class="kicker"><a href="../relatorios/atividade3.html">Atividade 3</a> &middot; Avaliação</p>
+    <h2>Critérios fixados antes de rodar</h2>
+    <ul class="lista" style="max-width:58cqw">
+      <li class="e" style="--d:.3s"><svg class="i" style="--d:.4s" viewBox="0 0 64 64" aria-hidden="true"><rect x="10" y="10" width="44" height="44" rx="4"/><path d="M19 33 l9 9 l18 -22"/></svg><span>reproduzir os valores já publicados em inglês</span></li>
+      <li class="e" style="--d:.9s"><svg class="i" style="--d:1s" viewBox="0 0 64 64" aria-hidden="true"><rect x="10" y="10" width="44" height="44" rx="4"/><path d="M19 33 l9 9 l18 -22"/></svg><span>medir a diferença com intervalo de confiança</span></li>
+    </ul>
+    <svg class="desenho" viewBox="0 0 300 300" style="position:absolute; right:6cqw; top:12cqw; width:22cqw" aria-hidden="true">
+      <g class="carimbo" style="--d:1.6s; --r:-11deg">
+        <circle cx="150" cy="150" r="128" fill="none" stroke="#a8402c" stroke-width="7"/>
+        <circle cx="150" cy="150" r="110" fill="none" stroke="#a8402c" stroke-width="2.5"/>
+        <text class="tt" x="150" y="140" text-anchor="middle" font-size="44" font-weight="700" fill="#a8402c">fixado</text>
+        <text class="tt" x="150" y="190" text-anchor="middle" font-size="34" font-weight="700" fill="#a8402c">antes</text>
+      </g>
+    </svg>
+    <p class="licao e" style="--d:2.1s">Qualquer resultado é resultado.</p>
+    <span class="num">10</span>
+  </section>
+
+  <!-- 11 -->
+  <section class="tela" data-dur="3" aria-label="Tela 11">
+    <p class="kicker"><a href="../relatorios/atividade3.html">Atividade 3</a> &middot; Protótipo mínimo</p>
+    <h2>MVP: um juiz e 30 pares</h2>
+    <ul class="lista" style="max-width:50cqw">
+      <li class="e" style="--d:.3s"><svg class="i" style="--d:.3s" viewBox="0 0 64 64" aria-hidden="true"><use href="#s-carimbo"/></svg><span>um juiz funcionando de ponta a ponta</span></li>
+      <li class="e" style="--d:.8s"><svg class="i" style="--d:.8s" viewBox="0 0 64 64" aria-hidden="true"><use href="#s-linguas"/></svg><span>30 pares em PT-BR revalidados</span></li>
+      <li class="e" style="--d:1.3s"><svg class="i" style="--d:1.3s" viewBox="0 0 64 64" aria-hidden="true"><use href="#s-igual"/></svg><span>as primeiras métricas comparadas</span></li>
+    </ul>
+    <svg class="desenho" id="trinta" viewBox="0 0 260 250" style="position:absolute; right:7cqw; top:15cqw; width:24cqw" role="img" aria-label="Trinta pontos, os 30 pares em português">
+      <text x="130" y="244" text-anchor="middle" font-size="22" font-style="italic" fill="#6b5640">30 pares em PT-BR</text>
+    </svg>
+    <p class="licao e" style="--d:2.4s">Próximo passo: medir o descarte.</p>
+    <span class="num">11</span>
+  </section>
+
+  <!-- 12 -->
+  <section class="tela capa fim" data-dur="1.6" aria-label="Tela 12">
+    <div>
+      <h1 class="e" style="--d:.1s">Obrigado!</h1>
+      <p class="subt e" style="--d:.4s">Perguntas são bem-vindas</p>
+      <p class="quem e" style="--d:.7s">Cristhian Kapelinski</p>
+      <p class="mail e" style="--d:.8s">cristhianavila.aluno@unipampa.edu.br</p>
+    </div>
+    <img class="aquarela revela" style="--d:.3s" src="../assets/img/guia/corujinha.jpg" alt="Aquarela de uma corujinha">
+  </section>
+
+</div>
+</main>
+
+<footer class="ap-pe">
+  <button class="btn" id="ant" type="button" aria-label="Tela anterior">&larr;</button>
+  <span class="cont" id="cont">01 / 12</span>
+  <button class="btn" id="prox" type="button" aria-label="Próxima tela">&rarr;</button>
+  <p class="dica">Setas, espaço ou clique para passar. Esc mostra todas as telas.</p>
+  <p class="gire">Deite o celular para ver maior.</p>
+  <div class="ap-prog"><span></span></div>
+</footer>
+
+<div class="visao" id="visao" hidden role="dialog" aria-label="Todas as telas">
+  <div class="in">
+    <h2>Todas as telas <button class="btn" id="b-fechar" type="button">Fechar</button></h2>
+    <ol></ol>
+  </div>
+</div>
+
+<script>
+// os 30 pares do MVP, um ponto cada, entrando um a um
+(function () {
+  const s = document.getElementById('trinta');
+  let h = '';
+  for (let k = 0; k < 30; k++) {
+    const x = 30 + (k % 6) * 40, y = 26 + Math.floor(k / 6) * 40;
+    h += `<circle class="carimbo" style="--d:${(1.5 + k * 0.035).toFixed(3)}s; --r:0deg" cx="${x}" cy="${y}" r="13" fill="#c08a2e" fill-opacity=".8" stroke="#2e261d" stroke-width="1.5"/>`;
+  }
+  s.insertAdjacentHTML('afterbegin', h);
+})();
+</script>
+<script src="../assets/js/apresentacao.js?v=1"></script>
+</body>
+</html>
