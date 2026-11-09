@@ -18,7 +18,7 @@ AQUI = Path(__file__).resolve().parent
 SITE = AQUI.parent
 CONF = json.loads((AQUI / 'relatorios.json').read_text(encoding='utf-8'))
 MOLDE_PANDOC = AQUI / 'molde-pandoc.html'
-VERSAO = '3'
+VERSAO = '4'
 
 
 def datas(fonte, nome):
@@ -248,8 +248,7 @@ def pagina(n, c, titulo, autor, primeira, ultima, corpo, sumario):
 <header class="topo">
   <div class="in">
     <a class="marca" href="../index.html">BuraqueiraBench</a>
-    <span class="onde">Atividade {n} <i>de 13</i></span>
-    <span class="voltas"><a class="volta" href="../index.html#biblioteca">Todos os relatórios e vídeos</a><a class="volta" href="../index.html#linha">Linha do tempo</a></span>
+    <nav class="voltas" aria-label="Site"><a href="../index.html#prova">O combinado</a><a href="../index.html#biblioteca">Relatórios e vídeos</a><a href="../index.html#problema">O juiz</a><a href="../index.html#vimos">O que vimos</a><a href="../index.html#linha">Linha do tempo</a></nav>
   </div>
   <div class="progresso" aria-hidden="true"><span></span></div>
 </header>

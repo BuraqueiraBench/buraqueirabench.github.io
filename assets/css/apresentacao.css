@@ -37,7 +37,7 @@ a { color: var(--sepia); }
 .ap-pe { display: grid; grid-template-columns: auto auto auto minmax(0, 1fr); align-items: center; gap: .7rem; padding: .35rem 20px .7rem; }
 .ap-pe .cont { font: 400 1rem var(--titulo); color: var(--sepia); min-width: 4.5rem; text-align: center; }
 .ap-pe .gire { display: none; font-size: .92rem; font-style: italic; color: var(--sepia); }
-.ap-pe .dica { font-size: .92rem; font-style: italic; color: var(--sepia); text-align: right; }
+.ap-pe .dica { font-size: 1.02rem; font-style: italic; color: var(--sepia); text-align: right; }
 .ap-prog { grid-column: 1 / -1; height: 3px; background: rgba(185, 173, 149, .4); }
 .ap-prog span { display: block; height: 100%; width: 0; background: var(--pt); transition: width .4s ease-out; }
 

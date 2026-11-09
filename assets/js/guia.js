@@ -131,7 +131,7 @@
 
   // linha do tempo: o plano da Atividade 3 contra o que cada entrega fez, e o dia de hoje
   const P = D.plano;
-  const pagina = n => P.paginas.includes(n) ? `relatorios/atividade${n}.html` : `#ent-${n}`;
+  const pagina = n => P.paginas.includes(n) ? `relatorios/atividade${n}.html` : P.apresentacoes.includes(n) ? `apresentacoes/atividade${n}.html` : `#biblioteca`;
   const EST = { feito: 'feito', parte: 'em parte', nao: 'não começou', andamento: 'em andamento' };
   const COR_EST = { feito: C.seguro, parte: C.pt, nao: C.fio, andamento: C.en };
   (function () {
@@ -171,7 +171,7 @@
       // se colidem, a segunda vai para a faixa de baixo
       const ocupado = [-99, -99];
       const pos = e.feito.map(f2 => {
-        const larg = f2.a > 9 ? 38 : 31, xd = X(P.datas[f2.a][0]);
+        const larg = f2.a > 9 ? 44 : 36, xd = X(P.datas[f2.a][0]);
         const faixa = xd >= ocupado[0] + 3 ? 0 : xd >= ocupado[1] + 3 ? 1 : 0;
         const x0 = Math.max(xd, ocupado[faixa] + 3);
         ocupado[faixa] = x0 + larg;
@@ -180,8 +180,8 @@
       const duas = pos.some(p => p.faixa === 1);
       pos.forEach(({ f2, larg, x0, faixa }) => {
         const yy = y + (duas ? (faixa ? 30 : 7) : 14), claro = e.estado === 'parte';
-        s += `<a href="${pagina(f2.a)}" class="marca-feita" style="--i:${i}"><rect x="${x0}" y="${yy}" width="${larg}" height="19" rx="3" fill="${COR_EST[e.estado]}" filter="url(#aquarela)"/>` +
-          `<text x="${x0 + larg / 2}" y="${yy + 13.5}" text-anchor="middle" fill="${claro ? C.tinta : '#fff'}">A${f2.a}</text><title>Atividade ${f2.a}: ${f2.txt} (${f2.fonte})</title></a>`;
+        s += `<a href="${pagina(f2.a)}" class="marca-feita" style="--i:${i}"><rect x="${x0}" y="${yy}" width="${larg}" height="21" rx="3" fill="${COR_EST[e.estado]}" filter="url(#aquarela)"/>` +
+          `<text x="${x0 + larg / 2}" y="${yy + 15.5}" text-anchor="middle" fill="${claro ? C.tinta : '#fff'}">A${f2.a}</text><title>Atividade ${f2.a}: ${f2.txt} (${f2.fonte})</title></a>`;
       });
       if (e.curta) s += `<text class="falta" x="${X(P.hoje) + 8}" y="${y + 54}">falta ${e.curta}</text>`;
       ini = fim;
@@ -195,11 +195,11 @@
       s += `<text class="et-nome" x="12" y="${y + 25}"><tspan class="estrela">✦</tspan> ${x.nome}</text>`;
       let ocup = -99;
       [...new Set(x.feito.map(f2 => f2.a))].forEach(a => {
-        const itens = x.feito.filter(f2 => f2.a === a), larg = a > 9 ? 38 : 31;
+        const itens = x.feito.filter(f2 => f2.a === a), larg = a > 9 ? 44 : 36;
         const x0 = Math.max(X(P.datas[a][0]), ocup + 3);
         ocup = x0 + larg;
-        s += `<a href="${pagina(a)}" class="marca-feita extra" style="--i:${P.etapas.length + k}"><rect x="${x0}" y="${y + 10}" width="${larg}" height="19" rx="3"/>` +
-          `<text x="${x0 + larg / 2}" y="${y + 23.5}" text-anchor="middle">A${a}</text><title>Atividade ${a}: ${itens.map(f2 => `${f2.txt} (${f2.fonte})`).join('; ')}</title></a>`;
+        s += `<a href="${pagina(a)}" class="marca-feita extra" style="--i:${P.etapas.length + k}"><rect x="${x0}" y="${y + 10}" width="${larg}" height="21" rx="3"/>` +
+          `<text x="${x0 + larg / 2}" y="${y + 25.5}" text-anchor="middle">A${a}</text><title>Atividade ${a}: ${itens.map(f2 => `${f2.txt} (${f2.fonte})`).join('; ')}</title></a>`;
       });
     });
     const xh = X(P.hoje);
@@ -225,7 +225,7 @@
     const linhas = K.itens.map(it => `<tr><td>${it.prometido} <span class="fnt">${it.fonte}</span></td><td>${it.hoje} <span class="fnt">${it.hojeFonte}</span></td></tr>`).join('');
     $('#combinado').innerHTML = `
       <figure class="comb-corpus"><svg viewBox="0 0 570 166" role="img" aria-label="Combinado: 100 a 300 pares. Traduzido até hoje: ${fi(c.feito)} pares, por ${c.tradutores} tradutores.">${s}</svg>
-        <figcaption>Traduzido até hoje: quase ${Math.floor(c.feito / c.prometido[1])} vezes o máximo combinado. Fonte: ${c.fonte} (combinado), ${c.feitoFonte} (traduzido).</figcaption></figure>
+        <figcaption>Traduzido até hoje: quase ${Math.ceil(c.feito / c.prometido[1])} vezes o máximo combinado. Fonte: ${c.fonte} (combinado), ${c.feitoFonte} (traduzido).</figcaption></figure>
       <div class="comb-tab"><table><thead><tr><th scope="col">O que foi combinado</th><th scope="col">Onde está hoje</th></tr></thead><tbody>${linhas}</tbody></table>
         <p class="comb-extra"><a href="#extras-t">✦ E ${P.extras.length} frentes a mais, que não estavam no combinado</a>: ${P.extras.map(x => x.curta).join(', ')}.</p></div>`;
   })();
@@ -244,29 +244,9 @@
       <div class="st"><span class="estado" style="--c:${COR_EST[e.estado]}">${EST[e.estado]}</span>${e.falta ? `<p>Falta ${e.falta}. <span class="fnt">${e.faltaFonte}</span></p>` : ''}</div>
     </li>`).join('');
 
-  // as entregas, uma a uma, com o relatório em página, o PDF e os slides
+  // páginas dos PDFs originais e telas dos slides, para os links da estante
   const relat = { 1: 3, 2: 3, 3: 5, 5: 3, 6: 4, 7: 2, 8: 2, 9: 3, 10: 3, 11: 24 };
   const slides = { 4: 12, 6: 13, 9: 11, 10: 12 };
-  // apresentações que já viraram página animada
-  const APRESENTACOES = P.apresentacoes;
-  const fases = [['Definir o problema', 1, 4], ['Traduzir', 5, 8], ['Julgar', 9, 11], ['Mostrar', 12, 13]];
-  const negrito = tx => tx.replace(/\d+(?:[.,]\d+)*%?/g, m => `<b>${m}</b>`);
-  const doc = '<svg class="doc" viewBox="0 0 64 64" aria-hidden="true"><use href="#s-doc"/></svg>';
-  $('#diario').innerHTML = fases.map(([nome, de, ate]) => {
-    const itens = D.atividades.filter(a => a.n >= de && a.n <= ate).map(a => {
-      const links = [];
-      if (P.paginas.includes(a.n)) links.push(`<a class="ler" href="relatorios/atividade${a.n}.html">${doc}Ler o relatório</a>`);
-      if (relat[a.n]) links.push(`<a href="assets/docs/atividade${a.n}.pdf" target="_blank" rel="noopener">${doc}PDF (${relat[a.n]} p.)</a>`);
-      if (APRESENTACOES.includes(a.n)) links.push(`<a class="ler" href="apresentacoes/atividade${a.n}.html">${doc}Ver a apresentação</a>`);
-      if (slides[a.n]) links.push(`<a href="assets/docs/atividade${a.n}-apresentacao.pdf" target="_blank" rel="noopener">${doc}Slides em PDF (${slides[a.n]} telas)</a>`);
-      const amais = P.extras.some(x => x.feito.some(f2 => f2.a === a.n)) ? ' <a class="selo-extra" href="#extras-t">✦ a mais</a>' : '';
-      return `<li class="entrada" id="ent-${a.n}"><span class="dia">${a.data}</span><div><h4><span class="n">${a.n}</span> ${a.titulo}${amais}</h4><p>${a.feito}</p>` +
-        (a.resultado ? `<p class="res">${negrito(a.resultado)}</p>` : '') +
-        (a.rota ? `<p class="dec">Nota: ${a.rota}</p>` : '') +
-        (links.length ? `<p class="docs">${links.join('')}</p>` : '') + '</div></li>';
-    }).join('');
-    return `<section class="fase"><h3>${nome} <small>Atividades ${de} a ${ate}</small></h3><ol class="paginas">${itens}</ol></section>`;
-  }).join('');
 
   // portas da capa e a estante: relatórios, vídeos e apresentações, tudo à vista
   (function () {
@@ -277,16 +257,21 @@
     $('#estante').innerHTML = nums.map(n => {
       const a = D.atividades.find(x => x.n === n);
       const capa = tem(P.videos, n)
-        ? `<button class="capa-video" type="button" data-video="${n}" aria-label="Ver o vídeo da Atividade ${n}"><img src="assets/video/atividade${n}-pt.jpg" alt="" loading="lazy"><span class="play" aria-hidden="true"></span><span class="dur">vídeo, 3 min</span></button>`
+        ? `<button class="capa-video" type="button" data-video="${n}" aria-label="Ver o vídeo da Atividade ${n}"><img src="assets/video/atividade${n}-pt.jpg" alt="Quadro do vídeo da Atividade ${n}" loading="lazy" width="1280" height="720"><span class="play" aria-hidden="true"></span><span class="dur">vídeo, 3 min</span></button>`
         : tem(P.apresentacoes, n)
-          ? `<a class="capa-video" href="apresentacoes/atividade${n}.html" aria-label="Abrir a apresentação da Atividade ${n}"><img src="assets/img/apresentacao${n}.jpg" alt="" loading="lazy"><span class="dur">apresentação animada</span></a>`
+          ? `<a class="capa-video" href="apresentacoes/atividade${n}.html" aria-label="Abrir a apresentação da Atividade ${n}"><img src="assets/img/apresentacao${n}.jpg" alt="Primeira tela da apresentação da Atividade ${n}" loading="lazy" width="960" height="540"><span class="dur">apresentação animada</span></a>`
           : `<a class="capa-video sem" href="relatorios/atividade${n}.html"><span>vídeo em produção</span></a>`;
       const acoes = [];
       if (tem(P.paginas, n)) acoes.push(`<a class="btn-l forte" href="relatorios/atividade${n}.html">Ler o relatório</a>`);
       if (tem(P.videos, n)) acoes.push(`<button class="btn-l" type="button" data-video="${n}">Ver o vídeo</button>`);
       if (tem(P.apresentacoes, n)) acoes.push(`<a class="btn-l" href="apresentacoes/atividade${n}.html">Apresentação</a>`);
-      return `<li class="livro"><div class="capa-l">${capa}</div><p class="ativ">Atividade ${n} &middot; ${a.data}</p><h3>${a.titulo}</h3>` +
-        `<p class="res">${a.resultado || a.feito}</p><p class="acoes">${acoes.join('')}</p></li>`;
+      const pdfs = [];
+      if (relat[n]) pdfs.push(`<a href="assets/docs/atividade${n}.pdf">PDF do relatório (${relat[n]} p.)</a>`);
+      if (slides[n]) pdfs.push(`<a href="assets/docs/atividade${n}-apresentacao.pdf">slides em PDF (${slides[n]} telas)</a>`);
+      const amais = P.extras.some(x => x.feito.some(f2 => f2.a === n)) ? ' <a class="selo-extra" href="#extras-t" title="Fez coisas além do combinado">✦ a mais</a>' : '';
+      return `<li class="livro" id="ent-${n}"><div class="capa-l">${capa}</div><p class="ativ">Atividade ${n} &middot; ${a.data}${amais}</p><h3>${a.titulo}</h3>` +
+        `<p class="res">${a.resultado || a.feito}</p><p class="acoes">${acoes.join('')}</p>` +
+        (pdfs.length ? `<p class="pdfs">${pdfs.join(' &middot; ')}</p>` : '') + '</li>';
     }).join('');
 
     // o vídeo abre por cima da página, sem sair dela; a legenda vem desligada

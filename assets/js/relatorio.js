@@ -166,7 +166,16 @@
 
   // sumário marca a seção que está sendo lida
   const links = $$('.sumario a[data-alvo]');
-  const marcar = id => links.forEach(a => a.dataset.alvo === id ? a.setAttribute('aria-current', 'true') : a.removeAttribute('aria-current'));
+  const sumario = document.querySelector('.sumario');
+  const marcar = id => links.forEach(a => {
+    if (a.dataset.alvo !== id) { a.removeAttribute('aria-current'); return; }
+    a.setAttribute('aria-current', 'true');
+    // o sumário longo (a Atividade 11 tem 27 seções) rola sozinho para mostrar a seção atual
+    if (sumario && sumario.scrollHeight > sumario.clientHeight) {
+      const topo = a.getBoundingClientRect().top - sumario.getBoundingClientRect().top + sumario.scrollTop, alvo = topo - sumario.clientHeight / 3;
+      if (topo < sumario.scrollTop || topo > sumario.scrollTop + sumario.clientHeight - 40) sumario.scrollTo({ top: alvo, behavior: 'smooth' });
+    }
+  });
   if ('IntersectionObserver' in window) {
     const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) marcar(e.target.id); }),
       { rootMargin: '-30% 0px -65% 0px' });

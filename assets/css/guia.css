@@ -35,13 +35,13 @@ a:hover { color: var(--nanquim); }
 :focus-visible { outline: 2px solid var(--en); outline-offset: 3px; }
 
 h1, h2, h3 { font-family: var(--titulo); font-weight: 700; line-height: 1.1; }
-h2 { font-size: clamp(2rem, 4.6vw, 3.3rem); font-variant: small-caps; letter-spacing: .01em; margin-bottom: clamp(1.8rem, 4vw, 3rem); }
+h2 { font-size: clamp(2rem, 4.6vw, 3.3rem); font-variant: small-caps; letter-spacing: .01em; margin-bottom: clamp(1.2rem, 2.6vw, 2rem); }
 h2.solo { margin-bottom: clamp(1rem, 3vw, 2rem); }
 
 .caixa { max-width: 1180px; margin: 0 auto; padding: 0 20px; }
 .caixa.estreita { max-width: 860px; }
-section { padding: clamp(3.5rem, 9vw, 7rem) 0; }
-.tela { padding: clamp(1rem, 3vw, 2rem) 0 clamp(2.5rem, 7vw, 5rem); }
+section { padding: clamp(2.4rem, 5vw, 4.2rem) 0; }
+.tela { padding: clamp(.6rem, 1.6vw, 1.2rem) 0 clamp(1.8rem, 4vw, 3rem); }
 .tela:last-child { padding-bottom: 0; }
 .fio { border: 0; height: 1px; max-width: 1180px; margin: 0 auto; background: linear-gradient(90deg, transparent, var(--fio) 12%, var(--fio) 88%, transparent); }
 
@@ -327,6 +327,9 @@ tbody th { font-weight: 600; }
 .livro h3 { font: 700 1.3rem/1.2 var(--titulo); margin: .2rem 0 .45rem; }
 .livro .res { font-size: 1.02rem; line-height: 1.42; flex: 1; }
 .livro .acoes { display: flex; flex-wrap: wrap; gap: .45rem; margin-top: .9rem; }
+.livro .pdfs { font-size: .95rem; color: var(--sepia); margin-top: .55rem; }
+.livro .pdfs a { color: var(--sepia); }
+.livro .ativ .selo-extra { font-size: .8rem; }
 .btn-l { font: 400 .98rem var(--titulo); font-variant: small-caps; color: var(--nanquim); background: var(--papel2); border: 1px solid var(--nanquim); border-radius: 3px; padding: .15rem .7rem .3rem; text-decoration: none; cursor: pointer; line-height: 1.3; }
 .btn-l.forte { background: var(--nanquim); color: var(--papel); }
 .btn-l:hover { background: var(--nanquim); color: var(--papel); }
@@ -354,7 +357,7 @@ tbody th { font-weight: 600; }
 .comb-tab th { text-align: left; font: 400 .95rem var(--titulo); font-variant: small-caps; letter-spacing: .04em; color: var(--sepia); padding: .5rem .6rem .4rem 0; border-bottom: 1px solid var(--nanquim); }
 .comb-tab td { vertical-align: top; padding: .55rem .9rem .55rem 0; border-bottom: 1px solid var(--fio); }
 .comb-tab tr:last-child td { border-bottom: 0; }
-.comb-tab .fnt, .extras .fnt { font-size: .82rem; color: var(--sepia); white-space: nowrap; }
+.comb-tab .fnt, .extras .fnt { font-size: .9rem; color: var(--sepia); white-space: nowrap; }
 .comb-extra { margin-top: 1rem; font-size: 1.06rem; line-height: 1.45; }
 .comb-extra a { font-weight: 600; color: var(--nanquim); }
 .estrela { color: var(--pt); }
@@ -374,10 +377,10 @@ tbody th { font-weight: 600; }
 .so-celular { display: none; font-size: .95rem; font-style: italic; color: var(--sepia); margin-bottom: .6rem; }
 @media (max-width: 960px) { .so-celular { display: block; } }
 .plano svg { display: block; width: 100%; min-width: 920px; height: auto; overflow: visible; }
-.esquema-nota { font-size: .95rem; color: var(--sepia); font-style: italic; margin-top: .7rem; max-width: 52rem; }
+.esquema-nota { font-size: 1.02rem; color: var(--sepia); font-style: italic; margin-top: .7rem; max-width: 52rem; }
 .plano .mes { stroke: var(--fio); stroke-width: 1; stroke-dasharray: 2 4; }
-.plano .mes-t { font: italic 400 14px var(--texto); fill: var(--sepia); }
-.plano .col-t { font: 400 14px var(--titulo); font-variant: small-caps; letter-spacing: .04em; fill: var(--sepia); }
+.plano .mes-t { font: italic 400 15.5px var(--texto); fill: var(--sepia); }
+.plano .col-t { font: 400 15.5px var(--titulo); font-variant: small-caps; letter-spacing: .04em; fill: var(--sepia); }
 .plano .trilho { stroke-width: 1.3; }
 .plano .vao { stroke: var(--pt); stroke-width: 5; stroke-linecap: round; opacity: .55; }
 .plano .haste { stroke: var(--sepia); stroke-width: 1; }
@@ -385,14 +388,14 @@ tbody th { font-weight: 600; }
 .plano .ent-pino text { font: 700 12.5px var(--titulo); fill: var(--nanquim); pointer-events: none; }
 .plano .ent-pino:hover circle, .plano .ent-pino:focus-visible circle { fill: #e6c98f; }
 .plano .faixa { stroke: var(--fio); stroke-width: .8; }
-.plano .et-nome { font: 400 16.5px var(--texto); fill: var(--nanquim); }
+.plano .et-nome { font: 400 17.5px var(--texto); fill: var(--nanquim); }
 .plano .et-n { font: 700 16px var(--titulo); fill: var(--sepia); }
-.plano .et-est { font: italic 600 14.5px var(--texto); }
-.plano .planejado { fill: rgba(107, 86, 64, .05); stroke: var(--sepia); stroke-width: 1.2; stroke-dasharray: 5 4; }
+.plano .et-est { font: italic 600 15.5px var(--texto); }
+.plano .planejado { fill: rgba(107, 86, 64, .09); stroke: var(--nanquim); stroke-width: 1.5; stroke-dasharray: 6 4; }
 .plano .marca-feita rect { fill-opacity: .85; stroke: var(--nanquim); stroke-width: .8; transition: stroke-width .15s; }
-.plano .marca-feita text { font: 700 12.5px var(--titulo); }
+.plano .marca-feita text { font: 700 14px var(--titulo); }
 .plano .marca-feita:hover rect, .plano .marca-feita:focus-visible rect { stroke-width: 2; }
-.plano .falta { font: italic 400 14px var(--texto); fill: var(--nocivo); }
+.plano .falta { font: italic 400 15.5px var(--texto); fill: var(--nocivo); }
 .plano .hoje { stroke: var(--nocivo); stroke-width: 1.6; stroke-dasharray: 6 4; }
 .plano .hoje-t { font: italic 600 14px var(--texto); fill: var(--nocivo); }
 .js .plano .ent-pino, .js .plano .marca-feita, .js .plano .planejado, .js .plano .falta, .js .plano .hoje, .js .plano .hoje-t { opacity: 0; }
