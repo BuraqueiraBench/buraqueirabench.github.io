@@ -18,7 +18,7 @@ AQUI = Path(__file__).resolve().parent
 SITE = AQUI.parent
 CONF = json.loads((AQUI / 'relatorios.json').read_text(encoding='utf-8'))
 MOLDE_PANDOC = AQUI / 'molde-pandoc.html'
-VERSAO = '4'
+VERSAO = '5'
 
 
 def datas(fonte, nome):
@@ -220,9 +220,18 @@ def pagina(n, c, titulo, autor, primeira, ultima, corpo, sumario):
         legenda = f'<track kind="captions" srclang="pt-BR" label="Português" src="../{base}.vtt">' \
             if (SITE / f'{base}.vtt').exists() else ''
         capa = f' poster="../{base}.jpg"' if (SITE / f'{base}.jpg').exists() else ''
-        video = (f'<figure class="video"><video controls preload="metadata" playsinline{capa}>'
+        # vídeo longo vem com capítulos: [{"t": segundos, "titulo": "..."}] no .capitulos.json ao lado
+        capitulos = ''
+        arq_cap = SITE / f'{base}.capitulos.json'
+        if arq_cap.exists():
+            caps = json.loads(arq_cap.read_text(encoding='utf-8'))
+            lista_cap = ''.join(
+                f'<li><button type="button" data-t="{c["t"]}"><span class="tc">{int(c["t"]) // 60}:{int(c["t"]) % 60:02d}</span>'
+                f'{html.escape(c["titulo"])}</button></li>' for c in caps)
+            capitulos = f'<nav class="capitulos" aria-label="Capítulos do vídeo"><p>Capítulos</p><ol>{lista_cap}</ol></nav>'
+        video = (f'<div class="video-bloco{" com-cap" if capitulos else ""}"><figure class="video"><video controls preload="metadata" playsinline{capa}>'
                  f'<source src="../{base}.mp4" type="video/mp4">{legenda}</video>'
-                 f'<figcaption>O relatório em vídeo, narrado e com legenda.</figcaption></figure>')
+                 f'<figcaption>O relatório em vídeo, narrado e com legenda.</figcaption></figure>{capitulos}</div>')
     return f'''<!doctype html>
 <html lang="pt-BR">
 <head>

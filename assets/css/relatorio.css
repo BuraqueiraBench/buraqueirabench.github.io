@@ -63,7 +63,17 @@ main { padding-top: var(--nav); }
 .ficha dt { font: 400 .95rem var(--titulo); font-variant: small-caps; letter-spacing: .04em; color: var(--sepia); margin-bottom: .3rem; }
 .ficha dd { font-size: 1.08rem; line-height: 1.45; }
 
-.abre .video { margin: 2rem 0 0; max-width: 980px; }
+.video-bloco { margin-top: 2rem; }
+.video-bloco.com-cap { display: grid; grid-template-columns: minmax(0, 1fr) 300px; gap: 1.6rem; align-items: start; max-width: 1240px; }
+.capitulos { border-top: 1.5px solid var(--nanquim); padding-top: .6rem; }
+.capitulos p { font: 400 .95rem var(--titulo); font-variant: small-caps; letter-spacing: .04em; color: var(--sepia); margin-bottom: .4rem; }
+.capitulos ol { list-style: none; padding: 0; }
+.capitulos button { all: unset; box-sizing: border-box; cursor: pointer; display: grid; grid-template-columns: 3rem 1fr; width: 100%; padding: .38rem .4rem; border-bottom: 1px solid rgba(185, 173, 149, .6); font-size: 1.02rem; line-height: 1.3; border-radius: 2px; }
+.capitulos button:hover, .capitulos button:focus-visible { background: rgba(192, 138, 46, .14); }
+.capitulos button[aria-current] { background: rgba(192, 138, 46, .22); font-weight: 600; }
+.capitulos .tc { font: 400 .95rem var(--titulo); color: var(--sepia); }
+@media (max-width: 920px) { .video-bloco.com-cap { grid-template-columns: 1fr; } }
+.abre .video { margin: 0; max-width: 980px; }
 .abre .video video { display: block; width: 100%; aspect-ratio: 16 / 9; background: var(--nanquim); border: 1px solid var(--nanquim); }
 .abre .video figcaption { margin-top: .5rem; }
 

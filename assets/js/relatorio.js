@@ -198,4 +198,19 @@
   } else {
     $$('article > section, figure').forEach(el => el.classList.add('visto'));
   }
+
+  // capítulos do vídeo longo: o clique pula para o trecho, e o capítulo que está tocando fica marcado
+  const vid = document.querySelector('.video-bloco video');
+  const caps = $$('.capitulos button');
+  if (vid && caps.length) {
+    caps.forEach(b => b.addEventListener('click', () => {
+      vid.currentTime = parseFloat(b.dataset.t);
+      vid.play().catch(() => {});
+    }));
+    vid.addEventListener('timeupdate', () => {
+      let atual = null;
+      caps.forEach(b => { if (vid.currentTime >= parseFloat(b.dataset.t) - .2) atual = b; });
+      caps.forEach(b => (b === atual ? b.setAttribute('aria-current', 'true') : b.removeAttribute('aria-current')));
+    });
+  }
 })();
