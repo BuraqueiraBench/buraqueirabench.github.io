@@ -129,18 +129,138 @@
     $('#g-largada').innerHTML = svg('0 0 560 120', t, `Llama Guard 3 no ReliableBench com o DeepSeek: ${f(i.fnComoTraduzido)}% como traduzido, ${f(i.fnReposta)}% com a instrução reposta, inglês ${f(i.fnIngles)}%.`);
   })();
 
-  // diário de campo: quatro fases, tudo à vista
+  // linha do tempo: o plano da Atividade 3 contra o que cada entrega fez, e o dia de hoje
+  const P = D.plano;
+  const pagina = n => P.paginas.includes(n) ? `relatorios/atividade${n}.html` : `#ent-${n}`;
+  const EST = { feito: 'feito', parte: 'em parte', nao: 'não começou', andamento: 'em andamento' };
+  const COR_EST = { feito: C.seguro, parte: C.pt, nao: C.fio, andamento: C.en };
+  (function () {
+    const dia = s => new Date(`${s}T12:00:00`);
+    const t0 = dia('2026-08-20'), t1 = dia('2026-12-26');
+    const W = 1120, L = 340, R = W - 16, topo = 96, alt = 64;
+    const X = s => L + (dia(s) - t0) / (t1 - t0) * (R - L);
+    const mais = (s, sem) => { const d = dia(s); d.setDate(d.getDate() + 7 * sem); return d.toISOString().slice(0, 10); };
+    const alt2 = 44, sep = 50;
+    const H = topo + P.etapas.length * alt + sep + P.extras.length * alt2 + 6;
+    let s = '';
+    [['2026-09-01', 'setembro'], ['2026-10-01', 'outubro'], ['2026-11-01', 'novembro'], ['2026-12-01', 'dezembro']].forEach(([d, nome]) => {
+      s += `<line class="mes" x1="${X(d)}" y1="${topo - 22}" x2="${X(d)}" y2="${H}"/><text class="mes-t" x="${X(d) + 6}" y="${topo - 10}">${nome}</text>`;
+    });
+    s += `<text class="col-t" x="12" y="${topo - 10}">Etapa do plano</text>`;
+    // as 13 entregas num trilho, cada uma no seu dia; as do mesmo dia se afastam
+    s += `<path class="traco trilho" pathLength="1" d="M${L} 40 L${R} 40"/>`;
+    let ultimo = -99;
+    Object.keys(P.datas).map(Number).sort((a, b) => P.datas[a][0].localeCompare(P.datas[b][0]) || a - b).forEach(n => {
+      const ds = P.datas[n], xd = X(ds[0]);
+      const x = Math.max(xd, ultimo + 25);
+      ultimo = x;
+      const span = ds.length > 1 ? `<path class="vao" d="M${X(ds[0])} 40 L${X(ds[1])} 40"/>` : '';
+      s += `<a href="${pagina(n)}" class="ent-pino" style="--i:${n}">${span}<line class="haste" x1="${xd}" y1="40" x2="${x}" y2="26"/>` +
+        `<circle cx="${x}" cy="18" r="11"/><text x="${x}" y="22.5" text-anchor="middle">${n}</text>` +
+        `<title>Atividade ${n}: ${D.atividades.find(a => a.n === n).titulo}</title></a>`;
+    });
+    s += `<text class="col-t" x="12" y="22">Entregas</text>`;
+    let ini = P.inicio;
+    P.etapas.forEach((e, i) => {
+      const y = topo + i * alt, fim = mais(ini, e.semanas);
+      s += `<line class="faixa" x1="12" y1="${y + alt - 4}" x2="${R}" y2="${y + alt - 4}"/>`;
+      s += `<text class="et-nome" x="12" y="${y + 22}"><tspan class="et-n">${e.n}</tspan> ${e.nome}</text>`;
+      s += `<text class="et-est" x="34" y="${y + 44}" fill="${({ feito: C.seguro, parte: "#87591a", nao: C.sepia, andamento: C.en })[e.estado]}">${EST[e.estado]}</text>`;
+      s += `<rect class="planejado" x="${X(ini)}" y="${y + 8}" width="${X(fim) - X(ini)}" height="30" rx="3"><title>Planejado: ${e.semanas} ${e.semanas > 1 ? 'semanas' : 'semana'}, para entregar ${e.entrega} (${P.fonte})</title></rect>`;
+      // cada entrega que fez algo da etapa vira uma etiqueta no dia dela; as do mesmo dia se afastam
+      // se colidem, a segunda vai para a faixa de baixo
+      const ocupado = [-99, -99];
+      const pos = e.feito.map(f2 => {
+        const larg = f2.a > 9 ? 38 : 31, xd = X(P.datas[f2.a][0]);
+        const faixa = xd >= ocupado[0] + 3 ? 0 : xd >= ocupado[1] + 3 ? 1 : 0;
+        const x0 = Math.max(xd, ocupado[faixa] + 3);
+        ocupado[faixa] = x0 + larg;
+        return { f2, larg, x0, faixa };
+      });
+      const duas = pos.some(p => p.faixa === 1);
+      pos.forEach(({ f2, larg, x0, faixa }) => {
+        const yy = y + (duas ? (faixa ? 30 : 7) : 14), claro = e.estado === 'parte';
+        s += `<a href="${pagina(f2.a)}" class="marca-feita" style="--i:${i}"><rect x="${x0}" y="${yy}" width="${larg}" height="19" rx="3" fill="${COR_EST[e.estado]}" filter="url(#aquarela)"/>` +
+          `<text x="${x0 + larg / 2}" y="${yy + 13.5}" text-anchor="middle" fill="${claro ? C.tinta : '#fff'}">A${f2.a}</text><title>Atividade ${f2.a}: ${f2.txt} (${f2.fonte})</title></a>`;
+      });
+      if (e.curta) s += `<text class="falta" x="${X(P.hoje) + 8}" y="${y + 54}">falta ${e.curta}</text>`;
+      ini = fim;
+    });
+    // o que não estava no combinado: uma linha por frente, etiqueta preta com a estrela
+    const y0 = topo + P.etapas.length * alt;
+    s += `<text class="extra-t" x="12" y="${y0 + 32}">✦ A mais, fora do combinado</text>`;
+    P.extras.forEach((x, k) => {
+      const y = y0 + sep + k * alt2;
+      s += `<line class="faixa" x1="12" y1="${y + alt2 - 4}" x2="${R}" y2="${y + alt2 - 4}"/>`;
+      s += `<text class="et-nome" x="12" y="${y + 25}"><tspan class="estrela">✦</tspan> ${x.nome}</text>`;
+      let ocup = -99;
+      [...new Set(x.feito.map(f2 => f2.a))].forEach(a => {
+        const itens = x.feito.filter(f2 => f2.a === a), larg = a > 9 ? 38 : 31;
+        const x0 = Math.max(X(P.datas[a][0]), ocup + 3);
+        ocup = x0 + larg;
+        s += `<a href="${pagina(a)}" class="marca-feita extra" style="--i:${P.etapas.length + k}"><rect x="${x0}" y="${y + 10}" width="${larg}" height="19" rx="3"/>` +
+          `<text x="${x0 + larg / 2}" y="${y + 23.5}" text-anchor="middle">A${a}</text><title>Atividade ${a}: ${itens.map(f2 => `${f2.txt} (${f2.fonte})`).join('; ')}</title></a>`;
+      });
+    });
+    const xh = X(P.hoje);
+    s += `<line class="hoje" x1="${xh}" y1="${topo - 26}" x2="${xh}" y2="${H}"/><text class="hoje-t" x="${xh}" y="${topo - 30}" text-anchor="middle">hoje, 09/11</text>`;
+    $('#plano').innerHTML = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Linha do tempo do plano contra a execução: etapas 1, 2 e 3 feitas, 4 e 5 em parte, 6 não começou, 7 em andamento; e seis frentes a mais, fora do combinado.">${s}</svg>`;
+  })();
+
+  // o combinado contra o que existe hoje, com o tamanho do corpus em pontos
+  (function () {
+    const K = P.combinado, c = K.corpus, cada = 20;
+    let s = '';
+    const ponto = (x, y, cls, i) => `<circle class="${cls}" cx="${x}" cy="${y}" r="3.6" style="--i:${i}"/>`;
+    // combinado: de 100 a 300 pares, 5 cheios e 10 vazados
+    for (let i = 0; i < c.prometido[1] / cada; i++) {
+      s += ponto(14 + (i % 5) * 10, 58 + Math.floor(i / 5) * 10, i < c.prometido[0] / cada ? 'pt-cheio' : 'pt-vazio', i);
+    }
+    s += `<text class="w-rot" x="8" y="30">combinado</text><text class="w-num" x="8" y="122">100 a 300 pares</text>`;
+    // hoje: 6.560 pares
+    const n = Math.round(c.feito / cada), cols = 41;
+    for (let i = 0; i < n; i++) s += ponto(150 + (i % cols) * 10, 58 + Math.floor(i / cols) * 10, 'feito-p', i);
+    s += `<text class="w-rot" x="144" y="30">traduzido até hoje</text><text class="w-num" x="144" y="152">${fi(c.feito)} pares, por ${c.tradutores} tradutores</text>`;
+    s += `<text class="w-leg" x="560" y="30" text-anchor="end">cada ponto, ${cada} pares</text>`;
+    const linhas = K.itens.map(it => `<tr><td>${it.prometido} <span class="fnt">${it.fonte}</span></td><td>${it.hoje} <span class="fnt">${it.hojeFonte}</span></td></tr>`).join('');
+    $('#combinado').innerHTML = `
+      <figure class="comb-corpus"><svg viewBox="0 0 570 166" role="img" aria-label="Combinado: 100 a 300 pares. Traduzido até hoje: ${fi(c.feito)} pares, por ${c.tradutores} tradutores.">${s}</svg>
+        <figcaption>Traduzido até hoje: quase ${Math.floor(c.feito / c.prometido[1])} vezes o máximo combinado. Fonte: ${c.fonte} (combinado), ${c.feitoFonte} (traduzido).</figcaption></figure>
+      <div class="comb-tab"><table><thead><tr><th scope="col">O que foi combinado</th><th scope="col">Onde está hoje</th></tr></thead><tbody>${linhas}</tbody></table>
+        <p class="comb-extra"><a href="#extras-t">✦ E ${P.extras.length} frentes a mais, que não estavam no combinado</a>: ${P.extras.map(x => x.curta).join(', ')}.</p></div>`;
+  })();
+
+  // o que fizemos a mais, frente por frente
+  (function () {
+    $('#extras').innerHTML = P.extras.map(x => `<li class="extra"><h4><span class="estrela">✦</span> ${x.nome}</h4><ul>${x.feito.map(f2 =>
+      `<li><a class="chip" href="${pagina(f2.a)}">A${f2.a}</a> ${f2.txt}. <span class="fnt">${f2.fonte}</span></li>`).join('')}</ul></li>`).join('');
+  })();
+
+  // a mesma linha do tempo em texto: planejado, executado e onde está, etapa por etapa
+  $('#onde').innerHTML = P.etapas.map(e => `
+    <li class="etapa ${e.estado}">
+      <div class="pl"><span class="et-num">${e.n}</span><h4>${e.nome}</h4><p>${e.semanas} ${e.semanas > 1 ? "semanas" : "semana"}, para entregar ${e.entrega}.</p></div>
+      <div class="ex">${e.feito.length ? `<ul>${e.feito.map(f2 => `<li><a class="chip" href="${pagina(f2.a)}">A${f2.a}</a> ${f2.txt}. <span class="fnt">${f2.fonte}</span></li>`).join('')}</ul>` : '<p class="nada">Nada ainda.</p>'}</div>
+      <div class="st"><span class="estado" style="--c:${COR_EST[e.estado]}">${EST[e.estado]}</span>${e.falta ? `<p>Falta ${e.falta}. <span class="fnt">${e.faltaFonte}</span></p>` : ''}</div>
+    </li>`).join('');
+
+  // as entregas, uma a uma, com o relatório em página, o PDF e os slides
   const relat = { 1: 3, 2: 3, 3: 5, 5: 3, 6: 4, 7: 2, 8: 2, 9: 3, 10: 3, 11: 24 };
   const slides = { 4: 12, 6: 13, 9: 11, 10: 12 };
+  // apresentações que já viraram página animada
+  const APRESENTACOES = [4, 6, 9, 10];
   const fases = [['Definir o problema', 1, 4], ['Traduzir', 5, 8], ['Julgar', 9, 11], ['Mostrar', 12, 13]];
   const negrito = tx => tx.replace(/\d+(?:[.,]\d+)*%?/g, m => `<b>${m}</b>`);
   const doc = '<svg class="doc" viewBox="0 0 64 64" aria-hidden="true"><use href="#s-doc"/></svg>';
   $('#diario').innerHTML = fases.map(([nome, de, ate]) => {
     const itens = D.atividades.filter(a => a.n >= de && a.n <= ate).map(a => {
       const links = [];
-      if (relat[a.n]) links.push(`<a href="assets/docs/atividade${a.n}.pdf" target="_blank" rel="noopener">${doc}Relatório (${relat[a.n]} p.)</a>`);
-      if (slides[a.n]) links.push(`<a href="assets/docs/atividade${a.n}-apresentacao.pdf" target="_blank" rel="noopener">${doc}Slides (${slides[a.n]} telas)</a>`);
-      return `<li class="entrada"><span class="dia">${a.data}</span><div><h4>${a.titulo}</h4><p>${a.feito}</p>` +
+      if (P.paginas.includes(a.n)) links.push(`<a class="ler" href="relatorios/atividade${a.n}.html">${doc}Ler o relatório</a>`);
+      if (relat[a.n]) links.push(`<a href="assets/docs/atividade${a.n}.pdf" target="_blank" rel="noopener">${doc}PDF (${relat[a.n]} p.)</a>`);
+      if (APRESENTACOES.includes(a.n)) links.push(`<a class="ler" href="apresentacoes/atividade${a.n}.html">${doc}Ver a apresentação</a>`);
+      if (slides[a.n]) links.push(`<a href="assets/docs/atividade${a.n}-apresentacao.pdf" target="_blank" rel="noopener">${doc}Slides em PDF (${slides[a.n]} telas)</a>`);
+      const amais = P.extras.some(x => x.feito.some(f2 => f2.a === a.n)) ? ' <a class="selo-extra" href="#extras-t">✦ a mais</a>' : '';
+      return `<li class="entrada" id="ent-${a.n}"><span class="dia">${a.data}</span><div><h4><span class="n">${a.n}</span> ${a.titulo}${amais}</h4><p>${a.feito}</p>` +
         (a.resultado ? `<p class="res">${negrito(a.resultado)}</p>` : '') +
         (a.rota ? `<p class="dec">Nota: ${a.rota}</p>` : '') +
         (links.length ? `<p class="docs">${links.join('')}</p>` : '') + '</div></li>';
@@ -151,47 +271,6 @@
   const icones = ['s-lupa', 's-escudo', 's-linguas'];
   $('#proximas').innerHTML = D.proximos.map((p, i) =>
     `<li><svg class="ico" aria-hidden="true"><use href="#${icones[i]}"/></svg><p>${p}</p></li>`).join('');
-
-  // notas
-  const T = (cab, linhas) => `<div class="tabela"><table><thead><tr>${cab.map(c => `<th scope="col">${c}</th>`).join('')}</tr></thead><tbody>${linhas.map(l => `<tr>${l.map((c, i) => i ? `<td>${c}</td>` : `<th scope="row">${c}</th>`).join('')}</tr>`).join('')}</tbody></table></div>`;
-  const fonteP = s => `<p class="fonte">Fonte: ${s}</p>`;
-  const conds = D.condicoes.map(c => c.nome);
-  const porJuiz = obj => D.juizes.map(j => [j.nome, ...D.condicoes.map(c => f(obj[j.id][c.id]))]);
-  const N = (titulo, corpo) => `<details><summary>${titulo}</summary><div class="nota-corpo">${corpo}</div></details>`;
-  const trocas = [];
-  D.juizes.forEach(j => ['nllb', 'opus', 'deepseek'].forEach(k => {
-    const v = D.trocasReliable[j.id][k];
-    trocas.push([j.nome, trads.find(x => x[0] === k)[1], fi(v[0]), fi(v[1])]);
-  }));
-  const volta = [];
-  trads.forEach(([k, n]) => D.juizes.forEach(j => { const v = D.volta[k][j.id]; volta.push([n, j.nome, f(v[0]), f(v[1]), f(v[2])]); }));
-  const rotas = D.atividades.filter(a => a.rota).map(a => `<li><b>Atividade ${a.n}, ${a.titulo}.</b> ${a.rota}</li>`).join('');
-
-  $('#notas-corpo').innerHTML = [
-    N('Conjuntos de dados', T(['Nome', 'Identificador', 'Tamanho', 'Papel', 'Fonte'], D.dados.map(d => [d.nome, d.id, d.tamanho, d.papel, d.fonte]))),
-    N('Tradutores', T(['Nome', 'Identificador', 'Onde roda', 'Fonte'], D.tradutores.map(d => [d.nome, d.id, d.onde, d.fonte]))),
-    N('Juízes', T(['Nome', 'Modelo', 'Escore', 'Fonte'], D.juizes.map(j => [j.nome, j.modelo, j.escore, j.fonte]))),
-    N('Métricas', `<ul>
-      <li><b>Falso negativo:</b> parcela das respostas nocivas que o juiz libera.</li>
-      <li><b>Falso positivo:</b> parcela das respostas seguras que o juiz barra.</li>
-      <li><b>Pares comuns:</b> os 6.521 pares que têm veredito nas oito condições (quatro juízes, em inglês e em português). Dentro deles, 1.030 pertencem ao ReliableBench, com 887 respostas nocivas.</li>
-      <li><b>Referência das trocas:</b> o veredito do próprio juiz em inglês. Liberadas são as nocivas que passam a ser liberadas, barradas são as nocivas que passam a ser barradas.</li>
-      <li><b>Volta ao inglês:</b> a tradução para o português é traduzida de volta para o inglês e julgada de novo. Serve de controle da reescrita.</li>
-      <li><b>AUROC:</b> área sob a curva ROC do escore do juiz, usada para o JailJudge.</li></ul>`),
-    N('Tabelas dos gráficos', `
-      <h4>Nocivas liberadas no ReliableBench, em %</h4>${T(['Juiz', ...conds], porJuiz(D.fnReliable))}${fonteP(D.fnReliable.fonte)}
-      <h4>Nocivas liberadas nos 6.521 pares comuns, em %</h4>${T(['Juiz', ...conds], porJuiz(D.fnComuns))}${fonteP(D.fnComuns.fonte)}
-      <h4>Seguras barradas pelo HarmBench no ReliableBench, em %</h4>${T(['Juiz', ...conds], [['HarmBench', ...D.condicoes.map(c => f(D.fpHarmbenchReliable[c.id]))]])}${fonteP(D.fpHarmbenchReliable.fonte)}
-      <h4>Trocas de veredito contra o inglês, nas 887 nocivas do ReliableBench</h4>${T(['Juiz', 'Tradutor', 'Passam a ser liberadas', 'Passam a ser barradas'], trocas)}${fonteP(D.trocasReliable.fonte)}
-      <h4>Controle da volta ao inglês, nocivas liberadas no ReliableBench, em %</h4>${T(['Tradutor', 'Juiz', 'Inglês', 'Português', 'Volta'], volta)}${fonteP(D.volta.fonte)}
-      <h4>Parte do aumento do JailJudge que sobrevive à volta, em %</h4>${T(['', ...trads.map(x => x[1])], [['Sobrevive', ...trads.map(x => D.volta.sobreviveJailjudge[x[0]])]])}
-      <h4>AUROC do JailJudge no ReliableBench</h4>${T(['Tradutor', 'Inglês', 'Português', 'Volta'], trads.map(([k, n]) => [n, ...D.aurocJailjudge[k].map(v => fmt(v, 3))]))}${fonteP(D.aurocJailjudge.fonte)}
-      <h4>Quantos de cinco tradutores levam o Llama Guard 3 a dizer nocivo, nos ${dep.total} processos do JudgeStressTest</h4>${T(['Tradutores', '0', '1', '2', '3', '4', '5'], [['Processos', ...dep.porContagem.map(fi)]])}<p>Dependem do tradutor (de 1 a 4): ${dep.dependem}.</p>${fonteP(dep.fonte)}
-      <h4>Custo projetado de traduzir os 6.560 processos, em US$</h4>${T(['Tradutor', 'Custo'], D.custo.map(c => [c.nome, c.faixa || f(c.usd, 2)]))}${fonteP(D.custoFonte)}`),
-    N('Mudanças de rota', `<ul>${rotas}</ul>`),
-    N('Fontes dos números', `<p>As siglas apontam para as linhas dos relatórios do semestre: A11:721 é a linha 721 do relatório da Atividade 11. O resultado final é o da Atividade 11 (commit a76848b, 29/10/2026). Números de atividades anteriores aparecem só no diário.</p>
-      ${T(['Item', 'Fonte'], [['A pergunta', D.projeto.fontes.pergunta], ['A resposta', D.projeto.fontes.resposta], ['Os próximos passos', D.proximosFonte], ...D.atividades.map(a => [`Atividade ${a.n}, ${a.titulo}`, a.fonte])])}`)
-  ].join('');
 
   // entrada das aquarelas e dos traços, uma vez
   const alvos = document.querySelectorAll('.rev');

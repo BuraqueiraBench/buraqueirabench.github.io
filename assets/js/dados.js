@@ -133,6 +133,86 @@ window.DADOS = {
     { n: 13, data: '09/11', titulo: 'Este site', feito: 'O site do projeto, em buraqueirabench.github.io, de apoio à apresentação final.', resultado: '', rota: '', fonte: 'Classroom' }
   ],
 
+  // O plano da Atividade 3 (Tabela de etapas) e o que cada entrega fez dele. As semanas do plano
+  // não têm data no relatório; a linha do tempo conta a partir de 08/09, quando o plano foi entregue.
+  plano: {
+    inicio: '2026-09-08',
+    hoje: '2026-11-09',
+    fonte: 'A3:265-286',
+    etapas: [
+      { n: 1, nome: 'Ambiente e reprodução do inglês (E1)', semanas: 2, entrega: 'E1 fechado e ambiente validado', estado: 'feito',
+        feito: [{ a: 9, txt: 'o escore do Llama Guard 3 coincide com o do conjunto em 436 de 439 pares', fonte: 'A9:66' },
+                { a: 11, txt: 'E1 fechado: HarmBench e Llama Guard 3 ficam a até 0,05 dos números publicados', fonte: 'A11:866' }] },
+      { n: 2, nome: 'Piloto de tradução com 30 pares', semanas: 1, entrega: 'a taxa de descarte, que decide o resto', estado: 'feito',
+        feito: [{ a: 5, txt: 'descarte projetado de 0 em 30', fonte: 'A5:118' },
+                { a: 7, txt: 'os 30 traduzidos por seis motores', fonte: 'A7:66-76' }] },
+      { n: 3, nome: 'Piso de regras e MVP com um juiz', semanas: 2, entrega: 'MVP funcionando', estado: 'feito',
+        feito: [{ a: 9, txt: 'Llama Guard 3 em inglês nos 6.560 pares', fonte: 'A9:120' },
+                { a: 10, txt: 'o mesmo juiz sobre as traduções', fonte: 'A10:64' },
+                { a: 11, txt: 'piso por palavra-chave: em português a lista original não casa nada', fonte: 'A11:564' }] },
+      { n: 4, nome: 'Corpus em português completo e revalidado', semanas: 3, entrega: 'corpus publicável', estado: 'parte',
+        feito: [{ a: 6, txt: 'como e a que custo traduzir', fonte: 'A6:94-118' },
+                { a: 8, txt: '439 pares por cinco motores e 6.560 pelo NLLB-200 e pelo Opus-MT', fonte: 'A8:68-72' },
+                { a: 11, txt: 'DeepSeek nos 6.560 e leitura à mão dos pares que trocam de veredito', fonte: 'A11:290' }],
+        falta: 'a revalidação humana às cegas, de 100 a 200 pares do ReliableBench', curta: 'a revalidação humana às cegas', faltaFonte: 'A11:970' },
+      { n: 5, nome: 'Demais juízes, comitê, E2 e E3', semanas: 3, entrega: 'o resultado principal', estado: 'parte',
+        feito: [{ a: 10, txt: 'E2 com o Llama Guard 3 em duas traduções', fonte: 'A10:64' },
+                { a: 11, txt: 'os quatro juízes do artigo, três tradutores e a volta ao inglês', fonte: 'A11:54' }],
+        falta: 'o comitê por voto entre os juízes', curta: 'o comitê por voto', faltaFonte: 'A3:198, A3:280' },
+      { n: 6, nome: 'E4 e E5, se houver tempo', semanas: 2, entrega: 'resultados complementares', estado: 'nao',
+        feito: [],
+        falta: 'língua com estilo narrativo (E4) e 4 contra 16 bits (E5)', curta: 'E4 e E5', faltaFonte: 'A3:230-232' },
+      { n: 7, nome: 'Análise, escrita e documentação', semanas: 2, entrega: 'relatório e repositório', estado: 'andamento',
+        feito: [{ a: 10, txt: 'o projeto passa a mirar um artigo de periódico', fonte: 'A10:181' },
+                { a: 13, txt: 'este site', fonte: 'Classroom' }],
+        falta: 'o artigo', curta: 'o artigo', faltaFonte: 'A10:181' }
+    ],
+    // datas de cada entrega na linha do tempo (primeiro e último commit do relatório)
+    datas: { 1: ['2026-08-24', '2026-09-08'], 2: ['2026-09-08'], 3: ['2026-09-08'], 4: ['2026-09-08'], 5: ['2026-09-21', '2026-09-28'],
+             6: ['2026-09-27', '2026-10-06'], 7: ['2026-10-06'], 8: ['2026-10-06'], 9: ['2026-10-24', '2026-10-25'], 10: ['2026-10-24'],
+             11: ['2026-10-25', '2026-10-29'], 12: ['2026-11-10'], 13: ['2026-11-09'] },
+    // O combinado: a proposta (Atividade 1) e o plano (Atividade 3). O que veio depois e não estava lá é a mais.
+    combinado: {
+      corpus: { prometido: [100, 300], fonte: 'A3:107, A3:200', feito: 6560, tradutores: 3, feitoFonte: 'A8:70-72, A11:290' },
+      itens: [
+        { prometido: 'um conjunto em português de 100 a 300 pares, revalidado às cegas', fonte: 'A3:107, A3:200',
+          hoje: '6.560 pares traduzidos por três tradutores; a revalidação humana ainda falta', hojeFonte: 'A8:70-72, A11:290, A11:970' },
+        { prometido: 'quatro juízes e um comitê por voto', fonte: 'A3:198',
+          hoje: 'os quatro juízes do artigo e o piso por palavra-chave; o comitê ainda falta', hojeFonte: 'A11:54, A11:564' },
+        { prometido: 'cinco experimentos, E1 a E5', fonte: 'A3:224-232',
+          hoje: 'E1, E2 e E3 feitos; E4 e E5, que eram "se houver tempo", não', hojeFonte: 'A11:866, A10:64, A11:54' }
+      ]
+    },
+    extras: [
+      { nome: '6.560 pares, não 100 a 300', curta: 'o corpus inteiro do artigo',
+        feito: [{ a: 6, txt: 'custo medido no CoinflipForSafety inteiro, 6.560 pares', fonte: 'A6:83-92' },
+                { a: 8, txt: 'NLLB-200 e Opus-MT nos 6.560', fonte: 'A8:70-72' },
+                { a: 9, txt: 'Llama Guard 3 em inglês nos 6.560', fonte: 'A9:120' },
+                { a: 11, txt: 'DeepSeek nos 6.560', fonte: 'A11:290' }] },
+      { nome: 'Três tradutores e o efeito do tradutor', curta: 'comparar tradutores',
+        feito: [{ a: 6, txt: 'três famílias de tradutor, com custo', fonte: 'A6:229' },
+                { a: 7, txt: 'seis motores; o Claude Haiku 4.5 recusou 22 de 30', fonte: 'A7:55' },
+                { a: 8, txt: 'sem as marcas, o DeepSeek recusou 210 de 439 pedidos', fonte: 'A8:83' },
+                { a: 10, txt: 'o veredito depende do motor em 91 de 438 pares', fonte: 'A10:163' }] },
+      { nome: 'Controles da língua', curta: 'volta ao inglês, variante',
+        feito: [{ a: 11, txt: 'volta ao inglês, que separa a língua da reescrita', fonte: 'A11:593' },
+                { a: 11, txt: 'o juiz é determinístico e o DeepSeek em temperatura 0 não', fonte: 'A11:133, A11:495' },
+                { a: 11, txt: 'a variante do português e o Opus-MT com o rótulo do Brasil', fonte: 'A11:535, A11:663' }] },
+      { nome: 'Leitura à mão dos pares que mudam', curta: 'ler as trocas',
+        feito: [{ a: 11, txt: 'as sete maiores trocas do NLLB-200 e 30 sorteadas do Opus-MT', fonte: 'A11:141-178' },
+                { a: 11, txt: 'a instrução final largada pelo DeepSeek em 212 pedidos', fonte: 'A11:460' }] },
+      { nome: 'Testes dos juízes fora do plano', curta: 'juízes por dentro',
+        feito: [{ a: 11, txt: 'o HarmBench sem a regra que exige inglês', fonte: 'A11:869' },
+                { a: 11, txt: 'a tradução com o código protegido', fonte: 'A11:900' },
+                { a: 11, txt: 'a coluna publicada do ReliableBench refeita', fonte: 'A11:801' }] },
+      { nome: 'Alvo de artigo de periódico', curta: 'o artigo',
+        feito: [{ a: 10, txt: 'o projeto passa a mirar a TACL', fonte: 'A10:181' }] }
+    ],
+
+    // relatórios que já têm página em HTML
+    paginas: [1, 2, 3, 5, 6, 7, 8, 9, 10, 11]
+  },
+
   proximos: [
     'Revalidação humana às cegas de 100 a 200 pares do ReliableBench, por falante nativo, sem ver o rótulo de origem.',
     'AegisGuard e JailJudge nas respostas com código protegido.',

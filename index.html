@@ -11,7 +11,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Old+Standard+TT:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
 <script>document.documentElement.classList.add('js');</script>
-<link rel="stylesheet" href="assets/css/guia.css?v=4">
+<link rel="stylesheet" href="assets/css/guia.css?v=9">
 </head>
 <body>
 <a class="pular" href="#conteudo">Pular para o conteúdo</a>
@@ -49,8 +49,7 @@
         <li><a href="#problema" data-s="problema">O juiz</a></li>
         <li><a href="#resultados" data-s="especies">Espécies</a></li>
         <li><a href="#vimos" data-s="vimos">O que vimos</a></li>
-        <li><a href="#evolucao" data-s="evolucao">Diário</a></li>
-        <li><a href="#notas" data-s="notas">Notas</a></li>
+        <li><a href="#linha" data-s="linha">Linha do tempo</a></li>
       </ul>
     </nav>
   </div>
@@ -319,28 +318,36 @@
 
 <hr class="fio">
 
-<!-- 5. Diário -->
-<section id="evolucao" data-nav="evolucao">
+<!-- 5. Linha do tempo: planejado, executado e onde está -->
+<section id="linha" data-nav="linha">
   <div class="caixa">
     <div class="tela rev">
-      <h2>Diário de campo</h2>
+      <h2>Linha do tempo</h2>
+      <p class="intro-linha">O combinado é a proposta da Atividade 1 e o plano da Atividade 3. Primeiro, o combinado ao lado do que existe hoje; depois, etapa por etapa, e por fim o que fizemos a mais.</p>
+      <div id="combinado" class="combinado"></div>
+      <h3 class="sub">O plano no tempo</h3>
+      <p class="intro-linha">Sete etapas, cada uma com o que entregar. Em cada linha, o tracejado é o que estava planejado, as marcas coloridas são o que cada atividade fez (clique para abrir) e a linha vermelha é hoje. Embaixo, em preto com a estrela, o que não estava no combinado.</p>
+      <p class="so-celular">Arraste a linha do tempo para o lado; a mesma informação vem em lista logo abaixo.</p>
+      <div class="plano-rolar"><div id="plano" class="plano"></div></div>
+      <p class="esquema-nota">Esquema: o plano diz quantas semanas cada etapa leva, não as datas, então os tracejados contam as semanas a partir de 08/09. Plano: A3:265-286.</p>
+    </div>
+    <div class="tela rev">
+      <h3 class="sub">Etapa por etapa: planejado, executado e onde está</h3>
+      <ol class="onde" id="onde"></ol>
+    </div>
+    <div class="tela rev">
+      <h3 class="sub" id="extras-t"><span class="estrela">✦</span> O que fizemos a mais</h3>
+      <p class="intro-linha">Nada disto estava na proposta da Atividade 1 nem no plano da Atividade 3.</p>
+      <ol class="extras" id="extras"></ol>
+    </div>
+    <div class="tela rev">
+      <h3 class="sub">As entregas, uma a uma</h3>
       <div id="diario"></div>
     </div>
     <div class="tela rev">
-      <h2>Próximas expedições</h2>
+      <h3 class="sub">Próximos passos</h3>
       <ul class="proximas" id="proximas"></ul>
     </div>
-  </div>
-</section>
-
-<hr class="fio">
-
-<!-- 6. Notas -->
-<section id="notas" data-nav="notas">
-  <div class="caixa estreita">
-    <h2 class="solo">Notas</h2>
-    <p class="intro-notas">O que ficou fora do corpo: os conjuntos de dados, os identificadores exatos, as métricas, as tabelas dos gráficos e a fonte de cada número.</p>
-    <div id="notas-corpo"></div>
   </div>
 </section>
 
@@ -353,8 +360,8 @@
   </div>
 </footer>
 
-<script src="assets/js/dados.js?v=4"></script>
-<script src="assets/js/site.js?v=4"></script>
-<script src="assets/js/guia.js?v=4"></script>
+<script src="assets/js/dados.js?v=9"></script>
+<script src="assets/js/site.js?v=5"></script>
+<script src="assets/js/guia.js?v=11"></script>
 </body>
 </html>
