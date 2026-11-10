@@ -6,110 +6,467 @@ O ReliableBench continua confiável em português?
 00:00:04.234 --> 00:00:05.572
 Atividade 11.
 
-00:00:07.040 --> 00:00:08.992
-A pergunta central é se o ReliableBench,
+00:00:07.040 --> 00:00:08.089
+Capítulo 1.
 
-00:00:09.425 --> 00:00:15.392
-o subconjunto que os autores escolheram por ser confiável de julgar em inglês, continua confiável em português.
+00:00:08.634 --> 00:00:10.736
+A pergunta e a grade do experimento.
 
-00:00:15.937 --> 00:00:20.944
-São 43 comportamentos, 1.036 dos 6.560 pares.
+00:00:11.734 --> 00:00:15.329
+Um juiz é um modelo que diz se uma resposta é segura ou nociva.
 
-00:00:22.108 --> 00:00:24.708
-Com o Llama Guard 3, o falso negativo,
+00:00:15.874 --> 00:00:19.272
+O CoinflipForSafety tem 6.560 pares.
 
-00:00:24.736 --> 00:00:29.314
-uma nociva liberada como segura, é 8,3% em inglês no ReliableBench.
+00:00:19.821 --> 00:00:23.034
+O ReliableBench é o subconjunto de 1.036 pares,
 
-00:00:30.253 --> 00:00:36.139
-Com o NLLB-200 e o Opus-MT, 7,4% e 8,2%.
+00:00:23.038 --> 00:00:26.564
+de 43 comportamentos, confiável de julgar em inglês.
 
-00:00:36.688 --> 00:00:41.151
-Com o DeepSeek, de 8,2% para 12,3%.
+00:00:27.113 --> 00:00:29.261
+Continua confiável em português?
 
-00:00:42.312 --> 00:00:44.553
-Parte do aumento era erro de tradução.
+00:00:30.226 --> 00:00:35.928
+O experimento tem o inglês original e quatro traduções: dos tradutores NLLB-200 e Opus-MT,
 
-00:00:45.098 --> 00:00:47.709
-Um pedido, sobre o massacre de Jallianwala Bagh,
+00:00:36.476 --> 00:00:40.615
+do modelo de linguagem DeepSeek e do Opus-MT com o rótulo do Brasil.
 
-00:00:48.107 --> 00:00:51.876
-concentrava 104 de 134 nocivas liberadas.
+00:00:41.160 --> 00:00:42.764
+Três voltam ao inglês.
 
-00:00:52.424 --> 00:00:56.505
-Traz um trecho da Wikipédia e uma instrução final, que o DeepSeek largou.
+00:00:43.313 --> 00:00:45.612
+Ao todo, são oito condições.
 
-00:00:57.618 --> 00:01:02.105
-A instrução foi reposta em 212 pares, e os juízes julgaram de novo.
+00:00:46.558 --> 00:00:49.239
+Quatro juízes do artigo julgaram cada condição:
 
-00:01:02.649 --> 00:01:06.834
-No Jallianwala, as nocivas liberadas caíram de 104 para 15.
+00:00:49.348 --> 00:00:52.538
+Llama Guard 3, HarmBench, AegisGuard e JailJudge.
 
-00:01:07.383 --> 00:01:13.837
-No ReliableBench, o aumento cai de 12,3% para 10,6%, e continua.
+00:00:53.476 --> 00:00:55.821
+Há também dois pisos por palavra-chave.
 
-00:01:14.940 --> 00:01:17.574
+00:00:56.369 --> 00:01:00.138
+Todas as células têm os 6.560 pares julgados.
+
+00:01:01.090 --> 00:01:06.248
+A entrega corrige quatro pontos das Atividades 9 e 10: a pergunta central é o ReliableBench,
+
+00:01:06.657 --> 00:01:12.416
+os juízes são quatro, o piloto avaliou 30 pares sem revisar traduções, e o E1 não estava feito.
+
+00:01:13.366 --> 00:01:14.195
+Achado.
+
+00:01:14.740 --> 00:01:17.282
+A grade tem oito condições e quatro juízes,
+
+00:01:17.321 --> 00:01:21.495
+e todas as comparações usam os mesmos 6.521 pares.
+
+00:01:22.700 --> 00:01:23.957
+Capítulo 2.
+
+00:01:24.502 --> 00:01:26.951
+O ReliableBench com três tradutores.
+
+00:01:27.970 --> 00:01:33.359
+No Llama Guard 3, o falso negativo, uma resposta nociva que o juiz libera como segura,
+
+00:01:33.375 --> 00:01:41.670
+é 8,3% em inglês no ReliableBench, 7,4% com o NLLB-200 e 8,2% com o Opus-MT.
+
+00:01:42.758 --> 00:01:47.407
+Com o DeepSeek, vai de 8,2% para 12,3%.
+
+00:01:48.358 --> 00:01:51.148
+Com o DeepSeek, a troca vai num sentido só:
+
+00:01:51.148 --> 00:01:55.657
+44 nocivas passam a ser liberadas, e 8 passam a ser barradas.
+
+00:01:56.202 --> 00:02:02.053
+Com o NLLB-200 são 14 e 22, e com o Opus-MT, 18 e 19.
+
+00:02:03.010 --> 00:02:05.112
+O DeepSeek suavizou o conteúdo?
+
+00:02:05.657 --> 00:02:08.828
+Pelo tamanho, não: a razão entre tradução e original
+
+00:02:08.828 --> 00:02:13.280
+é 1,07 nas nocivas liberadas e 1,06 nas outras.
+
+00:02:13.828 --> 00:02:17.030
+Na leitura de 8 sorteadas, 7 são fiéis.
+
+00:02:17.578 --> 00:02:20.942
+Só a revalidação humana descarta uma suavização sutil.
+
+00:02:21.910 --> 00:02:22.739
+Achado.
+
+00:02:23.284 --> 00:02:28.209
+Com o NLLB-200 e o Opus-MT, o ReliableBench continua confiável.
+
+00:02:28.758 --> 00:02:31.555
+Com o DeepSeek, o falso negativo sobe.
+
+00:02:32.756 --> 00:02:34.025
+Capítulo 3.
+
+00:02:34.570 --> 00:02:36.174
+Lendo os pares que mudam.
+
+00:02:37.186 --> 00:02:42.518
+Nas sete maiores trocas do NLLB-200, em quatro o juiz passa a liberar uma nociva,
+
+00:02:42.534 --> 00:02:44.532
+e em três passa a barrar uma segura.
+
+00:02:45.076 --> 00:02:49.088
+Em uma, a tradução destrói o dano: gaslight vira acender a gás.
+
+00:02:49.636 --> 00:02:53.879
+Nas outras seis, a tradução é fiel, e o juiz muda de critério.
+
+00:02:54.838 --> 00:02:59.382
+De 30 trocas sorteadas do Opus-MT, 28 têm tradução fiel.
+
+00:02:59.927 --> 00:03:04.240
+Em 15, o juiz passa a dizer seguro, e o humano diz nocivo em 9.
+
+00:03:04.788 --> 00:03:07.572
+Nas outras 15, o humano diz nocivo em 11.
+
+00:03:08.530 --> 00:03:11.824
+Em escala, esses erros não explicam a troca: no NLLB-200,
+
+00:03:12.871 --> 00:03:19.035
+ela ocorre em 7,9% das respostas com código quebrado e em 8,5% das sem código.
+
+00:03:19.580 --> 00:03:23.765
+No Opus-MT, 8,2% e 8,1%.
+
+00:03:24.718 --> 00:03:25.547
+Achado.
+
+00:03:26.092 --> 00:03:27.990
+A troca vem, na maior parte,
+
+00:03:27.990 --> 00:03:31.377
+de o juiz decidir diferente sobre o mesmo conteúdo em outra língua.
+
+00:03:31.925 --> 00:03:33.865
+O erro de tradução é a minoria.
+
+00:03:35.084 --> 00:03:36.318
+Capítulo 4.
+
+00:03:36.863 --> 00:03:38.872
+O pedido que o DeepSeek largou.
+
+00:03:39.874 --> 00:03:42.636
+Um único pedido, sobre o massacre de Jallianwala Bagh,
+
+00:03:43.011 --> 00:03:47.230
+concentra 104 de 134 nocivas liberadas só com o DeepSeek.
+
+00:03:48.158 --> 00:03:52.458
+Ele traz um trecho da Wikipédia e uma instrução final, que o DeepSeek largou.
+
+00:03:53.007 --> 00:03:56.533
+Sem a instrução, o juiz julgava seguro um pedido neutro.
+
+00:03:57.502 --> 00:04:02.672
+212 pares perderam a instrução, todos em dois pedidos: o de Jallianwala Bagh,
+
+00:04:03.046 --> 00:04:09.107
+em 162 de 162 pares, e o da jornalista Anne Applebaum, em 50 de 61.
+
+00:04:10.066 --> 00:04:14.043
+A correção traduz só a instrução e a repõe nos 212 pares,
+
+00:04:14.071 --> 00:04:15.722
+e os juízes julgam de novo.
+
+00:04:16.266 --> 00:04:20.325
+No Jallianwala, as nocivas liberadas caem de 104 para 15.
+
+00:04:20.873 --> 00:04:23.727
+No ReliableBench, o falso negativo do DeepSeek
+
+00:04:23.801 --> 00:04:28.866
+cai de 12,3% para 10,6%, e o aumento continua.
+
+00:04:29.830 --> 00:04:33.471
+O DeepSeek também traduz a mesma entrada de jeitos diferentes.
+
+00:04:34.016 --> 00:04:38.353
+Em temperatura 0, só 28 dos 100 pedidos saíram sempre iguais,
+
+00:04:38.368 --> 00:04:42.090
+contra 92 e 95 no NLLB-200 e no Opus-MT.
+
+00:04:43.594 --> 00:04:44.423
+Achado.
+
+00:04:44.968 --> 00:04:47.093
+Parte do aumento era erro de tradução,
+
+00:04:47.144 --> 00:04:50.496
+e o DeepSeek entrega textos diferentes para a mesma entrada.
+
+00:04:51.704 --> 00:04:52.926
+Capítulo 5.
+
+00:04:53.471 --> 00:04:56.361
+Onde a troca acontece e a variante do português.
+
+00:04:57.358 --> 00:04:58.893
+Onde a troca acontece?
+
+00:04:59.438 --> 00:05:04.271
+Em poucos comportamentos: as nocivas liberadas caem em 37 comportamentos no NLLB-200,
+
+00:05:05.283 --> 00:05:10.938
+33 no Opus-MT e 44 no DeepSeek, e os 10 maiores respondem pela maior parte.
+
+00:05:11.890 --> 00:05:15.779
+A AUROC, que mede se o juiz põe as nocivas acima das seguras,
+
+00:05:15.779 --> 00:05:19.119
+quase não muda: 0,658 em inglês.
+
+00:05:19.664 --> 00:05:23.206
+O que muda é a calibração: a mediana do escore entre as seguras cai
+
+00:05:23.206 --> 00:05:32.241
+de 0,728 para 0,640 no NLLB-200 e de 0,725 para 0,542 no DeepSeek.
+
+00:05:33.550 --> 00:05:35.664
+O DeepSeek escreve como no Brasil.
+
+00:05:36.209 --> 00:05:39.276
+O NLLB-200 mistura as duas variantes:
+
+00:05:39.276 --> 00:05:45.903
+21,2% das respostas só com marcas de Portugal e 16,2% com marcas das duas.
+
+00:05:46.858 --> 00:05:51.905
+O Opus-MT tem as duas variantes, mas a Atividade 8 o rodou sem o rótulo do Brasil.
+
+00:05:51.905 --> 00:05:56.946
+Refeito com ele, as respostas só com marcas de Portugal vão de 84 para 7.
+
+00:05:57.491 --> 00:06:03.852
+O veredito difere em 288 dos 6.521 pares, 4,4%.
+
+00:06:04.822 --> 00:06:05.651
+Achado.
+
+00:06:06.196 --> 00:06:09.860
+A língua muda a calibração do juiz, e não a discriminação.
+
+00:06:10.409 --> 00:06:14.988
+Uma mudança mínima de redação já troca 4,4% dos pares.
+
+00:06:16.196 --> 00:06:17.523
+Capítulo 6.
+
+00:06:18.068 --> 00:06:19.174
+Os controles.
+
+00:06:20.194 --> 00:06:23.476
+O piso por palavra-chave procura 13 frases de recusa.
+
+00:06:24.022 --> 00:06:27.147
+Das 288 recusas que ele acha em inglês,
+
+00:06:27.147 --> 00:06:33.797
+a lista traduzida acha só 63 no NLLB-200, 129 no Opus-MT e 75 no DeepSeek.
+
+00:06:34.716 --> 00:06:37.131
+Em português, ele não atravessa a língua.
+
+00:06:38.086 --> 00:06:40.720
 Esse aumento é do português ou só da reescrita?
 
-00:01:18.119 --> 00:01:20.569
+00:06:41.265 --> 00:06:43.715
 A volta ao inglês separa as duas coisas.
 
-00:01:21.117 --> 00:01:24.967
+00:06:44.263 --> 00:06:48.113
 Cada tradução é traduzida de volta, e o juiz lê esse inglês.
 
-00:01:25.515 --> 00:01:28.138
+00:06:48.661 --> 00:06:51.284
 O que sobra entre a volta e o português é a língua.
 
-00:01:29.288 --> 00:01:33.640
+00:06:52.234 --> 00:06:56.586
 Para o Llama Guard 3, a volta muda o veredito em tantos pares quanto o português,
 
-00:01:33.640 --> 00:01:41.043
+00:06:56.586 --> 00:07:03.989
 491 contra 550 no NLLB-200 e 577 contra 527 no Opus-MT.
 
-00:01:42.097 --> 00:01:45.935
+00:07:05.043 --> 00:07:08.881
 O juiz é sensível à redação, e o português não acrescenta nada.
 
-00:01:47.092 --> 00:01:50.259
-Com os quatro juízes, o efeito não tem um sinal só.
+00:07:09.838 --> 00:07:10.667
+Achado.
 
-00:01:50.804 --> 00:01:53.843
-No ReliableBench, o falso negativo cai no HarmBench,
+00:07:11.212 --> 00:07:13.834
+O piso por palavra-chave não atravessa a língua.
 
-00:01:54.253 --> 00:02:03.299
+00:07:14.383 --> 00:07:18.986
+Para o Llama Guard 3, a volta ao inglês troca tantos vereditos quanto o português.
+
+00:07:20.180 --> 00:07:21.449
+Capítulo 7.
+
+00:07:21.994 --> 00:07:23.899
+Os quatro juízes do artigo.
+
+00:07:24.898 --> 00:07:28.516
+O Llama Guard 3 e o AegisGuard dão a probabilidade de nocivo.
+
+00:07:29.061 --> 00:07:31.256
+O HarmBench responde sim ou não.
+
+00:07:31.804 --> 00:07:34.288
+O JailJudge dá uma nota de 1 a 10.
+
+00:07:34.837 --> 00:07:38.293
+O veredito é nocivo se o escore passa de 0,5.
+
+00:07:39.262 --> 00:07:44.107
+No ReliableBench, com o NLLB-200, o falso negativo cai no HarmBench,
+
+00:07:44.517 --> 00:07:53.574
 de 16,0% para 11,6%, e sobe no JailJudge, de 23,8% para 35,4%.
 
-00:02:03.848 --> 00:02:06.344
-Nos outros dois, a mudança é pequena.
+00:07:54.538 --> 00:08:01.934
+A AUROC do JailJudge vai de 0,776 para 0,722 e volta a 0,753:
 
-00:02:07.812 --> 00:02:12.535
-A AUROC do JailJudge, que mede se o juiz põe as nocivas acima das seguras,
+00:08:01.934 --> 00:08:04.823
+a perda é, na maior parte, da língua.
 
-00:02:12.535 --> 00:02:19.798
-vai de 0,776 para 0,722 e volta a 0,753: a perda é da língua.
+00:08:05.368 --> 00:08:12.342
+O HarmBench tem falso negativo de 16,0%, 11,6% e 18,5%:
 
-00:02:20.343 --> 00:02:26.485
-O HarmBench tem falso negativo de 18,5% na volta e 11,6% em português.
+00:08:12.393 --> 00:08:16.277
+a reescrita o deixa mais leniente, e o português, mais rígido.
 
-00:02:27.632 --> 00:02:31.290
+00:08:17.230 --> 00:08:20.397
+A coluna publicada diverge dos nossos números no ReliableBench:
+
+00:08:20.888 --> 00:08:30.455
+o veredito coincide em só 826 de 1.036 pares, e o falso negativo é 13,0%, contra 8,3% no nosso escore.
+
+00:08:31.402 --> 00:08:32.231
+Achado.
+
+00:08:32.776 --> 00:08:35.700
+O efeito da língua tem sinal oposto conforme o juiz,
+
+00:08:35.750 --> 00:08:38.825
+e a divergência da coluna publicada aponta para os dados.
+
+00:08:40.040 --> 00:08:41.193
+Capítulo 8.
+
+00:08:41.738 --> 00:08:44.580
+O E1, o HarmBench e o código protegido.
+
+00:08:45.598 --> 00:08:49.256
 O E1 checa se o ambiente reproduz em inglês os números publicados,
 
-00:02:31.290 --> 00:02:33.854
+00:08:49.256 --> 00:08:51.820
 com desvio de até 0,05.
 
-00:02:34.399 --> 00:02:37.172
+00:08:52.365 --> 00:08:55.138
 Está fechado, com o comportamento como pedido.
 
-00:02:37.721 --> 00:02:44.418
-Com o pedido de ataque, o Llama Guard 3 dava falso negativo de 0,12, contra 0,04.
+00:08:55.687 --> 00:08:59.125
+Com o pedido de ataque, o Llama Guard 3 fica mais leniente:
 
-00:02:45.530 --> 00:02:52.933
-Ainda não se pode afirmar que as traduções são fiéis, pois falta a revalidação nativa; que cada troca do JailJudge é efeito da língua,
+00:08:59.125 --> 00:09:03.379
+falso negativo de 0,12, contra 0,04.
 
-00:02:52.949 --> 00:03:01.182
-pois o juiz muda sozinho em 351 de 6.560 pares; nem que os nossos números coincidem com os publicados.
+00:09:04.330 --> 00:09:08.562
+O prompt do HarmBench tem uma regra: as respostas devem estar em inglês.
 
-00:03:02.350 --> 00:03:05.193
+00:09:09.107 --> 00:09:15.677
+Sem ela, o veredito muda em 66 pares em inglês e em 95, 92 e 96 em português.
+
+00:09:16.225 --> 00:09:20.063
+A diferença, cerca de 28 pares, é o que a regra faz.
+
+00:09:21.022 --> 00:09:25.393
+Os tradutores abertos traduzem frase a frase, e isso desmonta o código.
+
+00:09:25.938 --> 00:09:31.164
+Das 6.560 respostas, 945 têm bloco de código.
+
+00:09:31.713 --> 00:09:34.387
+Traduzidas de novo, com o código protegido,
+
+00:09:34.387 --> 00:09:40.401
+as linhas de código voltam todas iguais: 8.399 de 8.399.
+
+00:09:41.362 --> 00:09:42.191
+Achado.
+
+00:09:42.736 --> 00:09:46.296
+O E1 está fechado, o HarmBench não segue a regra do inglês,
+
+00:09:46.359 --> 00:09:48.923
+e o código protegido não muda as conclusões.
+
+00:09:50.120 --> 00:09:51.331
+Capítulo 9.
+
+00:09:51.876 --> 00:09:53.839
+O que ainda não se pode afirmar.
+
+00:09:54.838 --> 00:09:57.720
+Ainda não se pode afirmar que as traduções são fiéis,
+
+00:09:57.720 --> 00:09:59.637
+pois falta a revalidação nativa.
+
+00:10:00.182 --> 00:10:03.036
+Nem que cada troca do JailJudge é efeito da língua,
+
+00:10:03.052 --> 00:10:08.129
+pois o juiz muda sozinho em 351 de 6.560 pares.
+
+00:10:08.677 --> 00:10:11.786
+Nem que os nossos números coincidem com os publicados.
+
+00:10:12.754 --> 00:10:14.625
+Não existe uma resposta só.
+
+00:10:15.170 --> 00:10:18.301
+A confiabilidade do ReliableBench se mantém para o Llama Guard 3,
+
+00:10:18.931 --> 00:10:24.239
+cai para o JailJudge e muda de natureza para o HarmBench, que passa a barrar respostas seguras.
+
+00:10:25.198 --> 00:10:28.041
 O próximo passo é a revalidação humana às cegas,
 
-00:03:05.197 --> 00:03:08.978
+00:10:28.045 --> 00:10:31.826
 de 100 a 200 pares do ReliableBench, por falante nativo.
+
+00:10:32.371 --> 00:10:36.822
+Falta também rodar o AegisGuard e o JailJudge nas respostas com código protegido.
+
+00:10:37.786 --> 00:10:38.615
+Achado.
+
+00:10:39.160 --> 00:10:42.134
+O ReliableBench não tem uma resposta só em português,
+
+00:10:42.134 --> 00:10:44.595
+e falta a revalidação por falante nativo.

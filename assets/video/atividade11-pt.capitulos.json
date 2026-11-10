@@ -1,0 +1,38 @@
+[
+ {
+  "t": 7,
+  "titulo": "A pergunta e a grade do experimento"
+ },
+ {
+  "t": 82.7,
+  "titulo": "O ReliableBench com três tradutores"
+ },
+ {
+  "t": 152.8,
+  "titulo": "Lendo os pares que mudam"
+ },
+ {
+  "t": 215.1,
+  "titulo": "O pedido que o DeepSeek largou"
+ },
+ {
+  "t": 291.7,
+  "titulo": "Onde a troca acontece e a variante do português"
+ },
+ {
+  "t": 376.2,
+  "titulo": "Os controles"
+ },
+ {
+  "t": 440.2,
+  "titulo": "Os quatro juízes do artigo"
+ },
+ {
+  "t": 520,
+  "titulo": "O E1, o HarmBench e o código protegido"
+ },
+ {
+  "t": 590.1,
+  "titulo": "O que ainda não se pode afirmar"
+ }
+]
