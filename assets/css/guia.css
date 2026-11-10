@@ -302,6 +302,14 @@ tbody th { font-weight: 600; }
 /* 5. linha do tempo: plano, execução e hoje */
 .intro-linha { max-width: 48rem; font-size: 1.12rem; line-height: 1.5; margin: -1rem 0 1.8rem; }
 .plano-rolar { overflow-x: auto; padding-bottom: .4rem; }
+.intro-exp { max-width: 52rem; font-size: 1.12rem; margin: -.6rem 0 .5rem; }
+.experimentos { max-width: 52rem; display: grid; grid-template-columns: auto 1fr; gap: .35rem 1rem; margin: 0 0 1.8rem; font-size: 1.05rem; line-height: 1.45; }
+.experimentos dt { font-family: var(--titulo); font-weight: 700; }
+.experimentos dd { margin: 0; }
+.experimentos .estado { font-style: italic; white-space: nowrap; }
+.experimentos .feito { color: var(--seguro); }
+.experimentos .parte { color: #87591a; white-space: normal; }
+.experimentos .nao { color: var(--sepia); }
 /* portas na capa: as outras partes do site à vista */
 .portas { display: grid; grid-template-columns: 1fr 1fr; gap: .7rem; margin-top: 1.6rem; max-width: 36rem; }
 .portas a { display: grid; grid-template-columns: 2.4rem 1fr; gap: 0 .7rem; align-items: center; text-decoration: none; color: var(--nanquim); background: var(--papel2); border: 1px solid var(--nanquim); border-radius: 4px; padding: .6rem .8rem; transition: transform .2s, box-shadow .2s; }
