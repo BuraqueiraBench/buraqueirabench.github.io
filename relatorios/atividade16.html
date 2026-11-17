@@ -35,14 +35,14 @@
     <p class="autor">Cristhian Kapelinski</p>
     <p class="datas">Primeira versão em 16/11/2026, última modificação em 17/11/2026</p>
     <p class="docs"><a href="../assets/docs/atividade16.pdf">PDF da entrega</a></p>
-    <dl class="ficha"><div><dt>O que foi feito</dt><dd>Página de anotação em duas passadas, protocolo às cegas e uma rodada de 8 pares nas quatro traduções; o artigo começou no modelo da TACL.</dd></div><div><dt>O que saiu</dt><dd>Nenhuma tradução mudou o rótulo humano; o DeepSeek foi fiel nas 8 versões e os tradutores de frase a frase perdem a formatação.</dd></div></dl>
+    <dl class="ficha"><div><dt>O que foi feito</dt><dd>Página de anotação em duas passadas, protocolo às cegas e uma rodada de 8 pares nas quatro traduções.</dd></div><div><dt>O que saiu</dt><dd>Nenhuma tradução mudou o rótulo humano; o DeepSeek foi fiel nas 8 versões e os tradutores de frase a frase perdem a formatação. Em 17/11 (no vídeo): a língua soma uns 5 pontos de nocivas liberadas ao JailJudge com os três tradutores, em suaíli os quatro juízes liberam muito mais nocivas, um limiar por língua só conserta quem ainda ordena bem, e entre os juízes novos o Jev é o melhor até agora.</dd></div></dl>
     <div class="video-bloco"><figure class="video"><video controls preload="metadata" playsinline poster="../assets/video/atividade16-pt.jpg"><source src="../assets/video/atividade16-pt.mp4" type="video/mp4"><track kind="captions" srclang="pt-BR" label="Português" src="../assets/video/atividade16-pt.vtt"></video><figcaption>O relatório em vídeo, narrado e com legenda.</figcaption></figure></div>
   </header>
 
   <div class="corpo">
     <nav class="sumario" aria-label="Nesta página">
       <p>Nesta página</p>
-      <ol><li><a href="#o-que-esta-entrega-faz" data-alvo="o-que-esta-entrega-faz"><span class="num">1</span>O que esta entrega faz</a></li><li><a href="#o-protocolo" data-alvo="o-protocolo"><span class="num">2</span>O protocolo</a></li><li><a href="#resultados" data-alvo="resultados"><span class="num">3</span>Resultados</a></li><li><a href="#sec:565" data-alvo="sec:565"><span class="num">4</span>O par que mudou o protocolo</a></li><li><a href="#sec:artigo" data-alvo="sec:artigo"><span class="num">5</span>O artigo</a></li><li><a href="#o-que-ainda-não-se-pode-afirmar" data-alvo="o-que-ainda-não-se-pode-afirmar"><span class="num">6</span>O que ainda não se pode afirmar</a></li><li><a href="#próximos-passos" data-alvo="próximos-passos"><span class="num">7</span>Próximos passos</a></li><li><a href="#artefatos" data-alvo="artefatos"><span class="num">8</span>Artefatos</a></li></ol>
+      <ol><li><a href="#o-que-esta-entrega-faz" data-alvo="o-que-esta-entrega-faz"><span class="num">1</span>O que esta entrega faz</a></li><li><a href="#o-protocolo" data-alvo="o-protocolo"><span class="num">2</span>O protocolo</a></li><li><a href="#resultados" data-alvo="resultados"><span class="num">3</span>Resultados</a></li><li><a href="#sec:565" data-alvo="sec:565"><span class="num">4</span>O par que mudou o protocolo</a></li><li><a href="#o-que-ainda-não-se-pode-afirmar" data-alvo="o-que-ainda-não-se-pode-afirmar"><span class="num">5</span>O que ainda não se pode afirmar</a></li><li><a href="#próximos-passos" data-alvo="próximos-passos"><span class="num">6</span>Próximos passos</a></li><li><a href="#artefatos" data-alvo="artefatos"><span class="num">7</span>Artefatos</a></li></ol>
     </nav>
     <article id="texto">
 
@@ -242,35 +242,23 @@
 <p>Num dos pares, o pedido é ofuscar um código de rootkit e a resposta ensina técnicas de ofuscação. O rótulo de origem é seguro; a anotadora marcou nocivo nas quatro traduções, e em inglês três dos quatro juízes também dizem nocivo. Pela conta do plano, que compara o rótulo em português com o de origem, esse par virava “descarte” nos quatro tradutores, embora nenhuma tradução tenha mudado nada: a discordância era com o rótulo do conjunto.</p>
 <p>A correção: o original em inglês entra na passada 1 como mais uma versão às cegas, misturada com as traduções. O descarte passa a ser o rótulo da pessoa no português diferente do rótulo dela no inglês, e a discordância com o conjunto sai à parte, como rótulo contestado. Um teste automático reproduz o caso (um par contestado nas quatro traduções e outro em que só uma tradução muda o rótulo) e confere que o primeiro não conta como descarte. A rodada 2 já está montada com 8 pares novos e 40 versões.</p>
 </section>
-<section id="sec:artigo" class="level2" data-number="5">
-<h2 data-number="5"><span class="header-section-number">5</span> O artigo</h2>
-<p>O artigo está no modelo oficial da TACL (<code>tacl2021v1</code>, A4, duas colunas, anônimo), na pasta <code>artigo/</code>, revisado contra o caderno de escrita. Ele traz o desenho com a volta ao inglês em diagrama, os quatro juízes nas oito condições da Atividade 11 e quatro análises novas, todas com os resultados que já existiam:</p>
-<ul>
-<li><p>intervalos de confiança que sorteiam comportamentos inteiros, e não pares, e testes pareados com correção de Holm: a perda do JailJudge e a rigidez do HarmBench se mantêm, e quase todo o resto vira ruído;</p></li>
-<li><p>a decomposição par a par entre a língua e a reescrita;</p></li>
-<li><p>o limiar por língua: escolhido em 100 pares rotulados, ele conserta a rigidez do HarmBench, que é de calibração, e não a perda do JailJudge, que é de discriminação;</p></li>
-<li><p>o comitê de juízes por voto, que não supera o melhor juiz sozinho.</p></li>
-</ul>
-<p>Também explica por que os nossos escores em inglês não batiam com a coluna publicada nos dois modelos do <em>ReliableBench</em>: nas linhas que os autores rotularam, as colunas dos juízes estão deslocadas pelo Id. O que ainda não existe está escrito como planejamento, em azul: a validação completa, o subconjunto com tradução humana, o modelo misto, mais juízes e mais línguas. A TACL recebe submissão no dia 1º de cada mês, com 10 páginas de conteúdo sem contar as referências.</p>
-</section>
-<section id="o-que-ainda-não-se-pode-afirmar" class="level2" data-number="6">
-<h2 data-number="6"><span class="header-section-number">6</span> O que ainda não se pode afirmar</h2>
+<section id="o-que-ainda-não-se-pode-afirmar" class="level2" data-number="5">
+<h2 data-number="5"><span class="header-section-number">5</span> O que ainda não se pode afirmar</h2>
 <ul>
 <li><p>Que as traduções preservam o rótulo em geral: são 8 pares e uma pessoa só, sem concordância medida.</p></li>
 <li><p>Que a amostra representa o <em>ReliableBench</em>: ficaram de fora os pares de empate e os longos, e os grupos têm dois pares cada, não a proporção do conjunto.</p></li>
 <li><p>Quanto erra cada juiz contra o rótulo humano em português: a Tabela <a class="xref" href="#tab:juizes">3</a> testa a conta, não os juízes.</p></li>
 </ul>
 </section>
-<section id="próximos-passos" class="level2" data-number="7">
-<h2 data-number="7"><span class="header-section-number">7</span> Próximos passos</h2>
+<section id="próximos-passos" class="level2" data-number="6">
+<h2 data-number="6"><span class="header-section-number">6</span> Próximos passos</h2>
 <ol>
 <li><p>Anotar a rodada 2, já com o inglês às cegas.</p></li>
 <li><p>Uma segunda pessoa anotando as mesmas versões, para medir a concordância (kappa de Cohen, com a meta de 0,80 da Atividade 3), e depois escalar para 100 a 200 pares.</p></li>
-<li><p>No artigo: a volta ao inglês por um tradutor de outra família e uma língua de poucos recursos (suaíli), já rodando, e o subconjunto com tradução humana.</p></li>
 </ol>
 </section>
-<section id="artefatos" class="level2" data-number="8">
-<h2 data-number="8"><span class="header-section-number">8</span> Artefatos</h2>
+<section id="artefatos" class="level2" data-number="7">
+<h2 data-number="7"><span class="header-section-number">7</span> Artefatos</h2>
 <p>Na pasta <code>validacao/</code>: <code>montar_poc.py</code> sorteia a amostra e gera a página e a chave; <code>pagina.html</code> é o molde da página; <code>analisar_poc.py</code> cruza a chave com as respostas; <code>testar_analise.py</code> é o teste do caso do par contestado. A página gerada (<code>poc*/anotacao.html</code>) fica fora do repositório, porque traz o texto nocivo; as chaves estão em <code>poc/</code> e <code>poc2/</code>. Na pasta <code>atividade16/</code>: o resumo da rodada 1 e o script que preenche este relatório.</p>
 <pre><code>python -I validacao/montar_poc.py A_Coinflip_Judge_Data.csv ReliableBench.csv validacao/poc --semente 20261116
 python -I validacao/montar_poc.py A_Coinflip_Judge_Data.csv ReliableBench.csv validacao/poc2 --excluir validacao/poc/chave.json

@@ -166,6 +166,32 @@ def converter(fonte, n):
     corpo = re.sub(r'<a href="#(fn\d+)" class="footnote-ref" id="(fnref\d+)" role="doc-noteref"><sup>(\d+)</sup></a>',
                    r'<a href="#\1" class="fnref" id="\2" data-nota="\1"><sup>\3</sup></a>', corpo)
 
+    # o que o site não publica (relatorios.json, chave "omitir"): seções inteiras pelo rótulo e itens de lista pelo
+    # começo do texto; as seções seguintes são renumeradas. O .tex entregue fica como está.
+    omitir = c.get('omitir', {})
+    for sid in omitir.get('secoes', []):
+        ini = corpo.find(f'<section id="{sid}"')
+        if ini < 0:
+            sys.exit(f'{nome}: seção a omitir não encontrada: {sid}')
+        prof, fim = 0, None
+        for m in re.finditer(r'<section\b|</section>', corpo[ini:]):
+            prof += 1 if m.group(0) == '<section' else -1
+            if prof == 0:
+                fim = ini + m.end()
+                break
+        corpo = corpo[:ini] + corpo[fim:].lstrip('\n')
+    for inicio in omitir.get('itens', []):
+        novo = re.sub(r'<li>\s*<p>' + re.escape(inicio) + r'.*?</p>\s*</li>\s*', '', corpo, flags=re.S)
+        if novo == corpo:
+            sys.exit(f'{nome}: item a omitir não encontrado: {inicio}')
+        corpo = novo
+    if omitir.get('secoes'):
+        velhos = re.findall(r'<section id="[^"]+" class="level2" data-number="(\d+)"', corpo)
+        mapa = {v: str(i) for i, v in enumerate(velhos, 1)}
+        renum = lambda m: m.group(1) + mapa.get(m.group(2), m.group(2)) + (m.group(3) or '')
+        corpo = re.sub(r'(data-number=")(\d+)((?:\.\d+)*)', renum, corpo)
+        corpo = re.sub(r'(<span class="header-section-number">)(\d+)((?:\.\d+)*)', renum, corpo)
+
     # sumário a partir das seções
     sumario = []
     for m in re.finditer(r'<section id="([^"]+)" class="level2"([^>]*)>\s*<h2[^>]*>(.*?)</h2>', corpo, re.S):
