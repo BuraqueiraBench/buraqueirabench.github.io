@@ -101,5 +101,15 @@
     "figuras_largas": ["fig:rb"],
     "feito": "DeepSeek nos 6.560, volta ao inglês dos três tradutores, os quatro juízes do artigo, piso por palavra-chave, reprodução dos números publicados e leitura dos pares que trocam de veredito.",
     "resultado": "O efeito depende do juiz e tem sinais opostos: o JailJudge passa a liberar mais (23,8% para 35,4%), o HarmBench fica mais rígido e o Llama Guard 3 quase não muda."
+  },
+  "16": {
+    "nome": "Piloto da validação humana às cegas",
+    "tex": "atividade16.tex",
+    "pagina": true,
+    "pdf": "assets/docs/atividade16.pdf",
+    "figuras": { "fig:fidelidade": "a16-fidelidade.svg" },
+    "figuras_largas": ["fig:fidelidade"],
+    "feito": "Página de anotação em duas passadas, protocolo às cegas e uma rodada de 8 pares nas quatro traduções; o artigo começou no modelo da TACL.",
+    "resultado": "Nenhuma tradução mudou o rótulo humano; o DeepSeek foi fiel nas 8 versões e os tradutores de frase a frase perdem a formatação."
   }
 }

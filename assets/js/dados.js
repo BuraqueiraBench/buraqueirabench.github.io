@@ -130,7 +130,8 @@ window.DADOS = {
     { n: 10, data: '24/10', titulo: 'O juiz em português', feito: 'Llama Guard 3 sobre as traduções.', resultado: 'Falso negativo de 18,7% para 19,1% (NLLB-200) e 20,1% (Opus-MT). Nos 439, o veredito depende do motor em 91 de 438 pares.', rota: 'O projeto vira artigo de periódico, com cinco extensões.', fonte: 'A10:64, A10:163, A10:181' },
     { n: 11, data: '25/10 a 29/10', titulo: 'ReliableBench, três tradutores e quatro juízes', feito: 'DeepSeek nos 6.560, volta ao inglês dos três tradutores, os quatro juízes do artigo, piso por palavra-chave, reprodução dos números publicados e leitura dos pares que trocam de veredito.', resultado: 'O efeito depende do juiz e tem sinais opostos: o JailJudge passa a liberar mais (23,8% para 35,4%), o HarmBench fica mais rígido e o Llama Guard 3 quase não muda.', rota: 'A pergunta central volta a ser o ReliableBench, e a referência passa a ser o julgamento do próprio juiz em inglês.', fonte: 'A11:122, A11:721-751, A11:833' },
     { n: 12, data: '10/11', titulo: 'Oitava entrega do projeto', feito: 'Evolução desde a sétima entrega, apresentada em aula.', resultado: '', rota: '', fonte: 'Classroom' },
-    { n: 13, data: '09/11', titulo: 'Este site', feito: 'O site do projeto, em buraqueirabench.github.io, de apoio à apresentação final.', resultado: '', rota: '', fonte: 'Classroom' }
+    { n: 13, data: '09/11', titulo: 'Este site', feito: 'O site do projeto, em buraqueirabench.github.io, de apoio à apresentação final.', resultado: '', rota: '', fonte: 'Classroom' },
+    { n: 16, data: '16/11', titulo: 'Piloto da validação às cegas', feito: '8 pares do ReliableBench nas quatro traduções, rotulados às cegas e avaliados em fidelidade por uma pessoa.', resultado: 'Nenhuma tradução mudou o rótulo; o DeepSeek foi fiel nas 8 versões, os outros quase sempre com nota 3.', rota: 'Um par contestado contra o rótulo de origem levou o inglês às cegas para dentro do protocolo.', fonte: 'A16' }
   ],
 
   // O plano da Atividade 3 (Tabela de etapas) e o que cada entrega fez dele. As semanas do plano
@@ -170,7 +171,7 @@ window.DADOS = {
     // datas de cada entrega na linha do tempo (primeiro e último commit do relatório)
     datas: { 1: ['2026-08-24', '2026-09-08'], 2: ['2026-09-08'], 3: ['2026-09-08'], 4: ['2026-09-08'], 5: ['2026-09-21', '2026-09-28'],
              6: ['2026-09-27', '2026-10-06'], 7: ['2026-10-06'], 8: ['2026-10-06'], 9: ['2026-10-24', '2026-10-25'], 10: ['2026-10-24'],
-             11: ['2026-10-25', '2026-10-29'], 12: ['2026-11-10'], 13: ['2026-11-09'] },
+             11: ['2026-10-25', '2026-10-29'], 12: ['2026-11-10'], 13: ['2026-11-09'], 16: ['2026-11-16'] },
     // O combinado: a proposta (Atividade 1) e o plano (Atividade 3). O que veio depois e não estava lá é a mais.
     combinado: {
       corpus: { prometido: [100, 300], fonte: 'A3:107, A3:200', feito: 6560, tradutores: 3, feitoFonte: 'A8:70-72, A11:290' },
@@ -210,7 +211,7 @@ window.DADOS = {
     ],
 
     // relatórios que já têm página em HTML
-    paginas: [1, 2, 3, 5, 6, 7, 8, 9, 10, 11],
+    paginas: [1, 2, 3, 5, 6, 7, 8, 9, 10, 11, 16],
     // relatórios com vídeo narrado (assets/video/atividadeN-pt.mp4) e apresentações em página animada
     videos: [1, 2, 3, 5, 6, 7, 8, 9, 10, 11],
     apresentacoes: [4, 6, 9, 10]

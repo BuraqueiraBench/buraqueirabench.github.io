@@ -1,0 +1,292 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Atividade 16: Piloto da validação humana às cegas | BuraqueiraBench</title>
+<meta name="description" content="Relatório da Atividade 16 do projeto BuraqueiraBench: Piloto da validação humana às cegas.">
+<link rel="icon" type="image/png" sizes="32x32" href="../assets/img/buraqueira-32.png?v=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Old+Standard+TT:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/relatorio.css?v=5">
+<script>document.documentElement.classList.add('js');</script>
+</head>
+<body>
+<a class="pular" href="#texto">Pular para o texto</a>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <filter id="aquarela" x="-20%" y="-20%" width="140%" height="140%">
+    <feTurbulence type="fractalNoise" baseFrequency=".05" numOctaves="3" seed="7" result="r"/>
+    <feDisplacementMap in="SourceGraphic" in2="r" scale="5"/>
+  </filter>
+</svg>
+<header class="topo">
+  <div class="in">
+    <a class="marca" href="../index.html">BuraqueiraBench</a>
+    <nav class="voltas" aria-label="Site"><a href="../index.html#prova">O combinado</a><a href="../index.html#biblioteca">Relatórios e vídeos</a><a href="../index.html#problema">O juiz</a><a href="../index.html#vimos">O que vimos</a><a href="../index.html#linha">Linha do tempo</a></nav>
+  </div>
+  <div class="progresso" aria-hidden="true"><span></span></div>
+</header>
+
+<main>
+  <header class="abre">
+    <p class="sobre">Relatório da Atividade 16 &middot; Piloto da validação humana às cegas</p>
+    <h1>Juízes de segurança de LLM em português: nona entrega, o piloto da validação humana às cegas</h1>
+    <p class="autor">Cristhian Kapelinski</p>
+    <p class="datas">Primeira versão em 16/11/2026, última modificação em 16/11/2026</p>
+    <p class="docs"><a href="../assets/docs/atividade16.pdf">PDF da entrega</a></p>
+    <dl class="ficha"><div><dt>O que foi feito</dt><dd>Página de anotação em duas passadas, protocolo às cegas e uma rodada de 8 pares nas quatro traduções; o artigo começou no modelo da TACL.</dd></div><div><dt>O que saiu</dt><dd>Nenhuma tradução mudou o rótulo humano; o DeepSeek foi fiel nas 8 versões e os tradutores de frase a frase perdem a formatação.</dd></div></dl>
+    
+  </header>
+
+  <div class="corpo">
+    <nav class="sumario" aria-label="Nesta página">
+      <p>Nesta página</p>
+      <ol><li><a href="#o-que-esta-entrega-faz" data-alvo="o-que-esta-entrega-faz"><span class="num">1</span>O que esta entrega faz</a></li><li><a href="#o-protocolo" data-alvo="o-protocolo"><span class="num">2</span>O protocolo</a></li><li><a href="#resultados" data-alvo="resultados"><span class="num">3</span>Resultados</a></li><li><a href="#sec:565" data-alvo="sec:565"><span class="num">4</span>O par que mudou o protocolo</a></li><li><a href="#sec:artigo" data-alvo="sec:artigo"><span class="num">5</span>O artigo</a></li><li><a href="#o-que-ainda-não-se-pode-afirmar" data-alvo="o-que-ainda-não-se-pode-afirmar"><span class="num">6</span>O que ainda não se pode afirmar</a></li><li><a href="#próximos-passos" data-alvo="próximos-passos"><span class="num">7</span>Próximos passos</a></li><li><a href="#artefatos" data-alvo="artefatos"><span class="num">8</span>Artefatos</a></li></ol>
+    </nav>
+    <article id="texto">
+
+<section id="o-que-esta-entrega-faz" class="level2" data-number="1">
+<h2 data-number="1"><span class="header-section-number">1</span> O que esta entrega faz</h2>
+<p>O encaminhamento da aula de 10/11 foi planejar e executar a validação humana às cegas da amostra, com a metodologia descrita no site, e avançar no comitê de juízes e na estrutura do artigo. Esta entrega faz o piloto da validação: a página de anotação, o protocolo e uma primeira rodada pequena, anotada por uma pessoa, para testar tudo antes dos 100 a 200 pares. A estrutura do artigo virou uma primeira versão no modelo da TACL (Seção <a class="xref" href="#sec:artigo">5</a>). O comitê de juízes fica para a próxima entrega.</p>
+<figure class="tab" id="tab:numeros"><figcaption><span class="rot">Tabela 1.</span> O piloto em números.</figcaption><div class="rolar"><table class="t">
+
+<thead>
+<tr class="header">
+<th style="text-align: left;"><strong>Medida</strong></th>
+<th style="text-align: right;"><strong>Valor</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Versões anotadas nas duas passadas</td>
+<td style="text-align: right;">32</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Pares em que o rótulo humano muda de uma tradução para outra</td>
+<td style="text-align: right;">0 de 8</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Versões do DeepSeek julgadas fiéis (nota 4)</td>
+<td style="text-align: right;">8 de 8</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Versões do NLLB-200, do Opus-MT e do Opus-MT com o rótulo do Brasil julgadas fiéis</td>
+<td style="text-align: right;">0, 0 e 0 de 8</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Pares com o mesmo rótulo nas quatro traduções e diferente do rótulo de origem (discordância com o conjunto)</td>
+<td style="text-align: right;">1 de 8</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Tempo mediano por versão: rótulo (passada 1) e fidelidade (passada 2)</td>
+<td style="text-align: right;">8,6 s e 9,4 s</td>
+</tr>
+</tbody>
+</table></div></figure>
+</section>
+<section id="o-protocolo" class="level2" data-number="2">
+<h2 data-number="2"><span class="header-section-number">2</span> O protocolo</h2>
+<p>O desenho foi combinado em 10/11 a partir das Atividades 3 e 5 e testado nesta rodada:</p>
+<ol>
+<li><p><strong>Amostra.</strong> Os pares do <em>ReliableBench</em> (1.036) usáveis nas cinco condições (inglês e quatro traduções) e julgados pelos quatro juízes nelas. Para o piloto andar rápido, ficaram fora 379 pares com rótulo humano de empate (0,5), 135 com mais de 3.000 caracteres no par em inglês, 23 dos pedidos com a instrução reposta no DeepSeek e 3 sem tradução usável, e sobraram 496. Deles saíram dois pares de cada grupo (nociva ou segura, e algum juiz trocando ou não o veredito no português), com a semente 20261116.</p></li>
+<li><p><strong>Versões.</strong> Cada par aparece nas quatro traduções (NLLB-200, Opus-MT, Opus-MT com o rótulo do Brasil e DeepSeek), embaralhadas, com um código no lugar do nome do tradutor e sem duas versões do mesmo par em seguida.</p></li>
+<li><p><strong>Passada 1, às cegas.</strong> A pessoa lê o pedido e a resposta em português e marca nociva ou segura pela rubrica da Atividade 5. Não vê o inglês, o rótulo de origem, o tradutor nem o veredito dos juízes.</p></li>
+<li><p><strong>Passada 2, com o inglês.</strong> Só abre depois da primeira, com os rótulos travados. A pessoa vê o original ao lado da tradução, dá a fidelidade de 1 (sentido perdido) a 4 (fiel) e marca os erros: instrução largada, conteúdo suavizado ou endurecido, código alterado, trecho faltando, texto que ficou em inglês, comentário do tradutor ou outro.</p></li>
+<li><p><strong>Análise.</strong> A página só tem os textos. O tradutor, o rótulo de origem e os vereditos ficam num arquivo de chave que a página não lê, e um script cruza a chave com as respostas.</p></li>
+</ol>
+<p>A página roda no computador de quem anota e não vai para o site, porque mostra o texto nocivo dos pares.</p>
+</section>
+<section id="resultados" class="level2" data-number="3">
+<h2 data-number="3"><span class="header-section-number">3</span> Resultados</h2>
+<p><strong>Nenhuma tradução mudou o rótulo.</strong> Nos 8 pares, as quatro versões receberam o mesmo rótulo. O que separa os tradutores é a fidelidade (Tabela <a class="xref" href="#tab:tradutores">2</a> e Figura <a class="xref" href="#fig:fidelidade">1</a>): o DeepSeek foi fiel em todas as versões, e os três tradutores de frase a frase ficaram quase sempre com nota 3. A anotação mais comum deles foi “perde a formatação” (quebras de linha, listas e blocos de código), e às vezes o próprio código sai alterado.</p>
+<figure class="tab" id="tab:tradutores"><figcaption><span class="rot">Tabela 2.</span> Fidelidade e erros por tradutor, em versões (8 por tradutor). Formatação: versões em que a observação da anotadora fala em formatação perdida.</figcaption><div class="rolar"><table class="t">
+
+<thead>
+<tr class="header">
+<th style="text-align: left;"><strong>Tradutor</strong></th>
+<th style="text-align: right;"><strong>Nota 4</strong></th>
+<th style="text-align: right;"><strong>Nota 3</strong></th>
+<th style="text-align: right;"><strong>Nota 2</strong></th>
+<th style="text-align: right;"><strong>Nota 1</strong></th>
+<th style="text-align: right;"><strong>Código alterado</strong></th>
+<th style="text-align: right;"><strong>Formatação</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">DeepSeek</td>
+<td style="text-align: right;"><strong>8</strong></td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">NLLB-200</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">7</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Opus-MT</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">7</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Opus-MT, rótulo do Brasil</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">6</td>
+</tr>
+</tbody>
+</table></div></figure>
+<figure class="fig larga" id="fig:fidelidade"><div class="arte"><svg class="desenho" viewBox="0 0 760 262" role="img" aria-labelledby="a16f1">
+  <title id="a16f1">Fidelidade das 8 versões de cada tradutor, dada na passada 2. DeepSeek: 8 com nota 4 (fiel). NLLB-200: 7 com nota 3 e 1 com nota 2. Opus-MT: 5 com nota 3 e 3 com nota 2. Opus-MT com o rótulo do Brasil: 6 com nota 3 e 2 com nota 2. Ninguém recebeu nota 1.</title>
+
+  <rect class="base" x="215" y="8" width="400" height="184" rx="2"/>
+  <path class="traco eixo" pathLength="1" style="--d:.2s" d="M215 192 H615"/>
+  <path class="traco eixo" pathLength="1" style="--d:.3s" d="M215 192 V200 M315 192 V200 M415 192 V200 M515 192 V200 M615 192 V200"/>
+
+  <rect class="ag" style="--d:.4s; fill:#1B7F5A; fill-opacity:.85" x="215" y="18" width="400" height="34" rx="2"/>
+
+  <rect class="ag" style="--d:.7s; fill:#DDF3E8; fill-opacity:1" x="215" y="62" width="350" height="34" rx="2"/>
+  <rect class="ag" style="--d:.8s; fill:#D9731A; fill-opacity:.85" x="565" y="62" width="50" height="34" rx="2"/>
+
+  <rect class="ag" style="--d:1.0s; fill:#DDF3E8; fill-opacity:1" x="215" y="106" width="250" height="34" rx="2"/>
+  <rect class="ag" style="--d:1.1s; fill:#D9731A; fill-opacity:.85" x="465" y="106" width="150" height="34" rx="2"/>
+
+  <rect class="ag" style="--d:1.3s; fill:#DDF3E8; fill-opacity:1" x="215" y="150" width="300" height="34" rx="2"/>
+  <rect class="ag" style="--d:1.4s; fill:#D9731A; fill-opacity:.85" x="515" y="150" width="100" height="34" rx="2"/>
+
+  <rect class="traco" pathLength="1" style="--d:.4s" x="215" y="18" width="400" height="34" rx="2"/>
+  <rect class="traco" pathLength="1" style="--d:.7s" x="215" y="62" width="400" height="34" rx="2"/>
+  <rect class="traco" pathLength="1" style="--d:1.0s" x="215" y="106" width="400" height="34" rx="2"/>
+  <rect class="traco" pathLength="1" style="--d:1.3s" x="215" y="150" width="400" height="34" rx="2"/>
+
+  <text class="rt p forte" text-anchor="end" x="203" y="41">DeepSeek</text>
+  <text class="rt p" text-anchor="end" x="203" y="85">NLLB-200</text>
+  <text class="rt p" text-anchor="end" x="203" y="129">Opus-MT</text>
+  <text class="rt p" text-anchor="end" x="203" y="173">Opus-MT, rótulo do Brasil</text>
+
+  <text class="rt p" x="625" y="41">8 fiéis</text>
+  <text class="rt p" x="625" y="85">7 + 1</text>
+  <text class="rt p" x="625" y="129">5 + 3</text>
+  <text class="rt p" x="625" y="173">6 + 2</text>
+
+  <text class="rt p" text-anchor="middle" x="215" y="220">0</text>
+  <text class="rt p" text-anchor="middle" x="315" y="220">2</text>
+  <text class="rt p" text-anchor="middle" x="415" y="220">4</text>
+  <text class="rt p" text-anchor="middle" x="515" y="220">6</text>
+  <text class="rt p" text-anchor="middle" x="615" y="220">8 versões</text>
+
+  <rect style="fill:#1B7F5A" x="215" y="238" width="16" height="16" rx="2"/>
+  <text class="rt p" x="238" y="252">nota 4, fiel</text>
+  <rect style="fill:#DDF3E8; stroke:#1B7F5A" x="350" y="238" width="16" height="16" rx="2"/>
+  <text class="rt p" x="373" y="252">nota 3, erros pequenos</text>
+  <rect style="fill:#D9731A" x="545" y="238" width="16" height="16" rx="2"/>
+  <text class="rt p" x="568" y="252">nota 2</text>
+</svg></div><figcaption><span class="rot">Figura 1.</span> Fidelidade das 8 versões de cada tradutor, dada na passada 2. Ninguém recebeu nota 1.</figcaption></figure>
+<p><strong>Os juízes contra o rótulo humano em português.</strong> A Tabela <a class="xref" href="#tab:juizes">3</a> compara o veredito de cada juiz, na tradução que a pessoa leu, com o rótulo dela e com o rótulo de origem. A diferença entre as duas colunas vem toda de um par, o da Seção <a class="xref" href="#sec:565">4</a>. Com 8 pares, os números só mostram que a conta funciona; não medem os juízes.</p>
+<figure class="tab" id="tab:juizes"><figcaption><span class="rot">Tabela 3.</span> Acertos de cada juiz nas 32 versões traduzidas: contra o rótulo da anotadora, contra o rótulo de origem e só nas 26 versões com nota 3 ou 4.</figcaption><div class="rolar"><table class="t">
+
+<thead>
+<tr class="header">
+<th style="text-align: left;"><strong>Juiz</strong></th>
+<th style="text-align: right;"><strong>Rótulo da anotadora</strong></th>
+<th style="text-align: right;"><strong>Rótulo de origem</strong></th>
+<th style="text-align: right;"><strong>Só fiéis</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Llama Guard 3</td>
+<td style="text-align: right;">24</td>
+<td style="text-align: right;">20</td>
+<td style="text-align: right;">18</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">HarmBench</td>
+<td style="text-align: right;">29</td>
+<td style="text-align: right;">25</td>
+<td style="text-align: right;">23</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">JailJudge</td>
+<td style="text-align: right;">25</td>
+<td style="text-align: right;">25</td>
+<td style="text-align: right;">23</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">AegisGuard</td>
+<td style="text-align: right;">32</td>
+<td style="text-align: right;">28</td>
+<td style="text-align: right;">26</td>
+</tr>
+</tbody>
+</table></div></figure>
+</section>
+<section id="sec:565" class="level2" data-number="4">
+<h2 data-number="4"><span class="header-section-number">4</span> O par que mudou o protocolo</h2>
+<p>Num dos pares, o pedido é ofuscar um código de rootkit e a resposta ensina técnicas de ofuscação. O rótulo de origem é seguro; a anotadora marcou nocivo nas quatro traduções, e em inglês três dos quatro juízes também dizem nocivo. Pela conta do plano, que compara o rótulo em português com o de origem, esse par virava “descarte” nos quatro tradutores, embora nenhuma tradução tenha mudado nada: a discordância era com o rótulo do conjunto.</p>
+<p>A correção: o original em inglês entra na passada 1 como mais uma versão às cegas, misturada com as traduções. O descarte passa a ser o rótulo da pessoa no português diferente do rótulo dela no inglês, e a discordância com o conjunto sai à parte, como rótulo contestado. Um teste automático reproduz o caso (um par contestado nas quatro traduções e outro em que só uma tradução muda o rótulo) e confere que o primeiro não conta como descarte. A rodada 2 já está montada com 8 pares novos e 40 versões.</p>
+</section>
+<section id="sec:artigo" class="level2" data-number="5">
+<h2 data-number="5"><span class="header-section-number">5</span> O artigo</h2>
+<p>A primeira versão está no modelo oficial da TACL (<code>tacl2021v1</code>, A4, duas colunas, anônimo), na pasta <code>artigo/</code>. Ela traz a introdução, os trabalhos relacionados, o desenho com a volta ao inglês, os resultados dos quatro juízes nas oito condições da Atividade 11, os modos de a tradução estragar um conjunto de segurança e este piloto. O que ainda não existe está escrito como planejamento, em azul: a validação completa, o comitê, a estatística (testes pareados, intervalos de confiança e modelo misto) e mais línguas. A TACL recebe submissão no dia 1º de cada mês, com 10 páginas de conteúdo sem contar as referências.</p>
+</section>
+<section id="o-que-ainda-não-se-pode-afirmar" class="level2" data-number="6">
+<h2 data-number="6"><span class="header-section-number">6</span> O que ainda não se pode afirmar</h2>
+<ul>
+<li><p>Que as traduções preservam o rótulo em geral: são 8 pares e uma pessoa só, sem concordância medida.</p></li>
+<li><p>Que a amostra representa o <em>ReliableBench</em>: ficaram de fora os pares de empate e os longos, e os grupos têm dois pares cada, não a proporção do conjunto.</p></li>
+<li><p>Quanto erra cada juiz contra o rótulo humano em português: a Tabela <a class="xref" href="#tab:juizes">3</a> testa a conta, não os juízes.</p></li>
+</ul>
+</section>
+<section id="próximos-passos" class="level2" data-number="7">
+<h2 data-number="7"><span class="header-section-number">7</span> Próximos passos</h2>
+<ol>
+<li><p>Anotar a rodada 2, já com o inglês às cegas.</p></li>
+<li><p>Uma segunda pessoa anotando as mesmas versões, para medir a concordância (kappa de Cohen, com a meta de 0,80 da Atividade 3), e depois escalar para 100 a 200 pares.</p></li>
+<li><p>O comitê de juízes por voto, com os vereditos que já existem.</p></li>
+<li><p>Ajustar o artigo ao nível dos artigos da TACL lidos (validação com concordância, intervalos de confiança e declaração de ética).</p></li>
+</ol>
+</section>
+<section id="artefatos" class="level2" data-number="8">
+<h2 data-number="8"><span class="header-section-number">8</span> Artefatos</h2>
+<p>Na pasta <code>validacao/</code>: <code>montar_poc.py</code> sorteia a amostra e gera a página e a chave; <code>pagina.html</code> é o molde da página; <code>analisar_poc.py</code> cruza a chave com as respostas; <code>testar_analise.py</code> é o teste do caso do par contestado. A página gerada (<code>poc*/anotacao.html</code>) fica fora do repositório, porque traz o texto nocivo; as chaves estão em <code>poc/</code> e <code>poc2/</code>. Na pasta <code>atividade16/</code>: o resumo da rodada 1 e o script que preenche este relatório.</p>
+<pre><code>python -I validacao/montar_poc.py A_Coinflip_Judge_Data.csv ReliableBench.csv validacao/poc --semente 20261116
+python -I validacao/montar_poc.py A_Coinflip_Judge_Data.csv ReliableBench.csv validacao/poc2 --excluir validacao/poc/chave.json
+python -I validacao/analisar_poc.py validacao/poc/chave.json respostas-poc-20261116.json atividade16/resumo-rodada1.json
+python -I validacao/testar_analise.py
+python -I atividade16/preencher16.py atividade16/relatorio.modelo.tex atividade16.tex</code></pre>
+</section>
+
+    </article>
+  </div>
+
+  <nav class="vizinhos" aria-label="Outras atividades">
+    <a class="viz ant" href="atividade11.html"><span class="seta" aria-hidden="true">←</span><span><small>Atividade 11</small><b>ReliableBench, três tradutores e quatro juízes</b></span></a>
+    <a class="meio" href="../index.html#linha">Linha do tempo</a>
+    <span></span>
+  </nav>
+</main>
+
+<footer class="pe">
+  <p>Cristhian Kapelinski e Beatriz Roland Machado, Laboratório de Inteligência Artificial Aplicada, UNIPAMPA, 2026/2.
+  Texto convertido do relatório em LaTeX.</p>
+</footer>
+<script src="../assets/js/relatorio.js?v=5"></script>
+</body>
+</html>
