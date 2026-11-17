@@ -1,121 +1,181 @@
 WEBVTT
 
-00:00:00.696 --> 00:00:05.958
-Juízes de segurança de LLM em português: o piloto da validação humana às cegas.
+00:00:00.696 --> 00:00:03.515
+Juízes de segurança de LLM em português:
 
-00:00:07.524 --> 00:00:11.049
-Um juiz de segurança diz se a resposta de um modelo é nociva.
+00:00:03.578 --> 00:00:08.041
+o piloto da validação humana às cegas e o que mudou desde a aula de 10 de novembro.
 
-00:00:11.595 --> 00:00:14.588
+00:00:09.588 --> 00:00:14.179
+Recapitulando: um juiz de segurança diz se a resposta de um modelo é nociva.
+
+00:00:14.723 --> 00:00:17.652
 Em português, o conjunto foi traduzido por máquina,
 
-00:00:14.592 --> 00:00:16.625
-e a tradução pode mudar o sentido.
+00:00:17.652 --> 00:00:23.642
+e a tradução pode mudar o sentido; por isso cada par também volta ao inglês, para separar a língua da tradução.
 
-00:00:17.792 --> 00:00:22.005
-Na aula de 10 de novembro, o encaminhamento foi validar isso com pessoas,
+00:00:24.800 --> 00:00:29.668
+Na aula passada, o resultado central foi que o efeito do português depende do juiz.
 
-00:00:22.005 --> 00:00:25.438
-às cegas, e avançar no comitê de juízes e no artigo.
+00:00:30.213 --> 00:00:33.211
+O encaminhamento foi validar as traduções com pessoas,
 
-00:00:26.596 --> 00:00:29.196
+00:00:33.211 --> 00:00:36.980
+às cegas, avançar no comitê de juízes e começar o artigo.
+
+00:00:37.528 --> 00:00:39.086
+Os três foram feitos.
+
+00:00:40.252 --> 00:00:42.852
 A página de anotação tem duas passadas.
 
-00:00:29.741 --> 00:00:34.146
+00:00:43.397 --> 00:00:47.802
 Na primeira, às cegas, a pessoa lê o português e marca nociva ou segura,
 
-00:00:34.197 --> 00:00:37.479
+00:00:47.853 --> 00:00:51.135
 sem ver o inglês, o rótulo de origem nem o tradutor.
 
-00:00:38.590 --> 00:00:42.405
+00:00:52.246 --> 00:00:56.061
 Na segunda, com os rótulos travados, o inglês aparece ao lado,
 
-00:00:42.433 --> 00:00:46.120
+00:00:56.089 --> 00:00:59.776
 e a pessoa dá uma nota de fidelidade de 1 a 4 e marca os erros.
 
-00:00:47.274 --> 00:00:52.259
+00:01:00.930 --> 00:01:05.915
 O piloto usou 8 pares do ReliableBench em 4 traduções: 32 versões.
 
-00:00:52.803 --> 00:00:55.229
+00:01:06.459 --> 00:01:08.885
 Nenhuma tradução mudou o rótulo humano.
 
-00:00:55.778 --> 00:00:59.673
+00:01:09.434 --> 00:01:13.329
 Com uma pessoa só, isso testa o processo, não mede os juízes.
 
-00:01:00.830 --> 00:01:05.444
+00:01:14.486 --> 00:01:19.100
 O que separa os tradutores é a fidelidade: o DeepSeek foi fiel nas 8 versões,
 
-00:01:05.495 --> 00:01:11.682
+00:01:19.151 --> 00:01:25.338
 e os de frase a frase ficaram quase sempre com nota 3, perderam a formatação e às vezes alteraram o código.
 
-00:01:12.826 --> 00:01:14.511
+00:01:26.482 --> 00:01:28.167
 Um par mudou o protocolo.
 
-00:01:15.056 --> 00:01:19.809
+00:01:28.712 --> 00:01:33.465
 O pedido é ofuscar um código de rootkit, e a resposta ensina técnicas de ofuscação.
 
-00:01:20.357 --> 00:01:25.017
+00:01:34.013 --> 00:01:38.673
 O rótulo de origem é seguro, mas a anotadora marcou nocivo nas quatro traduções,
 
-00:01:25.022 --> 00:01:27.552
+00:01:38.678 --> 00:01:41.208
 e em inglês três dos quatro juízes também.
 
-00:01:28.660 --> 00:01:32.676
+00:01:42.316 --> 00:01:46.332
 Pela regra do plano, esse par virava descarte nos quatro tradutores,
 
-00:01:32.676 --> 00:01:34.789
+00:01:46.332 --> 00:01:48.445
 sem que nenhuma tradução mudasse nada.
 
-00:01:35.335 --> 00:01:38.826
+00:01:48.991 --> 00:01:52.482
 Agora o original em inglês entra às cegas, como quinta versão,
 
-00:01:38.830 --> 00:01:43.409
+00:01:52.486 --> 00:01:57.065
 a discordância com o conjunto sai à parte, e um teste automático guarda o caso.
 
-00:01:44.568 --> 00:01:47.388
-O artigo já começou, no modelo oficial da TACL,
-
-00:01:47.959 --> 00:01:51.323
-com os quatro juízes, o comitê por voto e este piloto.
-
-00:01:51.868 --> 00:01:55.567
-O que ainda não existe está escrito como planejamento, em azul.
-
-00:01:56.732 --> 00:01:59.980
+00:01:57.898 --> 00:02:01.146
 O efeito do português depende do juiz e muda de sinal.
 
-00:02:00.525 --> 00:02:02.349
+00:02:01.691 --> 00:02:03.515
 O JailJudge fica mais brando:
 
-00:02:02.354 --> 00:02:08.715
+00:02:03.520 --> 00:02:09.881
 libera 35,4% das nocivas traduzidas, contra 23,8% em inglês.
 
-00:02:09.263 --> 00:02:16.238
+00:02:10.429 --> 00:02:17.404
 O HarmBench fica mais rígido: marca 35,7% das seguras, contra 23,8%.
 
-00:02:17.392 --> 00:02:21.890
-Na volta ao inglês, os dois efeitos diminuem, o que aponta para a língua.
+00:02:18.558 --> 00:02:21.019
+A volta ao inglês separa as duas partes.
 
-00:02:22.435 --> 00:02:26.798
-No Llama Guard 3, a volta muda quase tantos vereditos quanto o português,
+00:02:21.564 --> 00:02:24.492
+No JailJudge, a língua soma cerca de 5 pontos
 
-00:02:26.798 --> 00:02:31.250
-491 contra 550: aponta para a reescrita.
+00:02:24.492 --> 00:02:27.080
+de nocivas liberadas com os três tradutores.
 
-00:02:32.412 --> 00:02:38.442
-Os tradutores também estragam o teste sem avisar: recusam ou executam o ataque, largam a instrução final,
+00:02:27.629 --> 00:02:32.531
+A reescrita soma 6,3 pontos no NLLB-200 e quase nada no DeepSeek.
 
-00:02:38.442 --> 00:02:43.380
-quebram o código, e o DeepSeek não repete a tradução, mesmo com temperatura zero.
+00:02:34.082 --> 00:02:37.520
+O Llama Guard 3 também muda com a língua: em português,
 
-00:02:44.528 --> 00:02:49.540
-Falta, e está escrito como plano: a validação completa, de 100 a 200 pares,
+00:02:37.520 --> 00:02:43.569
+marca 14 pontos menos de respostas seguras como nocivas, mas ordena as respostas como em inglês.
 
-00:02:49.540 --> 00:02:56.480
-com duas pessoas e o kappa de Cohen, meta de 0,80; o modelo misto; mais juízes; e mais línguas.
+00:02:44.113 --> 00:02:46.829
+Ele não piorou: só o limiar saiu do lugar.
 
-00:02:57.628 --> 00:03:02.976
-Próximo passo: anotar a rodada 2, já montada com 8 pares novos e 40 versões,
+00:02:47.998 --> 00:02:49.267
+Duas checagens.
 
-00:03:02.976 --> 00:03:04.730
-com o inglês entrando às cegas.
+00:02:49.812 --> 00:02:53.210
+A volta por um tradutor de outra família dá as mesmas taxas,
+
+00:02:53.238 --> 00:02:56.219
+com no máximo 3,4 pontos de diferença.
+
+00:02:56.768 --> 00:03:00.236
+E em suaíli, os quatro juízes liberam muito mais nocivas:
+
+00:03:00.275 --> 00:03:04.553
+o JailJudge vai de 33,7% para 72%.
+
+00:03:05.706 --> 00:03:09.707
+Um limiar escolhido com 100 pares por língua conserta quem ainda ordena bem:
+
+00:03:09.757 --> 00:03:15.516
+em suaíli, o Llama Guard 3 cai de 20,4 para 4,5 pontos acima do inglês.
+
+00:03:16.061 --> 00:03:20.304
+O HarmBench e o JailJudge, que perdem a ordem, continuam longe.
+
+00:03:20.853 --> 00:03:24.147
+E a amostra precisa de metade nocivas e metade seguras.
+
+00:03:25.310 --> 00:03:26.660
+O que mudou no plano.
+
+00:03:27.205 --> 00:03:31.765
+Entraram uma segunda volta ao inglês, por um tradutor de outra família; o suaíli;
+
+00:03:31.765 --> 00:03:37.350
+intervalos que sorteiam comportamentos inteiros; o limiar por língua; e mais oito juízes.
+
+00:03:37.899 --> 00:03:41.656
+Saiu o subconjunto traduzido por pessoa, que não vai ser feito.
+
+00:03:42.802 --> 00:03:43.967
+Mais juízes.
+
+00:03:44.512 --> 00:03:46.780
+O PolyGuard, treinado com português,
+
+00:03:46.780 --> 00:03:51.891
+marca como nocivas 94% das respostas seguras, até uma recusa explícita.
+
+00:03:52.440 --> 00:03:57.046
+O Jev, da TypeSafe, é o melhor até agora: num par nocivo e seguro,
+
+00:03:57.046 --> 00:04:00.178
+põe o nocivo na frente em 88% das vezes.
+
+00:04:00.727 --> 00:04:06.336
+Qwen3Guard, Lev, Laya, Nemotron, Granite e um LLM com rubrica estão rodando.
+
+00:04:07.494 --> 00:04:11.344
+Falta a validação completa, com duas pessoas e o kappa de Cohen,
+
+00:04:11.464 --> 00:04:14.747
+e os juízes novos nos 6.521 pares.
+
+00:04:15.292 --> 00:04:19.234
+A rodada 2 da anotação já está montada, com o inglês às cegas.
