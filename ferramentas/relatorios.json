@@ -111,6 +111,6 @@
     "figuras_largas": ["fig:fidelidade"],
     "feito": "Página de anotação em duas passadas, protocolo às cegas e uma rodada de 8 pares nas quatro traduções.",
     "resultado": "Nenhuma tradução mudou o rótulo humano; o DeepSeek foi fiel nas 8 versões e os tradutores de frase a frase perdem a formatação. Em 17/11 (no vídeo): a língua soma uns 5 pontos de nocivas liberadas ao JailJudge com os três tradutores, em suaíli os quatro juízes liberam muito mais nocivas, um limiar por língua só conserta quem ainda ordena bem, e entre os juízes novos o Jev é o melhor até agora.",
-    "omitir": { "secoes": ["sec:artigo"], "itens": ["No artigo:"] }
+    "omitir": { "secoes": ["sec:artigo"], "itens": ["No artigo:"], "frases": ["A estrutura do artigo virou"] }
   }
 }

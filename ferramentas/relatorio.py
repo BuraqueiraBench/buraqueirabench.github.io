@@ -185,6 +185,12 @@ def converter(fonte, n):
         if novo == corpo:
             sys.exit(f'{nome}: item a omitir não encontrado: {inicio}')
         corpo = novo
+    for inicio in omitir.get('frases', []):
+        # da frase que começa assim até o ponto final dela (o ponto seguido de espaço ou do fim do parágrafo)
+        novo = re.sub(r'\s*' + re.escape(inicio) + r'.*?\.(?=\s|</p>)', '', corpo, count=1, flags=re.S)
+        if novo == corpo:
+            sys.exit(f'{nome}: frase a omitir não encontrada: {inicio}')
+        corpo = novo
     if omitir.get('secoes'):
         velhos = re.findall(r'<section id="[^"]+" class="level2" data-number="(\d+)"', corpo)
         mapa = {v: str(i) for i, v in enumerate(velhos, 1)}
