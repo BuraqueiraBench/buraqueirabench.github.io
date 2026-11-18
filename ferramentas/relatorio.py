@@ -22,9 +22,19 @@ VERSAO = '5'
 
 
 def datas(fonte, nome):
-    saida = subprocess.run(
-        ['git', '-C', str(fonte), 'log', '--follow', '--format=%as', '--', nome],
-        capture_output=True, text=True, check=True).stdout.split()
+    """Primeira e última data em que o conteúdo do relatório mudou. Um commit que só move o arquivo de pasta
+    (status R100, sem mudar uma linha) não conta como modificação: em 17/11/2026 os .tex foram para atividadeN/."""
+    bruto = subprocess.run(
+        ['git', '-C', str(fonte), 'log', '--follow', '--format=@%as', '--name-status', '--', nome],
+        capture_output=True, text=True, check=True).stdout
+    saida = []
+    for bloco in bruto.split('@')[1:]:
+        linhas = [l for l in bloco.splitlines() if l.strip()]
+        if not linhas:
+            continue
+        data, status = linhas[0].strip(), (linhas[1].split('\t')[0] if len(linhas) > 1 else '')
+        if status != 'R100':
+            saida.append(data)
     if not saida:
         sys.exit(f'{nome}: sem histórico no git')
     return saida[-1], saida[0]

@@ -1,7 +1,7 @@
 {
   "1": {
     "nome": "Proposta",
-    "tex": "atividade1.tex",
+    "tex": "atividade1/atividade1.tex",
     "pagina": true,
     "pdf": "assets/docs/atividade1.pdf",
     "figuras": { "fig:shifts": "a1-deslocamentos.svg", "fig:pipeline": "a1-pareado.svg" },
@@ -11,7 +11,7 @@
   },
   "2": {
     "nome": "Investigação técnica",
-    "tex": "atividade2.tex",
+    "tex": "atividade2/atividade2.tex",
     "pagina": true,
     "pdf": "assets/docs/atividade2.pdf",
     "figuras": { "fig:tarefa": "a2-tarefa.svg", "fig:arq": "a2-arquitetura.svg" },
@@ -21,7 +21,7 @@
   },
   "3": {
     "nome": "Especificação e plano experimental",
-    "tex": "atividade3.tex",
+    "tex": "atividade3/atividade3.tex",
     "pagina": true,
     "pdf": "assets/docs/atividade3.pdf",
     "figuras": { "fig:arq": "a3-arquitetura.svg" },
@@ -31,7 +31,7 @@
   },
   "5": {
     "nome": "Piloto de traduzibilidade",
-    "tex": "atividade5.tex",
+    "tex": "atividade5/atividade5.tex",
     "pagina": true,
     "pdf": "assets/docs/atividade5.pdf",
     "figuras": { "fig:fluxo": "a5-fluxo.svg", "fig:contraste": "a5-contraste.svg" },
@@ -41,7 +41,7 @@
   },
   "6": {
     "nome": "Como e a que custo traduzir",
-    "tex": "atividade6.tex",
+    "tex": "atividade6/atividade6.tex",
     "pagina": true,
     "pdf": "assets/docs/atividade6.pdf",
     "slides": "assets/docs/atividade6-apresentacao.pdf",
@@ -52,7 +52,7 @@
   },
   "7": {
     "nome": "Tradução dos 30 na prática",
-    "tex": "atividade7.tex",
+    "tex": "atividade7/atividade7.tex",
     "pagina": true,
     "pdf": "assets/docs/atividade7.pdf",
     "figuras": {},
@@ -62,7 +62,7 @@
   },
   "8": {
     "nome": "Tradução do corpus",
-    "tex": "atividade8.tex",
+    "tex": "atividade8/atividade8.tex",
     "pagina": true,
     "pdf": "assets/docs/atividade8.pdf",
     "figuras": {},
@@ -72,7 +72,7 @@
   },
   "9": {
     "nome": "O juiz em inglês",
-    "tex": "atividade9.tex",
+    "tex": "atividade9/atividade9.tex",
     "pagina": true,
     "pdf": "assets/docs/atividade9.pdf",
     "slides": "assets/docs/atividade9-apresentacao.pdf",
@@ -83,7 +83,7 @@
   },
   "10": {
     "nome": "O juiz em português",
-    "tex": "atividade10.tex",
+    "tex": "atividade10/atividade10.tex",
     "pagina": true,
     "pdf": "assets/docs/atividade10.pdf",
     "slides": "assets/docs/atividade10-apresentacao.pdf",
@@ -94,7 +94,7 @@
   },
   "11": {
     "nome": "ReliableBench, três tradutores e quatro juízes",
-    "tex": "atividade11.tex",
+    "tex": "atividade11/atividade11.tex",
     "pagina": true,
     "pdf": "assets/docs/atividade11.pdf",
     "figuras": { "fig:rb": "a11-reliablebench.svg" },
@@ -104,7 +104,7 @@
   },
   "16": {
     "nome": "Piloto da validação humana às cegas",
-    "tex": "atividade16.tex",
+    "tex": "atividade16/atividade16.tex",
     "pagina": true,
     "pdf": "assets/docs/atividade16.pdf",
     "figuras": { "fig:fidelidade": "a16-fidelidade.svg" },
