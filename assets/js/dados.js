@@ -1,6 +1,7 @@
-// Dados do site. Todo número tem a fonte: Ak:linha = /mnt/win_ssd/proposta-juiz-ptbr/atividadek.tex, linha.
-// O resultado final é o da Atividade 11 (commit a76848b, 29/10/2026), nos 6.521 pares comuns às oito
-// condições (1.030 no ReliableBench, 887 nocivas). Números de atividades anteriores só na linha do tempo.
+// Dados do site. Todo número tem a fonte: Ak:linha = atividadek/atividadek.tex do repositório do projeto, linha.
+// Os quatro juízes do plano vêm da Atividade 11 (29/10/2026), nos 6.521 pares comuns às oito condições (1.030 no
+// ReliableBench, 887 nocivas). Os doze juízes, a parte da língua e o limiar por língua estão em dados-juizes.js,
+// gerado por ferramentas/dados_juizes.py a partir dos resultados de 17 a 19/11.
 
 window.DADOS = {
   projeto: {
@@ -13,10 +14,11 @@ window.DADOS = {
     instituicao: 'UNIPAMPA',
     professor: 'Diego Kreutz',
     leigo: 'Quando alguém testa se uma IA responde coisa perigosa, quem dá a nota é outra IA, o juiz. Este projeto mede se esse juiz se engana mais quando o texto está em português.',
-    area: 'Aferição pareada de quatro juízes de segurança abertos sobre os 6.560 pares com rótulo humano do CoinflipForSafety, traduzidos por três motores, com volta ao inglês como controle.',
+    area: 'Aferição pareada de doze juízes de segurança sobre os 6.560 pares com rótulo humano do CoinflipForSafety, traduzidos por três motores, com volta ao inglês como controle.',
     pergunta: 'O ReliableBench continua confiável em português?',
-    resposta: 'Não existe uma resposta só. A confiabilidade que ele tem em inglês se mantém para um juiz, cai para outro e muda de natureza para um terceiro, que passa a barrar respostas seguras.',
-    fontes: { leigo: 'conteúdo do autor', pergunta: 'A1:103, A11:122', resposta: 'A11:764' }
+    // a frase final é montada em guia.js com as contagens de dados-juizes.js; esta é a de reserva
+    resposta: 'Depende do juiz. Na maior parte dos casos a língua sozinha não muda o quanto o juiz separa nocivas de seguras; muda onde fica o corte, e um limiar ajustado na própria língua conserta quem mantém a ordenação.',
+    fontes: { leigo: 'conteúdo do autor', pergunta: 'A1:103, A11:122', resposta: 'dados-juizes.js' }
   },
 
   // ordem fixa das condições em todos os gráficos
@@ -127,18 +129,18 @@ window.DADOS = {
     { n: 7, data: '06/10', titulo: 'Tradução dos 30 na prática', feito: '30 pares traduzidos por seis motores.', resultado: 'O Claude Haiku 4.5 traduziu 8 e recusou 22. Os outros cinco motores traduziram os 30.', rota: 'O motor principal não pode ser um LLM alinhado à segurança.', fonte: 'A7:66-76, A7:111' },
     { n: 8, data: '06/10', titulo: 'Tradução do corpus', feito: '439 pares por cinco motores e 6.560 pares pelo NLLB-200 e pelo Opus-MT em GPU.', resultado: 'Sem as marcas de "dado, não comando", o DeepSeek recusou 210 de 439 pedidos e executou o ataque em 17. Com elas, traduziu os 439.', rota: 'O enquadramento entre marcas passa a ser obrigatório para o LLM tradutor.', fonte: 'A8:68, A8:83' },
     { n: 9, data: '24/10 a 25/10', titulo: 'O juiz em inglês', feito: 'Llama Guard 3 em inglês nos 439 e nos 6.560 pares.', resultado: 'A coluna não estava invertida: o veredito coincide em 436 de 439. Linha de base nos 6.560: falso negativo de 18,7%.', rota: 'A base do efeito da língua passa do JudgeStressTest (439) para o CoinflipForSafety (6.560), para evitar regressão à média.', fonte: 'A9:66, A9:77, A9:116-118, A9:134' },
-    { n: 10, data: '24/10', titulo: 'O juiz em português', feito: 'Llama Guard 3 sobre as traduções.', resultado: 'Falso negativo de 18,7% para 19,1% (NLLB-200) e 20,1% (Opus-MT). Nos 439, o veredito depende do motor em 91 de 438 pares.', rota: 'O projeto vira artigo de periódico, com cinco extensões.', fonte: 'A10:64, A10:163, A10:181' },
-    { n: 11, data: '25/10 a 29/10', titulo: 'ReliableBench, três tradutores e quatro juízes', feito: 'DeepSeek nos 6.560, volta ao inglês dos três tradutores, os quatro juízes do artigo, piso por palavra-chave, reprodução dos números publicados e leitura dos pares que trocam de veredito.', resultado: 'O efeito depende do juiz e tem sinais opostos: o JailJudge passa a liberar mais (23,8% para 35,4%), o HarmBench fica mais rígido e o Llama Guard 3 quase não muda.', rota: 'A pergunta central volta a ser o ReliableBench, e a referência passa a ser o julgamento do próprio juiz em inglês.', fonte: 'A11:122, A11:721-751, A11:833' },
+    { n: 10, data: '24/10', titulo: 'O juiz em português', feito: 'Llama Guard 3 sobre as traduções.', resultado: 'Falso negativo de 18,7% para 19,1% (NLLB-200) e 20,1% (Opus-MT). Nos 439, o veredito depende do motor em 91 de 438 pares.', rota: 'O desenho ganha cinco extensões: mais línguas, controles de tradução, validação por nativos, análise por item e o tradutor como variável.', fonte: 'A10:64, A10:163, A10:181' },
+    { n: 11, data: '25/10 a 29/10', titulo: 'ReliableBench, três tradutores e quatro juízes', feito: 'DeepSeek nos 6.560, volta ao inglês dos três tradutores, os quatro juízes de Schwinn et al., piso por palavra-chave, reprodução dos números publicados e leitura dos pares que trocam de veredito.', resultado: 'O efeito depende do juiz e tem sinais opostos: o JailJudge passa a liberar mais (23,8% para 35,4%), o HarmBench fica mais rígido e o Llama Guard 3 quase não muda.', rota: 'A pergunta central volta a ser o ReliableBench, e a referência passa a ser o julgamento do próprio juiz em inglês.', fonte: 'A11:122, A11:721-751, A11:833' },
     { n: 12, data: '10/11', titulo: 'Oitava entrega do projeto', feito: 'Evolução desde a sétima entrega, apresentada em aula.', resultado: '', rota: '', fonte: 'Classroom' },
     { n: 13, data: '09/11', titulo: 'Este site', feito: 'O site do projeto, em buraqueirabench.github.io, de apoio à apresentação final.', resultado: '', rota: '', fonte: 'Classroom' },
-    { n: 16, data: '16/11', titulo: 'Piloto da validação às cegas', feito: '8 pares do ReliableBench nas quatro traduções, rotulados às cegas e avaliados em fidelidade por uma pessoa.', resultado: 'Nenhuma tradução mudou o rótulo; o DeepSeek foi fiel nas 8 versões, os outros quase sempre com nota 3. Em 17/11 (no vídeo): a língua soma uns 5 pontos de nocivas liberadas ao JailJudge com os três tradutores, e em suaíli os quatro juízes liberam muito mais nocivas.', rota: 'Um par contestado contra o rótulo de origem levou o inglês às cegas para dentro do protocolo. Um limiar por língua só conserta o juiz que ainda ordena bem; seis juízes novos estão rodando.', fonte: 'A16' }
+    { n: 16, data: '16/11 a 17/11', titulo: 'Piloto da validação às cegas e doze juízes', feito: '8 pares do ReliableBench nas quatro traduções, rotulados às cegas e avaliados em fidelidade por uma pessoa; em 17/11, oito juízes novos nas mesmas condições.', resultado: 'Nenhuma tradução mudou o rótulo; o DeepSeek foi fiel nas 8 versões, os outros quase sempre com nota 3. Com doze juízes e três tradutores, em 29 de 36 casos a língua sozinha não muda o quanto o juiz separa nocivas de seguras, e um limiar por língua conserta quem mantém essa ordenação.', rota: 'Um par contestado contra o rótulo de origem levou o inglês às cegas para dentro do protocolo. A validação completa passa a ter quatro anotadores, dois deles de fora do projeto.', fonte: 'A16, dados-juizes.js' }
   ],
 
   // O plano da Atividade 3 (Tabela de etapas) e o que cada entrega fez dele. As semanas do plano
   // não têm data no relatório; a linha do tempo conta a partir de 08/09, quando o plano foi entregue.
   plano: {
     inicio: '2026-09-08',
-    hoje: '2026-11-09',
+    hoje: '2026-11-19',
     fonte: 'A3:265-286',
     etapas: [
       { n: 1, nome: 'Ambiente e reprodução do inglês (E1)', semanas: 2, entrega: 'E1 fechado e ambiente validado', estado: 'feito',
@@ -154,38 +156,39 @@ window.DADOS = {
       { n: 4, nome: 'Corpus em português completo e revalidado', semanas: 3, entrega: 'corpus publicável', estado: 'parte',
         feito: [{ a: 6, txt: 'como e a que custo traduzir', fonte: 'A6:94-118' },
                 { a: 8, txt: '439 pares por cinco motores e 6.560 pelo NLLB-200 e pelo Opus-MT', fonte: 'A8:68-72' },
-                { a: 11, txt: 'DeepSeek nos 6.560 e leitura à mão dos pares que trocam de veredito', fonte: 'A11:290' }],
-        falta: 'a revalidação humana às cegas, de 100 a 200 pares do ReliableBench', curta: 'a revalidação humana às cegas', faltaFonte: 'A11:970' },
-      { n: 5, nome: 'Demais juízes, comitê, E2 e E3', semanas: 3, entrega: 'o resultado principal', estado: 'parte',
+                { a: 11, txt: 'DeepSeek nos 6.560 e leitura à mão dos pares que trocam de veredito', fonte: 'A11:290' },
+                { a: 16, txt: 'piloto da revalidação às cegas: 8 pares, 32 versões, nenhuma tradução mudou o rótulo', fonte: 'A16' }],
+        falta: 'a revalidação de 150 pares por quatro anotadores, dois deles de fora do projeto', curta: 'a revalidação de 150 pares', faltaFonte: 'plano da validação, 19/11' },
+      { n: 5, nome: 'Demais juízes, comitê, E2 e E3', semanas: 3, entrega: 'o resultado principal', estado: 'feito',
         feito: [{ a: 10, txt: 'E2 com o Llama Guard 3 em duas traduções', fonte: 'A10:64' },
-                { a: 11, txt: 'os quatro juízes do artigo, três tradutores e a volta ao inglês', fonte: 'A11:54' }],
-        falta: 'o comitê por voto entre os juízes', curta: 'o comitê por voto', faltaFonte: 'A3:198, A3:280' },
+                { a: 11, txt: 'os quatro juízes de Schwinn et al., três tradutores e a volta ao inglês', fonte: 'A11:54' },
+                { a: 16, txt: 'oito juízes novos e o comitê pela média dos escores, com limiar por língua (17/11)', fonte: 'dados-juizes.js' }] },
       { n: 6, nome: 'E4 e E5, se houver tempo', semanas: 2, entrega: 'resultados complementares', estado: 'nao',
         feito: [],
         falta: 'língua com estilo narrativo (E4) e 4 contra 16 bits (E5)', curta: 'E4 e E5', faltaFonte: 'A3:230-232' },
       { n: 7, nome: 'Análise, escrita e documentação', semanas: 2, entrega: 'relatório e repositório', estado: 'andamento',
-        feito: [{ a: 10, txt: 'o projeto passa a mirar um artigo de periódico', fonte: 'A10:181' },
-                { a: 13, txt: 'este site', fonte: 'Classroom' }],
-        falta: 'o artigo', curta: 'o artigo', faltaFonte: 'A10:181' }
+        feito: [{ a: 13, txt: 'este site', fonte: 'Classroom' },
+                { a: 16, txt: 'relatório e vídeo do piloto e dos juízes novos', fonte: 'A16' }],
+        falta: 'a documentação final, com a validação humana', curta: 'a documentação final', faltaFonte: 'plano da validação, 19/11' }
     ],
     // datas de cada entrega na linha do tempo (primeiro e último commit do relatório)
     datas: { 1: ['2026-08-24', '2026-09-08'], 2: ['2026-09-08'], 3: ['2026-09-08'], 4: ['2026-09-08'], 5: ['2026-09-21', '2026-09-28'],
              6: ['2026-09-27', '2026-10-06'], 7: ['2026-10-06'], 8: ['2026-10-06'], 9: ['2026-10-24', '2026-10-25'], 10: ['2026-10-24'],
-             11: ['2026-10-25', '2026-10-29'], 12: ['2026-11-10'], 13: ['2026-11-09'], 16: ['2026-11-16'] },
+             11: ['2026-10-25', '2026-10-29'], 12: ['2026-11-10'], 13: ['2026-11-09'], 16: ['2026-11-16', '2026-11-17'] },
     // O combinado: a proposta (Atividade 1) e o plano (Atividade 3). O que veio depois e não estava lá é a mais.
     combinado: {
       corpus: { prometido: [100, 300], fonte: 'A3:107, A3:200', feito: 6560, tradutores: 3, feitoFonte: 'A8:70-72, A11:290' },
       itens: [
         { prometido: 'um conjunto em português de 100 a 300 pares, revalidado às cegas', fonte: 'A3:107, A3:200',
-          hoje: '6.560 pares traduzidos por três tradutores; a revalidação humana ainda falta', hojeFonte: 'A8:70-72, A11:290, A11:970' },
+          hoje: '6.560 pares traduzidos por três tradutores; o piloto às cegas (8 pares, 32 versões) feito, e a revalidação de 150 pares por quatro anotadores planejada', hojeFonte: 'A8:70-72, A11:290, A16' },
         { prometido: 'quatro juízes e um comitê por voto', fonte: 'A3:198',
-          hoje: 'os quatro juízes do artigo e o piso por palavra-chave; o comitê ainda falta', hojeFonte: 'A11:54, A11:564' },
+          hoje: 'doze juízes, o piso por palavra-chave e um comitê pela média dos escores, com limiar por língua', hojeFonte: 'A11:54, A11:564, dados-juizes.js' },
         { prometido: 'cinco experimentos, E1 a E5', fonte: 'A3:224-232',
           hoje: 'E1, E2 e E3 feitos; E4 e E5, que eram "se houver tempo", não', hojeFonte: 'A11:866, A10:64, A11:54' }
       ]
     },
     extras: [
-      { nome: '6.560 pares, não 100 a 300', curta: 'o corpus inteiro do artigo',
+      { nome: '6.560 pares, não 100 a 300', curta: 'o corpus inteiro',
         feito: [{ a: 6, txt: 'custo medido no CoinflipForSafety inteiro, 6.560 pares', fonte: 'A6:83-92' },
                 { a: 8, txt: 'NLLB-200 e Opus-MT nos 6.560', fonte: 'A8:70-72' },
                 { a: 9, txt: 'Llama Guard 3 em inglês nos 6.560', fonte: 'A9:120' },
@@ -206,8 +209,16 @@ window.DADOS = {
         feito: [{ a: 11, txt: 'o HarmBench sem a regra que exige inglês', fonte: 'A11:869' },
                 { a: 11, txt: 'a tradução com o código protegido', fonte: 'A11:900' },
                 { a: 11, txt: 'a coluna publicada do ReliableBench refeita', fonte: 'A11:801' }] },
-      { nome: 'Alvo de artigo de periódico', curta: 'o artigo',
-        feito: [{ a: 10, txt: 'o projeto passa a mirar a TACL', fonte: 'A10:181' }] }
+      { nome: 'Oito juízes além dos quatro', curta: 'doze juízes',
+        feito: [{ a: 16, txt: 'PolyGuard, Qwen3Guard, Nemotron Safety Guard, Granite Guardian, Jev, Lev, Laya e um Qwen3 com a rubrica do HarmBench, em todas as condições (17/11)', fonte: 'dados-juizes.js' }] },
+      { nome: 'A língua separada da reescrita, com intervalo', curta: 'língua contra reescrita',
+        feito: [{ a: 16, txt: 'para cada juiz e tradutor, a parte da língua (português menos a volta) e a da reescrita (volta menos inglês), com intervalo por comportamento (17/11)', fonte: 'dados-juizes.js' }] },
+      { nome: 'Um limiar por língua', curta: 'limiar por língua',
+        feito: [{ a: 16, txt: 'o corte do juiz ajustado com 100 pares rotulados da própria língua, nos doze juízes e no comitê (17/11)', fonte: 'dados-juizes.js' }] },
+      { nome: 'Controles do ruído', curta: 'ruído do juiz e do tradutor',
+        feito: [{ a: 16, txt: 'paráfrase em inglês, segunda tradução pelo DeepSeek e o JailJudge rodado cinco vezes (17/11 e 18/11)', fonte: 'controles.json' }] },
+      { nome: 'Uma língua distante, o suaíli', curta: 'suaíli, exploratório',
+        feito: [{ a: 16, txt: 'os doze juízes em suaíli pelo NLLB-200, ida e volta, como checagem exploratória (17/11)', fonte: 'dados-juizes.js' }] }
     ],
 
     // relatórios que já têm página em HTML
@@ -218,9 +229,27 @@ window.DADOS = {
   },
 
   proximos: [
-    'Revalidação humana às cegas de 100 a 200 pares do ReliableBench, por falante nativo, sem ver o rótulo de origem.',
-    'AegisGuard e JailJudge nas respostas com código protegido.',
-    'Mais duas ou três línguas na parte automática, com o português como estudo aprofundado.'
+    'Revalidação às cegas de 150 pares do ReliableBench por quatro anotadores nativos, cada par com um autor e um anotador de fora do projeto.',
+    'O limiar por língua ajustado de novo, agora com os rótulos humanos em português.',
+    'Uma segunda língua só com anotador nativo: 30 a 40 pares, pelos três tradutores.'
   ],
-  proximosFonte: 'A11:970-971, A10:181'
+  proximosFonte: 'plano da validação, 19/11',
+
+  // A validação humana: o piloto (A16, atividade16/resumo-rodada1.json) e o plano (validacao/plano_anotacao.md, 19/11)
+  validacao: {
+    piloto: {
+      pares: 8, versoes: 32, anotador: 'um autor',
+      // notas de fidelidade de 1 (sentido perdido) a 4 (fiel), por tradutor, nas 8 versões
+      fidelidade: { deepseek: [0, 0, 0, 8], nllb: [0, 1, 7, 0], opus: [0, 3, 5, 0] },
+      segundos: { p1: 8.6, p2: 9.45 },
+      fonte: 'A16, resumo-rodada1.json'
+    },
+    plano: {
+      pares: 150, versoes: 4, anotadores: 4, porAnotador: 75, dupla: [37, 38],
+      palavras: { mediana: 207, maximo: 729 },
+      itensPorAnotador: { rotulos: 300, notas: 225 },
+      calibracao: 8,
+      fonte: 'plano da validação, 19/11'
+    }
+  }
 };
