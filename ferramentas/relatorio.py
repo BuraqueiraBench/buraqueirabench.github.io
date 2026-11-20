@@ -10,8 +10,10 @@ As datas são o primeiro e o último commit do .tex (git log --follow).
 import html
 import json
 import re
+import shutil
 import subprocess
 import sys
+import tempfile
 from pathlib import Path
 
 AQUI = Path(__file__).resolve().parent
@@ -201,6 +203,9 @@ def converter(fonte, n):
         if novo == corpo:
             sys.exit(f'{nome}: frase a omitir não encontrada: {inicio}')
         corpo = novo
+    for de, para in omitir.get('trocar', []):
+        # trecho trocado dentro de uma frase; o que só existe no título ou no autor do PDF não aparece aqui
+        corpo = corpo.replace(de, para)
     if omitir.get('secoes'):
         velhos = re.findall(r'<section id="[^"]+" class="level2" data-number="(\d+)"', corpo)
         mapa = {v: str(i) for i, v in enumerate(velhos, 1)}
@@ -223,6 +228,78 @@ def converter(fonte, n):
         sumario.append(('notas', '', 'Notas'))
 
     return pagina(n, c, titulo, autor, primeira, ultima, corpo, sumario)
+
+
+def slug(titulo):
+    """O id que o pandoc dá a uma seção sem rótulo: minúsculas, sem pontuação, espaços viram hífens."""
+    t = re.sub(r'[^\w\s-]', '', titulo.lower())
+    return re.sub(r'\s+', '-', t.strip())
+
+
+def filtrar_tex(tex, omitir, nome):
+    """As mesmas omissões da página aplicadas ao .tex, para o PDF publicado no site. Cada regra tem de casar uma vez
+    no .tex; se não casar, o PDF do site sairia com o trecho, então para com erro."""
+    for de, para in omitir.get('trocar', []):
+        if de not in tex:
+            sys.exit(f'{nome}: trecho a trocar não encontrado no .tex: {de}')
+        tex = tex.replace(de, para)
+    for sid in omitir.get('secoes', []):
+        achou = False
+        for m in re.finditer(r'\\section\*?\{([^}]*)\}', tex):
+            depois = tex[m.end():]
+            rot = re.match(r'\s*\\label\{([^}]+)\}', depois)
+            if (rot and rot.group(1) == sid) or slug(m.group(1)) == sid:
+                fim = re.search(r'\\section\*?\{|\\begin\{thebibliography\}|\\end\{document\}', depois)
+                tex = tex[:m.start()] + depois[fim.start():]
+                achou = True
+                break
+        if not achou:
+            sys.exit(f'{nome}: seção a omitir não encontrada no .tex: {sid}')
+    for inicio in omitir.get('itens', []):
+        novo = re.sub(r'\\item\s+' + re.escape(inicio) + r'.*?(?=\\item\b|\\end\{(?:itemize|enumerate)\})', '',
+                      tex, count=1, flags=re.S)
+        if novo == tex:
+            sys.exit(f'{nome}: item a omitir não encontrado no .tex: {inicio}')
+        tex = novo
+    for inicio in omitir.get('frases', []):
+        novo = re.sub(r'\s*' + re.escape(inicio) + r'.*?\.(?=\s)', '', tex, count=1, flags=re.S)
+        if novo == tex:
+            sys.exit(f'{nome}: frase a omitir não encontrada no .tex: {inicio}')
+        tex = novo
+    return tex
+
+
+def pdf_site(fonte, n):
+    """Relatório com omissões: o PDF do site é compilado do .tex filtrado, para não publicar no PDF o que a página
+    esconde. Sem omissões, o PDF do site é o da entrega, copiado à parte."""
+    c = CONF[str(n)]
+    if not c.get('omitir') or not c.get('pdf'):
+        return None
+    nome = c['tex']
+    tex = filtrar_tex((fonte / nome).read_text(encoding='utf-8'), c['omitir'], nome)
+    base = Path(nome).stem
+    with tempfile.TemporaryDirectory(prefix='pdf-site-') as tmp:
+        (Path(tmp) / f'{base}.tex').write_text(tex, encoding='utf-8')
+        r = subprocess.run(['latexmk', '-pdf', '-interaction=nonstopmode', '-halt-on-error', f'{base}.tex'],
+                           cwd=tmp, capture_output=True, text=True)
+        if r.returncode:
+            sys.exit(f'{nome}: o PDF do site não compilou\n' + r.stdout[-3000:])
+        destino = SITE / c['pdf']
+        shutil.copyfile(Path(tmp) / f'{base}.pdf', destino)
+    texto = subprocess.run(['pdftotext', str(destino), '-'], capture_output=True, text=True).stdout
+    for proibido in c.get('proibido', []):
+        if re.search(proibido, texto, re.I):
+            sys.exit(f'{nome}: o PDF do site ainda tem "{proibido}"')
+    return destino
+
+
+def conferir_html(n, pagina_html):
+    """O que a chave "proibido" lista não pode sobrar no texto da página (nem na ficha, nem no título)."""
+    texto = html.unescape(re.sub(r'<[^>]+>', ' ', pagina_html))
+    for proibido in CONF[str(n)].get('proibido', []):
+        achado = re.search(r'.{0,60}' + proibido + r'.{0,60}', texto, re.I | re.S)
+        if achado:
+            sys.exit(f'atividade {n}: a página ainda tem "{proibido}": ...{achado.group(0)}...')
 
 
 def vizinhos(n):
@@ -350,8 +427,13 @@ def main():
     saida.mkdir(exist_ok=True)
     for n in map(int, sys.argv[2:]):
         destino = saida / f'atividade{n}.html'
-        destino.write_text(converter(fonte, n), encoding='utf-8')
+        pagina_html = converter(fonte, n)
+        conferir_html(n, pagina_html)
+        destino.write_text(pagina_html, encoding='utf-8')
         print(f'atividade {n}: {destino}')
+        pdf = pdf_site(fonte, n)
+        if pdf:
+            print(f'atividade {n}: {pdf} (do .tex filtrado)')
 
 
 if __name__ == '__main__':

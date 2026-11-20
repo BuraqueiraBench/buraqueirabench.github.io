@@ -90,7 +90,9 @@
     "figuras": { "fig:fn": "a10-falso-negativo.svg" },
     "figuras_largas": ["fig:fn"],
     "feito": "Llama Guard 3 sobre as traduções.",
-    "resultado": "Falso negativo de 18,7% para 19,1% (NLLB-200) e 20,1% (Opus-MT). Nos 439, o veredito depende do motor em 91 de 438 pares."
+    "resultado": "Falso negativo de 18,7% para 19,1% (NLLB-200) e 20,1% (Opus-MT). Nos 439, o veredito depende do motor em 91 de 438 pares.",
+    "omitir": { "secoes": ["mudança-de-rota-o-projeto-vira-artigo"], "frases": ["Os dois casos são resultado, e é essa separação"] },
+    "proibido": ["TACL", "Transactions of the Association", "peri[óo]dico", "\\bartigos?\\b"]
   },
   "11": {
     "nome": "ReliableBench, três tradutores e quatro juízes",
@@ -111,6 +113,9 @@
     "figuras_largas": ["fig:fidelidade"],
     "feito": "Página de anotação em duas passadas, protocolo às cegas e uma rodada de 8 pares nas quatro traduções.",
     "resultado": "Nenhuma tradução mudou o rótulo humano; o DeepSeek foi fiel nas 8 versões e os tradutores de frase a frase perdem a formatação. Em 17/11 (no vídeo): a língua soma uns 5 pontos de nocivas liberadas ao JailJudge com os três tradutores, em suaíli os quatro juízes liberam muito mais nocivas, um limiar por língua só conserta quem ainda ordena bem, e entre os juízes novos o Jev é o melhor até agora.",
-    "omitir": { "secoes": ["sec:artigo"], "itens": ["No artigo:"], "frases": ["A estrutura do artigo virou"] }
+    "omitir": { "secoes": ["sec:artigo"], "itens": ["No artigo:"], "frases": ["A estrutura do artigo virou"],
+                "trocar": [["e avançar no comitê de juízes e na estrutura do artigo.", "e avançar no comitê de juízes."],
+                           ["a validação às cegas em pequena escala e o artigo iniciado", "a validação às cegas em pequena escala"]] },
+    "proibido": ["TACL", "Transactions of the Association", "peri[óo]dico", "\\bartigos?\\b"]
   }
 }

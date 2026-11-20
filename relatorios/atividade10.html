@@ -42,7 +42,7 @@
   <div class="corpo">
     <nav class="sumario" aria-label="Nesta página">
       <p>Nesta página</p>
-      <ol><li><a href="#o-que-esta-entrega-faz" data-alvo="o-que-esta-entrega-faz"><span class="num">1</span>O que esta entrega faz</a></li><li><a href="#como-foi-rodado" data-alvo="como-foi-rodado"><span class="num">2</span>Como foi rodado</a></li><li><a href="#sec:lingua" data-alvo="sec:lingua"><span class="num">3</span>Efeito da língua nos 6.560 pares</a></li><li><a href="#sec:tradutor" data-alvo="sec:tradutor"><span class="num">4</span>Efeito do tradutor nos 439 pares</a></li><li><a href="#mudança-de-rota-o-projeto-vira-artigo" data-alvo="mudança-de-rota-o-projeto-vira-artigo"><span class="num">5</span>Mudança de rota: o projeto vira artigo</a></li><li><a href="#próximo-passo" data-alvo="próximo-passo"><span class="num">6</span>Próximo passo</a></li><li><a href="#artefatos" data-alvo="artefatos"><span class="num">7</span>Artefatos</a></li></ol>
+      <ol><li><a href="#o-que-esta-entrega-faz" data-alvo="o-que-esta-entrega-faz"><span class="num">1</span>O que esta entrega faz</a></li><li><a href="#como-foi-rodado" data-alvo="como-foi-rodado"><span class="num">2</span>Como foi rodado</a></li><li><a href="#sec:lingua" data-alvo="sec:lingua"><span class="num">3</span>Efeito da língua nos 6.560 pares</a></li><li><a href="#sec:tradutor" data-alvo="sec:tradutor"><span class="num">4</span>Efeito do tradutor nos 439 pares</a></li><li><a href="#próximo-passo" data-alvo="próximo-passo"><span class="num">5</span>Próximo passo</a></li><li><a href="#artefatos" data-alvo="artefatos"><span class="num">6</span>Artefatos</a></li></ol>
     </nav>
     <article id="texto">
 
@@ -276,16 +276,12 @@
 </tbody>
 </table></div></figure>
 </section>
-<section id="mudança-de-rota-o-projeto-vira-artigo" class="level2" data-number="5">
-<h2 data-number="5"><span class="header-section-number">5</span> Mudança de rota: o projeto vira artigo</h2>
-<p>Os resultados até aqui sustentam um artigo de periódico, e o projeto passa a ter esse alvo: a TACL (<em>Transactions of the Association for Computational Linguistics</em>), que não cobra taxa de publicação. Lendo artigos publicados nela, o desenho do projeto ganha cinco extensões, nenhuma fixa: rodar a parte automática em mais duas ou três línguas; controles de tradução, com retrotradução do português de volta para o inglês (controle neutro) e um subconjunto traduzido por humano (controle positivo); validação do subconjunto em português por dois ou mais anotadores nativos; análise por item; e o enquadramento do pipeline de tradução como variável da avaliação multilíngue de segurança, que é o que a Seção <a class="xref" href="#sec:tradutor">4</a> começa a mostrar.</p>
+<section id="próximo-passo" class="level2" data-number="5">
+<h2 data-number="5"><span class="header-section-number">5</span> Próximo passo</h2>
+<p>O primeiro controle de tradução: a retrotradução. As versões em português do NLLB-200 e do Opus-MT são traduzidas de volta para o inglês por um motor aberto, e o mesmo juiz julga esse inglês retraduzido. Se o veredito mudar também nele, a mudança vem do caminho pela tradução, e não do português; se não mudar, o efeito medido na Seção <a class="xref" href="#sec:lingua">3</a> é da língua.</p>
 </section>
-<section id="próximo-passo" class="level2" data-number="6">
-<h2 data-number="6"><span class="header-section-number">6</span> Próximo passo</h2>
-<p>O primeiro controle de tradução: a retrotradução. As versões em português do NLLB-200 e do Opus-MT são traduzidas de volta para o inglês por um motor aberto, e o mesmo juiz julga esse inglês retraduzido. Se o veredito mudar também nele, a mudança vem do caminho pela tradução, e não do português; se não mudar, o efeito medido na Seção <a class="xref" href="#sec:lingua">3</a> é da língua. Os dois casos são resultado, e é essa separação que o artigo precisa.</p>
-</section>
-<section id="artefatos" class="level2" data-number="7">
-<h2 data-number="7"><span class="header-section-number">7</span> Artefatos</h2>
+<section id="artefatos" class="level2" data-number="6">
+<h2 data-number="6"><span class="header-section-number">6</span> Artefatos</h2>
 <p>Na pasta <code>atividade10/resultados/</code>: um arquivo por condição, <code>cf-nllb.jsonl</code> e <code>cf-opus.jsonl</code> para os 6.560 pares e <code>deepseek.jsonl</code>, <code>nllb.jsonl</code>, <code>opus.jsonl</code>, <code>argos.jsonl</code> e <code>google.jsonl</code> para os 439, com, por par, o rótulo humano, o <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>p</mi><mtext mathvariant="normal">unsafe</mtext></msub><annotation encoding="application/x-tex">p_{\text{unsafe}}</annotation></semantics></math>, o veredito, o número de tokens e o tempo, sem o texto do par; <code>numeros.json</code> e <code>numeros-cf.json</code> são a saída das análises. Os scripts são os da Atividade 9 (<code>atividade9/</code>), rodados com as duas pastas: <code>python analisar.py atividade9/resultados:atividade10/resultados numeros.json</code> e o mesmo com <code>analisar_cf.py</code>.</p>
 </section>
 
