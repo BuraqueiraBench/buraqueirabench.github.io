@@ -11,7 +11,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Old+Standard+TT:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
 <script>document.documentElement.classList.add('js');</script>
-<link rel="stylesheet" href="assets/css/guia.css?v=21">
+<link rel="stylesheet" href="assets/css/guia.css?v=22">
 </head>
 <body>
 <a class="pular" href="#conteudo">Pular para o conteúdo</a>
@@ -53,6 +53,7 @@
         <li><a href="#vimos" data-s="vimos">O que vimos</a></li>
         <li><a href="#validacao" data-s="validacao">Validação</a></li>
         <li><a href="#linha" data-s="linha">Linha do tempo</a></li>
+        <li><a href="#milonga" data-s="milonga">A milonga</a></li>
       </ul>
     </nav>
   </div>
@@ -77,6 +78,7 @@
       <h1>Juízes de segurança em português</h1>
       <p class="frase">O mesmo processo, em inglês e em português. O juiz decide igual?</p>
       <p class="autor">Cristhian Kapelinski e Beatriz Roland Machado. Laboratório de Inteligência Artificial Aplicada, 2026/2, UNIPAMPA, prof. Diego Kreutz.</p>
+      <a class="faixa-milonga" href="#milonga"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M12 24V7l14-3v17"/><circle cx="8.5" cy="24" r="3.5"/><circle cx="22.5" cy="21" r="3.5"/></svg><span>Ouça a <b>Milonga da Buraqueira</b>, de Diego Kreutz</span></a>
       <nav class="portas" aria-label="Para onde ir">
         <a href="#resultados"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 5c-6 0-9 4-9 10 0 7 4 12 9 12s9-5 9-12c0-6-3-10-9-10z M7 9l3 3 M25 9l-3 3"/><circle cx="12.5" cy="14" r="2.4"/><circle cx="19.5" cy="14" r="2.4"/><path d="M15 18l1 2 1-2"/></svg><b>As doze espécies</b><span><span data-conta="juizes">12</span> juízes, cada um com a sua coruja e a sua ficha</span></a>
         <a href="#vimos"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M4 27h24 M7 27V17 M13 27V11 M19 27V15 M25 27V7"/></svg><b>O que vimos</b><span>sete pranchas com os resultados, da língua ao limiar</span></a>
@@ -419,11 +421,33 @@
   </div>
 </section>
 
+<hr class="fio">
+
+<!-- 6. A milonga do projeto -->
+<section id="milonga" data-nav="milonga">
+  <div class="caixa">
+    <div class="tela rev">
+      <h2>A milonga do projeto</h2>
+      <p class="intro-linha">A <b>Milonga da Buraqueira</b> é de <b>Diego Kreutz</b>, professor da disciplina: uma milonga nativista, com violão e bandoneón, sobre as corujas que julgam os ataques traduzidos para o português. A letra foi escrita com Claude a partir deste site e da evolução do projeto, e a música foi gerada com ACE-Step 1.5. Ela está na <a href="https://unipampa4all.github.io/disciplinas/liaa/20262/projetos_html/cristian-jailbreak-ptbr.html">página dos projetos da LIAA 2026/2</a>.</p>
+      <div class="milonga-grade">
+        <figure class="clipe">
+          <video id="clipe" controls preload="metadata" playsinline poster="assets/video/milonga-da-buraqueira.jpg">
+            <source src="assets/video/milonga-da-buraqueira.mp4" type="video/mp4">
+            <track kind="captions" srclang="pt-BR" label="Letra" src="assets/video/milonga-da-buraqueira.vtt">
+          </video>
+          <figcaption>O clipe, feito para este site com as aquarelas do guia. Música de Diego Kreutz. <a href="assets/audio/milonga-da-buraqueira.mp3">Ouvir só a faixa</a>.</figcaption>
+        </figure>
+        <div class="letra" id="letra" aria-label="Letra da Milonga da Buraqueira"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
 </main>
 
 <footer class="rodape">
   <div class="caixa">
-    <p>Cristhian Kapelinski e Beatriz Roland Machado, UNIPAMPA, 2026/2.</p>
+    <p>Cristhian Kapelinski e Beatriz Roland Machado, UNIPAMPA, 2026/2. Milonga da Buraqueira de Diego Kreutz.</p>
     <p><a href="https://github.com/BuraqueiraBench">Organização BuraqueiraBench no GitHub</a></p>
   </div>
 </footer>
@@ -437,6 +461,7 @@
 <script src="assets/js/duracoes.js?v=1"></script>
 <script src="assets/js/site.js?v=5"></script>
 <script src="assets/js/especies.js?v=3"></script>
+<script src="assets/js/milonga.js?v=1"></script>
 <script src="assets/js/guia.js?v=19"></script>
 </body>
 </html>

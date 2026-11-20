@@ -518,3 +518,18 @@ button.especie:hover .abrir, button.especie:focus-visible .abrir { opacity: 1; }
 .val-lista { padding-left: 1.1rem; margin-top: .6rem; }
 .val-lista li { margin-bottom: .45rem; line-height: 1.4; }
 @media (max-width: 860px) { .val-grade { grid-template-columns: 1fr; } }
+
+/* a milonga do projeto */
+.faixa-milonga { display: inline-flex; align-items: center; gap: .6rem; margin-top: .2rem; padding: .45rem .9rem .45rem .6rem; text-decoration: none; color: var(--nanquim); border: 1px dashed var(--sepia); border-radius: 999px; font-size: 1.02rem; transition: background .2s, transform .2s; }
+.faixa-milonga:hover { background: var(--papel2); transform: translateY(-1px); color: var(--nanquim); }
+.faixa-milonga svg { width: 1.6rem; height: 1.6rem; fill: none; stroke: var(--pt); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; flex: none; }
+.milonga-grade { display: grid; grid-template-columns: minmax(0, 1.55fr) minmax(0, 1fr); gap: clamp(1.4rem, 3vw, 2.6rem); align-items: start; }
+.clipe video { display: block; width: 100%; aspect-ratio: 16 / 9; background: var(--nanquim); border: 1px solid var(--nanquim); box-shadow: 0 8px 26px rgba(46, 38, 29, .18); }
+.clipe figcaption { font-style: italic; color: var(--sepia); font-size: 1rem; margin-top: .6rem; }
+.letra { max-height: 34rem; overflow: auto; padding: .2rem 1rem .2rem 0; border-left: 1px solid var(--fio); padding-left: 1.2rem; scrollbar-width: thin; }
+.estrofe { margin-bottom: 1.1rem; }
+.estrofe .parte { font: italic 400 1rem var(--titulo); color: var(--sepia); margin-bottom: .2rem; }
+.estrofe.refrao .verso { font-style: italic; }
+.verso { line-height: 1.45; padding: .05rem .4rem; margin-left: -.4rem; border-radius: 3px; transition: background .3s, color .3s; }
+.verso.agora { background: rgba(192, 138, 46, .22); color: var(--nanquim); font-weight: 600; }
+@media (max-width: 900px) { .milonga-grade { grid-template-columns: 1fr; } .letra { max-height: none; border-left: 0; padding-left: 0; } }
