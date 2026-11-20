@@ -9,22 +9,7 @@
     `<circle cx="${x}" cy="${y}" r="${r}" fill="${cor}" fill-opacity=".85" stroke="${C.tinta}" stroke-width=".9" filter="url(#aquarela)"/>`;
   const svg = (vb, inner, rotulo) => `<svg viewBox="${vb}" role="img" aria-label="${rotulo}">${inner}</svg>`;
 
-  // mini gráfico de cada espécie: falso negativo no ReliableBench, inglês e três traduções
-  function mini(id) {
-    const d = D.fnReliable[id], X = v => 64 + v / 40 * 186, xe = X(d.en);
-    const linhas = [['nllb', 'NLLB-200', 46], ['opus', 'Opus-MT', 70], ['deepseek', 'DeepSeek', 94]];
-    let s = `<line class="eixo" x1="64" x2="250" y1="110" y2="110"/>`;
-    [0, 20, 40].forEach(v => { s += `<text class="tk" x="${X(v)}" y="126" text-anchor="middle">${v}%</text>`; });
-    s += `<line class="ref" x1="${xe}" x2="${xe}" y1="24" y2="104"/>`;
-    s += `<text class="rot" x="0" y="24">inglês</text>${dot(xe, 20, C.en)}<text class="val" x="${xe + 11}" y="25">${f(d.en)}</text>`;
-    linhas.forEach(([k, nome, y]) => {
-      const x = X(d[k]);
-      s += `<text class="rot" x="0" y="${y + 4}">${nome}</text>`;
-      s += `<path class="traco" pathLength="1" d="M${xe} ${y} L${x} ${y}"/>${dot(x, y, C.pt)}<text class="val" ${x < xe ? `text-anchor="end" x="${x - 11}"` : `x="${x + 11}"`} y="${y + 5}">${f(d[k])}</text>`;
-    });
-    return svg('0 0 270 132', s, `${nomeJ(id)}: nocivas liberadas no ReliableBench, inglês ${f(d.en)}%, NLLB-200 ${f(d.nllb)}%, Opus-MT ${f(d.opus)}%, DeepSeek ${f(d.deepseek)}%.`);
-  }
-  document.querySelectorAll('.especie').forEach(e => { $('.mini', e).innerHTML = mini(e.dataset.j); });
+  // (as doze espécies e o mini gráfico de cada uma estão em especies.js)
 
   // gaveta de espécimes: um quadrado por processo
   function gaveta(grupos, cols, cel, rotulo) {
@@ -92,7 +77,8 @@
     $('#g-barras').innerHTML = svg('0 0 400 260', s, `HarmBench no ReliableBench: nocivas liberadas de ${f(fn.en)}% para ${f(fn.nllb)}%; seguras barradas de ${f(fp.en)}% para ${f(fp.nllb)}%.`);
   })();
 
-  $('#resposta').textContent = D.projeto.resposta;
+  // a frase final é montada em especies.js com as contagens; esta é a reserva se aquele arquivo faltar
+  if (!$('#resposta').textContent) $('#resposta').textContent = D.projeto.resposta;
 
   // o tradutor também é um juiz: barras empilhadas
   (function () {
@@ -183,7 +169,9 @@
         s += `<a href="${pagina(f2.a)}" class="marca-feita" style="--i:${i}"><rect x="${x0}" y="${yy}" width="${larg}" height="21" rx="3" fill="${COR_EST[e.estado]}" filter="url(#aquarela)"/>` +
           `<text x="${x0 + larg / 2}" y="${yy + 15.5}" text-anchor="middle" fill="${claro ? C.tinta : '#fff'}">A${f2.a}</text><title>Atividade ${f2.a}: ${f2.txt} (${f2.fonte})</title></a>`;
       });
-      if (e.curta) s += `<text class="falta" x="${X(P.hoje) + 8}" y="${y + 54}">falta ${e.curta}</text>`;
+      // o "falta" fica na altura da faixa de baixo das etiquetas: começa depois da última que estiver lá
+      const fimBaixo = Math.max(0, ...pos.filter(p => p.faixa === 1).map(p => p.x0 + p.larg));
+      if (e.curta) s += `<text class="falta" x="${Math.max(X(P.hoje) + 8, fimBaixo + 8)}" y="${y + 54}">falta ${e.curta}</text>`;
       ini = fim;
     });
     // o que não estava no combinado: uma linha por frente, etiqueta preta com a estrela
@@ -203,8 +191,10 @@
       });
     });
     const xh = X(P.hoje);
-    s += `<line class="hoje" x1="${xh}" y1="${topo - 26}" x2="${xh}" y2="${H}"/><text class="hoje-t" x="${xh}" y="${topo - 30}" text-anchor="middle">hoje, 09/11</text>`;
-    $('#plano').innerHTML = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Linha do tempo do plano contra a execução: etapas 1, 2 e 3 feitas, 4 e 5 em parte, 6 não começou, 7 em andamento; e seis frentes a mais, fora do combinado.">${s}</svg>`;
+    const [, mh, dh] = P.hoje.split('-');
+    s += `<line class="hoje" x1="${xh}" y1="${topo - 26}" x2="${xh}" y2="${H}"/><text class="hoje-t" x="${xh}" y="${topo - 30}" text-anchor="middle">hoje, ${dh}/${mh}</text>`;
+    const estados = P.etapas.map(e => `etapa ${e.n} ${EST[e.estado]}`).join(', ');
+    $('#plano').innerHTML = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Linha do tempo do plano contra a execução: ${estados}; e ${P.extras.length} frentes a mais, fora do combinado.">${s}</svg>`;
   })();
 
   // o combinado contra o que existe hoje, com o tamanho do corpus em pontos
@@ -245,19 +235,21 @@
     </li>`).join('');
 
   // páginas dos PDFs originais e telas dos slides, para os links da estante
-  const relat = { 1: 3, 2: 3, 3: 5, 5: 3, 6: 4, 7: 2, 8: 2, 9: 3, 10: 3, 11: 24 };
+  const relat = { 1: 3, 2: 3, 3: 5, 5: 3, 6: 4, 7: 2, 8: 2, 9: 3, 10: 3, 11: 24, 16: 3 };
+  const DUR = window.DURACOES || {};
+  const duracao = n => DUR[n] ? `vídeo, ${Math.floor(DUR[n] / 60)}:${String(DUR[n] % 60).padStart(2, '0')}` : 'vídeo';
   const slides = { 4: 12, 6: 13, 9: 11, 10: 12 };
 
   // portas da capa e a estante: relatórios, vídeos e apresentações, tudo à vista
   (function () {
     const tem = (lista, n) => lista.includes(n);
     const conta = { relatorios: P.paginas.length, videos: P.videos.length, apresentacoes: P.apresentacoes.length };
-    document.querySelectorAll('[data-conta]').forEach(el => { el.textContent = conta[el.dataset.conta]; });
+    document.querySelectorAll('[data-conta]').forEach(el => { if (conta[el.dataset.conta] !== undefined) el.textContent = conta[el.dataset.conta]; });
     const nums = D.atividades.map(a => a.n).filter(n => tem(P.paginas, n) || tem(P.videos, n) || tem(P.apresentacoes, n));
     $('#estante').innerHTML = nums.map(n => {
       const a = D.atividades.find(x => x.n === n);
       const capa = tem(P.videos, n)
-        ? `<button class="capa-video" type="button" data-video="${n}" aria-label="Ver o vídeo da Atividade ${n}"><img src="assets/video/atividade${n}-pt.jpg" alt="Quadro do vídeo da Atividade ${n}" loading="lazy" width="1280" height="720"><span class="play" aria-hidden="true"></span><span class="dur">vídeo, 3 min</span></button>`
+        ? `<button class="capa-video" type="button" data-video="${n}" aria-label="Ver o vídeo da Atividade ${n}"><img src="assets/video/atividade${n}-pt.jpg" alt="Quadro do vídeo da Atividade ${n}" loading="lazy" width="1280" height="720"><span class="play" aria-hidden="true"></span><span class="dur">${duracao(n)}</span></button>`
         : tem(P.apresentacoes, n)
           ? `<a class="capa-video" href="apresentacoes/atividade${n}.html" aria-label="Abrir a apresentação da Atividade ${n}"><img src="assets/img/apresentacao${n}.jpg" alt="Primeira tela da apresentação da Atividade ${n}" loading="lazy" width="960" height="540"><span class="dur">apresentação animada</span></a>`
           : `<a class="capa-video sem" href="relatorios/atividade${n}.html"><span>vídeo em produção</span></a>`;

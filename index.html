@@ -11,7 +11,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Old+Standard+TT:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
 <script>document.documentElement.classList.add('js');</script>
-<link rel="stylesheet" href="assets/css/guia.css?v=16">
+<link rel="stylesheet" href="assets/css/guia.css?v=21">
 </head>
 <body>
 <a class="pular" href="#conteudo">Pular para o conteúdo</a>
@@ -51,6 +51,7 @@
         <li><a href="#problema" data-s="problema">O juiz</a></li>
         <li><a href="#resultados" data-s="especies">Espécies</a></li>
         <li><a href="#vimos" data-s="vimos">O que vimos</a></li>
+        <li><a href="#validacao" data-s="validacao">Validação</a></li>
         <li><a href="#linha" data-s="linha">Linha do tempo</a></li>
       </ul>
     </nav>
@@ -77,9 +78,11 @@
       <p class="frase">O mesmo processo, em inglês e em português. O juiz decide igual?</p>
       <p class="autor">Cristhian Kapelinski e Beatriz Roland Machado. Laboratório de Inteligência Artificial Aplicada, 2026/2, UNIPAMPA, prof. Diego Kreutz.</p>
       <nav class="portas" aria-label="Para onde ir">
-        <a href="#biblioteca"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M8 4h11l6 6v18H8z M19 4v6h6 M12 16h9 M12 20h9 M12 24h6"/></svg><b>Relatórios</b><span><span data-conta="relatorios">10</span> relatórios, das Atividades 1 a 11</span></a>
-        <a href="#biblioteca"><svg viewBox="0 0 32 32" aria-hidden="true"><rect x="4" y="7" width="24" height="18" rx="2"/><path d="M13 12v8l7-4z"/></svg><b>Vídeos</b><span><span data-conta="videos">8</span> vídeos narrados de 3 minutos</span></a>
-        <a href="#biblioteca"><svg viewBox="0 0 32 32" aria-hidden="true"><rect x="4" y="5" width="24" height="16" rx="1"/><path d="M16 21v6 M11 27h10 M9 16l5-5 4 3 5-5"/></svg><b>Apresentações</b><span><span data-conta="apresentacoes">4</span> apresentações animadas</span></a>
+        <a href="#resultados"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 5c-6 0-9 4-9 10 0 7 4 12 9 12s9-5 9-12c0-6-3-10-9-10z M7 9l3 3 M25 9l-3 3"/><circle cx="12.5" cy="14" r="2.4"/><circle cx="19.5" cy="14" r="2.4"/><path d="M15 18l1 2 1-2"/></svg><b>As doze espécies</b><span><span data-conta="juizes">12</span> juízes, cada um com a sua coruja e a sua ficha</span></a>
+        <a href="#vimos"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M4 27h24 M7 27V17 M13 27V11 M19 27V15 M25 27V7"/></svg><b>O que vimos</b><span>sete pranchas com os resultados, da língua ao limiar</span></a>
+        <a href="#biblioteca"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M8 4h11l6 6v18H8z M19 4v6h6 M12 16h9 M12 20h9 M12 24h6"/></svg><b>Relatórios</b><span><span data-conta="relatorios">11</span> relatórios, das Atividades 1 a 16</span></a>
+        <a href="#biblioteca"><svg viewBox="0 0 32 32" aria-hidden="true"><rect x="4" y="7" width="24" height="18" rx="2"/><path d="M13 12v8l7-4z"/></svg><b>Vídeos</b><span><span data-conta="videos">11</span> vídeos narrados, <span data-conta="minutos">de 2 a 11</span> minutos</span></a>
+        <a href="#validacao"><svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="11" cy="10" r="4"/><circle cx="22" cy="10" r="4"/><path d="M3 27c0-6 3.5-9 8-9s8 3 8 9 M14 27c0-6 3.5-9 8-9s7 3 7 9"/></svg><b>A validação humana</b><span>o piloto às cegas e o plano com quatro anotadores</span></a>
         <a href="#linha"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M3 16h26 M8 12v8 M16 12v8 M24 12v8"/><circle cx="8" cy="16" r="2"/><circle cx="16" cy="16" r="2"/></svg><b>Linha do tempo</b><span>o combinado, o feito, o que falta e o que fizemos a mais</span></a>
       </nav>
     </div>
@@ -104,7 +107,7 @@
   <div class="caixa">
     <div class="tela rev">
       <h2>Relatórios, vídeos e apresentações</h2>
-      <p class="intro-linha">Cada entrega do semestre: o relatório inteiro para ler, um vídeo de uns 3 minutos que conta o relatório e, quando houve, a apresentação animada. O selo ✦ marca as entregas que fizeram coisas além do combinado.</p>
+      <p class="intro-linha">Cada entrega do semestre: o relatório inteiro para ler, um vídeo narrado que conta o relatório (a duração está na capa de cada um) e, quando houve, a apresentação animada. O selo ✦ marca as entregas que fizeram coisas além do combinado.</p>
       <ol class="estante" id="estante"></ol>
     </div>
   </div>
@@ -185,17 +188,17 @@
         <ol class="paradas">
           <li class="parada" style="--y:50px;--c:#8a6a45"><span class="mancha"><i>1</i></span><strong class="num">6.560</strong><p>processos do CoinflipForSafety, em inglês.</p></li>
           <li class="parada" style="--y:70px;--c:#c08a2e"><span class="mancha"><i>2</i></span><strong class="num">3</strong><p>tradutores: NLLB-200, Opus&#8209;MT e DeepSeek.</p></li>
-          <li class="parada" style="--y:45px;--c:#3f6e9e"><span class="mancha"><i>3</i></span><strong class="num">4</strong><p>juízes leem cada versão.</p></li>
+          <li class="parada" style="--y:45px;--c:#3f6e9e"><span class="mancha"><i>3</i></span><strong class="num">12</strong><p>juízes leem cada versão.</p></li>
           <li class="parada" style="--y:70px;--c:#5d7d3a"><span class="mancha"><i>4</i></span><strong class="num">1</strong><p>volta ao inglês, como controle.</p></li>
           <li class="parada" style="--y:50px;--c:#a8402c"><span class="mancha"><i>5</i></span><strong class="num">6.521</strong><p>pares comuns comparados com o rótulo humano, 1.030 deles no ReliableBench.</p></li>
         </ol>
       </div>
       <ol class="linhas-paradas">
         <li>Os 6.560 pares têm rótulo humano: 5.174 nocivos e 1.386 seguros.</li>
-        <li>NLLB-200 e Opus&#8209;MT rodam abertos em GPU. O DeepSeek vai por API, com o texto entre marcas de dado, não comando.</li>
-        <li>Llama Guard 3, HarmBench, JailJudge e AegisGuard, todos abertos.</li>
+        <li>NLLB-200 e Opus&#8209;MT rodam abertos em GPU. O DeepSeek vai por API, com o texto entre marcas de dado, não comando. O suaíli, uma língua distante, entra só pelo NLLB-200, como checagem exploratória.</li>
+        <li>Os quatro do plano (Llama Guard 3, HarmBench, JailJudge e AegisGuard) e oito juízes novos, de moderação treinada em várias línguas a modelos de decisão.</li>
         <li>Cada tradução é traduzida de volta para o inglês e julgada de novo.</li>
-        <li>Valem os pares que têm veredito nas oito condições. No ReliableBench são 1.030, 887 deles nocivos.</li>
+        <li>Valem os pares que têm veredito em todas as condições. No ReliableBench são 1.030, 887 deles nocivos.</li>
       </ol>
       <div class="controle">
         <p>Português contra inglês é o efeito total.</p>
@@ -221,38 +224,10 @@
 <section id="resultados" data-nav="especies">
   <div class="caixa">
     <div class="tela rev">
-      <h2>As quatro espécies</h2>
-      <div class="especies">
-        <article class="especie" data-j="lg3">
-          <img class="pinta" loading="lazy" src="assets/img/guia/suindara.jpg" width="1024" height="1024" alt="Aquarela de uma suindara, a coruja de cara em formato de coração" onerror="this.classList.add('falta')">
-          <div class="etiqueta"><svg class="cordao" viewBox="0 0 40 50" aria-hidden="true"><path class="traco" pathLength="1" d="M8 48 C0 36 14 28 20 4"/></svg><h3>Llama Guard 3</h3></div>
-          <p class="sp">suindara, <i>Tyto furcata</i></p>
-          <p class="comp">Quase não muda em português.</p>
-          <div class="mini"></div>
-        </article>
-        <article class="especie" data-j="harmbench">
-          <img class="pinta" loading="lazy" src="assets/img/guia/corujinha.jpg" width="1024" height="1024" alt="Aquarela de uma corujinha-do-mato num galho" onerror="this.classList.add('falta')">
-          <div class="etiqueta"><svg class="cordao" viewBox="0 0 40 50" aria-hidden="true"><path class="traco" pathLength="1" d="M8 48 C0 36 14 28 20 4"/></svg><h3>HarmBench</h3></div>
-          <p class="sp">corujinha-do-mato, <i>Megascops choliba</i></p>
-          <p class="comp">Fica mais rígido: barra mais respostas seguras.</p>
-          <div class="mini"></div>
-        </article>
-        <article class="especie" data-j="jailjudge">
-          <img class="pinta" loading="lazy" src="assets/img/guia/cabure.jpg" width="1024" height="1024" alt="Aquarela de um caburé, coruja pequena de olhar firme" onerror="this.classList.add('falta')">
-          <div class="etiqueta"><svg class="cordao" viewBox="0 0 40 50" aria-hidden="true"><path class="traco" pathLength="1" d="M8 48 C0 36 14 28 20 4"/></svg><h3>JailJudge</h3></div>
-          <p class="sp">caburé, <i>Glaucidium brasilianum</i></p>
-          <p class="comp">Passa a liberar mais respostas nocivas.</p>
-          <div class="mini"></div>
-        </article>
-        <article class="especie" data-j="aegis">
-          <img class="pinta" loading="lazy" src="assets/img/guia/mocho.jpg" width="1024" height="1024" alt="Aquarela de um mocho-diabo, coruja escura de tufos nas orelhas" onerror="this.classList.add('falta')">
-          <div class="etiqueta"><svg class="cordao" viewBox="0 0 40 50" aria-hidden="true"><path class="traco" pathLength="1" d="M8 48 C0 36 14 28 20 4"/></svg><h3>AegisGuard</h3></div>
-          <p class="sp">mocho-diabo, <i>Asio stygius</i></p>
-          <p class="comp">Depende do tradutor.</p>
-          <div class="mini"></div>
-        </article>
-      </div>
-      <p class="legenda-geral">Respostas nocivas que o juiz libera, no ReliableBench. O ponto azul é o inglês, os ocres são as três traduções.</p>
+      <h2>As doze espécies</h2>
+      <p class="intro-linha">Cada juiz é uma coruja do Brasil. Os quatro primeiros são os do plano; os oito de baixo entraram em 17/11, para ver se o que os quatro mostraram vale para outros juízes. Clique numa coruja para abrir a ficha dela.</p>
+      <div id="especies"></div>
+      <p class="legenda-geral">Em cada ficha, no ReliableBench: o ponto azul é o inglês e os ocres são as três traduções para o português.</p>
     </div>
   </div>
 </section>
@@ -333,8 +308,62 @@
       </figure>
     </article>
 
+    <article class="prancha larga rev" id="prancha-lingua">
+      <div class="p-texto">
+        <p class="num-prancha">Prancha VI</p>
+        <h3>A língua tira do juiz a capacidade de separar?</h3>
+        <p>A AUROC mede quão bem o escore do juiz separa nocivas de seguras, sem depender do corte. Aqui, para cada um dos doze juízes, a parte da mudança que é da língua (português menos a volta ao inglês) ou a da reescrita (volta menos inglês), com o intervalo de 95%.</p>
+        <p class="conta-l" id="conta-lingua"></p>
+        <div class="sel" id="sel-parte" role="group" aria-label="Parte da mudança"></div>
+        <div class="sel" id="sel-trad6" role="group" aria-label="Tradutor"></div>
+      </div>
+      <figure class="p-fig">
+        <div id="g-floresta"></div>
+        <figcaption>Pontos de AUROC (centésimos). À esquerda do zero, o juiz separa pior. Em vermelho, o intervalo fica todo abaixo do zero; em verde, todo acima; em cinza, inclui o zero. O suaíli é exploratório: ninguém que fale a língua conferiu as traduções.</figcaption>
+      </figure>
+    </article>
+
+    <article class="prancha inv rev" id="prancha-limiar">
+      <div class="p-texto">
+        <p class="num-prancha">Prancha VII</p>
+        <h3>Um limiar por língua conserta?</h3>
+        <p>Cada ponto é um juiz com um tradutor (36 casos em português). Na horizontal, quanto a AUROC mudou do inglês para o português; na vertical, quantos pontos de nocivas liberadas o juiz se afasta do inglês.</p>
+        <p class="conta-l" id="conta-limiar"></p>
+        <div class="sel" id="sel-limiar" role="group" aria-label="Limiar"></div>
+      </div>
+      <figure class="p-fig">
+        <div id="g-limiar"></div>
+        <figcaption>A faixa verde é a distância de até 5 pontos do inglês. O limiar ajustado é escolhido com 100 pares rotulados da própria língua, para barrar a mesma fração de seguras que em inglês. Círculos, os quatro juízes do plano; quadrados, os oito novos.</figcaption>
+      </figure>
+    </article>
+
     <div class="tela rev fecho">
       <p class="resposta" id="resposta"></p>
+    </div>
+  </div>
+</section>
+
+<hr class="fio">
+
+<!-- 4c. A validação humana -->
+<section id="validacao" data-nav="validacao">
+  <div class="caixa">
+    <div class="tela rev">
+      <h2>A validação humana</h2>
+      <p class="intro-linha">A tradução automática pode mudar o sentido de um pedido ou de uma resposta. Pessoas que falam português leem as versões às cegas e dizem se o rótulo continua o mesmo. A anotação não é gabarito: o que se mede é a concordância entre as pessoas e de cada juiz com elas.</p>
+      <div class="val-grade">
+        <div class="val-col">
+          <h3 class="sub">O piloto, em 16/11</h3>
+          <p id="val-piloto"></p>
+          <div id="g-fidelidade"></div>
+          <p class="nota-pe" id="val-tempo"></p>
+        </div>
+        <div class="val-col">
+          <h3 class="sub">O plano, com quatro anotadores</h3>
+          <div id="g-duplas"></div>
+          <ul class="val-lista" id="val-plano"></ul>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -346,9 +375,9 @@
     <div class="tela rev">
       <h2>O que ainda não se pode afirmar</h2>
       <ul class="proximas">
-        <li><svg class="ico" aria-hidden="true"><use href="#s-linguas"/></svg><p><b>Que as traduções estão fiéis.</b> A revalidação por falante nativo ainda não foi feita.</p></li>
-        <li><svg class="ico" aria-hidden="true"><use href="#s-dado"/></svg><p><b>Que uma troca do JailJudge é efeito da língua.</b> Falta descontar o ruído do próprio juiz: ele muda de veredito em 351 de 6.560 pares só rodando de novo, 5,4%.</p></li>
-        <li><svg class="ico" aria-hidden="true"><use href="#s-igual"/></svg><p><b>Que os números no ReliableBench coincidem com os publicados.</b></p></li>
+        <li><svg class="ico" aria-hidden="true"><use href="#s-linguas"/></svg><p><b>Que as traduções estão fiéis em geral.</b> O piloto tem 8 pares e um anotador, que é autor do projeto. A revalidação de 150 pares, com anotadores de fora, ainda falta.</p></li>
+        <li><svg class="ico" aria-hidden="true"><use href="#s-dado"/></svg><p id="limite-ruido"><b>Que cada troca de veredito é efeito da língua.</b></p></li>
+        <li><svg class="ico" aria-hidden="true"><use href="#s-igual"/></svg><p><b>Nada sobre o suaíli é conclusão.</b> Ninguém que fale suaíli conferiu as traduções nem os rótulos; ele serve só de checagem exploratória de uma língua distante.</p></li>
       </ul>
     </div>
   </div>
@@ -366,7 +395,7 @@
       <dl class="experimentos">
         <dt>E1</dt><dd>Os números publicados em inglês se reproduzem? Os nossos valores contra os de Eiras et al. <span class="estado feito">Feito na A11.</span></dd>
         <dt>E2</dt><dd>Quanto o juiz muda quando o conteúdo está em português? O mesmo par em inglês e em português. <span class="estado feito">Feito na A10 e na A11.</span></dd>
-        <dt>E3</dt><dd>Qual juiz piora menos, e algum supera o piso de regras? Os quatro juízes e o comitê contra o piso. <span class="estado parte">Juízes e piso na A11; falta o comitê por voto.</span></dd>
+        <dt>E3</dt><dd>Qual juiz piora menos, e algum supera o piso de regras? Os juízes e o comitê contra o piso. <span class="estado feito">Quatro juízes e piso na A11; doze juízes e o comitê pela média dos escores em 17/11.</span></dd>
         <dt>E4</dt><dd>O efeito da língua se soma ao de reescrever a resposta em estilo narrativo? <span class="estado nao">Não começou.</span></dd>
         <dt>E5</dt><dd>Rodar o juiz em 4 bits, em vez de 16, piora o julgamento? <span class="estado nao">Não começou.</span></dd>
       </dl>
@@ -399,8 +428,15 @@
   </div>
 </footer>
 
-<script src="assets/js/dados.js?v=15"></script>
+<dialog id="ficha" class="ficha-dlg" aria-labelledby="ficha-nome">
+  <div class="ficha-in"></div>
+</dialog>
+
+<script src="assets/js/dados.js?v=16"></script>
+<script src="assets/js/dados-juizes.js?v=1"></script>
+<script src="assets/js/duracoes.js?v=1"></script>
 <script src="assets/js/site.js?v=5"></script>
-<script src="assets/js/guia.js?v=16"></script>
+<script src="assets/js/especies.js?v=3"></script>
+<script src="assets/js/guia.js?v=19"></script>
 </body>
 </html>
