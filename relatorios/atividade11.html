@@ -23,7 +23,7 @@
 <header class="topo">
   <div class="in">
     <a class="marca" href="../index.html">BuraqueiraBench</a>
-    <nav class="voltas" aria-label="Site"><a href="../index.html#prova">O combinado</a><a href="../index.html#biblioteca">Relatórios e vídeos</a><a href="../index.html#problema">O juiz</a><a href="../index.html#vimos">O que vimos</a><a href="../index.html#linha">Linha do tempo</a></nav>
+    <nav class="voltas" aria-label="Site"><a href="../index.html#prova">O combinado</a><a href="../index.html#biblioteca">Relatórios e vídeos</a><a href="../index.html#resultados">Espécies</a><a href="../index.html#vimos">O que vimos</a><a href="../index.html#validacao">Validação</a><a href="../index.html#linha">Linha do tempo</a></nav>
   </div>
   <div class="progresso" aria-hidden="true"><span></span></div>
 </header>
@@ -33,10 +33,10 @@
     <p class="sobre">Relatório da Atividade 11 &middot; ReliableBench, três tradutores e quatro juízes</p>
     <h1>Juízes de segurança de LLM em português: sétima entrega, o ReliableBench, a leitura dos pares e o tradutor</h1>
     <p class="autor">Cristhian Kapelinski</p>
-    <p class="datas">Primeira versão em 25/10/2026, última modificação em 29/10/2026</p>
+    <p class="datas">Primeira versão em 25/10/2026, última modificação em 17/11/2026</p>
     <p class="docs"><a href="../assets/docs/atividade11.pdf">PDF da entrega</a></p>
-    <dl class="ficha"><div><dt>O que foi feito</dt><dd>DeepSeek nos 6.560, volta ao inglês dos três tradutores, os quatro juízes do artigo, piso por palavra-chave, reprodução dos números publicados e leitura dos pares que trocam de veredito.</dd></div><div><dt>O que saiu</dt><dd>O efeito depende do juiz e tem sinais opostos: o JailJudge passa a liberar mais (23,8% para 35,4%), o HarmBench fica mais rígido e o Llama Guard 3 quase não muda.</dd></div></dl>
-    <div class="video-bloco com-cap"><figure class="video"><video controls preload="metadata" playsinline poster="../assets/video/atividade11-pt.jpg"><source src="../assets/video/atividade11-pt.mp4" type="video/mp4"><track kind="captions" srclang="pt-BR" label="Português" src="../assets/video/atividade11-pt.vtt"></video><figcaption>O relatório em vídeo, narrado e com legenda.</figcaption></figure><nav class="capitulos" aria-label="Capítulos do vídeo"><p>Capítulos</p><ol><li><button type="button" data-t="7"><span class="tc">0:07</span>A pergunta e a grade do experimento</button></li><li><button type="button" data-t="82.7"><span class="tc">1:22</span>O ReliableBench com três tradutores</button></li><li><button type="button" data-t="152.8"><span class="tc">2:32</span>Lendo os pares que mudam</button></li><li><button type="button" data-t="215.1"><span class="tc">3:35</span>O pedido que o DeepSeek largou</button></li><li><button type="button" data-t="291.7"><span class="tc">4:51</span>Onde a troca acontece e a variante do português</button></li><li><button type="button" data-t="376.2"><span class="tc">6:16</span>Os controles</button></li><li><button type="button" data-t="440.2"><span class="tc">7:20</span>Os quatro juízes do artigo</button></li><li><button type="button" data-t="520"><span class="tc">8:40</span>O E1, o HarmBench e o código protegido</button></li><li><button type="button" data-t="590.1"><span class="tc">9:50</span>O que ainda não se pode afirmar</button></li></ol></nav></div>
+    <dl class="ficha"><div><dt>O que foi feito</dt><dd>DeepSeek nos 6.560, volta ao inglês dos três tradutores, os quatro juízes de Schwinn et al., piso por palavra-chave, reprodução dos números publicados e leitura dos pares que trocam de veredito.</dd></div><div><dt>O que saiu</dt><dd>O efeito depende do juiz e tem sinais opostos: o JailJudge passa a liberar mais (23,8% para 35,4%), o HarmBench fica mais rígido e o Llama Guard 3 quase não muda.</dd></div></dl>
+    <div class="video-bloco com-cap"><figure class="video"><video controls preload="metadata" playsinline poster="../assets/video/atividade11-pt.jpg"><source src="../assets/video/atividade11-pt.mp4" type="video/mp4"><track kind="captions" srclang="pt-BR" label="Português" src="../assets/video/atividade11-pt.vtt"></video><figcaption>O relatório em vídeo, narrado e com legenda.</figcaption></figure><nav class="capitulos" aria-label="Capítulos do vídeo"><p>Capítulos</p><ol><li><button type="button" data-t="7"><span class="tc">0:07</span>A pergunta e a grade do experimento</button></li><li><button type="button" data-t="82.7"><span class="tc">1:22</span>O ReliableBench com três tradutores</button></li><li><button type="button" data-t="152.8"><span class="tc">2:32</span>Lendo os pares que mudam</button></li><li><button type="button" data-t="215.1"><span class="tc">3:35</span>O pedido que o DeepSeek largou</button></li><li><button type="button" data-t="291.7"><span class="tc">4:51</span>Onde a troca acontece e a variante do português</button></li><li><button type="button" data-t="376.2"><span class="tc">6:16</span>Os controles</button></li><li><button type="button" data-t="440.2"><span class="tc">7:20</span>Os quatro juízes de Schwinn et al.</button></li><li><button type="button" data-t="520"><span class="tc">8:40</span>O E1, o HarmBench e o código protegido</button></li><li><button type="button" data-t="590.1"><span class="tc">9:50</span>O que ainda não se pode afirmar</button></li></ol></nav></div>
   </header>
 
   <div class="corpo">
@@ -2284,7 +2284,7 @@ LG3_DIR=&lt;pesos&gt; python atividade11/juizes.py lg3 --dataset A_Coinflip_Judg
 python atividade11/juizes.py harmbench --dataset A_Coinflip_Judge_Data.csv --saida atividade11/resultados --gpu-mem 12GiB --fichas-por-lote 8000 --max-lote 8 --so-idx atividade11/resultados/idx-codigo.txt nllb-cod opus-cod
 python atividade11/juizes.py harmbench --sem-regra-ingles --dataset A_Coinflip_Judge_Data.csv --saida atividade11/resultados --gpu-mem 12GiB --fichas-por-lote 8000 --max-lote 8 en nllb opus deepseek
 python atividade11/analises3.py A_Coinflip_Judge_Data.csv ReliableBench.csv atividade11/resultados/analises3.json
-python atividade11/preencher11.py atividade11/relatorio.modelo.tex atividade11.tex</code></pre>
+python atividade11/preencher11.py atividade11/relatorio.modelo.tex atividade11/atividade11.tex</code></pre>
 </section>
 <section id="ap:prompts" class="level2" data-number="25">
 <h2 data-number="25"><span class="header-section-number">25</span> Prompts de sistema do DeepSeek</h2>
@@ -2987,7 +2987,7 @@ Provide your safety assessment for Assistant in the above conversation:
   <nav class="vizinhos" aria-label="Outras atividades">
     <a class="viz ant" href="atividade10.html"><span class="seta" aria-hidden="true">←</span><span><small>Atividade 10</small><b>O juiz em português</b></span></a>
     <a class="meio" href="../index.html#linha">Linha do tempo</a>
-    <span></span>
+    <a class="viz prox" href="atividade16.html"><span class="seta" aria-hidden="true">→</span><span><small>Atividade 16</small><b>Piloto da validação humana às cegas</b></span></a>
   </nav>
 </main>
 

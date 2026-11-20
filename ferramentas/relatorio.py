@@ -19,6 +19,17 @@ from pathlib import Path
 AQUI = Path(__file__).resolve().parent
 SITE = AQUI.parent
 CONF = json.loads((AQUI / 'relatorios.json').read_text(encoding='utf-8'))
+# O que o site não publica (seções, itens, frases, trechos trocados e a lista do que não pode sobrar) fica num arquivo
+# local, fora do git, porque descrever o trecho omitido num repositório público já o publicaria. Relatório marcado
+# com "omitir": true no relatorios.json exige regras nesse arquivo; sem elas, o gerador para em vez de publicar.
+LOCAL = AQUI / 'omitir.local.json'
+_regras = json.loads(LOCAL.read_text(encoding='utf-8')) if LOCAL.exists() else {}
+for _n, _c in CONF.items():
+    if _c.get('omitir') is True:
+        if _n not in _regras:
+            sys.exit(f'atividade {_n}: marcada para omitir, mas {LOCAL} não tem as regras dela; nada foi gerado')
+        _c['omitir'] = _regras[_n]['omitir']
+        _c['proibido'] = _regras[_n].get('proibido', [])
 MOLDE_PANDOC = AQUI / 'molde-pandoc.html'
 VERSAO = '5'
 
@@ -285,7 +296,11 @@ def pdf_site(fonte, n):
         if r.returncode:
             sys.exit(f'{nome}: o PDF do site não compilou\n' + r.stdout[-3000:])
         destino = SITE / c['pdf']
-        shutil.copyfile(Path(tmp) / f'{base}.pdf', destino)
+        novo = Path(tmp) / f'{base}.pdf'
+        ler = lambda p: subprocess.run(['pdftotext', str(p), '-'], capture_output=True, text=True).stdout
+        # o PDF muda de bytes a cada compilação (data de criação); só substitui quando o texto mudou
+        if not destino.exists() or ler(novo) != ler(destino):
+            shutil.copyfile(novo, destino)
     texto = subprocess.run(['pdftotext', str(destino), '-'], capture_output=True, text=True).stdout
     for proibido in c.get('proibido', []):
         if re.search(proibido, texto, re.I):
@@ -376,7 +391,7 @@ def pagina(n, c, titulo, autor, primeira, ultima, corpo, sumario):
 <header class="topo">
   <div class="in">
     <a class="marca" href="../index.html">BuraqueiraBench</a>
-    <nav class="voltas" aria-label="Site"><a href="../index.html#prova">O combinado</a><a href="../index.html#biblioteca">Relatórios e vídeos</a><a href="../index.html#problema">O juiz</a><a href="../index.html#vimos">O que vimos</a><a href="../index.html#linha">Linha do tempo</a></nav>
+    <nav class="voltas" aria-label="Site"><a href="../index.html#prova">O combinado</a><a href="../index.html#biblioteca">Relatórios e vídeos</a><a href="../index.html#resultados">Espécies</a><a href="../index.html#vimos">O que vimos</a><a href="../index.html#validacao">Validação</a><a href="../index.html#linha">Linha do tempo</a></nav>
   </div>
   <div class="progresso" aria-hidden="true"><span></span></div>
 </header>
