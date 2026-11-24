@@ -117,7 +117,13 @@
 
   // linha do tempo: o plano da Atividade 3 contra o que cada entrega fez, e o dia de hoje
   const P = D.plano;
-  const pagina = n => P.paginas.includes(n) ? `relatorios/atividade${n}.html` : P.apresentacoes.includes(n) ? `apresentacoes/atividade${n}.html` : `#biblioteca`;
+  // uma aula que não é entrega (D.aulas) entra com o rótulo da própria aula ('24/11') no lugar de 'A16'
+  const AULAS = D.aulas || [];
+  const aula = k => AULAS.find(x => x.id === k);
+  const rotulo = k => aula(k) ? k : `A${k}`;
+  const largura = k => aula(k) ? 50 : k > 9 ? 44 : 36;
+  const nomeEnt = k => aula(k) ? `Aula de ${k}` : `Atividade ${k}`;
+  const pagina = n => aula(n) ? `#ent-${aula(n).video}` : P.paginas.includes(n) ? `relatorios/atividade${n}.html` : P.apresentacoes.includes(n) ? `apresentacoes/atividade${n}.html` : `#biblioteca`;
   const EST = { feito: 'feito', parte: 'em parte', nao: 'não começou', andamento: 'em andamento' };
   const COR_EST = { feito: C.seguro, parte: C.pt, nao: C.fio, andamento: C.en };
   (function () {
@@ -136,7 +142,7 @@
     // as 13 entregas num trilho, cada uma no seu dia; as do mesmo dia se afastam
     s += `<path class="traco trilho" pathLength="1" d="M${L} 40 L${R} 40"/>`;
     let ultimo = -99;
-    Object.keys(P.datas).map(Number).sort((a, b) => P.datas[a][0].localeCompare(P.datas[b][0]) || a - b).forEach(n => {
+    Object.keys(P.datas).filter(k => !aula(k)).map(Number).sort((a, b) => P.datas[a][0].localeCompare(P.datas[b][0]) || a - b).forEach(n => {
       const ds = P.datas[n], xd = X(ds[0]);
       const x = Math.max(xd, ultimo + 25);
       ultimo = x;
@@ -157,7 +163,7 @@
       // se colidem, a segunda vai para a faixa de baixo
       const ocupado = [-99, -99];
       const pos = e.feito.map(f2 => {
-        const larg = f2.a > 9 ? 44 : 36, xd = X(P.datas[f2.a][0]);
+        const larg = largura(f2.a), xd = X(P.datas[f2.a][0]);
         const faixa = xd >= ocupado[0] + 3 ? 0 : xd >= ocupado[1] + 3 ? 1 : 0;
         const x0 = Math.max(xd, ocupado[faixa] + 3);
         ocupado[faixa] = x0 + larg;
@@ -167,7 +173,7 @@
       pos.forEach(({ f2, larg, x0, faixa }) => {
         const yy = y + (duas ? (faixa ? 30 : 7) : 14), claro = e.estado === 'parte';
         s += `<a href="${pagina(f2.a)}" class="marca-feita" style="--i:${i}"><rect x="${x0}" y="${yy}" width="${larg}" height="21" rx="3" fill="${COR_EST[e.estado]}" filter="url(#aquarela)"/>` +
-          `<text x="${x0 + larg / 2}" y="${yy + 15.5}" text-anchor="middle" fill="${claro ? C.tinta : '#fff'}">A${f2.a}</text><title>Atividade ${f2.a}: ${f2.txt} (${f2.fonte})</title></a>`;
+          `<text x="${x0 + larg / 2}" y="${yy + 15.5}" text-anchor="middle" fill="${claro ? C.tinta : '#fff'}">${rotulo(f2.a)}</text><title>${nomeEnt(f2.a)}: ${f2.txt} (${f2.fonte})</title></a>`;
       });
       // o "falta" fica na altura da faixa de baixo das etiquetas: começa depois da última que estiver lá
       const fimBaixo = Math.max(0, ...pos.filter(p => p.faixa === 1).map(p => p.x0 + p.larg));
@@ -183,11 +189,11 @@
       s += `<text class="et-nome" x="12" y="${y + 25}"><tspan class="estrela">✦</tspan> ${x.nome}</text>`;
       let ocup = -99;
       [...new Set(x.feito.map(f2 => f2.a))].forEach(a => {
-        const itens = x.feito.filter(f2 => f2.a === a), larg = a > 9 ? 44 : 36;
+        const itens = x.feito.filter(f2 => f2.a === a), larg = largura(a);
         const x0 = Math.max(X(P.datas[a][0]), ocup + 3);
         ocup = x0 + larg;
         s += `<a href="${pagina(a)}" class="marca-feita extra" style="--i:${P.etapas.length + k}"><rect x="${x0}" y="${y + 10}" width="${larg}" height="21" rx="3"/>` +
-          `<text x="${x0 + larg / 2}" y="${y + 25.5}" text-anchor="middle">A${a}</text><title>Atividade ${a}: ${itens.map(f2 => `${f2.txt} (${f2.fonte})`).join('; ')}</title></a>`;
+          `<text x="${x0 + larg / 2}" y="${y + 25.5}" text-anchor="middle">${rotulo(a)}</text><title>${nomeEnt(a)}: ${itens.map(f2 => `${f2.txt} (${f2.fonte})`).join('; ')}</title></a>`;
       });
     });
     const xh = X(P.hoje);
@@ -223,14 +229,14 @@
   // o que fizemos a mais, frente por frente
   (function () {
     $('#extras').innerHTML = P.extras.map(x => `<li class="extra"><h4><span class="estrela">✦</span> ${x.nome}</h4><ul>${x.feito.map(f2 =>
-      `<li><a class="chip" href="${pagina(f2.a)}">A${f2.a}</a> ${f2.txt}. <span class="fnt">${f2.fonte}</span></li>`).join('')}</ul></li>`).join('');
+      `<li><a class="chip" href="${pagina(f2.a)}">${rotulo(f2.a)}</a> ${f2.txt}. <span class="fnt">${f2.fonte}</span></li>`).join('')}</ul></li>`).join('');
   })();
 
   // a mesma linha do tempo em texto: planejado, executado e onde está, etapa por etapa
   $('#onde').innerHTML = P.etapas.map(e => `
     <li class="etapa ${e.estado}">
       <div class="pl"><span class="et-num">${e.n}</span><h4>${e.nome}</h4><p>${e.semanas} ${e.semanas > 1 ? "semanas" : "semana"}, para entregar ${e.entrega}.</p></div>
-      <div class="ex">${e.feito.length ? `<ul>${e.feito.map(f2 => `<li><a class="chip" href="${pagina(f2.a)}">A${f2.a}</a> ${f2.txt}. <span class="fnt">${f2.fonte}</span></li>`).join('')}</ul>` : '<p class="nada">Nada ainda.</p>'}</div>
+      <div class="ex">${e.feito.length ? `<ul>${e.feito.map(f2 => `<li><a class="chip" href="${pagina(f2.a)}">${rotulo(f2.a)}</a> ${f2.txt}. <span class="fnt">${f2.fonte}</span></li>`).join('')}</ul>` : '<p class="nada">Nada ainda.</p>'}</div>
       <div class="st"><span class="estado" style="--c:${COR_EST[e.estado]}">${EST[e.estado]}</span>${e.falta ? `<p>Falta ${e.falta}. <span class="fnt">${e.faltaFonte}</span></p>` : ''}</div>
     </li>`).join('');
 
@@ -243,7 +249,7 @@
   // portas da capa e a estante: relatórios, vídeos e apresentações, tudo à vista
   (function () {
     const tem = (lista, n) => lista.includes(n);
-    const conta = { relatorios: P.paginas.length, videos: P.videos.length, apresentacoes: P.apresentacoes.length };
+    const conta = { relatorios: P.paginas.length, videos: P.videos.length + AULAS.filter(x => x.video).length, apresentacoes: P.apresentacoes.length };
     document.querySelectorAll('[data-conta]').forEach(el => { if (conta[el.dataset.conta] !== undefined) el.textContent = conta[el.dataset.conta]; });
     const nums = D.atividades.map(a => a.n).filter(n => tem(P.paginas, n) || tem(P.videos, n) || tem(P.apresentacoes, n));
     $('#estante').innerHTML = nums.map(n => {
@@ -265,6 +271,13 @@
         `<p class="res">${a.resultado || a.feito}</p><p class="acoes">${acoes.join('')}</p>` +
         (pdfs.length ? `<p class="pdfs">${pdfs.join(' &middot; ')}</p>` : '') + '</li>';
     }).join('');
+    // as aulas que não são entrega vêm no fim da estante, com o vídeo e sem relatório
+    $('#estante').insertAdjacentHTML('beforeend', AULAS.filter(x => x.video).map(x => {
+      const amais = P.extras.some(e => e.feito.some(f2 => f2.a === x.id)) ? ' <a class="selo-extra" href="#extras-t" title="Fez coisas além do combinado">✦ a mais</a>' : '';
+      return `<li class="livro" id="ent-${x.video}"><div class="capa-l"><button class="capa-video" type="button" data-video="${x.video}" aria-label="Ver o vídeo da aula de ${x.id}"><img src="assets/video/${x.video}-pt.jpg" alt="Quadro do vídeo da aula de ${x.id}" loading="lazy" width="1280" height="720"><span class="play" aria-hidden="true"></span><span class="dur">${duracao(x.video)}</span></button></div>` +
+        `<p class="ativ">Aula de ${x.id} &middot; ${x.data}${amais}</p><h3>${x.titulo}</h3><p class="res">${x.resultado}</p>` +
+        `<p class="acoes"><button class="btn-l forte" type="button" data-video="${x.video}">Ver o vídeo</button></p></li>`;
+    }).join(''));
 
     // o vídeo abre por cima da página, sem sair dela; a legenda vem desligada
     const dlg = $('#tocador');
@@ -273,12 +286,15 @@
     document.addEventListener('click', e => {
       const b = e.target.closest('[data-video]');
       if (!b) return;
-      const n = +b.dataset.video, a = D.atividades.find(x => x.n === n);
-      dlg.querySelector('.t').textContent = `Atividade ${n}: ${a.titulo}`;
-      dlg.querySelector('.ler-r').href = `relatorios/atividade${n}.html`;
-      vid.poster = `assets/video/atividade${n}-pt.jpg`;
-      vid.src = `assets/video/atividade${n}-pt.mp4`;
-      trilha.src = `assets/video/atividade${n}-pt.vtt`;
+      // vídeo de uma aula (D.aulas) ou de uma entrega (número da atividade); a aula não tem relatório para ler
+      const au = AULAS.find(x => x.video === b.dataset.video), n = +b.dataset.video;
+      const base = au ? au.video : `atividade${n}`, ler = dlg.querySelector('.ler-r');
+      dlg.querySelector('.t').textContent = au ? `Aula de ${au.id}: ${au.titulo}` : `Atividade ${n}: ${D.atividades.find(x => x.n === n).titulo}`;
+      ler.style.display = au ? 'none' : '';
+      if (!au) ler.href = `relatorios/atividade${n}.html`;
+      vid.poster = `assets/video/${base}-pt.jpg`;
+      vid.src = `assets/video/${base}-pt.mp4`;
+      trilha.src = `assets/video/${base}-pt.vtt`;
       dlg.showModal();
       vid.play().catch(() => {});
     });

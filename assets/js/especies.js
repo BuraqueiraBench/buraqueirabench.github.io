@@ -208,7 +208,7 @@
 
   // ---------- validação humana ----------
   const V = D.validacao, pi = V.piloto, pl = V.plano;
-  $('#val-piloto').innerHTML = `${pi.pares} pares do ReliableBench, em inglês e nas três traduções: <b>${pi.versoes} versões</b>, rotuladas às cegas por ${pi.anotador}. Nenhuma tradução mudou o rótulo do inglês. Depois, com os rótulos travados, cada tradução ganhou uma nota de fidelidade de 1 (sentido perdido) a 4 (fiel):`;
+  $('#val-piloto').innerHTML = `${pi.pares} pares do ReliableBench nas traduções, sem o original em inglês: <b>${pi.versoes} versões</b>, rotuladas às cegas por ${pi.anotador}. As traduções de cada par ficaram com o mesmo rótulo, e o inglês, rotulado por ele em ${pi.ingles.data} (já tendo lido as traduções), teve esse rótulo nos ${pi.ingles.iguais}. Com os rótulos travados, cada tradução ganhou uma nota de fidelidade de 1 (sentido perdido) a 4 (fiel):`;
   (function () {
     const cores = ['#a8402c', '#c08a2e', '#a3b585', '#5d7d3a'], W = 420, L0 = 110;
     let s = '';
@@ -239,20 +239,23 @@
     ['C', 'D'].forEach((n, i) => { s += `<circle cx="${cx[i]}" cy="44" r="17" fill="${C.en}" fill-opacity=".85" stroke="${C.tinta}" filter="url(#aquarela)"/><text class="val-i" x="${cx[i]}" y="50">${n}</text>`; });
     s += `<text class="rot-m" transform="translate(28 134) rotate(-90)">autores</text>`;
     ['A', 'B'].forEach((n, i) => { s += `<circle cx="88" cy="${cy[i]}" r="17" fill="${C.pt}" fill-opacity=".9" stroke="${C.tinta}" filter="url(#aquarela)"/><text class="val-i" x="88" y="${cy[i] + 6}">${n}</text>`; });
-    cy.forEach(y => cx.forEach(x => {
+    // em cada casa, os pares novos da dupla (os do piloto, os quatro rotulam)
+    cy.forEach((y, i) => cx.forEach((x, j) => {
+      const n = pl.duplas['AB'[i]]['CD'[j]];
       s += `<rect x="${x - 66}" y="${y - 34}" width="132" height="68" rx="4" fill="#efe6d2" stroke="${C.tinta}" stroke-width="1" filter="url(#aquarela)"/>`;
-      s += `<text class="val-g" x="${x}" y="${y - 2}">${pl.dupla[0]} ou ${pl.dupla[1]}</text><text class="rot-s" x="${x}" y="${y + 20}" text-anchor="middle">pares</text>`;
+      s += `<text class="val-g" x="${x}" y="${y - 2}">${n}</text><text class="rot-s" x="${x}" y="${y + 20}" text-anchor="middle">pares novos</text>`;
     }));
     s += `<text class="rot-m" x="325" y="238">cada par: o rótulo de um autor e o de alguém de fora</text>`;
-    $('#g-duplas').innerHTML = svg('0 0 480 250', s, `Quatro duplas cruzadas: autor A ou B com anotador de fora C ou D, de ${pl.dupla[0]} ou ${pl.dupla[1]} pares cada, ${pl.pares} pares no total.`);
+    const dd = pl.duplas;
+    $('#g-duplas').innerHTML = svg('0 0 480 250', s, `Quatro duplas cruzadas de autor e anotador de fora, em pares novos: A e C, ${dd.A.C}; A e D, ${dd.A.D}; B e C, ${dd.B.C}; B e D, ${dd.B.D}. Os ${pl.piloto} pares do piloto, os quatro rotulam; ${pl.pares} pares no total.`);
   })();
   $('#val-plano').innerHTML = [
-    `<b>${pl.pares} pares</b> do ReliableBench, cada um em inglês e nas três traduções.`,
-    `<b>Quatro anotadores nativos</b>, dois autores e dois de fora do projeto. Cada um fica com ${pl.porAnotador} pares: ${pl.itensPorAnotador.rotulos} rótulos e ${pl.itensPorAnotador.notas} notas de fidelidade.`,
-    `As duplas se cruzam, para que um anotador mais rigoroso não pese só numa metade da amostra. Quando a dupla discorda, decide o outro anotador de fora.`,
-    `Antes, os quatro anotam juntos os ${pl.calibracao} pares do piloto, para calibrar.`,
-    `A concordância entre as pessoas (alfa de Krippendorff e AC1 de Gwet) é o teto contra o qual se lê a de cada juiz.`,
-    `As versões são longas: mediana de ${fi(pl.palavras.mediana)} palavras e até ${fi(pl.palavras.maximo)}.`
+    `<b>${pl.pares} pares</b> do ReliableBench, contando os ${pl.piloto} do piloto, cada um em inglês e nas três traduções. Entram todos os ${pl.seguros} seguros com rótulo unânime e ${pl.nocivos} nocivos: numa taxa perto de 30%, a margem fica em ±${pl.margem.seguros} pontos nas seguras e ±${pl.margem.nocivos} nas nocivas.`,
+    `<b>Quatro anotadores nativos</b>, dois autores e dois de fora do projeto, cada um com ${pl.novosPorAnotador} pares novos. As duplas se cruzam, para que um anotador mais rigoroso não pese só numa metade da amostra; quando a dupla discorda, decide o outro anotador de fora.`,
+    `<b>Calibração</b> nos ${pl.calibracao} originais em inglês do piloto. Depois, cada um rotula uma lista só, embaralhada, com duas versões do mesmo par a pelo menos ${pl.distancia} itens uma da outra, para não repetir o rótulo que acabou de dar.`,
+    `A concordância entre as pessoas (alfa de Krippendorff com os quatro, kappa de Cohen e AC1 de Gwet por dupla) é o teto contra o qual se lê a de cada juiz.`,
+    `<b>A página de anotação está pronta</b>, com aviso de conteúdo, opção de pular qualquer item e uso no celular. O primeiro autor fez a calibração em ${pl.calibracaoFeita}.`,
+    `As versões são longas: mediana de ${fi(pl.palavras.medianaIngles)} palavras no inglês e até ${fi(pl.palavras.maximo)} numa tradução; cada anotador lê de ${pl.palavras.passada1[0]} a ${pl.palavras.passada1[1]} mil palavras só na primeira passada.`
   ].map(t => `<li>${t}</li>`).join('');
 
   // ---------- o que ainda não se pode afirmar: o ruído ----------

@@ -140,12 +140,13 @@ window.DADOS = {
   // não têm data no relatório; a linha do tempo conta a partir de 08/09, quando o plano foi entregue.
   plano: {
     inicio: '2026-09-08',
-    hoje: '2026-11-19',
+    hoje: '2026-11-24',
     fonte: 'A3:265-286',
     etapas: [
       { n: 1, nome: 'Ambiente e reprodução do inglês (E1)', semanas: 2, entrega: 'E1 fechado e ambiente validado', estado: 'feito',
         feito: [{ a: 9, txt: 'o escore do Llama Guard 3 coincide com o do conjunto em 436 de 439 pares', fonte: 'A9:66' },
-                { a: 11, txt: 'E1 fechado: HarmBench e Llama Guard 3 ficam a até 0,05 dos números publicados', fonte: 'A11:866' }] },
+                { a: 11, txt: 'E1 fechado: HarmBench e Llama Guard 3 ficam a até 0,05 dos números publicados', fonte: 'A11:866' },
+                { a: '24/11', txt: 'nos quatro juízes novos com F1 publicado, o nosso ficou igual ou acima (18/11)', fonte: 'publicados.json' }] },
       { n: 2, nome: 'Piloto de tradução com 30 pares', semanas: 1, entrega: 'a taxa de descarte, que decide o resto', estado: 'feito',
         feito: [{ a: 5, txt: 'descarte projetado de 0 em 30', fonte: 'A5:118' },
                 { a: 7, txt: 'os 30 traduzidos por seis motores', fonte: 'A7:66-76' }] },
@@ -157,8 +158,9 @@ window.DADOS = {
         feito: [{ a: 6, txt: 'como e a que custo traduzir', fonte: 'A6:94-118' },
                 { a: 8, txt: '439 pares por cinco motores e 6.560 pelo NLLB-200 e pelo Opus-MT', fonte: 'A8:68-72' },
                 { a: 11, txt: 'DeepSeek nos 6.560 e leitura à mão dos pares que trocam de veredito', fonte: 'A11:290' },
-                { a: 16, txt: 'piloto da revalidação às cegas: 8 pares, 32 versões, nenhuma tradução mudou o rótulo', fonte: 'A16' }],
-        falta: 'a revalidação de 150 pares por quatro anotadores, dois deles de fora do projeto', curta: 'a revalidação de 150 pares', faltaFonte: 'plano da validação, 19/11' },
+                { a: 16, txt: 'piloto da revalidação às cegas: 8 pares, 32 versões, nenhuma tradução mudou o rótulo', fonte: 'A16' },
+                { a: '24/11', txt: 'revalidação de 150 pares pronta para anotar: amostra sorteada, página com aviso de conteúdo e opção de pular, calibração do primeiro autor (20/11)', fonte: 'plano da validação, 20/11' }],
+        falta: 'anotar os 150 pares com os quatro anotadores, dois deles de fora do projeto', curta: 'anotar os 150 pares', faltaFonte: 'plano da validação, 20/11' },
       { n: 5, nome: 'Demais juízes, comitê, E2 e E3', semanas: 3, entrega: 'o resultado principal', estado: 'feito',
         feito: [{ a: 10, txt: 'E2 com o Llama Guard 3 em duas traduções', fonte: 'A10:64' },
                 { a: 11, txt: 'os quatro juízes de Schwinn et al., três tradutores e a volta ao inglês', fonte: 'A11:54' },
@@ -168,19 +170,22 @@ window.DADOS = {
         falta: 'língua com estilo narrativo (E4) e 4 contra 16 bits (E5)', curta: 'E4 e E5', faltaFonte: 'A3:230-232' },
       { n: 7, nome: 'Análise, escrita e documentação', semanas: 2, entrega: 'relatório e repositório', estado: 'andamento',
         feito: [{ a: 13, txt: 'este site', fonte: 'Classroom' },
-                { a: 16, txt: 'relatório e vídeo do piloto e dos juízes novos', fonte: 'A16' }],
+                { a: 16, txt: 'relatório e vídeo do piloto e dos juízes novos', fonte: 'A16' },
+                { a: '24/11', txt: 'vídeo dos dois testes dos juízes e do plano da anotação', fonte: 'aula de 24/11' }],
         falta: 'a documentação final, com a validação humana', curta: 'a documentação final', faltaFonte: 'plano da validação, 19/11' }
     ],
     // datas de cada entrega na linha do tempo (primeiro e último commit do relatório)
     datas: { 1: ['2026-08-24', '2026-09-08'], 2: ['2026-09-08'], 3: ['2026-09-08'], 4: ['2026-09-08'], 5: ['2026-09-21', '2026-09-28'],
              6: ['2026-09-27', '2026-10-06'], 7: ['2026-10-06'], 8: ['2026-10-06'], 9: ['2026-10-24', '2026-10-25'], 10: ['2026-10-24'],
-             11: ['2026-10-25', '2026-10-29'], 12: ['2026-11-10'], 13: ['2026-11-09'], 16: ['2026-11-16', '2026-11-17'] },
+             11: ['2026-10-25', '2026-10-29'], 12: ['2026-11-10'], 13: ['2026-11-09'], 16: ['2026-11-16', '2026-11-17'],
+             // aula que não é entrega (lista aulas, no fim): não ganha pino no trilho das entregas
+             '24/11': ['2026-11-24'] },
     // O combinado: a proposta (Atividade 1) e o plano (Atividade 3). O que veio depois e não estava lá é a mais.
     combinado: {
       corpus: { prometido: [100, 300], fonte: 'A3:107, A3:200', feito: 6560, tradutores: 3, feitoFonte: 'A8:70-72, A11:290' },
       itens: [
         { prometido: 'um conjunto em português de 100 a 300 pares, revalidado às cegas', fonte: 'A3:107, A3:200',
-          hoje: '6.560 pares traduzidos por três tradutores; o piloto às cegas (8 pares, 32 versões) feito, e a revalidação de 150 pares por quatro anotadores planejada', hojeFonte: 'A8:70-72, A11:290, A16' },
+          hoje: '6.560 pares traduzidos por três tradutores; o piloto às cegas (8 pares, 32 versões) feito, e a revalidação de 150 pares por quatro anotadores pronta para anotar, com a calibração do primeiro autor feita', hojeFonte: 'A8:70-72, A11:290, A16, plano da validação, 20/11' },
         { prometido: 'quatro juízes e um comitê por voto', fonte: 'A3:198',
           hoje: 'doze juízes, o piso por palavra-chave e um comitê pela média dos escores, com limiar por língua', hojeFonte: 'A11:54, A11:564, dados-juizes.js' },
         { prometido: 'cinco experimentos, E1 a E5', fonte: 'A3:224-232',
@@ -208,7 +213,8 @@ window.DADOS = {
       { nome: 'Testes dos juízes fora do plano', curta: 'juízes por dentro',
         feito: [{ a: 11, txt: 'o HarmBench sem a regra que exige inglês', fonte: 'A11:869' },
                 { a: 11, txt: 'a tradução com o código protegido', fonte: 'A11:900' },
-                { a: 11, txt: 'a coluna publicada do ReliableBench refeita', fonte: 'A11:801' }] },
+                { a: 11, txt: 'a coluna publicada do ReliableBench refeita', fonte: 'A11:801' },
+                { a: '24/11', txt: 'o HarmBench com um lado traduzido de cada vez: as seguras barradas a mais vêm do pedido e da resposta juntos em português (mais 3,1 a 4,1 pontos), e uma rodada nova confirmou a previsão escrita antes dela (18/11)', fonte: 'mecanismo.json' }] },
       { nome: 'Oito juízes além dos quatro', curta: 'doze juízes',
         feito: [{ a: 16, txt: 'PolyGuard, Qwen3Guard, Nemotron Safety Guard, Granite Guardian, Jev, Lev, Laya e um Qwen3 com a rubrica do HarmBench, em todas as condições (17/11)', fonte: 'dados-juizes.js' }] },
       { nome: 'A língua separada da reescrita, com intervalo', curta: 'língua contra reescrita',
@@ -229,27 +235,46 @@ window.DADOS = {
   },
 
   proximos: [
-    'Revalidação às cegas de 150 pares do ReliableBench por quatro anotadores nativos, cada par com um autor e um anotador de fora do projeto.',
-    'O limiar por língua ajustado de novo, agora com os rótulos humanos em português.',
+    'Fechar os outros três anotadores e anotar os 150 pares do ReliableBench, cada par com um autor e um anotador de fora do projeto.',
+    'Medir a concordância entre as pessoas e a de cada juiz com elas, e ajustar de novo o limiar por língua com os rótulos humanos em português.',
     'Uma segunda língua só com anotador nativo: 30 a 40 pares, pelos três tradutores.'
   ],
-  proximosFonte: 'plano da validação, 19/11',
+  proximosFonte: 'plano da validação, 20/11',
 
-  // A validação humana: o piloto (A16, atividade16/resumo-rodada1.json) e o plano (validacao/plano_anotacao.md, 19/11)
+  // A validação humana: o piloto (A16, atividade16/resumo-rodada1.json; o inglês na calibração de 20/11,
+  // validacao/anotacao/respostas/val20261120-A-cal.json) e o plano (validacao/plano_anotacao.md, 20/11)
   validacao: {
     piloto: {
+      // as 32 versões são os 8 pares nas traduções, sem o original em inglês (A16:86-87)
       pares: 8, versoes: 32, anotador: 'um autor',
+      // o mesmo autor rotulou os 8 originais em inglês quatro dias depois, já tendo lido as traduções
+      ingles: { iguais: 8, data: '20/11' },
       // notas de fidelidade de 1 (sentido perdido) a 4 (fiel), por tradutor, nas 8 versões
       fidelidade: { deepseek: [0, 0, 0, 8], nllb: [0, 1, 7, 0], opus: [0, 3, 5, 0] },
       segundos: { p1: 8.6, p2: 9.45 },
-      fonte: 'A16, resumo-rodada1.json'
+      fonte: 'A16, resumo-rodada1.json, val20261120-A-cal.json'
     },
     plano: {
-      pares: 150, versoes: 4, anotadores: 4, porAnotador: 75, dupla: [37, 38],
-      palavras: { mediana: 207, maximo: 729 },
-      itensPorAnotador: { rotulos: 300, notas: 225 },
-      calibracao: 8,
-      fonte: 'plano da validação, 19/11'
+      // 150 pares com rótulo humano unânime, os 8 do piloto incluídos: todos os 68 seguros e 82 nocivos
+      pares: 150, piloto: 8, seguros: 68, nocivos: 82,
+      // intervalo de 95% numa taxa perto de 30%: 1,96 × raiz(0,3 × 0,7 / n), em pontos
+      margem: { seguros: 11, nocivos: 10 },
+      anotadores: 4, novosPorAnotador: 71,
+      // pares novos de cada dupla autor (A, B) e anotador de fora (C, D)
+      duplas: { A: { C: 36, D: 35 }, B: { C: 35, D: 36 } },
+      distancia: 60,
+      // versões dos pares sorteados: mediana do inglês e máximo de uma tradução; mil palavras por anotador na passada 1
+      palavras: { medianaIngles: 203, maximo: 763, passada1: [80, 85] },
+      calibracao: 8, calibracaoFeita: '20/11',
+      fonte: 'plano da validação, 20/11'
     }
-  }
+  },
+
+  // Aulas que não são entrega do Classroom: entram no fim da estante, com vídeo próprio, e na linha do tempo
+  // com o rótulo da aula (a mesma chave em plano.datas e nos itens feitos).
+  aulas: [
+    { id: '24/11', video: 'aula2411', data: '18/11 a 24/11', titulo: 'Dois testes dos juízes e o plano da anotação',
+      resultado: 'Nos quatro juízes novos com F1 publicado, o nosso ficou igual ou acima; no HarmBench, as seguras barradas a mais vêm do pedido e da resposta juntos em português, e uma rodada nova confirmou a previsão escrita antes dela; e a anotação de 150 pares está pronta para começar.',
+      fonte: 'publicados.json, mecanismo.json, plano da validação, 20/11' }
+  ]
 };
